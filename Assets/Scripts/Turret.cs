@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Attributes")]
     public float range = 15.0f;
-    private float fireRate = 2.0f; //shots per second, higher is faster
+    public float fireRate = 2.0f; //shots per second, higher is faster
     private float nextFire = 0.0f;
 
     [Header("Other")]
