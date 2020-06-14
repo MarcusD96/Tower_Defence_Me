@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad43f6f995fb1a449b47c504e7777a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
+  bulletPrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   bulletSpawn: {fileID: 646951254136473649}
   range: 30

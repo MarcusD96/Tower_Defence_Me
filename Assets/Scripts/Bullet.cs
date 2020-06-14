@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    private Transform target;
-
     public GameObject impactEffect;
+    public float speed = 50.0f, explosionRadius = 0.0f;
 
-    public float speed = 50.0f;
+    private Transform target;
 
     // Update is called once per frame
     void Update() {
@@ -25,6 +24,7 @@ public class Bullet : MonoBehaviour {
         }
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(target);
     }
 
     public void Seek(Transform _target) {
@@ -32,9 +32,33 @@ public class Bullet : MonoBehaviour {
     }
 
     void HitTarget() {
-        GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);        
-        Destroy(target.gameObject);
-        Destroy(effectInstance, 2.0f);
+        GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectInstance, 5.0f);
+
+        if (explosionRadius > 0) {
+            Explode();
+        } else {
+            Damage(target);
+        }
+
         Destroy(gameObject);
+    }
+
+    void Damage(Transform enemy) {
+        Destroy(enemy.gameObject);
+    }
+
+    void Explode() {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach(var c in colliders) {
+            if (c.gameObject.CompareTag("Enemy")) {
+                Damage(c.transform);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
