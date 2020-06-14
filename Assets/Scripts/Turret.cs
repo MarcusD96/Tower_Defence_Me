@@ -23,14 +23,20 @@ public class Turret : MonoBehaviour {
     void Update() {
         if(!target)
             return;
-
+        
         //target lock on and rotate smoothly
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         Vector3 euler = Quaternion.Lerp(pivot.rotation, rotation, Time.deltaTime * turnSpeed).eulerAngles;
-        pivot.rotation = Quaternion.Euler(0, euler.y, 0);
+        pivot.rotation = Quaternion.Euler(0, euler.y, 0);        
 
         if(nextFire <= 0.0f) {
+            /*
+            //rotate only when shooting
+            Vector3 direction = target.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            pivot.rotation = rotation;*/
+            
             Shoot();
             nextFire = 1 / fireRate;
         }
