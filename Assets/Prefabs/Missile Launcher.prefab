@@ -265,11 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad43f6f995fb1a449b47c504e7777a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireSpawn: {fileID: 646951254136473649}
+  range: 30
   bulletPrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
-  bulletSpawn: {fileID: 646951254136473649}
-  range: 30
   fireRate: 0.5
+  useLaser: 0
+  lineRenderer: {fileID: 0}
   pivot: {fileID: 646951253018445747}
   enemyTag: Enemy
   turnSpeed: 10

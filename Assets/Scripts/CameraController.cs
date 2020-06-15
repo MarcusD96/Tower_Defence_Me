@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour {
         if(!doMovement)
             return;
 
+        /*
+        //with mouse movement
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness) {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
@@ -26,6 +28,20 @@ public class CameraController : MonoBehaviour {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+            transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+        }*/
+
+        //without mouse movement
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+        }
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+        }
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+        }
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
 

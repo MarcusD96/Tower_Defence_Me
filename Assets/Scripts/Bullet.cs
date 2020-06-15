@@ -1,10 +1,10 @@
-﻿using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
     public GameObject impactEffect;
     public float speed = 50.0f, explosionRadius = 0.0f;
+    public int penetration, damage = 50;
 
     private Transform target;
 
@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour {
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 5.0f);
 
-        if (explosionRadius > 0) {
+        if(explosionRadius > 0) {
             Explode();
         } else {
             Damage(target);
@@ -45,14 +45,22 @@ public class Bullet : MonoBehaviour {
     }
 
     void Damage(Transform enemy) {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+        if(e) {
+            e.TakeDamage(damage);
+        }
     }
 
     void Explode() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        int p = 0;
         foreach(var c in colliders) {
-            if (c.gameObject.CompareTag("Enemy")) {
-                Damage(c.transform);
+            if(c.gameObject.CompareTag("Enemy")) {
+                if(p < penetration) {
+                    Damage(c.transform);
+                } else
+                    break;
+                p++;
             }
         }
     }
