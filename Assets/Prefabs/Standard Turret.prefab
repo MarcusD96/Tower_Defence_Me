@@ -125,12 +125,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 3035291363198281035}
-  range: 10
+  range: 15
   bulletPrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
     type: 3}
   fireRate: 2
   useLaser: 0
+  slowFactor: 0.2
+  damageOverTime: 30
   lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
   pivot: {fileID: 3035291362754969964}
   enemyTag: Enemy
   turnSpeed: 10

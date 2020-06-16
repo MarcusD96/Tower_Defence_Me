@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
-    public Color hoverColor, errorColor;
+    public Color hoverColor, errorColor, selectColor;
     public Vector3 offset;
 
     [Header("Optional")]
@@ -23,13 +23,13 @@ public class Node : MonoBehaviour {
         if(EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if(!buildManager.CanBuild)
-            return;
-
         if(turret != null) {
-            Debug.Log("Turret already here - TODO: Display on screen");
+            buildManager.SelectNode(this);
             return;
         }
+
+        if(!buildManager.CanBuild)
+            return;
 
         buildManager.BuildTurretOn(this);
     }
@@ -38,14 +38,13 @@ public class Node : MonoBehaviour {
         if(EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if(!buildManager.CanBuild)
-            return;
-
-        if(turret) { 
-            rend.material.color = errorColor;
+        if(turret) {
+            rend.material.color = selectColor;
             return;
         }
 
+        if(!buildManager.CanBuild)
+            return;
 
         if(buildManager.HasMoney) {
             rend.material.color = hoverColor;

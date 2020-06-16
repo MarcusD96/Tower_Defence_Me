@@ -90,7 +90,9 @@ public class Turret : MonoBehaviour {
     }
 
     void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
+        Color color = Color.red;
+        color.a = 0.3f;
+        Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
