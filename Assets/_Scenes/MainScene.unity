@@ -20393,7 +20393,7 @@ MonoBehaviour:
       type: 3}
     cost: 300
   laserBeamer:
-    turretPrefab: {fileID: 1075752079590826837, guid: 1a68bb05f092a414f8eb24a70a3d49fc,
+    turretPrefab: {fileID: 4655335931283681774, guid: 1a68bb05f092a414f8eb24a70a3d49fc,
       type: 3}
     cost: 200
 --- !u!1001 &1122972869
