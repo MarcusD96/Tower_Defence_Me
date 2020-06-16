@@ -2,19 +2,30 @@
 
 public class GameManager : MonoBehaviour {
 
-    private bool gameEnd = false;
+    public GameObject gameOverUI;
+
+    public static bool gameEnd;
+
+    void Start() {
+        gameEnd = false;
+    }
 
     // Update is called once per frame
     void Update() {
         if(gameEnd)
             return;
 
+#if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.E)) {
+            EndGame();
+        }
+#endif
         if (PlayerStats.lives <= 0)
             EndGame();
     }
 
     void EndGame() {
         gameEnd = true;
-        Debug.Log("Game Over");
+        gameOverUI.SetActive(true);
     }
 }

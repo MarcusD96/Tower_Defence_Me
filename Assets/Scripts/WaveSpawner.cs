@@ -32,6 +32,7 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForSeconds(spawnTime);
         }
         waveIndex++;
+        PlayerStats.rounds++;
     }
 
     void SpawnEnemy() {

@@ -3,28 +3,16 @@
 public class Enemy : MonoBehaviour {
 
     public GameObject deathEffect;
-    public float speed = 10.0f;
-    public int hp, moneyValue = 10;
+    public float startSpeed = 10.0f, hp;
+    [HideInInspector]
+    public float speed;
+    public int moneyValue = 10;
 
-    private Transform target;
-    private int wayPointIndex = 0;
-
-    // Start is called before the first frame update
     void Start() {
-        target = Path.waypoints[0];
+        speed = startSpeed;
     }
 
-    // Update is called once per frame
-    void Update() {
-        Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
-
-        if(Vector3.Distance(transform.position, target.position) <= 0.4f) {
-            GetNextWayPoint();
-        }
-    }
-
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
         hp -= amount;
 
         if(hp <= 0)
@@ -38,18 +26,7 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    void GetNextWayPoint() {
-        if(wayPointIndex >= Path.waypoints.Capacity - 1) {
-            EndPath();
-            return;
-        }
-        wayPointIndex++;
-        target = Path.waypoints[wayPointIndex];
-    }
-
-    void EndPath() {
-        PlayerStats.lives--;
-        PlayerStats.lives = Mathf.Clamp(PlayerStats.lives, 0, PlayerStats.maxLives);
-        Destroy(gameObject);
+    public void Slow(float slowFactor) {
+        speed = startSpeed * slowFactor;
     }
 }

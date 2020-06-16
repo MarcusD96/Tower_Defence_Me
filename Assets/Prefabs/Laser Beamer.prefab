@@ -9682,6 +9682,8 @@ MonoBehaviour:
     type: 3}
   fireRate: 2
   useLaser: 1
+  slowFactor: 0.75
+  damageOverTime: 30
   lineRenderer: {fileID: 8777357507928809835}
   impactEffect: {fileID: 1258852393574199501}
   impactLight: {fileID: 1123500400262442680}

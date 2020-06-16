@@ -2,7 +2,7 @@
 
 public class PlayerStats : MonoBehaviour {
 
-    public static int money, lives, maxLives;
+    public static int money, lives, maxLives, rounds;
 
 
     public int startMoney, numLives, numMaxLives;
@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour {
         money = startMoney;
         maxLives = numMaxLives;
         lives = numLives;
+        rounds = 0;
     }
 
 }

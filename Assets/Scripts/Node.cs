@@ -28,6 +28,7 @@ public class Node : MonoBehaviour {
 
         if(turret != null) {
             Debug.Log("Turret already here - TODO: Display on screen");
+            return;
         }
 
         buildManager.BuildTurretOn(this);
@@ -40,10 +41,10 @@ public class Node : MonoBehaviour {
         if(!buildManager.CanBuild)
             return;
 
-        if(turret = null)
-            rend.material.color = hoverColor;
-        else
+        if(turret) { 
             rend.material.color = errorColor;
+            return;
+        }
 
 
         if(buildManager.HasMoney) {
