@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7939202417498098085}
   - component: {fileID: 7939202417498098084}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: Missile_Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 4181203990692315674, guid: 7b7102f9d14c05b4597941c47a8dfe33,
     type: 3}
-  speed: 20
-  explosionRadius: 8
-  penetration: 2
-  damage: 50
+  speed: 30
+  explosionRadius: 12
+  penetration: 4
+  damage: 75
 --- !u!1 &9221342441966967519
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2adb2111d940448448f1b1848e24aad1, type: 2}
+  - {fileID: 2100000, guid: cc9bbe69045677e448af7b621222b852, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -3,7 +3,7 @@
 public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
-    public GameObject buildEffect;
+    public GameObject buildEffect, sellEffect;
     public NodeUI nodeUI;
 
     private TurretFactory turretToBuild;
@@ -49,16 +49,7 @@ public class BuildManager : MonoBehaviour {
         nodeUI.Hide();
     }
 
-    public void BuildTurretOn(Node node) {
-        if(PlayerStats.money < turretToBuild.cost) {
-            return;
-        }
-
-        PlayerStats.money -= turretToBuild.cost;
-        GameObject turret = Instantiate(turretToBuild.turretPrefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5.0f);
+    public TurretFactory GetTurretToBuild() {
+        return turretToBuild;
     }
 }

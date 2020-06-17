@@ -6,8 +6,12 @@ public class Node : MonoBehaviour {
     public Color hoverColor, errorColor, selectColor;
     public Vector3 offset;
 
-    [Header("Optional")]
+    [HideInInspector]
     public GameObject turret = null;
+    [HideInInspector]
+    public TurretFactory currentFactory;
+    [HideInInspector]
+    public bool isUpgraded = false;
 
     private Renderer rend;
     private Color startColor;
@@ -31,7 +35,50 @@ public class Node : MonoBehaviour {
         if(!buildManager.CanBuild)
             return;
 
-        buildManager.BuildTurretOn(this);
+        BuildTurret(buildManager.GetTurretToBuild());
+    }
+
+    void BuildTurret(TurretFactory turret_) {
+        if(PlayerStats.money < turret_.cost) {
+            return;
+        }
+
+        PlayerStats.money -= turret_.cost;
+        GameObject turretGO = Instantiate(turret_.turretPrefab, GetBuildPosition(), Quaternion.identity);
+        turret = turretGO;
+        currentFactory = turret_;
+
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5.0f);
+    }
+
+    public void UpgradeTurret() {
+        if(PlayerStats.money < currentFactory.upgradeCost) {
+            return;
+        }
+
+        PlayerStats.money -= currentFactory.upgradeCost;
+
+        Destroy(turret);
+
+        GameObject turretGO = Instantiate(currentFactory.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        turret = turretGO;
+
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5.0f);
+
+        isUpgraded = true;
+    }
+
+    public void SellTurret() {
+        PlayerStats.money += currentFactory.GetSellPrice(isUpgraded);
+
+        GameObject effect = Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5.0f);
+
+        Destroy(turret);
+        currentFactory = null;
+        isUpgraded = false;
     }
 
     void OnMouseEnter() {
