@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour {
     void EndPath() {
         PlayerStats.lives--;
         PlayerStats.lives = Mathf.Clamp(PlayerStats.lives, 0, PlayerStats.maxLives);
+        WaveSpawner.enemiesAlive--;
         Destroy(gameObject);
     }
 

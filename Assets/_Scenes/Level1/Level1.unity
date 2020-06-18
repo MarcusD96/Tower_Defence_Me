@@ -209,6 +209,18 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0.99999994}
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &13811583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2272369218652414378, guid: f6b6cf984c9d74b49b876044312bcb1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2286362529239619324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &14984146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18431,9 +18443,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d63b9069a31f14689c02cac5e1cb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 3498438954662709574, guid: 7bddb3fdc7384d8489458765fad8390c,
-    type: 3}
+  waves:
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
+      type: 3}
+    count: 3
+    spawnRate: 2
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
+      type: 3}
+    count: 5
+    spawnRate: 2
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
+      type: 3}
+    count: 6
+    spawnRate: 1
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
+      type: 3}
+    count: 4
+    spawnRate: 1
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
+      type: 3}
+    count: 10
+    spawnRate: 4
   spawnPoint: {fileID: 1162154359}
+  timeBetweenWaves: 2
   countdownText: {fileID: 967217727}
 --- !u!114 &907422558
 MonoBehaviour:
@@ -18464,7 +18496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7e0a2d391907946bc4da40a0794721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 10000
+  startMoney: 250
   numLives: 10
   numMaxLives: 100
 --- !u!114 &907422560
@@ -22177,21 +22209,24 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 3035291362718932296, guid: bc40723665eff8e41b104c2d043640e9,
       type: 3}
     cost: 100
-    upgradeCost: 60
+    upgradeCost: 500
+    costText: {fileID: 13811583}
   missileLauncher:
     turretPrefab: {fileID: 3622529578822836608, guid: df14bd30d9519684fb3a48403039579f,
       type: 3}
     upgradedPrefab: {fileID: 8924871855602529547, guid: bc63993ac059564409bad0bb3a13ff2c,
       type: 3}
-    cost: 300
-    upgradeCost: 150
+    cost: 600
+    upgradeCost: 1000
+    costText: {fileID: 1474953610}
   laserBeamer:
     turretPrefab: {fileID: 8171662427261242612, guid: 1a68bb05f092a414f8eb24a70a3d49fc,
       type: 3}
     upgradedPrefab: {fileID: 4655335931283681774, guid: 16b225528740a7a4fbbdb8bd5d537e66,
       type: 3}
-    cost: 200
-    upgradeCost: 250
+    cost: 450
+    upgradeCost: 600
+    costText: {fileID: 2094754469}
 --- !u!1001 &1122972869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28151,6 +28186,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c1c3cb7e9d1a884bb5ece3912b73175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1474953610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7706893733856716364, guid: 68e041cafe3cfb840bd9e9879bebd9f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8466046874585914617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1476310867
@@ -41379,6 +41426,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2094573552}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2094754469 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576864551119246589, guid: b50a2c1acc4f4f749a4be099149ad92d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7341770822205721757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &2103283009
 Material:
   serializedVersion: 6
@@ -42549,6 +42608,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4716816231271049308, guid: f6b6cf984c9d74b49b876044312bcb1a,
+        type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 13811583}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6b6cf984c9d74b49b876044312bcb1a, type: 3}
 --- !u!1001 &3310624407768549011
@@ -42729,6 +42793,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1108584224}
     m_Modifications:
+    - target: {fileID: 7535509073859543251, guid: b50a2c1acc4f4f749a4be099149ad92d,
+        type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 2094754469}
     - target: {fileID: 8589769137457641860, guid: b50a2c1acc4f4f749a4be099149ad92d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -42853,6 +42922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1108584224}
     m_Modifications:
+    - target: {fileID: 5386310826187574768, guid: 68e041cafe3cfb840bd9e9879bebd9f0,
+        type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 1474953610}
     - target: {fileID: 7694323393841744693, guid: 68e041cafe3cfb840bd9e9879bebd9f0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

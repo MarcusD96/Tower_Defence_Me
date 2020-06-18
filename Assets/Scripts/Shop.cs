@@ -9,6 +9,12 @@ public class Shop : MonoBehaviour {
         buildManager = BuildManager.instance;
     }
 
+    public void Update() {
+        standardTurret.costText.text = "$" + standardTurret.cost;
+        missileLauncher.costText.text = "$" + missileLauncher.cost;
+        laserBeamer.costText.text = "$" + laserBeamer.cost;
+    }
+
     public void SelectStandardTurret() {
         buildManager.SelectTurretToBuild(standardTurret);
     }
