@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     public GameObject ui;
+    public SceneFader sceneFader;
+    public string menuSceneName = "Main Menu";
 
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
@@ -22,11 +24,11 @@ public class PauseMenu : MonoBehaviour {
 
     public void Restart() {
         Toggle();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Quit() {
         Toggle();
-        SceneManager.LoadScene("Main Menu");
+        sceneFader.FadeTo(menuSceneName);
     }
 }
