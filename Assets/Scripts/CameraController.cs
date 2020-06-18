@@ -4,7 +4,6 @@ public class CameraController : MonoBehaviour {
 
     public float panSpeed = 30.0f, panBorderThickness = 50.0f, scrollSpeed = 5.0f;
 
-    private bool doMovement = true;
     private float minY = 20.0f, maxY = 80.0f;
 
     // Update is called once per frame
@@ -13,12 +12,6 @@ public class CameraController : MonoBehaviour {
             this.enabled = false; //technically not required, but to be explicit
             return;
         }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-            doMovement = !doMovement;
-
-        if(!doMovement)
-            return;
 
         /*
         //with mouse movement
