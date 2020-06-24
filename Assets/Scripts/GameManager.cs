@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
-    public GameObject gameOverUI;
+public class GameManager : MonoBehaviour {   
 
     public static bool gameEnd;
+    
+    public GameObject gameOverUI, winLevelUI;
 
     void Start() {
         gameEnd = false;
@@ -27,5 +27,10 @@ public class GameManager : MonoBehaviour {
     void EndGame() {
         gameEnd = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void WinLevel() {
+        gameEnd = true;
+        winLevelUI.SetActive(true);
     }
 }

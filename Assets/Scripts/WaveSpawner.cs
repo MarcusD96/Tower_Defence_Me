@@ -8,11 +8,10 @@ public class WaveSpawner : MonoBehaviour {
     public Wave[] waves;
     public Transform spawnPoint;
     public float timeBetweenWaves = 5.0f;
-
-    private float countDown = 0.0f;
-
+    public GameManager gameManager;
     public TextMeshProUGUI countdownText;
 
+    private float countDown = 0.0f;
     private int waveIndex = 0;
 
     void Start() {
@@ -22,6 +21,11 @@ public class WaveSpawner : MonoBehaviour {
     void Update() {
         if(enemiesAlive > 0)
             return;
+        
+        if (waveIndex == waves.Length) {
+            gameManager.WinLevel();
+            this.enabled = false; //disables 'this' script
+        }
 
         if(countDown <= 0.0f) {
             StartCoroutine(SpawnWave());
@@ -32,7 +36,7 @@ public class WaveSpawner : MonoBehaviour {
         countDown -= Time.deltaTime;
         countDown = Mathf.Clamp(countDown, 0, float.MaxValue);
 
-        countdownText.text = string.Format("{0:00.00}", countDown);
+        countdownText.text = string.Format("{0:00.00}", countDown);        
     }
 
     IEnumerator SpawnWave() {        
@@ -46,12 +50,6 @@ public class WaveSpawner : MonoBehaviour {
         }
 
         waveIndex++;
-
-        if (waveIndex == waves.Length) {
-            Debug.Log("Level Complete");
-            this.enabled = false; // disable the script
-        }
-
     }
 
     void SpawnEnemy(GameObject enemy) {
