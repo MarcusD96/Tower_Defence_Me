@@ -22,6 +22,15 @@ public class GameManager : MonoBehaviour {
 #endif
         if (PlayerStats.lives <= 0)
             EndGame();
+
+        //cheaty :P
+        if(Input.GetKey(KeyCode.P)) {
+            if(Input.GetKey(KeyCode.M)) {
+                if(Input.GetKeyDown(KeyCode.B)) {
+                    Cheaty.play = true;
+                }
+            }
+        }
     }
 
     void EndGame() {

@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour {
     public string menuSceneName = "Main Menu";
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
             Toggle();
         }
     }

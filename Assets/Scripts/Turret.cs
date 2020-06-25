@@ -2,9 +2,11 @@
 
 public class Turret : MonoBehaviour {
 
+    public Transform fireSpawn;
+    public bool manual = false;
+
     private Transform target;
     private Enemy targetEnemy;
-    public Transform fireSpawn;
 
     [Header("Attributes")]
     public float range = 15.0f;
@@ -33,31 +35,10 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
-        if(!target) {
-            if(useLaser) {
-                if(lineRenderer.enabled) {
-                    lineRenderer.enabled = false;
-                    impactEffect.Stop();
-                    impactLight.enabled = false;
-                }
-            }
-            return;
-        }
-
-        RotateWithTarget();
-
-        if(useLaser) {
-            Laser();
-        } else {
-            if(nextFire <= 0.0f) {
-                //RotateOnShoot();
-                Shoot();
-                nextFire = 1 / fireRate;
-            }
-
-            nextFire -= Time.deltaTime;
-        }
-
+        if(manual)
+            ManualControl();
+        else
+            AutomaticControl();
     }
 
     void UpdateTarget() {
@@ -123,10 +104,33 @@ public class Turret : MonoBehaviour {
 
     }
 
-    void RotateOnShoot() {
-        Vector3 direction = target.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        pivot.rotation = rotation;
+    void AutomaticControl() {
+        if(!target) {
+            if(useLaser) {
+                if(lineRenderer.enabled) {
+                    lineRenderer.enabled = false;
+                    impactEffect.Stop();
+                    impactLight.enabled = false;
+                }
+            }
+            return;
+        }
+
+        RotateWithTarget();
+
+        if(useLaser) {
+            Laser();
+        } else {
+            if(nextFire <= 0.0f) {
+                Shoot();
+                nextFire = 1 / fireRate;
+            }
+
+            nextFire -= Time.deltaTime;
+        }
     }
 
+    void ManualControl() {
+
+    }
 }
