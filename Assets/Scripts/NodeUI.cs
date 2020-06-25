@@ -38,4 +38,9 @@ public class NodeUI : MonoBehaviour {
         target.SellTurret();
         BuildManager.instance.DeselectNode();
     }
+
+    public void Control() {
+        target.ControlTurret();
+        BuildManager.instance.DeselectNode();
+    }
 }

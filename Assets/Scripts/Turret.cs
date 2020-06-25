@@ -8,8 +8,10 @@ public class Turret : MonoBehaviour {
     private Transform target;
     private Enemy targetEnemy;
 
-    [Header("Attributes")]
+    [Header("Global")]
     public float range = 15.0f;
+    public Camera turretCam;
+    public GameObject turretView;
 
     [Header("Use Bullets")]
     public GameObject bulletPrefab;
@@ -32,12 +34,14 @@ public class Turret : MonoBehaviour {
 
     void Start() {
         InvokeRepeating("UpdateTarget", 0, 0.5f);
+        turretCam.enabled = false;
     }
 
     void Update() {
-        if(manual)
+        if(manual) {
+            turretView.SetActive(true);
             ManualControl();
-        else
+        } else
             AutomaticControl();
     }
 
@@ -132,5 +136,16 @@ public class Turret : MonoBehaviour {
 
     void ManualControl() {
 
+    }
+
+    public void AssumeControl() {
+        manual = true;
+        turretCam.enabled = true;
+        turretView.SetActive(true);
+    }
+
+    public void RevertControl() {
+        turretCam.enabled = false;
+        turretView.SetActive(false);
     }
 }

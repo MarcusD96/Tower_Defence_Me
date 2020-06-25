@@ -16,11 +16,21 @@ public class Node : MonoBehaviour {
     private Renderer rend;
     private Color startColor;
     private BuildManager buildManager;
+    private Camera mainCam;
 
     void Start() {
+        mainCam = Camera.main;
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
+    }
+
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Z)) {
+            if(turret) {
+                RevertTurret(); 
+            }
+        }
     }
 
     void OnMouseDown() {
@@ -79,6 +89,20 @@ public class Node : MonoBehaviour {
         Destroy(turret);
         currentFactory = null;
         isUpgraded = false;
+    }
+
+    public void ControlTurret() {
+        turret.GetComponent<Turret>().AssumeControl();
+        mainCam.enabled = false;
+        CameraController.isEnabled = false;
+
+        currentFactory = null;
+    }
+
+    void RevertTurret() {
+        turret.GetComponent<Turret>().RevertControl();
+        mainCam.enabled = true;
+        CameraController.isEnabled = true;
     }
 
     void OnMouseEnter() {

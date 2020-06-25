@@ -13,8 +13,9 @@ public class CameraController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(!isEnabled)
+        if(!isEnabled) {
             return;
+        }
 
         if(GameManager.gameEnd) {
             this.enabled = false; //technically not required, but to be explicit
