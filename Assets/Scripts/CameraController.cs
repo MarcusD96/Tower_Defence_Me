@@ -3,7 +3,7 @@
 public class CameraController : MonoBehaviour {
     public static bool isEnabled;
 
-    public float panSpeed = 30.0f, panBorderThickness = 50.0f, scrollSpeed = 5.0f;
+    public float panSpeed = 30.0f, scrollSpeed = 5.0f;
 
     private float minY = 20.0f, maxY = 80.0f;
 
@@ -13,12 +13,12 @@ public class CameraController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(!isEnabled) {
+        if(GameManager.gameEnd) {
+            this.enabled = false; //'this' technically not required, but to be explicit
             return;
         }
-
-        if(GameManager.gameEnd) {
-            this.enabled = false; //technically not required, but to be explicit
+        
+        if(!isEnabled) {
             return;
         }
 

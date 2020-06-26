@@ -31,6 +31,10 @@ public class WaveSpawner : MonoBehaviour {
             startButton.gameObject.SetActive(true);
             remainingText.SetActive(false);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            StartWave();
+        }
     }
 
     IEnumerator SpawnWave() {

@@ -5560,7 +5560,6 @@ MonoBehaviour:
   upgradeCost: {fileID: 1435135334}
   sellPrice: {fileID: 405631616}
   upgradeButton: {fileID: 124878896}
-  mainCam: {fileID: 963194227}
 --- !u!1001 &294671696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12626,6 +12625,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6506173244555120253, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506173244555120253, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 7250722259496544349, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: sceneFader
@@ -18633,7 +18642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 30
-  panBorderThickness: 10
   scrollSpeed: 5
 --- !u!1001 &976190820
 PrefabInstance:

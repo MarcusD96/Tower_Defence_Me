@@ -95,8 +95,6 @@ public class Node : MonoBehaviour {
         turret.GetComponent<Turret>().AssumeControl();
         mainCam.enabled = false;
         CameraController.isEnabled = false;
-
-        currentFactory = null;
     }
 
     void RevertTurret() {
