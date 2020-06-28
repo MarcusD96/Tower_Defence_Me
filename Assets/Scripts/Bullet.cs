@@ -1,30 +1,51 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
     public GameObject impactEffect;
     public float speed = 50.0f, explosionRadius = 0.0f;
     public int penetration, damage = 50;
+    public bool miss;
 
     private Transform target;
+    private Vector3 initDirection = Vector3.zero;
+    private float lifeEnd;
+
+    void Start() {
+        lifeEnd = Time.time + 1;
+        initDirection = target.position - transform.position;
+    }
 
     // Update is called once per frame
     void Update() {
+        float distanceThisFrame = speed * Time.deltaTime;
+
+        if(initDirection.magnitude <= 0) {
+        }
+
         if(!target) {
             Destroy(gameObject);
             return;
         }
 
-        Vector3 direction = target.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        if(!miss) {
+            Vector3 direction = target.position - transform.position;
 
-        if(direction.magnitude <= distanceThisFrame) {
-            HitTarget();
-            return;
+            if(direction.magnitude <= distanceThisFrame) {
+                HitTarget();
+                return;
+            }
+
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+            transform.LookAt(target);
+        } else {
+            transform.Translate(initDirection.normalized * distanceThisFrame, Space.World);
         }
 
-        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-        transform.LookAt(target);
+        if(Time.time > lifeEnd) {
+            Destroy(gameObject);
+        }
     }
 
     public void Seek(Transform _target) {

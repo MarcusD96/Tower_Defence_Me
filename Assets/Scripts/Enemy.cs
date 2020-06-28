@@ -23,11 +23,13 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(float amount) {
-        currentHp -= amount;
-        healthBar.fillAmount = currentHp / startHp;
+        if(healthBar) {
+            currentHp -= amount;
+            healthBar.fillAmount = currentHp / startHp;
 
-        if(currentHp <= 0 && !isDead)
-            Die();
+            if(currentHp <= 0 && !isDead)
+                Die();
+        }
     }
 
     private void Die() {

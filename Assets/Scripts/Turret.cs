@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Use Bullets")]
     public GameObject projectilePrefab;
+    public Enemy mockEnemy;
     public float fireRate = 2.0f; //shots per second, higher is faster
     private float nextFire = 0.0f;
 
@@ -36,14 +37,16 @@ public class Turret : MonoBehaviour {
     public float manualTurnSpeed = 100.0f;
 
     void Start() {
-        InvokeRepeating("FindNearestTargetInRange", 0, 0.5f);
         turretCam.enabled = false;
         if(laserEnd) {
-            laserEnd.position = new Vector3(laserEnd.position.x, laserEnd.position.y, range);
+            laserEnd.position = new Vector3(laserEnd.position.x, laserEnd.position.y, transform.position.z + (range * 2));
+        }
+        if(mockEnemy) {
+            mockEnemy.transform.position = new Vector3(mockEnemy.transform.position.x, mockEnemy.transform.position.y, transform.position.z + (range * 2));
         }
     }
 
-    void LateUpdate() {
+    void Update() {
         if(manual) {
             turretView.SetActive(true);
             ManualControl();
@@ -143,7 +146,6 @@ public class Turret : MonoBehaviour {
         ManualMovement();
 
         if(useLaser) {
-            Debug.DrawLine(fireSpawn.position, laserEnd.position, Color.green);
             if(Input.GetMouseButton(0)) {
                 ManualLaser();
             } else {
@@ -152,41 +154,74 @@ public class Turret : MonoBehaviour {
                 impactLight.enabled = false;
             }
         } else {
+            var manualFireRate = fireRate * 2;
             if(Input.GetMouseButton(0)) {
+                if(nextFire <= 0.0f) {
+                    ManualShoot();
+                    nextFire = 1 / manualFireRate;
+                }
+                nextFire -= Time.deltaTime;
 
             }
         }
     }
 
     void ManualShoot() {
+        float manualRange = range * 2;
 
+        //spawn bullet, get the bullet info
+        GameObject bulletGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        //get a target only if theres a hit, otherwise the target is the mockEnemy; 
+        RaycastHit hit;
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
+            if(hit.collider) {
+                //set the target
+                target = hit.collider.transform;
+                bullet.miss = false;
+            }
+        } else {
+            bullet.miss = true;
+            target = mockEnemy.transform;
+        }
+
+        if(bullet) {
+            bullet.Seek(target);
+        }
     }
 
     void ManualLaser() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
+        float manualRange = range * 2;
+
         RaycastHit hit;
-        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, float.MaxValue)) {
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
-                if(hit.distance <= range) {
-                    target = hit.collider.transform;
-                    targetEnemy = target.GetComponent<Enemy>();
+                //set the target and get its information
+                target = hit.collider.transform;
+                targetEnemy = target.GetComponent<Enemy>();
+
+                if(targetEnemy) {
+                    //apply damage and slow
                     targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
                     targetEnemy.Slow(slowFactor);
-
-                    if(!lineRenderer.enabled) {
-                        lineRenderer.enabled = true;
-                        impactEffect.Play();
-                        impactLight.enabled = true;
-                    }
-
-                    lineRenderer.SetPosition(0, fireSpawn.position);
-                    lineRenderer.SetPosition(1, hit.point);
-
-                    Vector3 direction = fireSpawn.position - hit.point;
-                    impactEffect.transform.position = target.position + direction.normalized;
-                    impactEffect.transform.rotation = Quaternion.LookRotation(direction);
                 }
+
+                //set end position of the laser line renderer
+                lineRenderer.SetPosition(1, hit.point);
+
+                //enable the light and particles
+                if(!impactEffect.isPlaying) {
+                    impactEffect.Play();
+                    impactLight.enabled = true;
+                }
+
+                //turn the particles towards the turret
+                Vector3 direction = transform.position - target.transform.position;
+                impactEffect.transform.position = target.position + direction.normalized;
+                impactEffect.transform.rotation = Quaternion.LookRotation(direction);
             }
         } else {
             target = null;
@@ -199,15 +234,16 @@ public class Turret : MonoBehaviour {
     }
 
     void ManualMovement() {
-        Vector2 screenPos = turretCam.WorldToViewportPoint(pivot.position);
-        Vector2 mouseOnScreen = turretCam.ScreenToViewportPoint(Input.mousePosition);
-        float angle = Mathf.Atan2(screenPos.y - mouseOnScreen.y, screenPos.x - mouseOnScreen.x) * Mathf.Rad2Deg;
-        pivot.rotation = Quaternion.Euler(new Vector3(0, -angle * PlayerPrefs.GetFloat("Sensitivity", 5)));
-        
-        if(Input.mousePosition.x >= 50)
-            pivot.Rotate(Vector3.down * manualTurnSpeed * Time.deltaTime);
-        if(Input.mousePosition.x <= Screen.width - 50)
-            pivot.Rotate(Vector3.down * manualTurnSpeed * Time.deltaTime);
+        if(Input.GetKey(KeyCode.A)) {
+            pivot.Rotate(Vector3.down * manualTurnSpeed * Time.deltaTime); //rotate along the -y axis/left
+        }
+        if(Input.GetKey(KeyCode.D)) {
+            pivot.Rotate(Vector3.up * manualTurnSpeed * Time.deltaTime); //rotate along the +y axis/right
+        }
+
+        float mouseInput = Input.GetAxis("Mouse X");
+        Vector3 lookhere = new Vector3(0, mouseInput, 0);
+        pivot.Rotate(lookhere);
     }
 
     public void AssumeControl() {
