@@ -151,7 +151,7 @@ public class Turret : MonoBehaviour {
                 impactLight.enabled = false;
             }
         } else {
-            var manualFireRate = fireRate * 2;
+            var manualFireRate = fireRate * 1.5f;
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     ManualShoot();
@@ -191,7 +191,9 @@ public class Turret : MonoBehaviour {
     void ManualLaser() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
-        float manualRange = range * 2;
+        float manualRange = range * 2, manualSlowFactor = slowFactor * 0.75f;
+        int manualDoT = Mathf.RoundToInt(damageOverTime * 1.3f);
+
 
         RaycastHit hit;
         if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
@@ -202,8 +204,8 @@ public class Turret : MonoBehaviour {
 
                 if(targetEnemy) {
                     //apply damage and slow
-                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-                    targetEnemy.Slow(slowFactor);
+                    targetEnemy.TakeDamage(manualDoT * Time.deltaTime);
+                    targetEnemy.Slow(manualSlowFactor);
                 }
 
                 //set end position of the laser line renderer

@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258852393574199539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: 10.68}
+  m_LocalPosition: {x: 0, y: 1.3299999, z: 10.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7230602295266134598}
@@ -4898,7 +4898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2234727638284609124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36, z: 0}
+  m_LocalPosition: {x: 0, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2624500066543105357}
@@ -9920,7 +9920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 297908487824790385}
-  manual: 0
   range: 30
   turretCam: {fileID: 3796057189252160712}
   turretView: {fileID: 2202536381010307693}
@@ -9995,7 +9994,7 @@ Transform:
   m_GameObject: {fileID: 6261191505407879438}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: -1.0799999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.6370336}
+  m_LocalScale: {x: 1, y: 1, z: 0.4}
   m_Children: []
   m_Father: {fileID: 4877042764566989597}
   m_RootOrder: 2
@@ -10250,10 +10249,70 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717615054056376677, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Name
       value: Turret Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
