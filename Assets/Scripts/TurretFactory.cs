@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class TurretFactory {
     public GameObject turretPrefab, upgradedPrefab;
-    public int cost, upgradeCost;
     public TextMeshProUGUI costText;
+    public Image border;
+    public int cost, upgradeCost;
 
     public int GetSellPrice(bool upgraded) {
         if(!upgraded)
