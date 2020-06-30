@@ -1,65 +1,60 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour {
-
+public class Missile : MonoBehaviour {
     public GameObject impactEffect;
-    public float speed = 50.0f, explosionRadius = 0.0f;
+    public float speed = 50.0f, explosionRadius = 0.0f, distanceThisFrame;
     public int penetration, damage = 50;
     public bool miss;
 
     private Transform target;
-    private Vector3 initDirection;
-    private float lifeEnd, distanceThisFrame;
+    private Vector3 initDirection = Vector3.zero;
+    private float lifeEnd;
 
     void Start() {
-        lifeEnd = Time.time + 10;
+        lifeEnd = Time.time + 1;
         initDirection = target.position - transform.position;
     }
 
     // Update is called once per frame
     void Update() {
-        if(Time.time > lifeEnd) {
-            HitTarget(true);
+        distanceThisFrame = speed * Time.deltaTime;
+
+        if(initDirection.magnitude <= 0) {
+        }
+
+        if(!target) {
+            Destroy(gameObject);
             return;
         }
 
-        distanceThisFrame = speed * Time.deltaTime;        
+        if(!miss) {
+            Vector3 direction = target.position - transform.position;
 
-        if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
-            if(target) {
-                Vector3 direction = target.position - transform.position;
-                if(direction.magnitude <= distanceThisFrame) {
-                    HitTarget(false);
-                    return;
-                }
-                transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-                transform.LookAt(target); 
-            } else {
-                miss = true;
-                TryFindNewTargetInfront();
+            if(direction.magnitude <= distanceThisFrame) {
+                HitTarget();
+                return;
             }
-            return;
-        } else {
+
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+            transform.LookAt(target);
+        } else { //manual mode and if target dies before reaching them
             TryFindNewTargetInfront();
+        }
+
+        if(Time.time > lifeEnd) {
+            Destroy(gameObject);
         }
     }
 
-    public void MakeTarget(Transform _target) {
+    public void Seek(Transform _target) {
         target = _target;
     }
 
-    void HitTarget(bool endOfLife) {
-        if(!endOfLife) {
-            if(explosionRadius > 0) {
-                Explode();
-            } else {
-                Damage(target);
-            }
-        }
-        Destroy(gameObject);
-
+    void HitTarget() {
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 5.0f);
+        Explode();
+        Destroy(gameObject);
     }
 
     void Damage(Transform enemy) {
@@ -86,18 +81,17 @@ public class Bullet : MonoBehaviour {
     void TryFindNewTargetInfront() {
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, float.MaxValue)) {
-            if(hit.collider.gameObject.CompareTag("Enemy")) {
+            if(hit.collider) {
                 target = hit.collider.transform;
                 miss = false;
                 return;
             }
         }
-        transform.Translate(initDirection.normalized * distanceThisFrame, Space.World);  
+        transform.Translate(initDirection.normalized * distanceThisFrame, Space.World);
     }
 
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour {
-
     public Transform fireSpawn;
-    public bool manual = false;
 
     private Transform target;
     private Enemy targetEnemy;
+    private bool manual = false;
 
     [Header("Global")]
     public float range = 15.0f;
@@ -42,13 +40,12 @@ public class Turret : MonoBehaviour {
             laserEnd.position = new Vector3(laserEnd.position.x, laserEnd.position.y, transform.position.z + (range * 2));
         }
         if(mockEnemy) {
-            mockEnemy.transform.position = new Vector3(mockEnemy.transform.position.x, mockEnemy.transform.position.y, transform.position.z + (range * 2));
+            mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
         }
     }
 
     void Update() {
         if(manual) {
-            turretView.SetActive(true);
             ManualControl();
         } else
             AutomaticControl();
@@ -79,7 +76,7 @@ public class Turret : MonoBehaviour {
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if(bullet) {
-            bullet.Seek(target);
+            bullet.MakeTarget(target);
         }
     }
 
@@ -178,8 +175,8 @@ public class Turret : MonoBehaviour {
         if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
                 //set the target
-                target = hit.collider.transform;
                 bullet.miss = false;
+                target = hit.collider.transform;
             }
         } else {
             bullet.miss = true;
@@ -187,7 +184,7 @@ public class Turret : MonoBehaviour {
         }
 
         if(bullet) {
-            bullet.Seek(target);
+            bullet.MakeTarget(target);
         }
     }
 

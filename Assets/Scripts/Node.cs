@@ -26,10 +26,14 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Z)) {
+        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape)) {
             if(turret) {
-                RevertTurret(); 
+                RevertTurret();
             }
+        }
+        if(WaveSpawner.enemiesAlive <= 0) {
+            if(turret)
+                RevertTurret();
         }
     }
 

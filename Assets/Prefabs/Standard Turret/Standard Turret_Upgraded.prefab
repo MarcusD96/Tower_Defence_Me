@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1782832858364795715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 893711941793040576}
+  - component: {fileID: 5622110543031191467}
+  m_Layer: 0
+  m_Name: Mock Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &893711941793040576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782832858364795715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.0909998, z: 20.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3035291362754969964}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5622110543031191467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782832858364795715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e331ef89bfb2164d8d5c13d685d05bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 0}
+  startSpeed: 0
+  startHp: 0
+  currentHp: 0
+  speed: 0
+  moneyValue: 0
+  healthBar: {fileID: 0}
 --- !u!1 &3035291362612631847
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +153,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3035291362718932296}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -111,7 +161,7 @@ Transform:
   - {fileID: 3035291362612631846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3035291362718932303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,22 +175,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 3035291363198281035}
-  manual: 0
   range: 25
   turretCam: {fileID: 2455686124130216374}
   turretView: {fileID: 5904100038977041765}
   projectilePrefab: {fileID: 2224151954190168904, guid: f09985e5da0f7b34abd999d44043973c,
     type: 3}
+  mockEnemy: {fileID: 5622110543031191467}
   fireRate: 4
   useLaser: 0
   slowFactor: 0.2
   damageOverTime: 30
   lineRenderer: {fileID: 0}
+  laserEnd: {fileID: 0}
   impactEffect: {fileID: 0}
   impactLight: {fileID: 0}
   pivot: {fileID: 3035291362754969964}
   enemyTag: Enemy
   turnSpeed: 10
+  manualTurnSpeed: 100
 --- !u!1 &3035291362754969965
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,17 +216,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3035291362754969965}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.24, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3035291363513012852}
   - {fileID: 3035291363198281035}
+  - {fileID: 893711941793040576}
   - {fileID: 1375740363126879053}
   - {fileID: 8275244769910720132}
   m_Father: {fileID: 3035291362718932302}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3035291363198281028
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3035291362754969964}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2455686124130216374
 Camera:
@@ -404,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
