@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
-    public static int enemiesAlive = 0;
+    public static int enemiesAlive = 0, maxWaves, currentWave;
 
     public Wave[] waves;
     public Transform spawnPoint;
@@ -12,9 +12,13 @@ public class WaveSpawner : MonoBehaviour {
     public GameObject remainingText;
 
     private int waveIndex = 0;
+    private bool waveStarted;
 
     void Start() {
-        enemiesAlive = 0;
+        enemiesAlive = currentWave = 0;
+        maxWaves = waves.Length;
+        waveStarted = false;
+
     }
 
     void Update() {
@@ -29,6 +33,11 @@ public class WaveSpawner : MonoBehaviour {
         if(enemiesAlive == 0) {
             startButton.gameObject.SetActive(true);
             remainingText.SetActive(false);
+            if(waveStarted) {
+                waveStarted = false;
+                PlayerStats.money += 100 + (waveIndex * 5);
+                currentWave++;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Space)) {
@@ -42,12 +51,12 @@ public class WaveSpawner : MonoBehaviour {
         Wave wave = waves[waveIndex];
 
         enemiesAlive = wave.count;
+        waveStarted = true;
 
         for(int i = 0; i < wave.count; i++) {
             SpawnEnemy(wave.enemyPrefab);
             yield return new WaitForSeconds(1 / wave.spawnRate);
         }
-
         waveIndex++;
     }
 

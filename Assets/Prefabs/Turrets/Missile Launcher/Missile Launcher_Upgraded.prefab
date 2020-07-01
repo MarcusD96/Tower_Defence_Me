@@ -395,13 +395,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 646951254136473649}
-  range: 40
+  range: 30
   turretCam: {fileID: 8071345947400453059}
   turretView: {fileID: 9097029137802716651}
   projectilePrefab: {fileID: 7939202417498098082, guid: 7a17a6107ac7bba47b04a2816c6bcd4f,
     type: 3}
   mockEnemy: {fileID: 408939664498631464}
-  fireRate: 1
+  fireRate: 0.75
   useLaser: 0
   slowFactor: 0.8
   damageOverTime: 30

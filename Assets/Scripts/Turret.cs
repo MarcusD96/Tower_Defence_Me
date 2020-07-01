@@ -158,7 +158,6 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
                 nextFire -= Time.deltaTime;
-
             }
         }
     }

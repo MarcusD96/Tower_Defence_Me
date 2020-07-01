@@ -14,7 +14,7 @@ public class NodeUI : MonoBehaviour {
         target = target_;
         transform.position = target.GetBuildPosition();
 
-        if(!target.isUpgraded) {
+        if(target.isUpgraded == false) {
             upgradeCost.text = "$" + target.currentFactory.upgradeCost;
             upgradeButton.interactable = true;
         } else {
