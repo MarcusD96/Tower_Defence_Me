@@ -39,9 +39,11 @@ public class BuildManager : MonoBehaviour {
 
     public void SelectNode(Node node) {
         if(selectedNode == node) {
+            selectedNode.range.gameObject.SetActive(false);
             DeselectNode();
             return;
         }
+        node.range.gameObject.SetActive(true);
         selectedNode = node;
         if(turretToBuild != null) {
             turretToBuild.border.gameObject.SetActive(false); //disable current selection border if you go into the nodeUI menu

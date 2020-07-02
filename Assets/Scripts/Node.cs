@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Node : MonoBehaviour {
 
     public Color hoverColor, errorColor, selectColor;
     public Vector3 offset;
+    public Image range;
 
     [HideInInspector]
     public GameObject turret = null;
@@ -57,6 +59,10 @@ public class Node : MonoBehaviour {
         GameObject turretGO = Instantiate(turret_.turretPrefab, GetBuildPosition(), Quaternion.identity);
         turret = turretGO;
         currentFactory = turret_;
+
+        RectTransform rt = range.GetComponent<RectTransform>();
+        Turret t = turret.GetComponent<Turret>();
+        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
 
         GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5.0f);

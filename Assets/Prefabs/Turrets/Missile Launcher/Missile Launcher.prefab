@@ -210,6 +210,7 @@ MonoBehaviour:
   range: 20
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
+  rangeCircle: {fileID: 0}
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   mockEnemy: {fileID: 3623115930618068434}

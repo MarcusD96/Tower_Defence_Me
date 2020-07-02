@@ -38114,7 +38114,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 963194227}
+      objectReference: {fileID: 0}
     - target: {fileID: 411209450815033460, guid: f040acf378e475340b94a2cfbd6d2279,
         type: 3}
       propertyPath: m_AnchorMin.y

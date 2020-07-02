@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924871855602529547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 646951253018445747}
@@ -398,6 +398,7 @@ MonoBehaviour:
   range: 30
   turretCam: {fileID: 8071345947400453059}
   turretView: {fileID: 9097029137802716651}
+  rangeCircle: {fileID: 0}
   projectilePrefab: {fileID: 7939202417498098082, guid: 7a17a6107ac7bba47b04a2816c6bcd4f,
     type: 3}
   mockEnemy: {fileID: 408939664498631464}

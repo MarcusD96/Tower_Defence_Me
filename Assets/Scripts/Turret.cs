@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour {
     public Transform fireSpawn;
@@ -45,6 +46,13 @@ public class Turret : MonoBehaviour {
     }
 
     void Update() {
+        if(Input.GetKeyDown(KeyCode.Tab)) {
+            if(Time.timeScale == 0.5f) {
+                Time.timeScale = 1;
+            } else
+                Time.timeScale = 0.5f;
+        }
+
         if(manual) {
             ManualControl();
         } else
