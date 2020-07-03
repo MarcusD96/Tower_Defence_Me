@@ -16809,7 +16809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7e0a2d391907946bc4da40a0794721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 600
+  startMoney: 1600
   numLives: 50
   numMaxLives: 100
 --- !u!114 &907422560
@@ -31893,12 +31893,12 @@ PrefabInstance:
     - target: {fileID: 989201425987179523, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 181.70001
+      value: 181.69922
       objectReference: {fileID: 0}
     - target: {fileID: 989201425987179523, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 214.70001
+      value: 214.69922
       objectReference: {fileID: 0}
     - target: {fileID: 1316618374176531284, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}

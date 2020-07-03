@@ -80,6 +80,10 @@ public class Node : MonoBehaviour {
         GameObject turretGO = Instantiate(currentFactory.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
         turret = turretGO;
 
+        RectTransform rt = range.GetComponent<RectTransform>();
+        Turret t = turret.GetComponent<Turret>();
+        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
+
         GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5.0f);
 

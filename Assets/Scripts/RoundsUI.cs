@@ -5,6 +5,10 @@ public class RoundsUI : MonoBehaviour {
     public TextMeshProUGUI rounds;
 
     void Update() {
-        rounds.text = (WaveSpawner.currentWave + 1) + "/" + WaveSpawner.maxWaves;
+        if(!GameMode.survival) {
+            rounds.text = (WaveSpawner.currentWave + 1) + "/" + WaveSpawner.maxWaves;
+            return;
+        }
+        rounds.text = (WaveSpawner.currentWave + 1).ToString();
     }
 }

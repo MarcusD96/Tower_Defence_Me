@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
-
-    public string levelToLoad = "Level1";
+    public string levelToLoad = "Level Selection";
+    public string survivalLevelToLoad = "Survival";
     public SceneFader sceneFader;
 
     public void Play() {
+        GameMode.survival = false;
         sceneFader.FadeTo(levelToLoad);
+    }
+
+    public void Survival() {
+        GameMode.survival = true;
+        sceneFader.FadeTo(survivalLevelToLoad);
     }
 
     public void Quit() {
@@ -15,6 +21,9 @@ public class MainMenu : MonoBehaviour {
 #else
          Application.Quit();
 #endif
-
     }
+}
+
+public static class GameMode {
+    public static bool survival;
 }
