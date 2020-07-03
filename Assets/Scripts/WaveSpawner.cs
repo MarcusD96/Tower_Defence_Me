@@ -85,7 +85,8 @@ public class WaveSpawner : MonoBehaviour {
         if(waveIndex % 15 == 0) {
             wave.count = Mathf.CeilToInt(waveIndex / 15);
             enemiesAlive = wave.count;
-            wave.spawnRate = waveIndex / 100;
+            wave.spawnRate = waveIndex / 100.0f;
+            Debug.Log(wave.spawnRate);
             for(int i = 0; i < wave.count; i++) {
                 SpawnEnemy(boss);
                 yield return new WaitForSeconds(1 / wave.spawnRate);
@@ -94,7 +95,8 @@ public class WaveSpawner : MonoBehaviour {
         }  else if(waveIndex % 7 == 0) {
             wave.count = Mathf.CeilToInt(waveIndex * 2.5f);
             enemiesAlive = wave.count;
-            wave.spawnRate = waveIndex / 5;
+            wave.spawnRate = waveIndex / 5.0f;
+            Debug.Log(wave.spawnRate);
             for(int i = 0; i < wave.count; i++) {
                 SpawnEnemy(fast);
                 yield return new WaitForSeconds(1 / wave.spawnRate);
@@ -102,7 +104,8 @@ public class WaveSpawner : MonoBehaviour {
         } else if(waveIndex % 3 == 0) {
             wave.count = Mathf.CeilToInt(waveIndex * 1.5f);
             enemiesAlive = wave.count;
-            wave.spawnRate = waveIndex / 3;
+            wave.spawnRate = waveIndex / 3.0f;
+            Debug.Log(wave.spawnRate);
             for(int i = 0; i < wave.count; i++) {
                 SpawnEnemy(heavy);
                 yield return new WaitForSeconds(1 / wave.spawnRate);
@@ -111,6 +114,7 @@ public class WaveSpawner : MonoBehaviour {
             wave.count = Mathf.CeilToInt((waveIndex) * 4);
             enemiesAlive = wave.count;
             wave.spawnRate = waveIndex;
+            Debug.Log(wave.spawnRate);
             for(int i = 0; i < wave.count; i++) {
                 SpawnEnemy(normal);
                 yield return new WaitForSeconds(1 / wave.spawnRate);
