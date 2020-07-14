@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3792607124008786777}
-  - component: {fileID: 6021414165592627929}
+  - component: {fileID: 8541359354725232022}
   m_Layer: 0
   m_Name: Standard Turret
   m_TagString: Untagged
@@ -188,7 +188,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6021414165592627929
+--- !u!114 &8541359354725232022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,29 +197,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 950878277575815669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad43f6f995fb1a449b47c504e7777a83, type: 3}
+  m_Script: {fileID: 11500000, guid: 656eb67a49f910a4e92f7d02379c48de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2129615165364960894}
+  cost: 0
   range: 15
   turretCam: {fileID: 1772590479217720602}
   turretView: {fileID: 377269558289726356}
-  rangeCircle: {fileID: 0}
-  projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
-    type: 3}
   mockEnemy: {fileID: 3056531153313724055}
-  fireRate: 2
-  useLaser: 0
-  slowFactor: 0.2
-  damageOverTime: 30
-  lineRenderer: {fileID: 0}
-  laserEnd: {fileID: 0}
-  impactEffect: {fileID: 0}
-  impactLight: {fileID: 0}
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
   turnSpeed: 10
   manualTurnSpeed: 100
+  ugA:
+    upgradeName: Sniper Range
+    upgradeCost: 100
+    upgradeFactorX: 1.15
+    upgradeFactorY: 0
+  ugB:
+    upgradeName: Ghetto Gunner
+    upgradeCost: 200
+    upgradeFactorX: 1.2
+    upgradeFactorY: 1.2
+  ugSpec:
+    upgradeName: Bullet Burst
+    upgradeCost: 1000
+    upgradeFactorX: 0
+    upgradeFactorY: 0
+  fireRate: 2
+  projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
+    type: 3}
 --- !u!1 &4838282461862221301
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,11 +417,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  slowEffect: {fileID: 0}
+  stunEffect: {fileID: 0}
   startSpeed: 0
   startHp: 0
   currentHp: 0
   speed: 0
   moneyValue: 0
+  lifeValue: 0
   healthBar: {fileID: 0}
 --- !u!1001 &3481568278009666745
 PrefabInstance:

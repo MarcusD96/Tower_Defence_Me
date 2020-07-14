@@ -9559,7 +9559,7 @@ MonoBehaviour:
   speed: 20
   explosionRadius: 4
   penetration: 5
-  damage: 30
+  damage: 40
   miss: 0
 --- !u!1 &9221342441966967519
 GameObject:

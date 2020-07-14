@@ -24,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551151051363982954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.02}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.85000014, z: 7.4400005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2484036753030999528}
-  m_RootOrder: 0
+  m_Father: {fileID: 3804968989015224051}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3623115930618068434
 MonoBehaviour:
@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  slowEffect: {fileID: 0}
+  stunEffect: {fileID: 0}
   startSpeed: 0
   startHp: 0
   currentHp: 0
   speed: 0
   moneyValue: 0
+  lifeValue: 0
   healthBar: {fileID: 0}
 --- !u!1 &2515756435912152056
 GameObject:
@@ -170,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5814660438982561715}
-  - component: {fileID: 4553353367739657220}
+  - component: {fileID: 3107388126743563182}
   m_Layer: 0
   m_Name: Missile Launcher
   m_TagString: Untagged
@@ -194,7 +197,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4553353367739657220
+--- !u!114 &3107388126743563182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,29 +206,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 3622529578822836608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad43f6f995fb1a449b47c504e7777a83, type: 3}
+  m_Script: {fileID: 11500000, guid: b0a552301b642a448bfbad79dc2ae88d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2484036753030999528}
+  cost: 0
   range: 20
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
-  rangeCircle: {fileID: 0}
-  projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
-    type: 3}
   mockEnemy: {fileID: 3623115930618068434}
-  fireRate: 0.5
-  useLaser: 0
-  slowFactor: 0.8
-  damageOverTime: 30
-  lineRenderer: {fileID: 0}
-  laserEnd: {fileID: 0}
-  impactEffect: {fileID: 0}
-  impactLight: {fileID: 0}
   pivot: {fileID: 3804968989015224051}
   enemyTag: Enemy
   turnSpeed: 10
   manualTurnSpeed: 100
+  ugA:
+    upgradeName: Over the Wall
+    upgradeCost: 100
+    upgradeFactorX: 1.25
+    upgradeFactorY: 0
+  ugB:
+    upgradeName: Trump's Warheads
+    upgradeCost: 400
+    upgradeFactorX: 1.2
+    upgradeFactorY: 1.35
+  ugSpec:
+    upgradeName: Missile Barrage
+    upgradeCost: 2000
+    upgradeFactorX: 0
+    upgradeFactorY: 0
+  fireRate: 0.5
+  projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
+    type: 3}
 --- !u!1 &4218313142294416001
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7035362026757618537}
+  - {fileID: 1363762548770423106}
   - {fileID: 2484036753030999528}
   - {fileID: 7405449599853720162}
   - {fileID: 3794342337485002288}
@@ -366,10 +378,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.85, z: 2.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1363762548770423106}
+  m_Children: []
   m_Father: {fileID: 3804968989015224051}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8124139454799489037
 GameObject:
@@ -400,7 +411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3804968989015224051}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7206695569095409826
 Camera:
@@ -490,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -595,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Name
-      value: Turret Canvas
+      value: Turret View
       objectReference: {fileID: 0}
     - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}

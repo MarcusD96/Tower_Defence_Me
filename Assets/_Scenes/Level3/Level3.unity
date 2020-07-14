@@ -12345,6 +12345,46 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5277313604457237890, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277313604457237890, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091554433638116514, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 907422561}
+    - target: {fileID: 6091554433638116514, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091554434498169520, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 907422561}
+    - target: {fileID: 6091554434498169520, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091554434572883148, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 907422561}
+    - target: {fileID: 6091554434572883148, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Toggle
+      objectReference: {fileID: 0}
     - target: {fileID: 6297175104295666701, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -18055,15 +18095,15 @@ MonoBehaviour:
   waves:
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
-    count: 5
+    count: 7
     spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
-    count: 10
+    count: 14
     spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
-    count: 15
+    count: 20
     spawnRate: 4
   - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
       type: 3}
@@ -18089,10 +18129,10 @@ MonoBehaviour:
       type: 3}
     count: 10
     spawnRate: 2
-  - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
+  - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
-    count: 30
-    spawnRate: 2
+    count: 1
+    spawnRate: 1
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
     count: 100
@@ -18113,18 +18153,18 @@ MonoBehaviour:
       type: 3}
     count: 150
     spawnRate: 10
-  - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
-      type: 3}
-    count: 100
-    spawnRate: 6
-  - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
-      type: 3}
-    count: 300
-    spawnRate: 12
   - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
     count: 2
-    spawnRate: 0.085
+    spawnRate: 0.1
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
+      type: 3}
+    count: 300
+    spawnRate: 15
+  - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
+      type: 3}
+    count: 150
+    spawnRate: 20
   - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
       type: 3}
     count: 200
@@ -18137,6 +18177,10 @@ MonoBehaviour:
   gameManager: {fileID: 907422560}
   startButton: {fileID: 984471439}
   remainingText: {fileID: 438323620}
+  normal: {fileID: 0}
+  heavy: {fileID: 0}
+  fast: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!114 &907422558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18166,7 +18210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7e0a2d391907946bc4da40a0794721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 50000
+  startMoney: 500
   numLives: 1
   numMaxLives: 100
 --- !u!114 &907422560
@@ -33036,7 +33080,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877506900}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 36640599bbb3c0340b23cbb24790eddb, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: f87a5daf72b1d004a9a180e854f00846, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -33058,9 +33102,9 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!4 &1877506903
 Transform:

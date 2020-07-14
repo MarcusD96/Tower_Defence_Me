@@ -10398,6 +10398,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5277313604457237890, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5277313604457237890, guid: 66d8fe13300afee4981da07bb7d9f170,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 720
+      objectReference: {fileID: 0}
     - target: {fileID: 6091554433638116514, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -15574,19 +15584,19 @@ MonoBehaviour:
   waves:
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
-    count: 20
-    spawnRate: 4
+    count: 10
+    spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
       type: 3}
-    count: 15
-    spawnRate: 3
+    count: 10
+    spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
-    count: 60
+    count: 50
     spawnRate: 5
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
-    count: 30
+    count: 25
     spawnRate: 15
   - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
       type: 3}
@@ -15599,23 +15609,23 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
     count: 100
-    spawnRate: 12
+    spawnRate: 15
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
     count: 300
-    spawnRate: 10
+    spawnRate: 15
   - enemyPrefab: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4,
       type: 3}
-    count: 50
+    count: 75
     spawnRate: 10
-  - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
-      type: 3}
-    count: 1
-    spawnRate: 1
   - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
     count: 2
-    spawnRate: 0.085
+    spawnRate: 0.1
+  - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
+      type: 3}
+    count: 4
+    spawnRate: 0.3
   spawnPoint: {fileID: 1162154359}
   gameManager: {fileID: 907422560}
   startButton: {fileID: 984471439}
@@ -15653,7 +15663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7e0a2d391907946bc4da40a0794721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 600
+  startMoney: 500
   numLives: 10
   numMaxLives: 100
 --- !u!114 &907422560
@@ -31581,7 +31591,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877506900}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 36640599bbb3c0340b23cbb24790eddb, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d87b235cba170684eb544eb1e42c6738, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -31603,9 +31613,9 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!4 &1877506903
 Transform:
