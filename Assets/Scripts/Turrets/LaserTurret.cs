@@ -96,8 +96,4 @@ public class LaserTurret : Turret {
         slowFactor -= ugB.upgradeFactorY;
         lineRenderer.startWidth = lineRenderer.endWidth += 1;
     }
-
-    public override void EnableSpecial() {
-        Debug.Log("TODO: slow blast");
-    }
 }

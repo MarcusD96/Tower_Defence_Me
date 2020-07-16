@@ -9971,7 +9971,7 @@ MonoBehaviour:
   ugA:
     upgradeName: Extra Range
     upgradeCost: 100
-    upgradeFactorX: 1.5
+    upgradeFactorX: 1.25
     upgradeFactorY: 0
   ugB:
     upgradeName: Phatter Laser
@@ -9984,7 +9984,7 @@ MonoBehaviour:
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 2
-  slowFactor: 0.8
+  slowFactor: 0.7
   damageOverTime: 30
   lineRenderer: {fileID: 2404739084347467044}
   impactEffect: {fileID: 8992267078964416945}

@@ -237,6 +237,9 @@ MonoBehaviour:
   fireRate: 0.5
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
+  damage: 45
+  explosionRadius: 2
+  penetration: 3
 --- !u!1 &4218313142294416001
 GameObject:
   m_ObjectHideFlags: 0

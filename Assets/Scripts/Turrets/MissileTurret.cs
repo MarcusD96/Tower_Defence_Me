@@ -13,15 +13,8 @@ public class MissileTurret : ProjectileTurret {
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++, explosionRad+1, penetration +1
         fireRate *= ugB.upgradeFactorX;
-
-        var bullet = projectilePrefab.GetComponent<Bullet>();
-        bullet.damage = Mathf.CeilToInt(bullet.damage * ugB.upgradeFactorY);
-
-        bullet.explosionRadius += 1;
-        bullet.penetration += 1;
-    }
-
-    public override void EnableSpecial() {
-        Debug.Log("TODO: missile barrage");
+        damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
+        explosionRadius += 1;
+        penetration += 1;
     }
 }

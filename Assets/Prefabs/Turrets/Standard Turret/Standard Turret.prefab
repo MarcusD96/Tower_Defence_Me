@@ -219,7 +219,7 @@ MonoBehaviour:
     upgradeName: Ghetto Gunner
     upgradeCost: 200
     upgradeFactorX: 1.2
-    upgradeFactorY: 1.2
+    upgradeFactorY: 1.35
   ugSpec:
     upgradeName: Bullet Burst
     upgradeCost: 1000
@@ -228,6 +228,10 @@ MonoBehaviour:
   fireRate: 2
   projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
     type: 3}
+  damage: 20
+  explosionRadius: 0
+  penetration: 0
+  specialTime: 2
 --- !u!1 &4838282461862221301
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,23 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class StandardTurret : ProjectileTurret {
+    public float specialTime = 1.0f;
+
+    private bool specialActivated = false;
 
     void Awake() {
         standardTurret = this;
         projectileTurret = this;
+    }
+
+    new void Update() {
+        base.Update();
+        if(hasSpecial) {
+            if(Input.GetMouseButtonDown(1)) {
+                ActivateBurst();
+            } 
+        }
     }
 
     public override void ApplyUpgradeA() { //range++
@@ -13,12 +26,21 @@ public class StandardTurret : ProjectileTurret {
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++
         fireRate *= ugB.upgradeFactorX;
-
-        var bullet = projectilePrefab.GetComponent<Bullet>();
-        bullet.damage = Mathf.CeilToInt(bullet.damage * ugB.upgradeFactorY);
+        damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
     }
 
-    public override void EnableSpecial() {
-        Debug.Log("TODO: bullet burst");
+    void ActivateBurst() {
+        if(!specialActivated) {
+            specialActivated = true;
+            StartCoroutine(BulletBurst()); 
+        }
+    }
+
+    IEnumerator BulletBurst() {
+        var saveFireRate = fireRate;
+        fireRate *= 10.0f;
+        yield return new WaitForSeconds(specialTime);
+        fireRate = saveFireRate;
+        specialActivated = false;
     }
 }

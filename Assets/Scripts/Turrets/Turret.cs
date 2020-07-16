@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour {
     protected Transform target;
     protected Enemy targetEnemy;
     protected bool manual = false;
+    protected bool hasSpecial = false;
     public int cost;
 
     [Header("Global")]
@@ -28,18 +29,19 @@ public class Turret : MonoBehaviour {
 
     [Header("Projectiles")]
     public float fireRate = 2.0f; //shots per second, higher is faster
-    private float nextFire = 0.0f;
+    protected float nextFire = 0.0f;
 
     void Start() {
         turretCam.enabled = false;
         mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
     }
 
-    void Update() {
+    protected void Update() {
         if(manual) {
             ManualControl();
         } else
             AutomaticControl();
+
     }
 
     void FindNearestTargetInRange() {
@@ -142,9 +144,8 @@ public class Turret : MonoBehaviour {
         Debug.Log("upgrade 2");
     }
 
-
-    public virtual void EnableSpecial() {
-        Debug.Log("upgrade Special");
+    public void EnableSpecial() {
+        hasSpecial = true;
     }
 
     public void AssumeControl() {
@@ -169,5 +170,4 @@ public class Turret : MonoBehaviour {
         Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.position, range);
     }
-
 }

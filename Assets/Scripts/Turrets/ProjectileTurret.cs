@@ -6,9 +6,15 @@ public class ProjectileTurret : Turret {
     protected StandardTurret standardTurret;
     protected MissileTurret missileTurret;
 
+    public int damage = 50, explosionRadius = 0, penetration = 0;
+
     public void AutoShoot() {
         GameObject bulletGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.SetDamage(damage);
+        if(missileTurret) {
+            bullet.SetExplosion(penetration, explosionRadius);
+        }
 
         if(bullet) {
             bullet.MakeTarget(target);
@@ -21,6 +27,10 @@ public class ProjectileTurret : Turret {
         //spawn bullet, get the bullet info
         GameObject bulletGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.SetDamage(damage);
+        if(missileTurret) {
+            bullet.SetExplosion(penetration, explosionRadius); 
+        }
 
         //get a target only if theres a hit, otherwise the target is the mockEnemy; 
         RaycastHit hit;

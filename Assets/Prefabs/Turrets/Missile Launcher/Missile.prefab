@@ -9557,8 +9557,8 @@ MonoBehaviour:
   impactEffect: {fileID: 4181203990692315674, guid: 7b7102f9d14c05b4597941c47a8dfe33,
     type: 3}
   speed: 20
-  explosionRadius: 4
-  penetration: 5
+  explosionRadius: 2
+  penetration: 3
   damage: 40
   miss: 0
 --- !u!1 &9221342441966967519

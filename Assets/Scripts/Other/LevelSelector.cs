@@ -19,4 +19,8 @@ public class LevelSelector : MonoBehaviour {
     public void Select(string levelName) {
         sceneFader.FadeTo(levelName);
     }
+
+    public void Back() {
+        sceneFader.FadeTo("Main Menu");
+    }
 }

@@ -3,13 +3,21 @@
 public class Bullet : MonoBehaviour {
 
     public GameObject impactEffect;
-    public float speed = 50.0f, explosionRadius = 0.0f;
-    public int penetration, damage = 50;
+    public float speed = 150.0f;
     public bool miss;
 
     private Transform target;
-    private Vector3 preDirection;
     private float lifeEnd, distanceThisFrame;
+    private int damage, penetration, explosionRadius;
+
+    public void SetDamage(int damage_) {
+        damage = damage_;
+    }
+
+    public void SetExplosion(int penetration_, int radius_) {
+        penetration = penetration_;
+        explosionRadius = radius_;
+    }
 
     void Start() {
         lifeEnd = Time.time + 10;
