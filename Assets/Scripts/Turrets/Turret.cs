@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour {
     protected Transform target;
     protected Enemy targetEnemy;
     protected bool manual = false;
-    protected bool hasSpecial = false;
+    protected bool hasSpecial = false, specialActivated = false;
     public int cost;
 
     [Header("Global")]
@@ -44,7 +44,7 @@ public class Turret : MonoBehaviour {
 
     }
 
-    void FindNearestTargetInRange() {
+    protected void FindNearestTargetInRange() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = float.MaxValue;
         GameObject nearestEnemy = null;

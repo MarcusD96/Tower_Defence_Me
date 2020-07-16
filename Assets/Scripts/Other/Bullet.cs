@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour {
     }
 
     void Start() {
-        lifeEnd = Time.time + 10;
+        lifeEnd = Time.time + 5;
     }
 
     // Update is called once per frame

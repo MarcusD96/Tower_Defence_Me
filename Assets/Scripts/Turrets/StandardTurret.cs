@@ -4,8 +4,6 @@ using System.Collections;
 public class StandardTurret : ProjectileTurret {
     public float specialTime = 1.0f;
 
-    private bool specialActivated = false;
-
     void Awake() {
         standardTurret = this;
         projectileTurret = this;
@@ -30,7 +28,7 @@ public class StandardTurret : ProjectileTurret {
     }
 
     void ActivateBurst() {
-        if(!specialActivated) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
             StartCoroutine(BulletBurst()); 
         }
