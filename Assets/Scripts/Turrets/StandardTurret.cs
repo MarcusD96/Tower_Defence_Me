@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class StandardTurret : ProjectileTurret {
     public float specialTime = 1.0f;
@@ -14,12 +15,12 @@ public class StandardTurret : ProjectileTurret {
         if(hasSpecial) {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateBurst();
-            } 
+            }
         }
-    }
 
-    public override void ApplyUpgradeA() { //range++
-        range *= ugA.upgradeFactorX;
+        if(specialBar.fillBar.fillAmount <= 0) {
+            specialActivated = false;
+        }
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++
@@ -28,17 +29,18 @@ public class StandardTurret : ProjectileTurret {
     }
 
     void ActivateBurst() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && manual) {
             specialActivated = true;
-            StartCoroutine(BulletBurst()); 
+            specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
+            StartCoroutine(BulletBurst());
         }
     }
 
     IEnumerator BulletBurst() {
+        StartCoroutine(SpecialTime(specialRate));
         var saveFireRate = fireRate;
         fireRate *= 10.0f;
         yield return new WaitForSeconds(specialTime);
         fireRate = saveFireRate;
-        specialActivated = false;
     }
 }

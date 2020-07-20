@@ -2,6 +2,7 @@
 
 public class ProjectileTurret : Turret {
 
+    [Header("Projectile Stuff")]
     public GameObject projectilePrefab;
     protected StandardTurret standardTurret;
     protected MissileTurret missileTurret;

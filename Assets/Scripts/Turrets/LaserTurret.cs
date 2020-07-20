@@ -2,6 +2,7 @@
 
 public class LaserTurret : Turret {
 
+    [Header("Laser")]
     [Range(0.1f, 1.0f)]
     public float slowFactor = 0.8f;
     float slowDuration = 2.0f;
@@ -10,11 +11,34 @@ public class LaserTurret : Turret {
     public ParticleSystem impactEffect;
     public Light impactLight;
 
+    [Header("Laser Special")]
+    public SlowWave slowWave;
+    private SlowWave temp;
+
     void Awake() {
         laserTurret = this;
         lineRenderer.enabled = false;
         impactEffect.Stop();
         impactLight.enabled = false;
+    }
+
+    new void Update() {
+        base.Update();
+
+        if(hasSpecial) {
+            if(Input.GetMouseButtonDown(1)) {
+                ActivateSlowWave();
+            }
+        }
+
+        if(temp) {
+            if(temp.done)
+                Destroy(temp.gameObject);
+        }
+
+        if(specialBar.fillBar.fillAmount <= 0) {
+            specialActivated = false;
+        }
     }
 
     public void AutoLaser() {
@@ -87,13 +111,21 @@ public class LaserTurret : Turret {
         impactLight.enabled = false;
     }
 
-    public override void ApplyUpgradeA() { //range++
-        range *= ugA.upgradeFactorX;
-    }
-
     public override void ApplyUpgradeB() {  //dps++, slow++
         damageOverTime = Mathf.CeilToInt(damageOverTime + ugB.upgradeFactorX);
         slowFactor -= ugB.upgradeFactorY;
+        slowDuration++;
         lineRenderer.startWidth = lineRenderer.endWidth += 1;
+    }
+
+    void ActivateSlowWave() {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+            specialActivated = true;
+            specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
+            StartCoroutine(SpecialTime(specialRate));
+            temp = Instantiate(slowWave, transform.position, transform.rotation);
+            temp.slowFactor = slowFactor / 2;
+            temp.slowDuration = slowDuration * 10;
+        }
     }
 }

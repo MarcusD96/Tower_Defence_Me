@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Turret : MonoBehaviour {
     public Transform fireSpawn;
@@ -31,9 +33,18 @@ public class Turret : MonoBehaviour {
     public float fireRate = 2.0f; //shots per second, higher is faster
     protected float nextFire = 0.0f;
 
+    [Header("Special")]
+    public SpecialBar specialBar;
+    public float specialRate;
+
+    [Header("Targetting")]
+    private int targettingMethod;
+
     void Start() {
         turretCam.enabled = false;
         mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
+        specialBar.fillBar.fillAmount = 0;
+        specialBar.gameObject.SetActive(false);
     }
 
     protected void Update() {
@@ -41,7 +52,32 @@ public class Turret : MonoBehaviour {
             ManualControl();
         } else
             AutomaticControl();
+    }
 
+    void FindEnemy() {
+        switch(targettingMethod) {
+            case 0:         //first
+                FindFirstTargetInRange();
+                break;
+            case 1:         //last
+                FindLastTargetInRange();
+                break;
+            case 2:         //close
+                FindNearestTargetInRange();
+                break;
+            case 3:         //far
+                FindFurthestTargetInRange();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void NextTargettingOption() {
+        targettingMethod++;
+        if(targettingMethod > 3) {
+            targettingMethod = 0;
+        }
     }
 
     protected void FindNearestTargetInRange() {
@@ -64,6 +100,90 @@ public class Turret : MonoBehaviour {
             target = null;
     }
 
+    protected void FindFurthestTargetInRange() {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        float longestDistance = 0;
+        GameObject furthestEnemy = null;
+
+        foreach(var e in enemies) {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+            if(distance > longestDistance) {
+                longestDistance = distance;
+                furthestEnemy = e;
+            }
+        }
+
+        if(furthestEnemy && longestDistance <= range) {
+            target = furthestEnemy.transform;
+            targetEnemy = furthestEnemy.GetComponent<Enemy>();
+        } else
+            target = null;
+    }
+
+    protected void FindFirstTargetInRange() {
+        //find all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        List<GameObject> enemiesInRange = new List<GameObject>();
+
+        //filter found enemies in range
+        foreach(var e in enemies) {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+            if(distance <= range) {
+                enemiesInRange.Add(e);
+            }
+        }
+
+        //find the enemy with the greatest distanceTravelled variable
+        float greatestDistanceTravelled = 0;
+        GameObject firstEnemy = null;
+        foreach(var e in enemiesInRange) {
+            float time = e.GetComponent<Enemy>().distanceTravelled;
+            if(time > greatestDistanceTravelled) {
+                greatestDistanceTravelled = time;
+                firstEnemy = e;
+            }
+        }
+
+        //target the found enemy
+        if(firstEnemy) {
+            target = firstEnemy.transform;
+            targetEnemy = firstEnemy.GetComponent<Enemy>();
+        } else
+            target = null;
+    }
+
+    protected void FindLastTargetInRange() {
+        //find all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        List<GameObject> enemiesInRange = new List<GameObject>();
+
+        //filter found enemies in range
+        foreach(var e in enemies) {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+            if(distance <= range) {
+                enemiesInRange.Add(e);
+            }
+        }
+
+        //find the enemy with the least distanceTrvelled variable
+        float leastDistanceTravelled = float.MaxValue;
+        GameObject firstEnemy = null;
+        foreach(var e in enemiesInRange) {
+            float time = e.GetComponent<Enemy>().distanceTravelled;
+            if(time < leastDistanceTravelled) {
+                leastDistanceTravelled = time;
+                firstEnemy = e;
+            }
+        }
+
+        //target the found enemy
+        if(firstEnemy) {
+            target = firstEnemy.transform;
+            targetEnemy = firstEnemy.GetComponent<Enemy>();
+        } else
+            target = null;
+    }
+
     public int GetSellPrice() {
         return Mathf.RoundToInt((cost / 2) / 5) * 5; //rounds to nearest 5 value
     }
@@ -76,10 +196,7 @@ public class Turret : MonoBehaviour {
     }
 
     void AutomaticControl() {
-        if(!IsInvoking("FindNearestTargetInRange")) {
-            InvokeRepeating("FindNearestTargetInRange", 0, 0.5f);
-        }
-
+        FindEnemy();
         if(!target) {
             if(laserTurret)
                 laserTurret.LaserOff();
@@ -100,9 +217,6 @@ public class Turret : MonoBehaviour {
     }
 
     void ManualControl() {
-        if(IsInvoking("FindNearestTargetInRange"))
-            CancelInvoke("FindNearestTargetInRange");
-
         ManualMovement();
 
         if(laserTurret) {
@@ -136,8 +250,8 @@ public class Turret : MonoBehaviour {
         pivot.Rotate(lookhere);
     }
 
-    public virtual void ApplyUpgradeA() {
-        Debug.Log("upgrade 1");
+    public void ApplyUpgradeA() {
+        range = (float)System.Math.Round(range * ugA.upgradeFactorX * 2, System.MidpointRounding.AwayFromZero) / 2;
     }
 
     public virtual void ApplyUpgradeB() {
@@ -146,6 +260,16 @@ public class Turret : MonoBehaviour {
 
     public void EnableSpecial() {
         hasSpecial = true;
+        specialBar.gameObject.SetActive(true);
+    }
+
+    protected IEnumerator SpecialTime(float rate) {
+        float fillTime = rate;
+        while(fillTime > 0) {
+            fillTime -= Time.deltaTime;
+            specialBar.fillBar.fillAmount = fillTime / rate;
+            yield return null;
+        }
     }
 
     public void AssumeControl() {

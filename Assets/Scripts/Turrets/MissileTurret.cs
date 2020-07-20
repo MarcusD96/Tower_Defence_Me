@@ -18,10 +18,10 @@ public class MissileTurret : ProjectileTurret {
                 ActivateBarrage();
             }
         }
-    }
 
-    public override void ApplyUpgradeA() { //range++
-        range *= ugA.upgradeFactorX;
+        if(specialBar.fillBar.fillAmount <= 0) {
+            specialActivated = false;
+        }
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++, explosionRad+1, penetration +1
@@ -32,13 +32,14 @@ public class MissileTurret : ProjectileTurret {
     }
 
     void ActivateBarrage() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && manual) {
             specialActivated = true;
             StartCoroutine(MissileBarrage());
         }
     }
 
     IEnumerator MissileBarrage() {
+        StartCoroutine(SpecialTime(specialRate));
         FindAndSortEnemies();
 
         if(targetList.Count < missileCount) {
@@ -49,19 +50,19 @@ public class MissileTurret : ProjectileTurret {
                 target = targetList[i].transform;
                 AutoShoot();
                 yield return new WaitForSeconds(0.1f);
-                //yield return new WaitForSeconds(0.01f);
             }
         } else {
             for(int i = 0; i < missileCount; i++) {
+                if(!targetList[i]) {
+                    break;
+                }
                 target = targetList[i].transform;
                 AutoShoot();
                 yield return new WaitForSeconds(0.1f);
-                //yield return new WaitForSeconds(0.01f);
             }
         }
 
         targetList = new List<Enemy>();
-        specialActivated = false;
     }
 
     void FindAndSortEnemies() {

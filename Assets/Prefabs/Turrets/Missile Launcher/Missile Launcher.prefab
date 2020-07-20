@@ -235,6 +235,8 @@ MonoBehaviour:
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 0.5
+  specialBar: {fileID: 1531281856564686637}
+  specialRate: 15
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   damage: 45
@@ -680,3 +682,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2521279117698646780}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1531281856564686637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4016460191242399185, guid: ac544509da2972845a14cd3400e757d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2521279117698646780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aacbd750233c964888c2d2ca759a958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
