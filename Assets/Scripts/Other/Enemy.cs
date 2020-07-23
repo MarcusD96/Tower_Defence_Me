@@ -10,8 +10,7 @@ public class Enemy : MonoBehaviour {
     public float startSpeed, startHp;
 
     [HideInInspector]
-    public float currentHp, speed;
-    public float distanceTravelled = 0.0f;
+    public float currentHp, speed, distanceTravelled = 0.0f;
 
     public int moneyValue, lifeValue;
 

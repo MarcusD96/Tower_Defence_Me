@@ -15446,6 +15446,8 @@ MonoBehaviour:
     type: 3}
   sellEffect: {fileID: 6975259208304307190, guid: 21c68cd643550d3408e1c244cbf7637f,
     type: 3}
+  upgradeEffect: {fileID: 6975259208304307190, guid: 6eb1d1726deb98f4f8087b07e8260798,
+    type: 3}
   nodeUI: {fileID: 285759228}
 --- !u!114 &907422559
 MonoBehaviour:

@@ -3,6 +3,7 @@
 public class Bullet : MonoBehaviour {
 
     public GameObject impactEffect;
+    public DamageIndicator indicator;
     public float speed = 150.0f;
     public bool miss;
 
@@ -62,6 +63,8 @@ public class Bullet : MonoBehaviour {
             } else {
                 Damage(target);
             }
+            indicator.IndicateDamage(damage);
+            Instantiate(indicator, transform.position, indicator.transform.rotation);
         }
         Destroy(gameObject);
 

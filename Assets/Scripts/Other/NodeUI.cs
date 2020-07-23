@@ -9,6 +9,7 @@ public class NodeUI : MonoBehaviour {
     public Button upgradeButtonA, upgradeButtonB, upgradeButtonSpecial;
     public TextMeshProUGUI upgradeTextA, upgradeTextB, UpgradeTextSpecial;
     public TextMeshProUGUI upgradeCostA, upgradeCostB, UpgradeCostSpecial;
+    public TextMeshProUGUI targetting;
 
     private Node target;
 
@@ -65,6 +66,16 @@ public class NodeUI : MonoBehaviour {
         target.ControlTurret();
         upgradeUI.SetActive(false);
         BuildManager.instance.DeselectNode();
+    }
+
+    public void NextTargetting() {
+        target.turret.GetComponent<Turret>().NextTargettingOption();
+        targetting.text = target.turret.GetComponent<Turret>().targetting;
+    }
+
+    public void LastTargetting() {
+        target.turret.GetComponent<Turret>().LastTargettingOption();
+        targetting.text = target.turret.GetComponent<Turret>().targetting;
     }
 
     void SetNamesAndPrices() {

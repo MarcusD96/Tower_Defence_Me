@@ -12,4 +12,8 @@ public class TurretFactory {
     public int GetCost() {
         return cost;
     }
+
+    public Turret GetTurret() {
+        return turretPrefab.GetComponent<Turret>();
+    }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class Turret : MonoBehaviour {
     public Transform fireSpawn;
 
+    public bool manual = false;
     protected Transform target;
     protected Enemy targetEnemy;
-    protected bool manual = false;
     protected bool hasSpecial = false, specialActivated = false;
     public int cost;
 
@@ -38,13 +38,16 @@ public class Turret : MonoBehaviour {
     public float specialRate;
 
     [Header("Targetting")]
+    public string targetting = "First";
     private int targettingMethod;
 
     void Start() {
         turretCam.enabled = false;
+        turretView.SetActive(false);
         mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
+        targettingMethod = 0;
     }
 
     protected void Update() {
@@ -73,10 +76,42 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    void NextTargettingOption() {
+    public void NextTargettingOption() {
         targettingMethod++;
         if(targettingMethod > 3) {
             targettingMethod = 0;
+        }
+        UpdateTargettingName();
+    }
+    
+    public void LastTargettingOption() {
+        targettingMethod--;
+        if(targettingMethod <= 0) {
+            targettingMethod = 3;
+        }
+        UpdateTargettingName();
+    }
+
+    void UpdateTargettingName() {
+        switch(targettingMethod) {
+            case 0:
+                targetting = "First";
+                break;
+
+            case 1:
+                targetting = "Last";
+                break;
+
+            case 2:
+                targetting = "Close";
+                break;
+
+            case 3:
+                targetting = "Far";
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -101,11 +136,22 @@ public class Turret : MonoBehaviour {
     }
 
     protected void FindFurthestTargetInRange() {
+        //find all enemies
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        List<GameObject> enemiesInRange = new List<GameObject>();
+
+        //filter found enemies in range
+        foreach(var e in enemies) {
+            float distance = Vector3.Distance(transform.position, e.transform.position);
+            if(distance <= range) {
+                enemiesInRange.Add(e);
+            }
+        }
+
+        //find the enemy with the greatest distance
         float longestDistance = 0;
         GameObject furthestEnemy = null;
-
-        foreach(var e in enemies) {
+        foreach(var e in enemiesInRange) {
             float distance = Vector3.Distance(transform.position, e.transform.position);
             if(distance > longestDistance) {
                 longestDistance = distance;
@@ -113,7 +159,8 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        if(furthestEnemy && longestDistance <= range) {
+        //target that enemy if one was found
+        if(furthestEnemy) {
             target = furthestEnemy.transform;
             targetEnemy = furthestEnemy.GetComponent<Enemy>();
         } else
@@ -195,6 +242,13 @@ public class Turret : MonoBehaviour {
         pivot.rotation = Quaternion.Euler(0, euler.y, 0);
     }
 
+    protected void RotateOnShoot() {
+        Vector3 direction = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        Vector3 euler = rotation.eulerAngles;
+        pivot.rotation = Quaternion.Euler(0, euler.y, 0);
+    }
+
     void AutomaticControl() {
         FindEnemy();
         if(!target) {
@@ -203,17 +257,20 @@ public class Turret : MonoBehaviour {
             return;
         }
 
-        RotateWithTarget();
+        //RotateWithTarget();
 
         if(!laserTurret) {
             if(nextFire <= 0.0f) {
+                RotateOnShoot(); //
                 projectileTurret.AutoShoot();
                 nextFire = 1 / fireRate;
             }
 
             nextFire -= Time.deltaTime;
-        } else
+        } else {
+            RotateOnShoot(); //
             laserTurret.AutoLaser();
+        }
     }
 
     void ManualControl() {
@@ -266,13 +323,16 @@ public class Turret : MonoBehaviour {
     protected IEnumerator SpecialTime(float rate) {
         float fillTime = rate;
         while(fillTime > 0) {
-            fillTime -= Time.deltaTime;
-            specialBar.fillBar.fillAmount = fillTime / rate;
+            if(WaveSpawner.enemiesAlive > 0) {
+                fillTime -= Time.deltaTime;
+                specialBar.fillBar.fillAmount = fillTime / rate;
+            }
             yield return null;
         }
     }
 
     public void AssumeControl() {
+        GameManager.lastControlled = this;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         manual = true;
@@ -280,7 +340,10 @@ public class Turret : MonoBehaviour {
         turretView.SetActive(true);
     }
 
-    public void RevertControl() {
+    public void RevertControl(bool roundEnd) {
+        if(!roundEnd)
+            GameManager.lastControlled = null;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         manual = false;

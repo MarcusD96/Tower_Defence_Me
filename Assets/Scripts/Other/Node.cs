@@ -9,7 +9,7 @@ public class Node : MonoBehaviour {
     public Image range;
 
     [HideInInspector]
-    public GameObject turret = null;
+    public GameObject turret = null, controlledTurret = null;
     [HideInInspector]
     public TurretFactory currentFactory;
 
@@ -26,26 +26,18 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape) || WaveSpawner.enemiesAlive <= 0 || PlayerStats.lives <= 0) {
+        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
             if(turret) {
-                RevertTurret();
+                RevertTurret(false);
             }
         }
-    }
-
-    void OnMouseDown() {
-        if(EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        if(turret != null) {
-            buildManager.SelectNode(this);
-            return;
+        if(WaveSpawner.enemiesAlive <= 0) {
+            if(turret)
+                RevertTurret(true);
         }
-
-        if(!buildManager.CanBuild)
-            return;
-
-        BuildTurret(buildManager.GetTurretToBuild());
+        if(WaveSpawner.enemiesAlive > 0 && GameManager.lastControlled) {
+            buildManager.DeselectNode();
+        }
     }
 
     void BuildEffect(GameObject effect) {
@@ -66,8 +58,8 @@ public class Node : MonoBehaviour {
         var t = turret.GetComponent<Turret>();
         t.cost = turret_.cost;
 
-        RectTransform rt = range.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
+        UpdateRange(t);
+        range.gameObject.SetActive(false);
 
         BuildEffect(buildManager.buildEffect);
     }
@@ -83,16 +75,9 @@ public class Node : MonoBehaviour {
         t.cost += t.ugA.upgradeCost;
 
         BuildEffect(buildManager.upgradeEffect);
-
-        //update range visual
-        RectTransform rt = range.GetComponent<RectTransform>();
-
         t.ApplyUpgradeA();
-        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
-
+        UpdateRange(t);
         t.ugA.IncreaseUpgrade();
-
-
     }
 
     public void UpgradeB() {
@@ -142,13 +127,43 @@ public class Node : MonoBehaviour {
         CameraController.isEnabled = false;
     }
 
-    void RevertTurret() {
-        turret.GetComponent<Turret>().RevertControl();
+    void RevertTurret(bool roundEnd) {
+        turret.GetComponent<Turret>().RevertControl(roundEnd);
         mainCam.enabled = true;
         CameraController.isEnabled = true;
     }
 
+    void UpdateRange(Turret t) {
+        RectTransform rt = range.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
+    }
+
+    void OnMouseDown() {
+        if(GameManager.lastControlled != null) {
+            if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
+                return;
+        }
+
+        if(EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if(turret != null) {
+            buildManager.SelectNode(this);
+            return;
+        }
+
+        if(!buildManager.CanBuild)
+            return;
+
+        BuildTurret(buildManager.GetTurretToBuild());
+    }
+
     void OnMouseEnter() {
+        if(GameManager.lastControlled != null) { 
+            if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
+                return;
+        }
+
         if(EventSystem.current.IsPointerOverGameObject())
             return;
 
@@ -162,6 +177,9 @@ public class Node : MonoBehaviour {
 
         if(buildManager.HasMoney) {
             rend.material.color = hoverColor;
+            var t = buildManager.GetTurretToBuild().GetTurret();
+            UpdateRange(t);
+            range.gameObject.SetActive(true);
         } else {
             rend.material.color = errorColor;
         }
@@ -169,6 +187,9 @@ public class Node : MonoBehaviour {
 
     void OnMouseExit() {
         rend.material.color = startColor;
+        if(!turret) {
+            range.gameObject.SetActive(false); 
+        }
     }
 
     public Vector3 GetBuildPosition() {

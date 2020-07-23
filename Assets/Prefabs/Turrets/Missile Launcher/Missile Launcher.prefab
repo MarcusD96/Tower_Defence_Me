@@ -50,6 +50,7 @@ MonoBehaviour:
   startHp: 0
   currentHp: 0
   speed: 0
+  distanceTravelled: 0
   moneyValue: 0
   lifeValue: 0
   healthBar: {fileID: 0}
@@ -210,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2484036753030999528}
+  manual: 0
   cost: 0
   range: 20
   turretCam: {fileID: 7206695569095409826}
@@ -612,6 +614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret View
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}

@@ -52,6 +52,7 @@ public class WaveSpawner : MonoBehaviour {
 
     public void StartWave() {
         startButton.gameObject.SetActive(false);
+        gameManager.LastControlled();
         remainingText.SetActive(true);
         if(!GameMode.survival) {
             StartCoroutine(SpawnWave());
@@ -74,6 +75,8 @@ public class WaveSpawner : MonoBehaviour {
         }
         waveIndex++;
     }
+
+    //Survival//
 
     IEnumerator SurvivalWaves() {
         PlayerStats.rounds++;

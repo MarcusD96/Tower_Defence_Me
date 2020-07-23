@@ -6,8 +6,11 @@ public class GameManager : MonoBehaviour {
     
     public GameObject gameOverUI, winLevelUI;
 
+    public static Turret lastControlled;
+
     void Start() {
         gameEnd = false;
+        lastControlled = null;
     }
 
     // Update is called once per frame
@@ -15,11 +18,6 @@ public class GameManager : MonoBehaviour {
         if(gameEnd)
             return;
 
-#if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.E)) {
-            EndGame();
-        }
-#endif
         if (PlayerStats.lives <= 0)
             EndGame();
 
@@ -41,5 +39,11 @@ public class GameManager : MonoBehaviour {
     public void WinLevel() {
         gameEnd = true;
         winLevelUI.SetActive(true);
+    }
+
+    public void LastControlled() {
+        if(lastControlled) {
+            lastControlled.AssumeControl();
+        }
     }
 }

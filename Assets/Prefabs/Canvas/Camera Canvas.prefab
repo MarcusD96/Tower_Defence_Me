@@ -236,7 +236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $100
+  m_text: $999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $200
+  m_text: $999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $300
+  m_text: $999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -881,25 +881,6 @@ MonoBehaviour:
     costText: {fileID: 6230080902472397039}
     border: {fileID: 6216771554254200201}
     cost: 100
-    upgradeA:
-      upgradeName: Range++
-      description: Increases the range of this tower
-      upgradeCost: 200
-      upgradeFactorX: 1.1
-      upgradeFactorY: 0
-    upgradeB:
-      upgradeName: FireRate & Damage++
-      description: Increases the rate at which this tower fires. Increases damage
-        per bullet.
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
-    upgradeSpecial:
-      upgradeName: Burst Mode
-      description: Fire a ton of bullets in a short period of time.
-      upgradeCost: 1000
-      upgradeFactorX: 0
-      upgradeFactorY: 0
   missileLauncher:
     turretPrefab: {fileID: 3622529578822836608, guid: df14bd30d9519684fb3a48403039579f,
       type: 3}
@@ -908,24 +889,6 @@ MonoBehaviour:
     costText: {fileID: 5097079796489207542}
     border: {fileID: 5084474133439566736}
     cost: 600
-    upgradeA:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
-    upgradeB:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
-    upgradeSpecial:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
   laserBeamer:
     turretPrefab: {fileID: 8171662427261242612, guid: 1a68bb05f092a414f8eb24a70a3d49fc,
       type: 3}
@@ -934,24 +897,6 @@ MonoBehaviour:
     costText: {fileID: 6405899927451370221}
     border: {fileID: 6401177835929366411}
     cost: 450
-    upgradeA:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
-    upgradeB:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
-    upgradeSpecial:
-      upgradeName: Range++
-      description: none
-      upgradeCost: 0
-      upgradeFactorX: 0
-      upgradeFactorY: 0
 --- !u!114 &1316618374176531284
 MonoBehaviour:
   m_ObjectHideFlags: 0

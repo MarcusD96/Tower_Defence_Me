@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 300384118}
   - component: {fileID: 300384117}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -786,10 +786,10 @@ RectTransform:
   m_Father: {fileID: 919473968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 332}
-  m_SizeDelta: {x: -500, y: 250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 332.5}
+  m_SizeDelta: {x: -500, y: -831}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463467623
 MonoBehaviour:
@@ -2025,6 +2025,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 8646302513245132333, guid: 6e355fb57b919864090aae92f57fb8df,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e355fb57b919864090aae92f57fb8df, type: 3}
 --- !u!224 &1521175283 stripped
@@ -2257,6 +2262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646302513245132333, guid: 6e355fb57b919864090aae92f57fb8df,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e355fb57b919864090aae92f57fb8df, type: 3}

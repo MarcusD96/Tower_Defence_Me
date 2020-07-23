@@ -18177,9 +18177,9 @@ MonoBehaviour:
   gameManager: {fileID: 907422560}
   startButton: {fileID: 984471439}
   remainingText: {fileID: 438323620}
-  normal: {fileID: 0}
-  heavy: {fileID: 0}
-  fast: {fileID: 0}
+  simple: {fileID: 0}
+  tank: {fileID: 0}
+  quick: {fileID: 0}
   boss: {fileID: 0}
 --- !u!114 &907422558
 MonoBehaviour:
@@ -18196,6 +18196,8 @@ MonoBehaviour:
   buildEffect: {fileID: 6975259208304307190, guid: ff82d095bfb31e9489c9a79d5a6060b6,
     type: 3}
   sellEffect: {fileID: 6975259208304307190, guid: 21c68cd643550d3408e1c244cbf7637f,
+    type: 3}
+  upgradeEffect: {fileID: 6975259208304307190, guid: 6eb1d1726deb98f4f8087b07e8260798,
     type: 3}
   nodeUI: {fileID: 1054779089}
 --- !u!114 &907422559

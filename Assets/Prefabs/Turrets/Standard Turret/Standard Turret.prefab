@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2129615165364960894}
+  manual: 0
   cost: 0
   range: 15
   turretCam: {fileID: 1772590479217720602}
@@ -228,6 +229,7 @@ MonoBehaviour:
   fireRate: 2
   specialBar: {fileID: 570926517585506664}
   specialRate: 30
+  targetting: First
   projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
     type: 3}
   damage: 20
@@ -429,6 +431,7 @@ MonoBehaviour:
   startHp: 0
   currentHp: 0
   speed: 0
+  distanceTravelled: 0
   moneyValue: 0
   lifeValue: 0
   healthBar: {fileID: 0}
@@ -588,6 +591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
