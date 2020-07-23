@@ -2,8 +2,7 @@
 
 public class Bullet : MonoBehaviour {
 
-    public GameObject impactEffect;
-    public DamageIndicator indicator;
+    public GameObject impactEffect, indicator;
     public float speed = 150.0f;
     public bool miss;
 
@@ -31,7 +30,7 @@ public class Bullet : MonoBehaviour {
             return;
         }
 
-        distanceThisFrame = speed * Time.deltaTime;        
+        distanceThisFrame = speed * Time.deltaTime;
 
         if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
             if(target) {
@@ -63,8 +62,9 @@ public class Bullet : MonoBehaviour {
             } else {
                 Damage(target);
             }
-            indicator.IndicateDamage(damage);
-            Instantiate(indicator, transform.position, indicator.transform.rotation);
+            GameObject indicatorInstance = Instantiate(indicator, transform.position, transform.rotation);
+            indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
+            Destroy(indicatorInstance, 0.5f);
         }
         Destroy(gameObject);
 
@@ -102,7 +102,7 @@ public class Bullet : MonoBehaviour {
                 return;
             }
         }
-        transform.Translate(transform.forward * distanceThisFrame, Space.World);  
+        transform.Translate(transform.forward * distanceThisFrame, Space.World);
     }
 
     void OnDrawGizmosSelected() {
