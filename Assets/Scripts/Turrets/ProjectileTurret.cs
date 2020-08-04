@@ -11,7 +11,7 @@ public class ProjectileTurret : Turret {
 
     public void AutoShoot() {
         GameObject bulletGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Missile bullet = bulletGO.GetComponent<Missile>();
         bullet.SetDamage(damage);
         if(missileTurret) {
             bullet.SetExplosion(penetration, explosionRadius);
@@ -27,7 +27,7 @@ public class ProjectileTurret : Turret {
 
         //spawn bullet, get the bullet info
         GameObject bulletGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Missile bullet = bulletGO.GetComponent<Missile>();
         bullet.SetDamage(damage);
         if(missileTurret) {
             bullet.SetExplosion(penetration, explosionRadius); 

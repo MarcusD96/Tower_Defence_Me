@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 
 public class LevelWin : MonoBehaviour {
-    public SceneFader sceneFader;
-    public string menuSceneName = "Main Menu";
-    public int levelToUnlock = 2;
+    private SceneFader sceneFader;
+    private string menuSceneName = "Main Menu";
+    public int levelToUnlock;
+
+    void Awake() {
+        sceneFader = FindObjectOfType<SceneFader>();
+    }
 
     public void Menu() {
         sceneFader.FadeTo(menuSceneName);
@@ -11,6 +15,7 @@ public class LevelWin : MonoBehaviour {
 
     public void Continue() {
         PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo("Level" + levelToUnlock);
+        Debug.Log(levelToUnlock);
+        sceneFader.FadeTo("Level Selection");
     }
 }

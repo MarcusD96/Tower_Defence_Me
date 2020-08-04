@@ -10,11 +10,6 @@ public class MainMenu : MonoBehaviour {
         sceneFader.FadeTo(levelToLoad);
     }
 
-    public void Survival() {
-        GameMode.survival = true;
-        sceneFader.FadeTo(survivalLevelToLoad);
-    }
-
     public void Quit() {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -25,5 +20,5 @@ public class MainMenu : MonoBehaviour {
 }
 
 public static class GameMode {
-    public static bool survival;
+    public static bool survival = false;
 }

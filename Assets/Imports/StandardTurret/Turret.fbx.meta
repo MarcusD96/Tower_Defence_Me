@@ -1,26 +1,26 @@
 fileFormatVersion: 2
 guid: ff4954e247015b640a9177683f775b25
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 19300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Turret_GunMetal
-    second: {fileID: 2100000, guid: a8e618254f69ae94ebecc58f67779f23, type: 2}
+    second: {fileID: 2100000, guid: 33b71faa0aa059d438ab48a31efb9f64, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Turret_Metal
-    second: {fileID: 2100000, guid: e71373fbdf0ede64d9a42f1920206fe2, type: 2}
+    second: {fileID: 2100000, guid: b29672e3cc31427429c642a96a772a59, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Turret_Metal2
-    second: {fileID: 2100000, guid: 1dfca134a6e6b1b48a6911e1d7159721, type: 2}
+    second: {fileID: 2100000, guid: 98498d7fa90020b4b96d99c47a1d8cf1, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -75,7 +75,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 38
+    normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
@@ -84,7 +84,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -102,8 +101,10 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

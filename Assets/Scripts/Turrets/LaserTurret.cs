@@ -1,23 +1,25 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
-public class LaserTurret : Turret {
+public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
     [Range(0.1f, 1.0f)]
     public float slowFactor = 0.8f;
     float slowDuration = 2.0f;
     public int damageOverTime = 30;
-    public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
+    float laserIndicatorTime = 0;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
-    private SlowWave temp;
+    private SlowWave tempSW;
 
-    void Awake() {
+    new void Awake() {
+        base.Awake();
+        beamTurret = this;
         laserTurret = this;
-        lineRenderer.enabled = false;
         impactEffect.Stop();
         impactLight.enabled = false;
     }
@@ -31,9 +33,9 @@ public class LaserTurret : Turret {
             }
         }
 
-        if(temp) {
-            if(temp.done)
-                Destroy(temp.gameObject);
+        if(tempSW) {
+            if(tempSW.done)
+                Destroy(tempSW.gameObject);
         }
 
         if(specialBar.fillBar.fillAmount <= 0) {
@@ -41,10 +43,22 @@ public class LaserTurret : Turret {
         }
     }
 
-    public void AutoLaser() {
+    public override void AutoShoot() {
+        RotateOnShoot();
+
         //damage
         targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-        targetEnemy.Slow(slowFactor, slowDuration);
+        if(!targetEnemy.superSlow) {
+            targetEnemy.Slow(slowFactor, slowDuration); 
+        }
+
+        //refrain indicator to time step
+        if(Time.time > laserIndicatorTime) {
+            laserIndicatorTime = Time.time + 0.5f;
+            GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
+            indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
+            Destroy(indicatorInstance, 0.5f); 
+        }
 
         //graphics
         if(!lineRenderer.enabled) {
@@ -61,7 +75,7 @@ public class LaserTurret : Turret {
         impactEffect.transform.rotation = Quaternion.LookRotation(direction);
     }
 
-    public void ManualLaser() {
+    public override void ManualShoot() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
         float manualRange = range * 2;
@@ -72,13 +86,15 @@ public class LaserTurret : Turret {
         if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
                 //set the target and get its information
-                target = hit.collider.transform;
+                target = hit.transform;
                 targetEnemy = target.GetComponent<Enemy>();
 
                 if(targetEnemy) {
                     //apply damage and slow
                     targetEnemy.TakeDamage(manualDoT * Time.deltaTime);
-                    targetEnemy.Slow(slowFactor, slowDuration);
+                    if(!targetEnemy.superSlow) {
+                        targetEnemy.Slow(slowFactor, slowDuration); 
+                    }
                 }
 
                 //set end position of the laser line renderer
@@ -105,12 +121,6 @@ public class LaserTurret : Turret {
         }
     }
 
-    public void LaserOff() {
-        lineRenderer.enabled = false;
-        impactEffect.Stop();
-        impactLight.enabled = false;
-    }
-
     public override void ApplyUpgradeB() {  //dps++, slow++
         damageOverTime = Mathf.CeilToInt(damageOverTime + ugB.upgradeFactorX);
         slowFactor -= ugB.upgradeFactorY;
@@ -123,9 +133,9 @@ public class LaserTurret : Turret {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(SpecialTime(specialRate));
-            temp = Instantiate(slowWave, transform.position, transform.rotation);
-            temp.slowFactor = slowFactor / 2;
-            temp.slowDuration = slowDuration * 10;
+            tempSW = Instantiate(slowWave, transform.position, transform.rotation);
+            tempSW.slowFactor = slowFactor / 2;
+            tempSW.slowDuration = slowDuration * 3.5f;
         }
     }
 }

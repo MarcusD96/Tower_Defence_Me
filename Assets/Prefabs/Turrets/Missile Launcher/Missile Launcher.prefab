@@ -54,6 +54,7 @@ MonoBehaviour:
   moneyValue: 0
   lifeValue: 0
   healthBar: {fileID: 0}
+  superSlow: 0
 --- !u!1 &2515756435912152056
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,26 +224,32 @@ MonoBehaviour:
   manualTurnSpeed: 100
   ugA:
     upgradeName: Over the Wall
+    description: Allows the launcher to see further over trumps wall.
     upgradeCost: 100
     upgradeFactorX: 1.25
     upgradeFactorY: 0
   ugB:
     upgradeName: Trump's Warheads
+    description: Trump is starting to use bigger ballistics causing more damage to
+      more enemies with a bigger radius.
     upgradeCost: 400
     upgradeFactorX: 1.2
     upgradeFactorY: 1.35
   ugSpec:
     upgradeName: Missile Barrage
+    description: Send out a barrage of missiles which targets up to 10 ememies at
+      once.
     upgradeCost: 2000
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 0.5
   specialBar: {fileID: 1531281856564686637}
   specialRate: 15
+  targetting: First
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   damage: 45
-  explosionRadius: 2
+  explosionRadius: 10
   penetration: 3
 --- !u!1 &4218313142294416001
 GameObject:
@@ -275,7 +282,6 @@ Transform:
   - {fileID: 1363762548770423106}
   - {fileID: 2484036753030999528}
   - {fileID: 7405449599853720162}
-  - {fileID: 3794342337485002288}
   m_Father: {fileID: 5814660438982561715}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -414,9 +420,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8124139454799489037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.48, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3794342337485002288}
   m_Father: {fileID: 3804968989015224051}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -468,7 +475,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3804968989015224051}
+    m_TransformParent: {fileID: 7405449599853720162}
     m_Modifications:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -508,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -533,7 +540,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.48
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}

@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
 public class Shop : MonoBehaviour {
-    public TurretFactory standardTurret, missileLauncher, laserBeamer;
+    public TurretFactory standardTurret, missileLauncher, laserBeamer, teslaTurret;
 
     private BuildManager buildManager;
 
     void Start() {
         buildManager = BuildManager.instance;
-    }
-
-    public void Update() {
         standardTurret.costText.text = "$" + standardTurret.cost;
         missileLauncher.costText.text = "$" + missileLauncher.cost;
         laserBeamer.costText.text = "$" + laserBeamer.cost;
+        teslaTurret.costText.text = "$" + teslaTurret.cost;
     }
 
     public void SelectStandardTurret() {
@@ -27,4 +25,7 @@ public class Shop : MonoBehaviour {
         buildManager.SelectTurretToBuild(laserBeamer);
     }
 
+    public void SelectTeslaTurret() {
+        buildManager.SelectTurretToBuild(teslaTurret);
+    }
 }

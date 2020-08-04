@@ -9,7 +9,15 @@ public class Intro : MonoBehaviour {
     public SceneFader sceneFader;
 
     void Start() {
+        PlayerPrefs.SetInt("levelreached", 1);
         StartCoroutine(PlayIntro());
+    }
+
+    void Update() {
+        if(Input.GetMouseButtonDown(0)) {
+            StopAllCoroutines();
+            sceneFader.FadeTo("Main Menu");
+        }
     }
 
     IEnumerator PlayIntro() {

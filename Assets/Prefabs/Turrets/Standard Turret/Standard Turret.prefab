@@ -25,9 +25,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250673935394468597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.96, z: 1.453}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2739407212295604341}
   m_Father: {fileID: 2132953714685851362}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38,7 +39,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250673935394468597}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -213,17 +214,20 @@ MonoBehaviour:
   manualTurnSpeed: 100
   ugA:
     upgradeName: Sniper Range
+    description: Upgraded scopes allow this tower to see farther.
     upgradeCost: 100
     upgradeFactorX: 1.15
     upgradeFactorY: 0
   ugB:
     upgradeName: Ghetto Gunner
+    description: Acquire tech from the crib. Faster reloading. Bigger damage.
     upgradeCost: 200
     upgradeFactorX: 1.2
     upgradeFactorY: 1.35
   ugSpec:
     upgradeName: Bullet Burst
-    upgradeCost: 1000
+    description: Unleash a bullet hell for a short period of time.
+    upgradeCost: 2000
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 2
@@ -347,7 +351,6 @@ Transform:
   - {fileID: 2129615165364960894}
   - {fileID: 8343342733554098326}
   - {fileID: 5788378426735856805}
-  - {fileID: 2739407212295604341}
   m_Father: {fileID: 3792607124008786777}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
@@ -435,12 +438,13 @@ MonoBehaviour:
   moneyValue: 0
   lifeValue: 0
   healthBar: {fileID: 0}
+  superSlow: 0
 --- !u!1001 &3481568278009666745
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2132953714685851362}
+    m_TransformParent: {fileID: 5788378426735856805}
     m_Modifications:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -455,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.46
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -480,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -505,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.96
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}

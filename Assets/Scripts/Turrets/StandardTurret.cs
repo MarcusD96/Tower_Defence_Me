@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
 public class StandardTurret : ProjectileTurret {
     public float specialTime = 1.0f;

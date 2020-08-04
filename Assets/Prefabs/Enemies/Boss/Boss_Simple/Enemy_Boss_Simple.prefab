@@ -309,7 +309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3498438954662709570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.3, y: 2.81, z: 26.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1345192624}
@@ -375,7 +375,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4322764439141097690
 MonoBehaviour:
@@ -397,6 +397,7 @@ MonoBehaviour:
   startHp: 10000
   currentHp: 0
   speed: 10
+  distanceTravelled: 0
   moneyValue: 1000
   lifeValue: 30
   healthBar: {fileID: 131314440}

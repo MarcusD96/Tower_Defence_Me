@@ -18,8 +18,12 @@ public class GameManager : MonoBehaviour {
         if(gameEnd)
             return;
 
-        if (PlayerStats.lives <= 0)
+        if(PlayerStats.lives <= 0)
             EndGame();
+
+        if(Input.GetKeyDown(KeyCode.L)) {
+            WinLevel();
+        }
 
         //cheaty :P
         if(Input.GetKey(KeyCode.P)) {

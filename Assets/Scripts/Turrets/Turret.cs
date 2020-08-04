@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
     public Transform fireSpawn;
-
+    
     public bool manual = false;
     protected Transform target;
     protected Enemy targetEnemy;
-    protected bool hasSpecial = false, specialActivated = false;
+    protected bool hasSpecial = false;
+    protected bool specialActivated = false; //to restrain from activating again until the special bar is recharged
+    [HideInInspector]
     public int cost;
 
     [Header("Global")]
@@ -22,7 +24,7 @@ public class Turret : MonoBehaviour {
     public string enemyTag = "Enemy";
     public float turnSpeed = 10.0f;
     public float manualTurnSpeed = 100.0f;
-    protected LaserTurret laserTurret;
+    protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
 
     [Header("Upgrades")]
@@ -83,7 +85,7 @@ public class Turret : MonoBehaviour {
         }
         UpdateTargettingName();
     }
-    
+
     public void LastTargettingOption() {
         targettingMethod--;
         if(targettingMethod <= 0) {
@@ -252,35 +254,34 @@ public class Turret : MonoBehaviour {
     void AutomaticControl() {
         FindEnemy();
         if(!target) {
-            if(laserTurret)
-                laserTurret.LaserOff();
+            if(beamTurret)
+                beamTurret.LaserOff();
             return;
         }
 
         //RotateWithTarget();
 
-        if(!laserTurret) {
+        if(!beamTurret) {
             if(nextFire <= 0.0f) {
-                RotateOnShoot(); //
+                RotateOnShoot();
                 projectileTurret.AutoShoot();
                 nextFire = 1 / fireRate;
             }
 
             nextFire -= Time.deltaTime;
         } else {
-            RotateOnShoot(); //
-            laserTurret.AutoLaser();
+            beamTurret.AutoShoot();
         }
     }
 
     void ManualControl() {
         ManualMovement();
 
-        if(laserTurret) {
+        if(beamTurret) {
             if(Input.GetMouseButton(0)) {
-                laserTurret.ManualLaser();
+                beamTurret.ManualShoot();
             } else {
-                laserTurret.LaserOff();
+                beamTurret.LaserOff();
             }
         } else {
             var manualFireRate = fireRate * 1.5f;
@@ -349,12 +350,5 @@ public class Turret : MonoBehaviour {
         manual = false;
         turretCam.enabled = false;
         turretView.SetActive(false);
-    }
-
-    void OnDrawGizmosSelected() {
-        Color color = Color.red;
-        color.a = 0.3f;
-        Gizmos.color = color;
-        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

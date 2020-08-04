@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 [System.Serializable]
 public class TurretFactory {
-    public GameObject turretPrefab, upgradedPrefab;
+    public GameObject turretPrefab; // upgradedPrefab;
     public TextMeshProUGUI costText;
     public Image border;
     public int cost;

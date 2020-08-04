@@ -26,7 +26,7 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
+        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
             if(turret) {
                 RevertTurret(false);
             }
@@ -67,12 +67,12 @@ public class Node : MonoBehaviour {
     public void UpgradeA() { //range always
         var t = turret.GetComponent<Turret>();
 
-        if(PlayerStats.money < t.ugA.upgradeCost) {
+        if(PlayerStats.money < t.ugA.GetUpgradeCost()) {
             return;
         }
 
-        PlayerStats.money -= t.ugA.upgradeCost;
-        t.cost += t.ugA.upgradeCost;
+        PlayerStats.money -= t.ugA.GetUpgradeCost();
+        t.cost += t.ugA.GetUpgradeCost();
 
         BuildEffect(buildManager.upgradeEffect);
         t.ApplyUpgradeA();
@@ -83,14 +83,14 @@ public class Node : MonoBehaviour {
     public void UpgradeB() {
         var t = turret.GetComponent<Turret>();
 
-        if(PlayerStats.money < t.ugB.upgradeCost) {
+        if(PlayerStats.money < t.ugB.GetUpgradeCost()) {
             return;
         }
 
         BuildEffect(buildManager.upgradeEffect);
 
-        PlayerStats.money -= t.ugB.upgradeCost;
-        t.cost += t.ugB.upgradeCost;
+        PlayerStats.money -= t.ugB.GetUpgradeCost();
+        t.cost += t.ugB.GetUpgradeCost();
 
         t.ApplyUpgradeB();
         t.ugB.IncreaseUpgrade();
@@ -99,14 +99,14 @@ public class Node : MonoBehaviour {
     public void UpgradeSpecial() {
         var t = turret.GetComponent<Turret>();
 
-        if(PlayerStats.money < t.ugSpec.upgradeCost) {
+        if(PlayerStats.money < t.ugSpec.GetUpgradeCost()) {
             return;
         }
 
         BuildEffect(buildManager.upgradeEffect);
 
-        PlayerStats.money -= t.ugSpec.upgradeCost;
-        t.cost += t.ugSpec.upgradeCost;
+        PlayerStats.money -= t.ugSpec.GetUpgradeCost();
+        t.cost += t.ugSpec.GetUpgradeCost();
 
         t.EnableSpecial();
         t.ugSpec.IncreaseUpgrade();

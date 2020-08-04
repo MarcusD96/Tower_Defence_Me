@@ -9560,6 +9560,8 @@ MonoBehaviour:
     type: 3}
   speed: 30
   miss: 0
+  penetration: 4
+  explosionRadius: 5
 --- !u!1 &9221342441966967519
 GameObject:
   m_ObjectHideFlags: 0

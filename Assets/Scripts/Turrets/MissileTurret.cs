@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MissileTurret : ProjectileTurret {
-    int missileCount = 10;
-    List<Enemy> targetList = new List<Enemy>();
+
+    private int missileCount = 10;
+    private List<Enemy> targetList = new List<Enemy>();
 
     void Awake() {
         missileTurret = this;
@@ -27,8 +28,7 @@ public class MissileTurret : ProjectileTurret {
     public override void ApplyUpgradeB() {  //fireRate++, damage++, explosionRad+1, penetration +1
         fireRate *= ugB.upgradeFactorX;
         damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
-        explosionRadius += 1;
-        penetration += 1;
+        penetration += 2;
     }
 
     void ActivateBarrage() {
