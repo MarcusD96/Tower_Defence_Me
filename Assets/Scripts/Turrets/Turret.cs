@@ -237,13 +237,6 @@ public class Turret : MonoBehaviour {
         return Mathf.RoundToInt((cost / 2) / 5) * 5; //rounds to nearest 5 value
     }
 
-    void RotateWithTarget() {
-        Vector3 direction = target.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        Vector3 euler = Quaternion.Lerp(pivot.rotation, rotation, Time.deltaTime * turnSpeed).eulerAngles;
-        pivot.rotation = Quaternion.Euler(0, euler.y, 0);
-    }
-
     protected void RotateOnShoot() {
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
@@ -258,8 +251,6 @@ public class Turret : MonoBehaviour {
                 beamTurret.LaserOff();
             return;
         }
-
-        //RotateWithTarget();
 
         if(!beamTurret) {
             if(nextFire <= 0.0f) {

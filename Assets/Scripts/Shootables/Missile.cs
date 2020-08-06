@@ -2,17 +2,17 @@
 
 public class Missile : Projectile {
 
-    public int penetration;
+    private int penetration;
     private float explosionRadius = 5.0f;
+
+    void Awake() {
+        missile = this;
+        lifeEnd = Time.time + 3;
+    }
 
     public void SetExplosion(int penetration_, float radius_) {
         penetration = penetration_;
         explosionRadius = radius_;
-    }
-
-    void Start() {
-        lifeEnd = Time.time + 5;
-        type = gameObject;
     }
 
     new void Update() {

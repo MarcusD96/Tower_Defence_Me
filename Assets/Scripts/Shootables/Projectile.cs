@@ -5,18 +5,17 @@ public class Projectile : MonoBehaviour {
 
     [Header("Projectile Properties")]
     public GameObject impactEffect;
-    public GameObject indicator, type;
+    public GameObject indicator;
     public float speed = 100.0f;
     public bool miss;
 
+    protected Missile missile;
+    protected Bullet bullet;
+    protected Rod rod;
 
     protected Transform target;
     protected float lifeEnd, distanceThisFrame;
-    protected int damage; //penetration, explosionRadius;
-
-    public void SetDamage(int damage_) {
-        damage = damage_;
-    }
+    protected int damage;
 
     protected void Update() {
         if(Time.time > lifeEnd) {
@@ -39,10 +38,25 @@ public class Projectile : MonoBehaviour {
                 miss = true;
                 TryFindNewTargetInfront();
             }
-            return;
         } else {
             TryFindNewTargetInfront();
         }
+    }
+
+    public Missile GetMissile() {
+        return missile;
+    }
+
+    public Bullet GetBullet() {
+        return bullet;
+    }
+
+    public Rod GetRod() {
+        return rod;
+    }
+
+    public void SetDamage(int damage_) {
+        damage = damage_;
     }
 
     public void MakeTarget(Transform _target) {

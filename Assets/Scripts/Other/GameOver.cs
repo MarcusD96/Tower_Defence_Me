@@ -2,8 +2,12 @@
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
-    public SceneFader sceneFader;
+    private SceneFader sceneFader;
     public string menuSceneName = "Main Menu";
+
+    void Start() {
+        sceneFader = FindObjectOfType<SceneFader>();
+    }
 
     public void Retry() {
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);

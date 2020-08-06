@@ -130,6 +130,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -156,6 +157,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &950878277575815669
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +169,7 @@ GameObject:
   - component: {fileID: 3792607124008786777}
   - component: {fileID: 8541359354725232022}
   m_Layer: 0
-  m_Name: Standard Turret
+  m_Name: Bullet Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 950878277575815669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656eb67a49f910a4e92f7d02379c48de, type: 3}
+  m_Script: {fileID: 11500000, guid: c535e937bfe49994fa0864c4fe71f1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2129615165364960894}
@@ -213,33 +215,33 @@ MonoBehaviour:
   turnSpeed: 10
   manualTurnSpeed: 100
   ugA:
-    upgradeName: Sniper Range
-    description: Upgraded scopes allow this tower to see farther.
+    upgradeName: Sniper Vision
+    description: See further enemies
     upgradeCost: 100
-    upgradeFactorX: 1.15
+    upgradeFactorX: 1.1
     upgradeFactorY: 0
   ugB:
-    upgradeName: Ghetto Gunner
-    description: Acquire tech from the crib. Faster reloading. Bigger damage.
-    upgradeCost: 200
-    upgradeFactorX: 1.2
-    upgradeFactorY: 1.35
+    upgradeName: Full metal jacket rounds
+    description: Faster reload speed and more damage
+    upgradeCost: 250
+    upgradeFactorX: 1.25
+    upgradeFactorY: 0
   ugSpec:
-    upgradeName: Bullet Burst
-    description: Unleash a bullet hell for a short period of time.
-    upgradeCost: 2000
+    upgradeName: Range++
+    description: 
+    upgradeCost: 0
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 2
   specialBar: {fileID: 570926517585506664}
-  specialRate: 30
+  specialRate: 0
   targetting: First
   projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
     type: 3}
   damage: 20
   explosionRadius: 0
   penetration: 0
-  specialTime: 5
+  specialTime: 35
 --- !u!1 &4838282461862221301
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +297,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -320,6 +323,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5026334242066057646
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +450,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5788378426735856805}
     m_Modifications:
+    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -581,10 +605,70 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
     - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4279288601
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 3434655782107344850, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -630,6 +714,96 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 71.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 69.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac544509da2972845a14cd3400e757d3, type: 3}

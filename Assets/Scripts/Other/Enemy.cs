@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    [SerializeField]
     public static float speedDifficultyMultiplier = 1.0f, hpDifficultyMultiplier = 1.0f;
 
     public GameObject deathEffect;

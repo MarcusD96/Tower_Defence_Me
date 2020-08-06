@@ -38,11 +38,11 @@ public class LevelSelector : MonoBehaviour {
         switch(difficultyLevel) {
             case 0:     //easy
                 Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 0.85f;
-                PlayerStats.lives = 50;
+                PlayerStats.lives = 100;
                 break;
             case 1:     //medium
                 Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 0.95f;
-                PlayerStats.lives = 25;
+                PlayerStats.lives = 50;
                 break;
             case 2:     //hard
                 Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 1.1f;

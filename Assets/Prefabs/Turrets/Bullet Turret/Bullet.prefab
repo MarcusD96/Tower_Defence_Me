@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2224151954190168903}
   - component: {fileID: 2224151954190168902}
   - component: {fileID: 2224151954190168905}
-  - component: {fileID: -8518949126304160672}
+  - component: {fileID: 8845652450630549259}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,7 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-8518949126304160672
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8845652450630549259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,12 +91,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2224151954190168904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffd1e6af6975bb44297fc6f9fe5af84a, type: 3}
+  m_Script: {fileID: 11500000, guid: eec3b1ddf317653459c0b11700325f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 4573118995715554346, guid: 8bcadf8c6580b2e43a275bde57e28da5,
     type: 3}
   indicator: {fileID: 1378860419587455062, guid: b3f624ad269e6914e874506df572880d,
     type: 3}
-  speed: 150
+  speed: 125
   miss: 0

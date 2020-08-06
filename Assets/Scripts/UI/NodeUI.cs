@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Security.Cryptography.X509Certificates;
 
 public class NodeUI : MonoBehaviour {
     [Header("UI Elements")]
@@ -24,8 +25,10 @@ public class NodeUI : MonoBehaviour {
     void Update() {
         if(!target)
             return;
+        if(PauseMenu.paused == true)
+            return;
 
-        if(Input.GetKeyDown(KeyCode.X)) {
+        if(Input.GetKeyDown(KeyCode.X)) { //open upgrade menu
             Upgrade();
         }
 
@@ -65,7 +68,7 @@ public class NodeUI : MonoBehaviour {
         upgradeButtonB.interactable = true;
         upgradeButtonSpecial.interactable = true;
 
-        SetNamesPricesToolTip();
+        SetUIInfo();
         CheckMax();
     }
 
@@ -83,19 +86,19 @@ public class NodeUI : MonoBehaviour {
 
     public void UpgradeA() {
         target.UpgradeA();
-        SetNamesPricesToolTip();
+        SetUIInfo();
         CheckMax();
     }
 
     public void UpgradeB() {
         target.UpgradeB();
-        SetNamesPricesToolTip();
+        SetUIInfo();
         CheckMax();
     }
 
     public void UpgradeSpecial() {
         target.UpgradeSpecial();
-        SetNamesPricesToolTip();
+        SetUIInfo();
         CheckMax();
     }
 
@@ -125,8 +128,10 @@ public class NodeUI : MonoBehaviour {
         tooltips.SetActive(!tooltips.activeSelf);
     }
 
-    void SetNamesPricesToolTip() {
+    void SetUIInfo() {
         var t = target.turret.GetComponent<Turret>();
+
+        targetting.text = target.turret.GetComponent<Turret>().targetting;
 
         sellPrice.text = "$" + t.GetSellPrice();
 

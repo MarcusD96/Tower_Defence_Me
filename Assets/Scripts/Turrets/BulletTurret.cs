@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StandardTurret : ProjectileTurret {
+public class BulletTurret : ProjectileTurret {
     public float specialTime = 1.0f;
 
     void Awake() {

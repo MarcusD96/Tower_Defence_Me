@@ -4,21 +4,26 @@ public class ProjectileTurret : Turret {
 
     [Header("Projectile Stuff")]
     public GameObject projectilePrefab;
-    protected StandardTurret standardTurret;
+    protected BulletTurret standardTurret;
     protected MissileTurret missileTurret;
+    protected RailgunTurret railgunTurret;
 
-    public int damage = 50, explosionRadius = 0, penetration = 0;
+    public int damage = 50;
+    public int explosionRadius = 0, penetration = 0;
 
     public void AutoShoot() {
-        GameObject bulletGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Missile bullet = bulletGO.GetComponent<Missile>();
-        bullet.SetDamage(damage);
+        GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
+        Projectile proj  = prpojectileGO.GetComponent<Projectile>();
+        proj.SetDamage(damage);
+
         if(missileTurret) {
-            bullet.SetExplosion(penetration, explosionRadius);
+            proj.GetMissile().SetExplosion(penetration, explosionRadius);
+        } else if(railgunTurret) {
+            proj.GetRod().SetPenetration(penetration);
         }
 
-        if(bullet) {
-            bullet.MakeTarget(target);
+        if(proj) {
+            proj.MakeTarget(target);
         }
     }
 
@@ -26,11 +31,15 @@ public class ProjectileTurret : Turret {
         float manualRange = range * 2;
 
         //spawn bullet, get the bullet info
-        GameObject bulletGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Missile bullet = bulletGO.GetComponent<Missile>();
-        bullet.SetDamage(damage);
+        GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
+        Projectile proj = projGO.GetComponent<Projectile>();
+        proj.SetDamage(damage);
+
         if(missileTurret) {
-            bullet.SetExplosion(penetration, explosionRadius); 
+            proj.GetMissile().SetExplosion(penetration, explosionRadius); 
+        } else if(railgunTurret) {
+            proj.GetRod().SetPenetration(penetration);
+            return;
         }
 
         //get a target only if theres a hit, otherwise the target is the mockEnemy; 
@@ -38,16 +47,16 @@ public class ProjectileTurret : Turret {
         if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
                 //set the target
-                bullet.miss = false;
+                proj.miss = false;
                 target = hit.collider.transform;
             }
         } else {
-            bullet.miss = true;
+            proj.miss = true;
             target = mockEnemy.transform;
         }
 
-        if(bullet) {
-            bullet.MakeTarget(target);
+        if(proj) {
+            proj.MakeTarget(target);
         }
     }
 }

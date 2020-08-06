@@ -25,7 +25,7 @@ public class MissileTurret : ProjectileTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //fireRate++, damage++, explosionRad+1, penetration +1
+    public override void ApplyUpgradeB() {  //fireRate++, damage++, penetration +1
         fireRate *= ugB.upgradeFactorX;
         damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
         penetration += 2;

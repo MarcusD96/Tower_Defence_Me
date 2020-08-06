@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Bullet : Projectile {
 
-    void Start() {
-        lifeEnd = Time.time + 2;
+    void Awake() {
+        bullet = this;
+        lifeEnd = Time.time + 1;
     }
 
     new void Update() {
