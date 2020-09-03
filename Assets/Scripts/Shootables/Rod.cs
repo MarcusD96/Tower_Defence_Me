@@ -3,28 +3,26 @@ using UnityEngine;
 
 public class Rod : Projectile {
 
+    public GameObject rodExplodeEffect;
+
     private int penetration;
-    Vector3 direction;
+    public bool explosive;
+    private Vector3 direction;
+
 
     void Awake() {
         rod = this;
-        lifeEnd = Time.time + 1;
-        direction = gameObject.transform.forward;
+        direction = transform.forward;
     }
 
     new void Update() {
-        if(Time.time > lifeEnd) {
-            HitTarget(true);
-            return;
-        }
+        base.Update();
+
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
 
         if(penetration <= 0) {
             Destroy(gameObject);
         }
-
-        distanceThisFrame = speed * Time.deltaTime;
-
-        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
     public void SetPenetration(int penetration_) { //giggiddy
@@ -40,10 +38,27 @@ public class Rod : Projectile {
             return;
         }
 
-        Damage(target);
-        GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-        indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-        Destroy(indicatorInstance, 0.5f);
+        if(!explosive) {
+            Damage(target);
+        } else {
+            Explode();
+            GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
+            Destroy(explosiveEffectInstance, 3.0f);
+        }
+    }
+
+    void Explode() {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 4);
+        int i = 3;
+        foreach(var c in colliders) {
+            if(c.gameObject.CompareTag("Enemy")) {
+                if(i > 0) {
+                    Damage(c.transform);
+                } else
+                    break;
+                i--;
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other) {

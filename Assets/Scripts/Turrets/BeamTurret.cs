@@ -8,7 +8,6 @@ public class BeamTurret : Turret {
 
     [Header("Beam Turret")]
     public LineRenderer lineRenderer;
-    public GameObject indicator;
 
     public void Awake() {
         lineRenderer.enabled = false;
@@ -28,7 +27,7 @@ public class BeamTurret : Turret {
 
     public void LaserOff() {
         if(laserTurret) {
-            lineRenderer.enabled = false;        
+            lineRenderer.enabled = false;
             laserTurret.impactEffect.Stop();
             laserTurret.impactLight.enabled = false;
         }

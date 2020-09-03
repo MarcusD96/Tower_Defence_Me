@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
 public class RemainingUI : MonoBehaviour {
     public TextMeshProUGUI remainingText;

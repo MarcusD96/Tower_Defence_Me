@@ -10,9 +10,10 @@ public class GameOver : MonoBehaviour {
     }
 
     public void Retry() {
+        PlayerStats.ResetToDifficulty();
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
-    
+
     public void Quit() {
         sceneFader.FadeTo(menuSceneName);
     }

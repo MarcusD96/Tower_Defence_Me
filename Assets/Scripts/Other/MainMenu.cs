@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour {
          Application.Quit();
 #endif
     }
+
+    public void ResetStats() {
+        PlayerPrefs.DeleteAll();
+    }
 }
 
 public static class GameMode {

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  indicator: {fileID: 0}
   slowEffect: {fileID: 0}
   stunEffect: {fileID: 0}
   startSpeed: 0
@@ -110,6 +111,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -135,6 +137,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3416752418339476357
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +180,7 @@ GameObject:
   - component: {fileID: 5814660438982561715}
   - component: {fileID: 3107388126743563182}
   m_Layer: 0
-  m_Name: Missile Launcher
+  m_Name: Missile Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,8 +240,7 @@ MonoBehaviour:
     upgradeFactorY: 1.35
   ugSpec:
     upgradeName: Missile Barrage
-    description: Send out a barrage of missiles which targets up to 10 ememies at
-      once.
+    description: Target up to the closest 10 enemies and launch missiles at each
     upgradeCost: 2000
     upgradeFactorX: 0
     upgradeFactorY: 0
@@ -251,6 +253,8 @@ MonoBehaviour:
   damage: 45
   explosionRadius: 10
   penetration: 3
+  specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
+    type: 3}
 --- !u!1 &4218313142294416001
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +344,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -365,6 +370,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7049441604495847067
 GameObject:
   m_ObjectHideFlags: 0

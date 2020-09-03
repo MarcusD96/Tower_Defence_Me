@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeslaTurret : BeamTurret {
 
     [Header("Tesla")]
-    public float damage = 15.0f;
+    public float damage;
     public float stunDuration;
 
     [Header("Lightning")]
@@ -26,11 +26,9 @@ public class TeslaTurret : BeamTurret {
     new void Update() {
         base.Update();
 
-        if(hasSpecial) {
-            if(Input.GetMouseButtonDown(1) && !specialActivated) {
-                specialActivated = true;
-                specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
-                StartCoroutine(SpecialAbility());
+        if(hasSpecial && manual) {
+            if(Input.GetMouseButtonDown(1)) {
+                ActivateSpecial();
             }
         }
 
@@ -54,21 +52,13 @@ public class TeslaTurret : BeamTurret {
         //build gfx
         if(!abilityActivation) {
             BuildLightning();
-            targetEnemy.TakeDamage(damage);
+            targetEnemy.TakeDamage(damage, true);
             targetEnemy.Stun(stunDuration);
-
-            GameObject indicatorInstance = Instantiate(indicator, targetEnemy.transform.position, Quaternion.identity);
-            indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-            Destroy(indicatorInstance, 0.5f);
         } else {
             Enemy[] enemies = BuildSuperchargedLightning();
             foreach(var e in enemies) {
-                e.TakeDamage(damage);
+                e.TakeDamage(damage, true);
                 e.Stun(stunDuration);
-
-                GameObject indicatorInstance = Instantiate(indicator, e.transform.position, Quaternion.identity);
-                indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-                Destroy(indicatorInstance, 0.5f);
             }
         }
 
@@ -82,8 +72,7 @@ public class TeslaTurret : BeamTurret {
             nextFire -= Time.deltaTime;
             return;
         } else {
-            float manualRange = range * 2;
-            int manualDamage = Mathf.RoundToInt(damage * 1.3f);
+            float manualRange = range * 3;
 
             RaycastHit hit;
             if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, manualRange)) {
@@ -95,22 +84,14 @@ public class TeslaTurret : BeamTurret {
                     if(!abilityActivation) {
                         BuildLightning();
                         if(targetEnemy) {
-                            targetEnemy.TakeDamage(manualDamage);
+                            targetEnemy.TakeDamage(damage, true);
                             targetEnemy.Stun(stunDuration);
-
-                            GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
-                            indicatorInstance.GetComponent<DamageIndicator>().damage = manualDamage;
-                            Destroy(indicatorInstance, 0.5f);
                         }
                     } else {
                         Enemy[] enemies = BuildSuperchargedLightning();
                         foreach(var e in enemies) {
-                            e.TakeDamage(damage);
+                            e.TakeDamage(damage, true);
                             e.Stun(stunDuration);
-
-                            GameObject indicatorInstance = Instantiate(indicator, e.transform.position, Quaternion.identity);
-                            indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-                            Destroy(indicatorInstance, 0.5f);
                         }
                     }
 
@@ -185,13 +166,13 @@ public class TeslaTurret : BeamTurret {
             RestoreAlpha();
 
             var lastPoint = fireSpawn.position; //the first point
-            var lineVert = 1; 
+            var lineVert = 1;
             lineRenderer.SetPosition(0, lastPoint); //the first point is the firing position
 
             for(int currentT = 0; currentT < targetList.Count; currentT++) {
                 target = targetList[currentT].transform;
 
-                while (Vector3.Distance(target.position, lastPoint) > 4) {
+                while(Vector3.Distance(target.position, lastPoint) > 4) {
                     lineRenderer.positionCount = lineVert + 1;
                     var fwd = target.position - lastPoint;
                     fwd.Normalize();
@@ -224,6 +205,12 @@ public class TeslaTurret : BeamTurret {
         Color end = new Color(lineRenderer.endColor.r, lineRenderer.endColor.g, lineRenderer.endColor.b, 1);
         lineRenderer.startColor = start;
         lineRenderer.endColor = end;
+    }
+
+    public override void ActivateSpecial() {
+        specialActivated = true;
+        specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
+        StartCoroutine(SpecialAbility());
     }
 
     Vector3 RandomizeArc(Vector3 v, float inaccuracy_) {
@@ -267,7 +254,7 @@ public class TeslaTurret : BeamTurret {
     }
 
     IEnumerator SpecialAbility() {
-        StartCoroutine(SpecialTime(specialRate));
+        StartCoroutine(SpecialTime());
         abilityActivation = true;
         var tmp = fireRate;
         fireRate *= 5;

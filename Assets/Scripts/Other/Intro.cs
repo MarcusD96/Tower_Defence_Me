@@ -9,7 +9,8 @@ public class Intro : MonoBehaviour {
     public SceneFader sceneFader;
 
     void Start() {
-        PlayerPrefs.SetInt("levelreached", 1);
+        PlayerPrefs.DeleteAll(); //no saving allowed temp!
+        Application.targetFrameRate = 150;
         StartCoroutine(PlayIntro());
     }
 

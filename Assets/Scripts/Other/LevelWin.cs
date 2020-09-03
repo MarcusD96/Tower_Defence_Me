@@ -3,7 +3,7 @@
 public class LevelWin : MonoBehaviour {
     private SceneFader sceneFader;
     private string menuSceneName = "Main Menu";
-    public int levelToUnlock;
+    public int levelToUnlock = 1;
 
     void Awake() {
         sceneFader = FindObjectOfType<SceneFader>();
@@ -15,7 +15,7 @@ public class LevelWin : MonoBehaviour {
 
     public void Continue() {
         PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        Debug.Log(levelToUnlock);
+        PlayerPrefs.Save();
         sceneFader.FadeTo("Level Selection");
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
     public Transform fireSpawn;
-    
+
     public bool manual = false;
     protected Transform target;
     protected Enemy targetEnemy;
@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour {
     [Header("Global")]
     public float range = 15.0f;
     public Camera turretCam;
+    private Camera mainCam;
     public GameObject turretView;
     public Enemy mockEnemy;
 
@@ -44,6 +45,7 @@ public class Turret : MonoBehaviour {
     private int targettingMethod;
 
     void Start() {
+        mainCam = Camera.main;
         turretCam.enabled = false;
         turretView.SetActive(false);
         mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
@@ -88,7 +90,7 @@ public class Turret : MonoBehaviour {
 
     public void LastTargettingOption() {
         targettingMethod--;
-        if(targettingMethod <= 0) {
+        if(targettingMethod < 0) {
             targettingMethod = 3;
         }
         UpdateTargettingName();
@@ -312,12 +314,16 @@ public class Turret : MonoBehaviour {
         specialBar.gameObject.SetActive(true);
     }
 
-    protected IEnumerator SpecialTime(float rate) {
-        float fillTime = rate;
+    public virtual void ActivateSpecial() {
+        Debug.Log("Activate Special");
+    }
+
+    protected IEnumerator SpecialTime() {
+        float fillTime = specialRate;
         while(fillTime > 0) {
             if(WaveSpawner.enemiesAlive > 0) {
                 fillTime -= Time.deltaTime;
-                specialBar.fillBar.fillAmount = fillTime / rate;
+                specialBar.fillBar.fillAmount = fillTime / specialRate;
             }
             yield return null;
         }
@@ -325,21 +331,23 @@ public class Turret : MonoBehaviour {
 
     public void AssumeControl() {
         GameManager.lastControlled = this;
+        turretCam.enabled = true;
+        turretView.SetActive(true);
+        TurnHealth.UpdateCam(turretCam);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         manual = true;
-        turretCam.enabled = true;
-        turretView.SetActive(true);
     }
 
     public void RevertControl(bool roundEnd) {
+        turretCam.enabled = false;
+        turretView.SetActive(false);
+        TurnHealth.UpdateCam(mainCam);
         if(!roundEnd)
             GameManager.lastControlled = null;
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         manual = false;
-        turretCam.enabled = false;
-        turretView.SetActive(false);
     }
 }

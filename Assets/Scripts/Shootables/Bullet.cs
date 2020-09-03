@@ -3,25 +3,31 @@ using UnityEngine;
 
 public class Bullet : Projectile {
 
+    Vector3 direction;
+
     void Awake() {
         bullet = this;
-        lifeEnd = Time.time + 1;
+        direction = transform.forward;
     }
 
     new void Update() {
         base.Update();
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
     protected override void HitTarget(bool endOfLife) {
         if(!endOfLife) {
             Damage(target);
-            GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-            indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-            Destroy(indicatorInstance, 0.5f);
         }
         Destroy(gameObject);
 
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 5.0f);
+    }
+    void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Enemy")) {
+            target = other.transform;
+            HitTarget(false);
+        }
     }
 }

@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BulletTurret : ProjectileTurret {
+
+    public GameObject specialPrefab;
     public float specialTime = 1.0f;
 
     void Awake() {
@@ -11,9 +13,10 @@ public class BulletTurret : ProjectileTurret {
 
     new void Update() {
         base.Update();
-        if(hasSpecial) {
+
+        if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
-                ActivateBurst();
+                ActivateSpecial();
             }
         }
 
@@ -27,8 +30,8 @@ public class BulletTurret : ProjectileTurret {
         damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
     }
 
-    void ActivateBurst() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && manual) {
+    public override void ActivateSpecial() {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(BulletBurst());
@@ -36,10 +39,16 @@ public class BulletTurret : ProjectileTurret {
     }
 
     IEnumerator BulletBurst() {
-        StartCoroutine(SpecialTime(specialRate));
+        StartCoroutine(SpecialTime());
+
+        GameObject tmp = projectilePrefab;
+        projectilePrefab = specialPrefab;
         var saveFireRate = fireRate;
-        fireRate *= 10.0f;
+        fireRate *= 8.0f;
+
         yield return new WaitForSeconds(specialTime);
+
         fireRate = saveFireRate;
+        projectilePrefab = tmp;
     }
 }

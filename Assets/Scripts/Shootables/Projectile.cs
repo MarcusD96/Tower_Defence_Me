@@ -5,42 +5,35 @@ public class Projectile : MonoBehaviour {
 
     [Header("Projectile Properties")]
     public GameObject impactEffect;
-    public GameObject indicator;
     public float speed = 100.0f;
-    public bool miss;
+    public bool miss, special;
 
     protected Missile missile;
     protected Bullet bullet;
     protected Rod rod;
 
     protected Transform target;
-    protected float lifeEnd, distanceThisFrame;
+    protected float distanceThisFrame;
     protected int damage;
 
+    protected Vector3 startPos, endPos;
+
+    void Start() {
+        startPos = transform.position;
+    }
+
     protected void Update() {
-        if(Time.time > lifeEnd) {
-            HitTarget(true);
-            return;
+        Debug.DrawLine(startPos, endPos, Color.cyan);
+        Debug.DrawLine(startPos, transform.position, Color.green);
+
+        if(!special) { //special projectiles may not need this feauture
+            if(Vector3.Distance(transform.position, startPos) >= Vector3.Distance(endPos, startPos)) { //if the projectile has gone to its max range, die
+                HitTarget(true);
+                return;
+            }
         }
 
         distanceThisFrame = speed * Time.deltaTime;
-
-        if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
-            if(target) {
-                Vector3 direction = target.position - transform.position;
-                if(direction.magnitude <= distanceThisFrame) {
-                    HitTarget(false);
-                    return;
-                }
-                transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-                transform.LookAt(target);
-            } else {
-                miss = true;
-                TryFindNewTargetInfront();
-            }
-        } else {
-            TryFindNewTargetInfront();
-        }
     }
 
     public Missile GetMissile() {
@@ -59,6 +52,11 @@ public class Projectile : MonoBehaviour {
         damage = damage_;
     }
 
+    public void SetLifePositions(Vector3 startPos_, Vector3 endPos_) {
+        startPos = startPos_;
+        endPos = endPos_;
+    }
+
     public void MakeTarget(Transform _target) {
         target = _target;
     }
@@ -70,7 +68,7 @@ public class Projectile : MonoBehaviour {
     protected void Damage(Transform enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
         if(e) {
-            e.TakeDamage(damage);
+            e.TakeDamage(damage, true);
         }
     }
 

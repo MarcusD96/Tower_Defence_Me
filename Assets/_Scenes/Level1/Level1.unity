@@ -16042,7 +16042,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 17.42751
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -28633,44 +28633,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_text
-      value: 'T
-
-        U
-
-        T
-
-        O
-
-        R
-
-        I
-
-        A
-
-        L'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617212593, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 264887746812978328, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -28946,25 +28908,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7027253502565301886, guid: 66d8fe13300afee4981da07bb7d9f170,
+    - target: {fileID: 8542027978201410680, guid: 66d8fe13300afee4981da07bb7d9f170,
         type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027253502565301886, guid: 66d8fe13300afee4981da07bb7d9f170,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027253502565301886, guid: 66d8fe13300afee4981da07bb7d9f170,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027253502565301886, guid: 66d8fe13300afee4981da07bb7d9f170,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
+      propertyPath: levelToUnlock
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66d8fe13300afee4981da07bb7d9f170, type: 3}

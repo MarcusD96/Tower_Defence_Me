@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,20 +7,22 @@ public class Enemy : MonoBehaviour {
 
     public static float speedDifficultyMultiplier = 1.0f, hpDifficultyMultiplier = 1.0f;
 
-    public GameObject deathEffect;
+    public GameObject deathEffect, indicator;
     public ParticleSystem slowEffect, stunEffect;
 
     public float startSpeed, startHp;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float currentHp, speed, distanceTravelled = 0.0f;
-
     public int moneyValue, lifeValue;
+
+    private Coroutine slow;
+    private IEnumerator stun = null;
 
     [Header("Unity Stuff")]
     public Image healthBar;
     public bool superSlow = false;
-    private bool isDead = false;
+    private bool isDead = false, isSlow = false;
 
     void Start() {
         speed = startSpeed * speedDifficultyMultiplier;
@@ -32,9 +35,15 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void TakeDamage(float amount) {
+    public void TakeDamage(float amount, bool indicateDmg) {
         if(healthBar) {
             currentHp -= amount;
+
+            if(indicateDmg) {
+                GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
+                indicatorInstance.GetComponent<DamageIndicator>().damage = amount;
+            }
+
             healthBar.fillAmount = currentHp / startHp;
 
             if(currentHp <= 0 && !isDead)
@@ -55,35 +64,59 @@ public class Enemy : MonoBehaviour {
     public void Slow(float slowFactor, float duration) {
         if(!slowEffect)
             return;
-        StopCoroutine("SlowEnemy");
-        StartCoroutine(SlowEnemy(slowFactor, duration));
+
+        if(!isSlow) { //first slow, start to slow and start particles
+            slow = StartCoroutine(SlowEnemy(slowFactor, duration));
+            slowEffect.gameObject.SetActive(true);
+            slowEffect.Play();
+        } else { //restart the slow, but keep particles on
+            StopAllCoroutines();
+            slow = StartCoroutine(SlowEnemy(slowFactor, duration));
+        }
+    }
+
+    IEnumerator SlowEnemy(float slowFactor, float duration) {
+        speed = startSpeed * slowFactor;
+
+        yield return new WaitForSeconds(duration);
+
+        if(isSlow)
+            yield break;
+
+        slowEffect.Stop();
+        slowEffect.gameObject.SetActive(false);
+
+        speed = startSpeed;
+        superSlow = false;
+        isSlow = false;
+        slow = null;
     }
 
     public void Stun(float duration) {
         if(!stunEffect)
             return;
-        StopCoroutine("StunEnemy");
-        StartCoroutine(StunEnemy(duration));
-    }
 
-    IEnumerator SlowEnemy(float slowFactor, float duration) {
-        speed = startSpeed * slowFactor;
-        slowEffect.gameObject.SetActive(true);
-        slowEffect.Play();
-        yield return new WaitForSeconds(duration);
-        slowEffect.Stop();
-        slowEffect.gameObject.SetActive(false);
-        speed = startSpeed;
-        superSlow = false;
+        if(stun != null) {
+            stunEffect.gameObject.SetActive(false);
+            speed = startSpeed;
+            StopCoroutine(stun);
+        }
+        stun = StunEnemy(duration);
+        StartCoroutine(stun);
     }
 
     IEnumerator StunEnemy(float duration) {
         speed = 0;
+
         stunEffect.gameObject.SetActive(true);
         stunEffect.Play();
+
         yield return new WaitForSeconds(duration);
+
         stunEffect.Stop();
         stunEffect.gameObject.SetActive(false);
+
         speed = startSpeed;
+        stun = null;
     }
 }

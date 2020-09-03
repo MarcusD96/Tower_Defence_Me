@@ -1,24 +1,23 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Security.Cryptography.X509Certificates;
 
 public class NodeUI : MonoBehaviour {
     [Header("UI Elements")]
     public GameObject ui;
     public GameObject upgradeUI, tooltips, info;
+    public Button controlButton;
     public TextMeshProUGUI sellPrice;
 
     [Header("Upgrades")]
     public Button upgradeButtonA;
     public Button upgradeButtonB, upgradeButtonSpecial;
-    public TextMeshProUGUI upgradeTextA, upgradeTextB, UpgradeTextSpecial;
-    public TextMeshProUGUI upgradeCostA, upgradeCostB, UpgradeCostSpecial;
-    public TextMeshProUGUI ttA, ttB, ttSpec;
+    public TextMeshProUGUI upgradeTextA, upgradeTextB, upgradeTextSpecial;
+    public TextMeshProUGUI upgradeCostA, upgradeCostB, upgradeCostSpecial;
+    public TextMeshProUGUI toolTipA, toolTipB, toolTipSpec;
 
     [Header("Targetting")]
     public TextMeshProUGUI targetting;
-
 
     private Node target;
 
@@ -27,6 +26,11 @@ public class NodeUI : MonoBehaviour {
             return;
         if(PauseMenu.paused == true)
             return;
+
+        if(WaveSpawner.enemiesAlive <= 0)
+            controlButton.interactable = false;
+        else
+            controlButton.interactable = true;
 
         if(Input.GetKeyDown(KeyCode.X)) { //open upgrade menu
             Upgrade();
@@ -50,8 +54,10 @@ public class NodeUI : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Backspace)) { //sell
             Sell();
         }
-        if(Input.GetKeyDown(KeyCode.Tab)) { //control 
-            Control();
+        if(WaveSpawner.enemiesAlive > 0) {
+            if(Input.GetKeyDown(KeyCode.Tab)) { //control 
+                Control();
+            } 
         }
     }
 
@@ -137,15 +143,15 @@ public class NodeUI : MonoBehaviour {
 
         upgradeTextA.text = t.ugA.upgradeName;
         upgradeCostA.text = t.ugA.GetUpgradeCost().ToString();
-        ttA.text = t.ugA.description;
+        toolTipA.text = t.ugA.description;
 
         upgradeTextB.text = t.ugB.upgradeName;
         upgradeCostB.text = t.ugB.GetUpgradeCost().ToString();
-        ttB.text = t.ugB.description;
+        toolTipB.text = t.ugB.description;
 
-        UpgradeTextSpecial.text = t.ugSpec.upgradeName;
-        UpgradeCostSpecial.text = t.ugSpec.GetUpgradeCost().ToString();
-        ttSpec.text = t.ugSpec.description;
+        upgradeTextSpecial.text = t.ugSpec.upgradeName;
+        upgradeCostSpecial.text = t.ugSpec.GetUpgradeCost().ToString();
+        toolTipSpec.text = t.ugSpec.description;
     }
 
     void CheckMax() {
@@ -156,19 +162,19 @@ public class NodeUI : MonoBehaviour {
             upgradeTextA.text = "MAX";
             upgradeCostA.text = "";
             upgradeButtonA.interactable = false;
-            ttA.text = "max";
+            toolTipA.text = "max";
         }
         if(t.ugB.GetLevel() > 2) {
             upgradeTextB.text = "MAX";
             upgradeCostB.text = "";
             upgradeButtonB.interactable = false;
-            ttB.text = "max";
+            toolTipB.text = "max";
         }
         if(t.ugSpec.GetLevel() > 0) {
-            UpgradeTextSpecial.text = "MAX";
-            UpgradeCostSpecial.text = "";
+            upgradeTextSpecial.text = "MAX";
+            upgradeCostSpecial.text = "";
             upgradeButtonSpecial.interactable = false;
-            ttSpec.text = "max";
+            toolTipSpec.text = "max";
         }
     }
 }

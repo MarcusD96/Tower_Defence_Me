@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using UnityEngine;
 
 public class SlowWave : MonoBehaviour {
@@ -15,13 +16,18 @@ public class SlowWave : MonoBehaviour {
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if(enemy) {
             enemy.superSlow = true;
-            enemy.Slow(slowFactor, slowDuration); 
+            enemy.Slow(slowFactor, slowDuration);
+            enemy.TakeDamage(30, true);
         }
     }
 
     IEnumerator WaveBlast() {
         while(transform.localScale.x < maxSize.x - 5) {
-            transform.localScale = Vector3.Slerp(transform.localScale, maxSize, Time.deltaTime * speed);
+            var scale = transform.localScale;
+            scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * speed);
+            scale.y = 0.01f;
+            transform.localScale = scale;
+
             yield return null;
         }
         done = true;

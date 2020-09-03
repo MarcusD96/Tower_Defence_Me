@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -9,7 +10,8 @@ public class Node : MonoBehaviour {
     public Image range;
 
     [HideInInspector]
-    public GameObject turret = null, controlledTurret = null;
+    public GameObject turret = null;
+
     [HideInInspector]
     public TurretFactory currentFactory;
 
@@ -17,6 +19,7 @@ public class Node : MonoBehaviour {
     private Color startColor;
     private BuildManager buildManager;
     private Camera mainCam;
+    private bool controlled = false;
 
     void Start() {
         mainCam = Camera.main;
@@ -26,14 +29,17 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
+        if(WaveSpawner.enemiesAlive <= 0) {
+            if(turret)
+                if(controlled) {
+                    RevertTurret(true);
+                }
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
             if(turret) {
                 RevertTurret(false);
             }
-        }
-        if(WaveSpawner.enemiesAlive <= 0) {
-            if(turret)
-                RevertTurret(true);
         }
         if(WaveSpawner.enemiesAlive > 0 && GameManager.lastControlled) {
             buildManager.DeselectNode();
@@ -42,7 +48,7 @@ public class Node : MonoBehaviour {
 
     void BuildEffect(GameObject effect) {
         var effect_ = Instantiate(effect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect_, 5.0f);
+        Destroy(effect_, 3.0f);
     }
 
     void BuildTurret(TurretFactory turret_) {
@@ -107,9 +113,34 @@ public class Node : MonoBehaviour {
 
         PlayerStats.money -= t.ugSpec.GetUpgradeCost();
         t.cost += t.ugSpec.GetUpgradeCost();
+        t.ugSpec.IncreaseUpgrade();
 
         t.EnableSpecial();
-        t.ugSpec.IncreaseUpgrade();
+
+        CheckTurretTypeAndMakeSpecial();
+    }
+
+    void CheckTurretTypeAndMakeSpecial() {
+        //bullet
+        if(turret.GetComponent<BulletTurret>()) {
+            SpecialActivator.MakeBurst(turret.GetComponent<BulletTurret>());
+        }
+        //missile
+        else if(turret.GetComponent<MissileTurret>()) {
+            SpecialActivator.MakeBarrage(turret.GetComponent<MissileTurret>());
+        }
+        //railgun
+        else if(turret.GetComponent<RailgunTurret>()) {
+            SpecialActivator.MakeCharges(turret.GetComponent<RailgunTurret>());
+        }
+        //laser
+        else if(turret.GetComponent<LaserTurret>()) {
+            SpecialActivator.MakeEMP(turret.GetComponent<LaserTurret>());
+        }
+        //tesla
+        else if(turret.GetComponent<TeslaTurret>()) {
+            SpecialActivator.MakeSuperChrge(turret.GetComponent<TeslaTurret>());
+        }
     }
 
     public void SellTurret() {
@@ -117,17 +148,45 @@ public class Node : MonoBehaviour {
 
         BuildEffect(buildManager.sellEffect);
 
+        CheckTurretTypeToSell();
+
         Destroy(turret);
         currentFactory = null;
     }
 
+    void CheckTurretTypeToSell() {
+        //bullet
+        if(turret.GetComponent<BulletTurret>()) {
+            Burst.RemoveTurret(turret.GetComponent<BulletTurret>());
+        }
+        //missile
+        else if(turret.GetComponent<MissileTurret>()) {
+            Barrage.RemoveTurret(turret.GetComponent<MissileTurret>());
+        }
+        //railgun
+        else if(turret.GetComponent<RailgunTurret>()) {
+            Charges.RemoveTurret(turret.GetComponent<RailgunTurret>());
+        }
+        //laser
+        else if(turret.GetComponent<LaserTurret>()) {
+            EMP.RemoveTurret(turret.GetComponent<LaserTurret>());
+        }
+        //tesla
+        else if(turret.GetComponent<TeslaTurret>()) {
+            Supercharge.RemoveTurret(turret.GetComponent<TeslaTurret>());
+        }
+
+    }
+
     public void ControlTurret() {
+        controlled = true;
         turret.GetComponent<Turret>().AssumeControl();
         mainCam.enabled = false;
         CameraController.isEnabled = false;
     }
 
     void RevertTurret(bool roundEnd) {
+        controlled = false;
         turret.GetComponent<Turret>().RevertControl(roundEnd);
         mainCam.enabled = true;
         CameraController.isEnabled = true;
@@ -159,7 +218,7 @@ public class Node : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        if(GameManager.lastControlled != null) { 
+        if(GameManager.lastControlled != null) {
             if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
                 return;
         }
@@ -188,7 +247,7 @@ public class Node : MonoBehaviour {
     void OnMouseExit() {
         rend.material.color = startColor;
         if(!turret) {
-            range.gameObject.SetActive(false); 
+            range.gameObject.SetActive(false);
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MissileTurret : ProjectileTurret {
 
+    public GameObject specialPrefab;
+
     private int missileCount = 10;
     private List<Enemy> targetList = new List<Enemy>();
 
@@ -14,9 +16,9 @@ public class MissileTurret : ProjectileTurret {
 
     new void Update() {
         base.Update();
-        if(hasSpecial) {
+        if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
-                ActivateBarrage();
+                ActivateSpecial();
             }
         }
 
@@ -31,17 +33,18 @@ public class MissileTurret : ProjectileTurret {
         penetration += 2;
     }
 
-    void ActivateBarrage() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && manual) {
+    public override void ActivateSpecial() {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
             StartCoroutine(MissileBarrage());
         }
     }
 
     IEnumerator MissileBarrage() {
-        StartCoroutine(SpecialTime(specialRate));
+        StartCoroutine(SpecialTime());
         FindAndSortEnemies();
-
+        GameObject tmp = projectilePrefab;
+        projectilePrefab = specialPrefab;
         if(targetList.Count < missileCount) {
             for(int i = 0; i < targetList.Count; i++) {
                 if(!targetList[i]) {
@@ -54,7 +57,7 @@ public class MissileTurret : ProjectileTurret {
         } else {
             for(int i = 0; i < missileCount; i++) {
                 if(!targetList[i]) {
-                    break;
+                    i = 1;
                 }
                 target = targetList[i].transform;
                 AutoShoot();
@@ -62,6 +65,7 @@ public class MissileTurret : ProjectileTurret {
             }
         }
 
+        projectilePrefab = tmp;
         targetList = new List<Enemy>();
     }
 

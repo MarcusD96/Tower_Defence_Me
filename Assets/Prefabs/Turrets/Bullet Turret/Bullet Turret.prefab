@@ -221,27 +221,29 @@ MonoBehaviour:
     upgradeFactorX: 1.1
     upgradeFactorY: 0
   ugB:
-    upgradeName: Full metal jacket rounds
+    upgradeName: FMJ
     description: Faster reload speed and more damage
     upgradeCost: 250
     upgradeFactorX: 1.25
-    upgradeFactorY: 0
+    upgradeFactorY: 1.25
   ugSpec:
-    upgradeName: Range++
-    description: 
-    upgradeCost: 0
+    upgradeName: Burst
+    description: Briefly increase the fire rate dramatically
+    upgradeCost: 2000
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 2
   specialBar: {fileID: 570926517585506664}
-  specialRate: 0
+  specialRate: 35
   targetting: First
-  projectilePrefab: {fileID: 2224151954190168904, guid: 63712c5ceba45f84aacda16ed2243b5e,
+  projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
   damage: 20
   explosionRadius: 0
-  penetration: 0
-  specialTime: 35
+  penetration: 1
+  specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
+    type: 3}
+  specialTime: 3
 --- !u!1 &4838282461862221301
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 0}
+  indicator: {fileID: 0}
   slowEffect: {fileID: 0}
   stunEffect: {fileID: 0}
   startSpeed: 0

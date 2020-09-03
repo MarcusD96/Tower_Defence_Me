@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4182136447858269638}
   - component: {fileID: 558007971078439689}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 167406626598596927}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 3486029929027876272}
   m_RootOrder: 0
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 4573118995715554346, guid: 8bcadf8c6580b2e43a275bde57e28da5,
     type: 3}
-  indicator: {fileID: 1378860419587455062, guid: b3f624ad269e6914e874506df572880d,
-    type: 3}
   speed: 150
   miss: 0
+  rodExplodeEffect: {fileID: 4181203990692315674, guid: c8599b1b3daa26f439739b2ae585c84f,
+    type: 3}
 --- !u!136 &9142176459717518362
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 2.1
+  m_Radius: 0.7
+  m_Height: 3.3
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1832025352985481506

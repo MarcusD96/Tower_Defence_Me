@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using TMPro;
-using System.Collections;
+using UnityEngine;
 
 public class RoundsSurvived : MonoBehaviour {
     public TextMeshProUGUI roundsText;

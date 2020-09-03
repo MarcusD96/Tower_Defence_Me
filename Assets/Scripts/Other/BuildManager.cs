@@ -55,7 +55,7 @@ public class BuildManager : MonoBehaviour {
 
     public void DeselectNode() {
         if(selectedNode) {
-            selectedNode.range.gameObject.SetActive(false); 
+            selectedNode.range.gameObject.SetActive(false);
         }
         selectedNode = null;
         nodeUI.Hide();
@@ -64,7 +64,7 @@ public class BuildManager : MonoBehaviour {
     void ToggleRange() {
         if(selectedNode) {
             bool rangeBool = !selectedNode.range.gameObject.activeSelf;
-            selectedNode.range.gameObject.SetActive(rangeBool); 
+            selectedNode.range.gameObject.SetActive(rangeBool);
         }
     }
 

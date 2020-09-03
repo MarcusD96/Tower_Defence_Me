@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour {   
+public class GameManager : MonoBehaviour {
 
     public static bool gameEnd;
-    
+
     public GameObject gameOverUI, winLevelUI;
 
     public static Turret lastControlled;
@@ -21,8 +21,18 @@ public class GameManager : MonoBehaviour {
         if(PlayerStats.lives <= 0)
             EndGame();
 
+        ///////
         if(Input.GetKeyDown(KeyCode.L)) {
             WinLevel();
+        }
+
+        ///////
+        if(Input.GetKeyDown(KeyCode.LeftShift)) {
+            if(Time.timeScale == 2.5f) {
+                Time.timeScale = 1;
+            } else {
+                Time.timeScale = 2.5f;
+            }
         }
 
         //cheaty :P

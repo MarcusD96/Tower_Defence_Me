@@ -13,19 +13,14 @@ public class LevelSelector : MonoBehaviour {
         difficulty.SetActive(false);
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
+        Debug.Log("Level Reached: " + levelReached);
 
         for(int i = 0; i < levelButtons.Length; i++) {
-#if UNITY_EDITOR
+            Debug.Log("Button " + i + ": " + (i + 1 > levelReached));
             if(i + 1 > levelReached) {
                 levelButtons[i].interactable = false;
             } else
                 levelButtons[i].interactable = true;
-#else
-            if(i + 2 > levelReached) {
-                levelButtons[i].interactable = false;
-            } else
-                levelButtons[i].interactable = true;
-#endif
         }
     }
 
@@ -35,27 +30,8 @@ public class LevelSelector : MonoBehaviour {
     }
 
     public void SelectDifficulty(int difficultyLevel) {
-        switch(difficultyLevel) {
-            case 0:     //easy
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 0.85f;
-                PlayerStats.lives = 100;
-                break;
-            case 1:     //medium
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 0.95f;
-                PlayerStats.lives = 50;
-                break;
-            case 2:     //hard
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 1.1f;
-                PlayerStats.lives = 1;
-                break;
-            case 3:     //survival
-                GameMode.survival = true;
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultipler = 1.0f;
-                PlayerStats.lives = 100;
-                break;
-            default:
-                break;
-        }
+        PlayerStats.difficulty = difficultyLevel;
+        PlayerStats.ResetToDifficulty();
         sceneFader.FadeTo(levelName);
     }
 

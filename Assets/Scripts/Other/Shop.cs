@@ -17,7 +17,7 @@ public class Shop : MonoBehaviour {
     public void SelectStandardTurret() {
         buildManager.SelectTurretToBuild(standardTurret);
     }
-    
+
     public void SelectMissileLauncher() {
         buildManager.SelectTurretToBuild(missileLauncher);
     }

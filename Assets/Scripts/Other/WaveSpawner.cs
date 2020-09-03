@@ -41,6 +41,10 @@ public class WaveSpawner : MonoBehaviour {
             }
         }
 
+        if(GameMode.survival && enemiesAlive == 0) {
+            StartWave();
+        }
+
         if(Input.GetKeyDown(KeyCode.Space)) {
             StartWave();
         }

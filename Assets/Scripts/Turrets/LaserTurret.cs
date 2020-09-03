@@ -4,6 +4,7 @@ using UnityEngine;
 public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
+    public GameObject indicator;
     [Range(0.1f, 1.0f)]
     public float slowFactor = 0.8f;
     float slowDuration = 2.0f;
@@ -27,9 +28,9 @@ public class LaserTurret : BeamTurret {
     new void Update() {
         base.Update();
 
-        if(hasSpecial) {
+        if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
-                ActivateSlowWave();
+                ActivateSpecial();
             }
         }
 
@@ -47,9 +48,11 @@ public class LaserTurret : BeamTurret {
         RotateOnShoot();
 
         //damage
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-        if(!targetEnemy.superSlow) {
-            targetEnemy.Slow(slowFactor, slowDuration); 
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
+
+        //apply new slow if not slowed
+        if(targetEnemy.speed > slowFactor) {
+            targetEnemy.Slow(slowFactor, slowDuration);
         }
 
         //refrain indicator to time step
@@ -57,7 +60,7 @@ public class LaserTurret : BeamTurret {
             laserIndicatorTime = Time.time + 0.5f;
             GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
             indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
-            Destroy(indicatorInstance, 0.5f); 
+            Destroy(indicatorInstance, 0.5f);
         }
 
         //graphics
@@ -78,7 +81,7 @@ public class LaserTurret : BeamTurret {
     public override void ManualShoot() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
-        float manualRange = range * 2;
+        float manualRange = range * 3;
         int manualDoT = Mathf.RoundToInt(damageOverTime * 1.3f);
 
 
@@ -91,9 +94,24 @@ public class LaserTurret : BeamTurret {
 
                 if(targetEnemy) {
                     //apply damage and slow
-                    targetEnemy.TakeDamage(manualDoT * Time.deltaTime);
+                    targetEnemy.TakeDamage(manualDoT * Time.deltaTime, false);
                     if(!targetEnemy.superSlow) {
-                        targetEnemy.Slow(slowFactor, slowDuration); 
+                        targetEnemy.Slow(slowFactor, slowDuration);
+                    }
+
+                    //refrain indicator to time step
+                    if(Time.time > laserIndicatorTime) {
+                        laserIndicatorTime = Time.time + 0.5f;
+                        GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
+                        indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
+                        Destroy(indicatorInstance, 0.5f);
+                    }
+
+                    //graphics
+                    if(!lineRenderer.enabled) {
+                        lineRenderer.enabled = true;
+                        impactEffect.Play();
+                        impactLight.enabled = true;
                     }
                 }
 
@@ -125,14 +143,14 @@ public class LaserTurret : BeamTurret {
         damageOverTime = Mathf.CeilToInt(damageOverTime + ugB.upgradeFactorX);
         slowFactor -= ugB.upgradeFactorY;
         slowDuration++;
-        lineRenderer.startWidth = lineRenderer.endWidth += 1;
+        lineRenderer.startWidth = lineRenderer.endWidth += 0.5f;
     }
 
-    void ActivateSlowWave() {
+    public override void ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
-            StartCoroutine(SpecialTime(specialRate));
+            StartCoroutine(SpecialTime());
             tempSW = Instantiate(slowWave, transform.position, transform.rotation);
             tempSW.slowFactor = slowFactor / 2;
             tempSW.slowDuration = slowDuration * 3.5f;

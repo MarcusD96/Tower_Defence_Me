@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class ProjectileTurret : Turret {
 
@@ -13,7 +14,10 @@ public class ProjectileTurret : Turret {
 
     public void AutoShoot() {
         GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Projectile proj  = prpojectileGO.GetComponent<Projectile>();
+        Projectile proj = prpojectileGO.GetComponent<Projectile>();
+
+        Ray ray = new Ray(pivot.position, target.position - pivot.position);
+        proj.SetLifePositions(pivot.position, ray.GetPoint(range));
         proj.SetDamage(damage);
 
         if(missileTurret) {
@@ -28,23 +32,24 @@ public class ProjectileTurret : Turret {
     }
 
     public void ManualShoot() {
-        float manualRange = range * 2;
+        float manualRange = range * 3;
 
         //spawn bullet, get the bullet info
         GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = projGO.GetComponent<Projectile>();
+
+
         proj.SetDamage(damage);
 
         if(missileTurret) {
-            proj.GetMissile().SetExplosion(penetration, explosionRadius); 
+            proj.GetMissile().SetExplosion(penetration, explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
-            return;
         }
 
         //get a target only if theres a hit, otherwise the target is the mockEnemy; 
         RaycastHit hit;
-        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
+        if(Physics.Raycast(transform.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
                 //set the target
                 proj.miss = false;
@@ -54,6 +59,9 @@ public class ProjectileTurret : Turret {
             proj.miss = true;
             target = mockEnemy.transform;
         }
+
+        Ray ray = new Ray(pivot.position, target.position - pivot.position);
+        proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
 
         if(proj) {
             proj.MakeTarget(target);

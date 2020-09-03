@@ -3,11 +3,10 @@
 public class Missile : Projectile {
 
     private int penetration;
-    private float explosionRadius = 5.0f;
+    private float explosionRadius = 3.5f;
 
     void Awake() {
         missile = this;
-        lifeEnd = Time.time + 3;
     }
 
     public void SetExplosion(int penetration_, float radius_) {
@@ -17,35 +16,51 @@ public class Missile : Projectile {
 
     new void Update() {
         base.Update();
+
+        if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
+            if(target) {
+                Vector3 direction = target.position - transform.position;
+                transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+                transform.LookAt(target);
+            } else {
+                miss = true;
+                TryFindNewTargetInfront();
+            }
+        } else {
+            TryFindNewTargetInfront();
+        }
     }
 
     protected override void HitTarget(bool endOfLife) {
-        if(!endOfLife) {
-            Explode();
-            GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-            indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-            Destroy(indicatorInstance, 0.5f);
-        }
+        Explode();
         Destroy(gameObject);
 
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 5.0f);
+        Destroy(effectInstance, 3.0f);
     }
 
     void Explode() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-        int p = 0;
         foreach(var c in colliders) {
             if(c.gameObject.CompareTag("Enemy")) {
-                if(p < penetration) {
+                if(penetration > 0) {
                     Damage(c.transform);
-                    GameObject indicatorInstance = Instantiate(indicator, c.transform.position, Quaternion.identity);
-                    indicatorInstance.GetComponent<DamageIndicator>().damage = damage;
-                    Destroy(indicatorInstance, 0.5f);
                 } else
                     break;
-                p++;
+                penetration--;
             }
         }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Enemy")) {
+            target = other.transform;
+            HitTarget(false);
+        }
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

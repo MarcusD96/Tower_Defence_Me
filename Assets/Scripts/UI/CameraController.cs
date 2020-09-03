@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
             this.enabled = false; //'this' technically not required, but to be explicit
             return;
         }
-        
+
         if(!isEnabled) {
             return;
         }

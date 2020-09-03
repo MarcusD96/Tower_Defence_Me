@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
 public class DamageIndicator : MonoBehaviour {
 
     public float damage, fallTime = 0.5f;
-    public TextMeshPro damageText;
+    public TextMeshProUGUI damageText;
 
     void Start() {
         IndicateDamage(damage);
+        Destroy(gameObject, 0.5f);
     }
 
     void Update() {
