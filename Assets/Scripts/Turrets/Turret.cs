@@ -57,8 +57,10 @@ public class Turret : MonoBehaviour {
     protected void Update() {
         if(manual) {
             ManualControl();
-        } else
+            CameraManager.UpdateCam(turretCam);
+        } else {
             AutomaticControl();
+        }
     }
 
     void FindEnemy() {
@@ -302,7 +304,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void ApplyUpgradeA() {
-        range = (float)System.Math.Round(range * ugA.upgradeFactorX * 2, System.MidpointRounding.AwayFromZero) / 2;
+        range = (float) System.Math.Round(range * ugA.upgradeFactorX * 2, System.MidpointRounding.AwayFromZero) / 2;
     }
 
     public virtual void ApplyUpgradeB() {
@@ -333,16 +335,17 @@ public class Turret : MonoBehaviour {
         GameManager.lastControlled = this;
         turretCam.enabled = true;
         turretView.SetActive(true);
-        TurnHealth.UpdateCam(turretCam);
+        CameraManager.UpdateCam(turretCam);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         manual = true;
     }
 
     public void RevertControl(bool roundEnd) {
+
         turretCam.enabled = false;
         turretView.SetActive(false);
-        TurnHealth.UpdateCam(mainCam);
+        CameraManager.UpdateCam(mainCam);
         if(!roundEnd)
             GameManager.lastControlled = null;
 
