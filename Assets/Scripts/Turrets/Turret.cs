@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour {
+    #region Variables
     public Transform fireSpawn;
 
     public bool manual = false;
@@ -12,7 +13,9 @@ public class Turret : MonoBehaviour {
     protected bool specialActivated = false; //to restrain from activating again until the special bar is recharged
     [HideInInspector]
     public int cost;
+    #endregion
 
+    #region Headers
     [Header("Global")]
     public float range = 15.0f;
     public Camera turretCam;
@@ -43,6 +46,7 @@ public class Turret : MonoBehaviour {
     [Header("Targetting")]
     public string targetting = "First";
     private int targettingMethod;
+    #endregion
 
     void Start() {
         mainCam = Camera.main;
@@ -345,7 +349,9 @@ public class Turret : MonoBehaviour {
 
         turretCam.enabled = false;
         turretView.SetActive(false);
+        mainCam.enabled = true;
         CameraManager.UpdateCam(mainCam);
+
         if(!roundEnd)
             GameManager.lastControlled = null;
 

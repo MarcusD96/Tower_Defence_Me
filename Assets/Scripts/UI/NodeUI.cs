@@ -55,8 +55,8 @@ public class NodeUI : MonoBehaviour {
             Sell();
         }
         if(WaveSpawner.enemiesAlive > 0) {
-            if(Input.GetKeyDown(KeyCode.Tab)) { //control || uncontrol
-                Control();                    
+            if(Input.GetKeyDown(KeyCode.Tab)) { //control
+                Control();
             }
         }
     }

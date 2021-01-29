@@ -36,7 +36,8 @@ public class Node : MonoBehaviour {
                 }
             return;
         }
-        if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
+
+        if(Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
             if(turret) {
                 RevertTurret(false);
             }
@@ -188,7 +189,6 @@ public class Node : MonoBehaviour {
     void RevertTurret(bool roundEnd) {
         controlled = false;
         turret.GetComponent<Turret>().RevertControl(roundEnd);
-        mainCam.enabled = true;
         CameraController.isEnabled = true;
     }
 
