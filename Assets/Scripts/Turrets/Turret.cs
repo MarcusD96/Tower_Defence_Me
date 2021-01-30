@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour {
 
     #region Headers
     [Header("Global")]
-    public float range = 15.0f;
+    public float range;
     public Camera turretCam;
     private Camera mainCam;
     public GameObject turretView;
@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour {
         mainCam = Camera.main;
         turretCam.enabled = false;
         turretView.SetActive(false);
-        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2.5f)); //********
+        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 5)); //********
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;

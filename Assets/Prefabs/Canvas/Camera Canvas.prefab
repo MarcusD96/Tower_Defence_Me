@@ -2507,7 +2507,7 @@ MonoBehaviour:
       type: 3}
     costText: {fileID: 6230080902472397039}
     border: {fileID: 6216771554254200201}
-    cost: 100
+    cost: 150
   missileLauncher:
     turretPrefab: {fileID: 3622529578822836608, guid: df14bd30d9519684fb3a48403039579f,
       type: 3}

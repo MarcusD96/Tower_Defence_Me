@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
 
     public float startSpeed, startHp;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float currentHp, speed, distanceTravelled = 0.0f;
     public int moneyValue, lifeValue;
 
@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour {
 
     void Start() {
         speed = startSpeed * speedDifficultyMultiplier;
-        currentHp = startHp * hpDifficultyMultiplier;
+        startHp = currentHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
+
         if(slowEffect) {
             slowEffect.gameObject.SetActive(false);
         }

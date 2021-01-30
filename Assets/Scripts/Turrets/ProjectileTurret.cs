@@ -32,7 +32,7 @@ public class ProjectileTurret : Turret {
     }
 
     public void ManualShoot() {
-        float manualRange = range * 3;
+        float manualRange = range * 5;
 
         //spawn bullet, get the bullet info
         GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
