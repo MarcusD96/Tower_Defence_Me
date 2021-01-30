@@ -380,13 +380,13 @@ MonoBehaviour:
     type: 3}
   slowEffect: {fileID: 3610037084752785128}
   stunEffect: {fileID: 6974499918582368504}
-  startSpeed: 6
-  startHp: 500
+  startSpeed: 8
+  startHp: 10
   currentHp: 0
   speed: 10
   distanceTravelled: 0
-  moneyValue: 20
-  lifeValue: 5
+  moneyValue: 10
+  lifeValue: 1
   healthBar: {fileID: 131314440}
   superSlow: 0
 --- !u!114 &4424576822074309443

@@ -7,11 +7,11 @@ public class Shop : MonoBehaviour {
 
     void Start() {
         buildManager = BuildManager.instance;
-        standardTurret.costText.text = "$" + standardTurret.cost;
-        missileLauncher.costText.text = "$" + missileLauncher.cost;
-        laserBeamer.costText.text = "$" + laserBeamer.cost;
-        teslaTurret.costText.text = "$" + teslaTurret.cost;
-        railgunTurret.costText.text = "$" + railgunTurret.cost;
+        standardTurret.costText.text = "$" + standardTurret.GetCost();
+        missileLauncher.costText.text = "$" + missileLauncher.GetCost();
+        laserBeamer.costText.text = "$" + laserBeamer.GetCost();
+        teslaTurret.costText.text = "$" + teslaTurret.GetCost();
+        railgunTurret.costText.text = "$" + railgunTurret.GetCost();
     }
 
     public void SelectStandardTurret() {

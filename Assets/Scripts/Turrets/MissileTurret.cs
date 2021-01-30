@@ -28,9 +28,9 @@ public class MissileTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++, penetration +1
-        fireRate *= ugB.upgradeFactorX;
-        damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
-        penetration += 2;
+        fireRate += ugB.upgradeFactorX;
+        penetration += (int) ugB.upgradeFactorY;
+        explosionRadius += (int) ugB.upgradeFactorY * 3;
     }
 
     public override void ActivateSpecial() {
@@ -42,6 +42,7 @@ public class MissileTurret : ProjectileTurret {
 
     IEnumerator MissileBarrage() {
         StartCoroutine(SpecialTime());
+        nextFire = 0;
         FindAndSortEnemies();
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;

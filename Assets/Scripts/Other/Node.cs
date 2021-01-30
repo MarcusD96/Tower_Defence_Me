@@ -7,7 +7,7 @@ public class Node : MonoBehaviour {
 
     public Color hoverColor, errorColor, selectColor;
     public Vector3 offset;
-    public Image range;
+    public RawImage range;
 
     [HideInInspector]
     public GameObject turret = null;
@@ -53,17 +53,17 @@ public class Node : MonoBehaviour {
     }
 
     void BuildTurret(TurretFactory turret_) {
-        if(PlayerStats.money < turret_.cost) {
+        if(PlayerStats.money < turret_.GetCost()) {
             return;
         }
 
-        PlayerStats.money -= turret_.cost;
+        PlayerStats.money -= turret_.GetCost();
         GameObject turretGO = Instantiate(turret_.turretPrefab, GetBuildPosition(), Quaternion.identity);
         turret = turretGO;
         currentFactory = turret_;
 
         var t = turret.GetComponent<Turret>();
-        t.cost = turret_.cost;
+        t.sellPrice = turret_.GetCost();
 
         UpdateRange(t);
         range.gameObject.SetActive(false);
@@ -79,7 +79,7 @@ public class Node : MonoBehaviour {
         }
 
         PlayerStats.money -= t.ugA.GetUpgradeCost();
-        t.cost += t.ugA.GetUpgradeCost();
+        t.sellPrice += t.ugA.GetUpgradeCost();
 
         BuildEffect(buildManager.upgradeEffect);
         t.ApplyUpgradeA();
@@ -97,7 +97,7 @@ public class Node : MonoBehaviour {
         BuildEffect(buildManager.upgradeEffect);
 
         PlayerStats.money -= t.ugB.GetUpgradeCost();
-        t.cost += t.ugB.GetUpgradeCost();
+        t.sellPrice += t.ugB.GetUpgradeCost();
 
         t.ApplyUpgradeB();
         t.ugB.IncreaseUpgrade();
@@ -113,7 +113,7 @@ public class Node : MonoBehaviour {
         BuildEffect(buildManager.upgradeEffect);
 
         PlayerStats.money -= t.ugSpec.GetUpgradeCost();
-        t.cost += t.ugSpec.GetUpgradeCost();
+        t.sellPrice += t.ugSpec.GetUpgradeCost();
         t.ugSpec.IncreaseUpgrade();
 
         t.EnableSpecial();
@@ -176,7 +176,6 @@ public class Node : MonoBehaviour {
         else if(turret.GetComponent<TeslaTurret>()) {
             Supercharge.RemoveTurret(turret.GetComponent<TeslaTurret>());
         }
-
     }
 
     public void ControlTurret() {
@@ -193,8 +192,10 @@ public class Node : MonoBehaviour {
     }
 
     void UpdateRange(Turret t) {
-        RectTransform rt = range.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(t.range / 2, t.range / 2);
+        var scale = range.rectTransform.localScale;
+        scale.x = t.range;
+        scale.y = t.range;
+        range.rectTransform.localScale = scale;
     }
 
     void OnMouseDown() {

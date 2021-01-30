@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: -5834591645109665293}
   - component: {fileID: 3460056851639543402}
   m_Layer: 0
-  m_Name: Slow Wave
+  m_Name: EMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb21d467c1f7e4bb4dcf03927f5b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 4
   slowFactor: 0.5
-  slowDuration: 8
+  slowDuration: 30
   maxSize: {x: 100, y: 100, z: 100}
   done: 0
 --- !u!54 &-5834591645109665293

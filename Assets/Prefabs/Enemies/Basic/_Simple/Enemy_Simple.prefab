@@ -275,8 +275,8 @@ GameObject:
   - component: {fileID: 3498438954662709569}
   - component: {fileID: 3498438954662709568}
   - component: {fileID: 3498438954662709571}
-  - component: {fileID: 4322764439141097690}
   - component: {fileID: 4424576822074309443}
+  - component: {fileID: 4322764439141097690}
   m_Layer: 0
   m_Name: Enemy_Simple
   m_TagString: Enemy
@@ -362,6 +362,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4424576822074309443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498438954662709570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3849a18bd6cc364eb6b90529fafb357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4322764439141097690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +393,7 @@ MonoBehaviour:
   slowEffect: {fileID: 2221618333997290970}
   stunEffect: {fileID: 5323381394074822112}
   startSpeed: 10
-  startHp: 150
+  startHp: 5
   currentHp: 0
   speed: 10
   distanceTravelled: 0
@@ -389,18 +401,6 @@ MonoBehaviour:
   lifeValue: 1
   healthBar: {fileID: 131314440}
   superSlow: 0
---- !u!114 &4424576822074309443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3498438954662709570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3849a18bd6cc364eb6b90529fafb357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7829282844857762908
 GameObject:
   m_ObjectHideFlags: 0

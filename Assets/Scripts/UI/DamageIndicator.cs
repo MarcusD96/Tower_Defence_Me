@@ -8,12 +8,11 @@ public class DamageIndicator : MonoBehaviour {
 
     void Start() {
         IndicateDamage(damage);
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, fallTime);
     }
 
     void Update() {
         transform.LookAt(CameraManager.GetCurrentCam().transform, Vector3.up);
-        ;
         Vector3 pos = transform.position;
         pos.y = Mathf.Lerp(pos.y, pos.y + 3, Time.deltaTime * 2);
         transform.position = pos;

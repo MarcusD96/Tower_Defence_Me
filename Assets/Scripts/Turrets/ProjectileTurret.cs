@@ -9,7 +9,7 @@ public class ProjectileTurret : Turret {
     protected MissileTurret missileTurret;
     protected RailgunTurret railgunTurret;
 
-    public int damage = 50;
+    public float damage = 50;
     public int explosionRadius = 0, penetration = 0;
 
     public void AutoShoot() {
@@ -17,7 +17,7 @@ public class ProjectileTurret : Turret {
         Projectile proj = prpojectileGO.GetComponent<Projectile>();
 
         Ray ray = new Ray(pivot.position, target.position - pivot.position);
-        proj.SetLifePositions(pivot.position, ray.GetPoint(range));
+        proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2.5f));
         proj.SetDamage(damage);
 
         if(missileTurret) {

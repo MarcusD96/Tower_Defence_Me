@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2484036753030999528}
   manual: 0
-  cost: 0
+  sellPrice: 0
   range: 20
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
@@ -228,29 +228,29 @@ MonoBehaviour:
   ugA:
     upgradeName: Over the Wall
     description: Allows the launcher to see further over trumps wall.
-    upgradeCost: 100
-    upgradeFactorX: 1.25
+    upgradeCost: 150
+    upgradeFactorX: 10
     upgradeFactorY: 0
   ugB:
     upgradeName: Trump's Warheads
     description: Trump is starting to use bigger ballistics causing more damage to
       more enemies with a bigger radius.
     upgradeCost: 400
-    upgradeFactorX: 1.2
-    upgradeFactorY: 1.35
+    upgradeFactorX: 0.3
+    upgradeFactorY: 1
   ugSpec:
     upgradeName: Missile Barrage
     description: Target up to the closest 10 enemies and launch missiles at each
-    upgradeCost: 2000
+    upgradeCost: 1250
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.5
+  fireRate: 0.3
   specialBar: {fileID: 1531281856564686637}
-  specialRate: 15
+  specialRate: 30
   targetting: First
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
-  damage: 45
+  damage: 1
   explosionRadius: 10
   penetration: 3
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,

@@ -10081,7 +10081,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 6639674273788320467}
   manual: 0
   cost: 0
-  range: 12
+  range: 6
   turretCam: {fileID: 6901244913561445898}
   turretView: {fileID: 8594125107726049062}
   mockEnemy: {fileID: 3083253915980379906}
@@ -10092,30 +10092,31 @@ MonoBehaviour:
   ugA:
     upgradeName: Extra Range
     description: Gives a little bit extra reach for this tower
-    upgradeCost: 100
-    upgradeFactorX: 1.25
+    upgradeCost: 25
+    upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Phatter Laser
-    description: Phatter Lights. Phatter damage. Phatter slow effect.
-    upgradeCost: 250
-    upgradeFactorX: 10
+    description: Phatter Lights. Phatter damage. Phatter slow.
+    upgradeCost: 175
+    upgradeFactorX: 0.5
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
     description: Strike a very large area with a crippling slow effect
-    upgradeCost: 1750
+    upgradeCost: 500
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 2
+  fireRate: 0
   specialBar: {fileID: 8472525781130761690}
-  specialRate: 30
+  specialRate: 45
   targetting: First
   lineRenderer: {fileID: 2404739084347467044}
   indicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,
     type: 3}
-  slowFactor: 0.65
-  damageOverTime: 30
+  slowFactor: 0.8
+  slowDuration: 15
+  damageOverTime: 0.5
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
   slowWave: {fileID: 4428419339345677791, guid: 8ecd0b841732a1142b096182ad355059,

@@ -26,8 +26,8 @@ public class RailgunTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() { //fireRate++, penetration++;
-        fireRate *= ugB.upgradeFactorX;
-        penetration = Mathf.CeilToInt(penetration + ugB.upgradeFactorY);
+        fireRate += ugB.upgradeFactorX;
+        penetration += (int) ugB.upgradeFactorY;
     }
 
     public override void ActivateSpecial() {
@@ -43,12 +43,10 @@ public class RailgunTurret : ProjectileTurret {
 
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;
-        float saveFireRate = fireRate;
-        fireRate *= 2.5f;
+        nextFire = 0; //reset fire and fire special right away
 
         yield return new WaitForSeconds(5.0f);
 
-        fireRate = saveFireRate;
         projectilePrefab = tmp;
     }
 }

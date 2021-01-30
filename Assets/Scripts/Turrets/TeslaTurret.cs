@@ -14,7 +14,7 @@ public class TeslaTurret : BeamTurret {
     public float arcVar = 2.0f, inaccuracy = 1.0f;
     public int maxArcs = 10;
 
-    public float specialTime = 5;
+    public float specialTime = 1;
     private bool abilityActivation = false;
 
     new void Awake() {
@@ -232,10 +232,9 @@ public class TeslaTurret : BeamTurret {
         return list;
     }
 
-    public override void ApplyUpgradeB() {
-        //upgrade damage, fireRate and how many enemies it can spread to +1/max 3
-        damage = Mathf.RoundToInt(damage * ugB.upgradeFactorX);
-        fireRate *= ugB.upgradeFactorY;
+    public override void ApplyUpgradeB() { //upgrade firerate and damage
+        fireRate += ugB.upgradeFactorX;
+        damage += ugA.upgradeFactorY;
     }
 
     IEnumerator FadeOut() {
@@ -257,7 +256,8 @@ public class TeslaTurret : BeamTurret {
         StartCoroutine(SpecialTime());
         abilityActivation = true;
         var tmp = fireRate;
-        fireRate *= 5;
+        fireRate *= 3;
+        nextFire = 0;
         yield return new WaitForSeconds(specialTime);
         fireRate = tmp;
         abilityActivation = false;

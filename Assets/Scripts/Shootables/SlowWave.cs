@@ -17,7 +17,6 @@ public class SlowWave : MonoBehaviour {
         if(enemy) {
             enemy.superSlow = true;
             enemy.Slow(slowFactor, slowDuration);
-            enemy.TakeDamage(30, true);
         }
     }
 

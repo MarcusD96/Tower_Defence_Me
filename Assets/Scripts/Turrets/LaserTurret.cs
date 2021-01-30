@@ -7,8 +7,8 @@ public class LaserTurret : BeamTurret {
     public GameObject indicator;
     [Range(0.1f, 1.0f)]
     public float slowFactor = 0.8f;
-    float slowDuration = 2.0f;
-    public int damageOverTime = 30;
+    public float slowDuration = 2.0f;
+    public float damageOverTime = 0.5f;
     public ParticleSystem impactEffect;
     public Light impactLight;
     float laserIndicatorTime = 0;
@@ -55,13 +55,13 @@ public class LaserTurret : BeamTurret {
             targetEnemy.Slow(slowFactor, slowDuration);
         }
 
-        //refrain indicator to time step
-        if(Time.time > laserIndicatorTime) {
-            laserIndicatorTime = Time.time + 0.5f;
-            GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
-            indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
-            Destroy(indicatorInstance, 0.5f);
-        }
+        ////refrain indicator to time step
+        //if(Time.time > laserIndicatorTime) {
+        //    laserIndicatorTime = Time.time + 0.5f;
+        //    GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
+        //    indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
+        //    Destroy(indicatorInstance, 0.5f);
+        //}
 
         //graphics
         if(!lineRenderer.enabled) {
@@ -81,7 +81,7 @@ public class LaserTurret : BeamTurret {
     public override void ManualShoot() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
-        float manualRange = range * 3;
+        float manualRange = (range * 2.5f) * 2;
         int manualDoT = Mathf.RoundToInt(damageOverTime * 1.3f);
 
 
@@ -99,13 +99,13 @@ public class LaserTurret : BeamTurret {
                         targetEnemy.Slow(slowFactor, slowDuration);
                     }
 
-                    //refrain indicator to time step
-                    if(Time.time > laserIndicatorTime) {
-                        laserIndicatorTime = Time.time + 0.5f;
-                        GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
-                        indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
-                        Destroy(indicatorInstance, 0.5f);
-                    }
+                    ////refrain indicator to time step
+                    //if(Time.time > laserIndicatorTime) {
+                    //    laserIndicatorTime = Time.time + 0.5f;
+                    //    GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
+                    //    indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
+                    //    Destroy(indicatorInstance, 0.5f);
+                    //}
 
                     //graphics
                     if(!lineRenderer.enabled) {
@@ -140,7 +140,7 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ApplyUpgradeB() {  //dps++, slow++
-        damageOverTime = Mathf.CeilToInt(damageOverTime + ugB.upgradeFactorX);
+        damageOverTime += ugB.upgradeFactorX;
         slowFactor -= ugB.upgradeFactorY;
         slowDuration++;
         lineRenderer.startWidth = lineRenderer.endWidth += 0.5f;

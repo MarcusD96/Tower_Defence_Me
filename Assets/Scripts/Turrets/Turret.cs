@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour {
     protected bool hasSpecial = false;
     protected bool specialActivated = false; //to restrain from activating again until the special bar is recharged
     [HideInInspector]
-    public int cost;
+    public int sellPrice;
     #endregion
 
     #region Headers
@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour {
         mainCam = Camera.main;
         turretCam.enabled = false;
         turretView.SetActive(false);
-        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2));
+        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, fireSpawn.position.y, transform.position.z + (range * 2.5f)); //********
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
@@ -138,7 +138,7 @@ public class Turret : MonoBehaviour {
             }
         }
 
-        if(nearestEnemy && shortestDistance <= range) {
+        if(nearestEnemy && shortestDistance <= range * 2.5f) {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<Enemy>();
         } else
@@ -153,7 +153,7 @@ public class Turret : MonoBehaviour {
         //filter found enemies in range
         foreach(var e in enemies) {
             float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance <= range) {
+            if(distance <= range * 2.5f) {
                 enemiesInRange.Add(e);
             }
         }
@@ -185,7 +185,7 @@ public class Turret : MonoBehaviour {
         //filter found enemies in range
         foreach(var e in enemies) {
             float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance <= range) {
+            if(distance <= range * 2.5f) {
                 enemiesInRange.Add(e);
             }
         }
@@ -217,7 +217,7 @@ public class Turret : MonoBehaviour {
         //filter found enemies in range
         foreach(var e in enemies) {
             float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance <= range) {
+            if(distance <= range * 2.5f) {
                 enemiesInRange.Add(e);
             }
         }
@@ -242,7 +242,7 @@ public class Turret : MonoBehaviour {
     }
 
     public int GetSellPrice() {
-        return Mathf.RoundToInt((cost / 2) / 5) * 5; //rounds to nearest 5 value
+        return Mathf.RoundToInt((sellPrice / 2) / 5) * 5; //rounds to nearest 5 value
     }
 
     protected void RotateOnShoot() {
@@ -308,7 +308,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void ApplyUpgradeA() {
-        range = (float) System.Math.Round(range * ugA.upgradeFactorX * 2, System.MidpointRounding.AwayFromZero) / 2;
+        range += ugA.upgradeFactorX;
     }
 
     public virtual void ApplyUpgradeB() {

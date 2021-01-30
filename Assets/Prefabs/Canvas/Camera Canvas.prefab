@@ -2507,31 +2507,31 @@ MonoBehaviour:
       type: 3}
     costText: {fileID: 6230080902472397039}
     border: {fileID: 6216771554254200201}
-    cost: 175
+    cost: 100
   missileLauncher:
     turretPrefab: {fileID: 3622529578822836608, guid: df14bd30d9519684fb3a48403039579f,
       type: 3}
     costText: {fileID: 5097079796489207542}
     border: {fileID: 5084474133439566736}
-    cost: 450
+    cost: 500
   laserBeamer:
     turretPrefab: {fileID: 8171662427261242612, guid: 1a68bb05f092a414f8eb24a70a3d49fc,
       type: 3}
     costText: {fileID: 6405899927451370221}
     border: {fileID: 6401177835929366411}
-    cost: 100
+    cost: 250
   teslaTurret:
     turretPrefab: {fileID: 4360696567681830834, guid: 70a1714064370774fbe78f4c1f902f1b,
       type: 3}
     costText: {fileID: 9032568181952397384}
     border: {fileID: 2519321582417842847}
-    cost: 200
+    cost: 400
   railgunTurret:
     turretPrefab: {fileID: 1513088061951338147, guid: 955c30bbb77a6bf479ee27e4928f3597,
       type: 3}
     costText: {fileID: 1058096444886681169}
     border: {fileID: 7969696884746129396}
-    cost: 250
+    cost: 375
 --- !u!114 &1316618374176531284
 MonoBehaviour:
   m_ObjectHideFlags: 0

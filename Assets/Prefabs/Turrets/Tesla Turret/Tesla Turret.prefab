@@ -750,8 +750,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 4360696568774688571}
   manual: 0
-  cost: 300
-  range: 20
+  sellPrice: 0
+  range: 15
   turretCam: {fileID: 4360696567918272748}
   turretView: {fileID: 4360696567572376552}
   mockEnemy: {fileID: 4360696567884622005}
@@ -762,38 +762,35 @@ MonoBehaviour:
   ugA:
     upgradeName: Long Range
     description: Longer energy rods can jump further onto enemies.
-    upgradeCost: 100
-    startCost: 0
-    upgradeFactorX: 1.13
+    upgradeCost: 75
+    upgradeFactorX: 5
     upgradeFactorY: 0
   ugB:
     upgradeName: Up Volt
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
-    upgradeCost: 220
-    startCost: 0
-    upgradeFactorX: 1.25
-    upgradeFactorY: 1.35
+    upgradeCost: 250
+    upgradeFactorX: 1
+    upgradeFactorY: 0.33
   ugSpec:
-    upgradeName: Super Charge
+    upgradeName: Overload
     description: The lightning jumps to each target automatically and fast
-    upgradeCost: 1000
-    startCost: 0
+    upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 0.7
   specialBar: {fileID: 4360696567417558306}
-  specialRate: 30
+  specialRate: 15
   targetting: First
   lineRenderer: {fileID: 2649478308021584637}
-  damage: 1
+  damage: 0
   stunDuration: 2
   flash: {fileID: 8277381689871076909, guid: 3d976d1cbd8208c4b962d7537c048e81, type: 3}
   arcLength: 2
   arcVar: 2
   inaccuracy: 2
   maxArcs: 10
-  specialTime: 3
+  specialTime: 2
 --- !u!1 &4360696567884622003
 GameObject:
   m_ObjectHideFlags: 0

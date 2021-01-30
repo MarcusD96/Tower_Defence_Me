@@ -26,8 +26,8 @@ public class BulletTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, damage++
-        fireRate *= ugB.upgradeFactorX;
-        damage = Mathf.CeilToInt(damage * ugB.upgradeFactorY);
+        fireRate += ugB.upgradeFactorX;
+        damage += ugB.upgradeFactorY;
     }
 
     public override void ActivateSpecial() {
@@ -44,7 +44,8 @@ public class BulletTurret : ProjectileTurret {
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;
         var saveFireRate = fireRate;
-        fireRate *= 8.0f;
+        nextFire = 0;
+        fireRate *= 3.0f;
 
         yield return new WaitForSeconds(specialTime);
 

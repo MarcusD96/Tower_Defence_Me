@@ -7,10 +7,12 @@ public class TurretFactory {
     public GameObject turretPrefab; // upgradedPrefab;
     public TextMeshProUGUI costText;
     public Image border;
-    public int cost;
+    [SerializeField]
+    private int cost;
+    public static float costDifficultyMultiplier = 1.0f;
 
     public int GetCost() {
-        return cost;
+        return Mathf.RoundToInt(cost * costDifficultyMultiplier / 5) * 5;
     }
 
     public Turret GetTurret() {

@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour {
 
     protected Transform target;
     protected float distanceThisFrame;
-    protected int damage;
+    protected float damage;
 
     protected Vector3 startPos, endPos;
 
@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour {
         return rod;
     }
 
-    public void SetDamage(int damage_) {
+    public void SetDamage(float damage_) {
         damage = damage_;
     }
 

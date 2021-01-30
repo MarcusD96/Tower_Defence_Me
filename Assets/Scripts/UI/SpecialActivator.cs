@@ -33,7 +33,7 @@ public class SpecialActivator : MonoBehaviour {
 
     public static void MakeEMP(LaserTurret lt) {
         instance.empButton.SetActive(true);
-        EMP.AddNewBulletTurret(lt);
+        EMP.AddNewLaserTurret(lt);
     }
 
     public static void MakeSuperChrge(TeslaTurret tt) {

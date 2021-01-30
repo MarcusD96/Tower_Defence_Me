@@ -58,7 +58,7 @@ public class EMP : MonoBehaviour {
         }
     }
 
-    public static void AddNewBulletTurret(LaserTurret lt) {
+    public static void AddNewLaserTurret(LaserTurret lt) {
         instance.turrets.Add(lt);
     }
 

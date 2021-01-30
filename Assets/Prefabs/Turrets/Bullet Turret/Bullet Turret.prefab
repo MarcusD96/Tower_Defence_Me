@@ -205,45 +205,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 2129615165364960894}
   manual: 0
-  cost: 0
-  range: 15
+  sellPrice: 0
+  range: 6
   turretCam: {fileID: 1772590479217720602}
   turretView: {fileID: 377269558289726356}
   mockEnemy: {fileID: 3056531153313724055}
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
   turnSpeed: 10
-  manualTurnSpeed: 100
+  manualTurnSpeed: 50
   ugA:
     upgradeName: Sniper Vision
-    description: See further enemies
-    upgradeCost: 100
-    upgradeFactorX: 1.1
+    description: Greater Range
+    upgradeCost: 50
+    upgradeFactorX: 3
     upgradeFactorY: 0
   ugB:
     upgradeName: FMJ
     description: Faster reload speed and more damage
-    upgradeCost: 250
-    upgradeFactorX: 1.25
-    upgradeFactorY: 1.25
+    upgradeCost: 200
+    upgradeFactorX: 0.5
+    upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
     description: Briefly increase the fire rate dramatically
-    upgradeCost: 2000
+    upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 2
+  fireRate: 1
   specialBar: {fileID: 570926517585506664}
-  specialRate: 35
+  specialRate: 30
   targetting: First
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
-  damage: 20
+  damage: 2
   explosionRadius: 0
   penetration: 1
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 3
+  specialTime: 2
 --- !u!1 &4838282461862221301
 GameObject:
   m_ObjectHideFlags: 0

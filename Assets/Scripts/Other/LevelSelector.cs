@@ -13,10 +13,8 @@ public class LevelSelector : MonoBehaviour {
         difficulty.SetActive(false);
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
-        Debug.Log("Level Reached: " + levelReached);
 
         for(int i = 0; i < levelButtons.Length; i++) {
-            Debug.Log("Button " + i + ": " + (i + 1 > levelReached));
             if(i + 1 > levelReached) {
                 levelButtons[i].interactable = false;
             } else
