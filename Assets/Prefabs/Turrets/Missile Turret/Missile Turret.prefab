@@ -217,7 +217,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 2484036753030999528}
   manual: 0
   sellPrice: 0
-  range: 20
+  range: 8
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
   mockEnemy: {fileID: 3623115930618068434}
@@ -229,7 +229,7 @@ MonoBehaviour:
     upgradeName: Over the Wall
     description: Allows the launcher to see further over trumps wall.
     upgradeCost: 150
-    upgradeFactorX: 10
+    upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Trump's Warheads

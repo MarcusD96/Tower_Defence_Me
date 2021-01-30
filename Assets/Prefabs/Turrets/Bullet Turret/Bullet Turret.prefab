@@ -218,7 +218,7 @@ MonoBehaviour:
     upgradeName: Sniper Vision
     description: Greater Range
     upgradeCost: 50
-    upgradeFactorX: 3
+    upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
     upgradeName: FMJ

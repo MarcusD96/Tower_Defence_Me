@@ -10080,8 +10080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpawn: {fileID: 6639674273788320467}
   manual: 0
-  cost: 0
-  range: 6
+  sellPrice: 0
+  range: 3
   turretCam: {fileID: 6901244913561445898}
   turretView: {fileID: 8594125107726049062}
   mockEnemy: {fileID: 3083253915980379906}
@@ -10093,7 +10093,7 @@ MonoBehaviour:
     upgradeName: Extra Range
     description: Gives a little bit extra reach for this tower
     upgradeCost: 25
-    upgradeFactorX: 2
+    upgradeFactorX: 1
     upgradeFactorY: 0
   ugB:
     upgradeName: Phatter Laser

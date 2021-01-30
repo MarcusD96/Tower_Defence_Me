@@ -751,7 +751,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 4360696568774688571}
   manual: 0
   sellPrice: 0
-  range: 15
+  range: 6
   turretCam: {fileID: 4360696567918272748}
   turretView: {fileID: 4360696567572376552}
   mockEnemy: {fileID: 4360696567884622005}
@@ -763,7 +763,7 @@ MonoBehaviour:
     upgradeName: Long Range
     description: Longer energy rods can jump further onto enemies.
     upgradeCost: 75
-    upgradeFactorX: 5
+    upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
     upgradeName: Up Volt

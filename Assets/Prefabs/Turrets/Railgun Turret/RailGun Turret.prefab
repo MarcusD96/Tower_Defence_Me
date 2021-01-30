@@ -48,7 +48,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 282096771178888004}
   manual: 0
   sellPrice: 0
-  range: 10
+  range: 6
   turretCam: {fileID: 2990236815034801900}
   turretView: {fileID: 5082276650816418716}
   mockEnemy: {fileID: 7503027408878592565}
@@ -60,7 +60,7 @@ MonoBehaviour:
     upgradeName: Mega Range
     description: See further
     upgradeCost: 100
-    upgradeFactorX: 4
+    upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Advancements

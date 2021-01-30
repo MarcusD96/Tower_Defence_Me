@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7e0a2d391907946bc4da40a0794721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 650
-  numLives: 999
+  startMoney: 300
+  numLives: 100
   numMaxLives: 100
 --- !u!114 &1908031512084050244
 MonoBehaviour:
@@ -197,5 +197,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
-  sceneFader: {fileID: 0}
-  menuSceneName: Main Menu

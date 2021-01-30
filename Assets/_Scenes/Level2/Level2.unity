@@ -18852,11 +18852,6 @@ PrefabInstance:
       propertyPath: nodeUI
       value: 
       objectReference: {fileID: 285759228}
-    - target: {fileID: 1908031512084050299, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
-        type: 3}
-      propertyPath: numLives
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1908031512084050303, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
         type: 3}
       propertyPath: m_Name
