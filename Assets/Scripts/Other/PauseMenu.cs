@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour {
     private SceneFader sceneFader;
     private string menuSceneName = "Main Menu";
 
+
     void Awake() {
         sceneFader = FindObjectOfType<SceneFader>();
         paused = false;

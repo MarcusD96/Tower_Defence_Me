@@ -11,7 +11,6 @@ public class LaserTurret : BeamTurret {
     public float damageOverTime = 0.5f;
     public ParticleSystem impactEffect;
     public Light impactLight;
-    float laserIndicatorTime = 0;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
@@ -81,12 +80,11 @@ public class LaserTurret : BeamTurret {
     public override void ManualShoot() {
         lineRenderer.SetPosition(0, fireSpawn.position);
 
-        float manualRange = (range * 2.5f) * 2;
-        int manualDoT = Mathf.RoundToInt(damageOverTime * 1.3f);
+        float manualRange = range * manualRangeMultiplier;
 
 
         RaycastHit hit;
-        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
+        if(Physics.Raycast(pivot.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
                 //set the target and get its information
                 target = hit.transform;
@@ -94,18 +92,10 @@ public class LaserTurret : BeamTurret {
 
                 if(targetEnemy) {
                     //apply damage and slow
-                    targetEnemy.TakeDamage(manualDoT * Time.deltaTime, false);
+                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
                     if(!targetEnemy.superSlow) {
                         targetEnemy.Slow(slowFactor, slowDuration);
                     }
-
-                    ////refrain indicator to time step
-                    //if(Time.time > laserIndicatorTime) {
-                    //    laserIndicatorTime = Time.time + 0.5f;
-                    //    GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
-                    //    indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
-                    //    Destroy(indicatorInstance, 0.5f);
-                    //}
 
                     //graphics
                     if(!lineRenderer.enabled) {

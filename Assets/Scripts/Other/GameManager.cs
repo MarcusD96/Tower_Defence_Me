@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject gameOverUI, winLevelUI;
 
-    public static Turret lastControlled;
+    public static Node lastControlled;
 
     void Start() {
         gameEnd = false;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
 
     public void LastControlled() {
         if(lastControlled) {
-            lastControlled.AssumeControl();
+            lastControlled.ControlTurret();
         }
     }
 }

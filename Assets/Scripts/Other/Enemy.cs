@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour {
         Destroy(effect, 5.0f);
 
         WaveSpawner.enemiesAlive--;
+        WaveSpawner.RemoveEnemyFromList_Static(this);
         Destroy(gameObject);
     }
 

@@ -33,15 +33,16 @@ public class Node : MonoBehaviour {
     void Update() {
         //wave ends, check if turrret was controlled
         if(WaveSpawner.enemiesAlive <= 0) {
-            if(turret)
+            if(turret) {
                 if(controlled) {
                     RevertTurret(true);
                 }
+            }
             return;
         }
 
         //manual key pressed/player dies, revert turret control
-        if(Input.GetKeyDown(KeyCode.LeftAlt) || PlayerStats.lives <= 0) {
+        if(Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
             if(turret) {
                 RevertTurret(false);
             }
@@ -185,6 +186,7 @@ public class Node : MonoBehaviour {
     }
 
     public void ControlTurret() {
+        GameManager.lastControlled = this;
         controlled = true;
         turret.GetComponent<Turret>().AssumeControl();
         mainCam.enabled = false;
@@ -208,7 +210,7 @@ public class Node : MonoBehaviour {
 
     void OnMouseDown() {
         if(GameManager.lastControlled != null) {
-            if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
+            if(GameManager.lastControlled.controlled)   //cant select nodes when a turret is being controlled
                 return;
         }
 
@@ -230,7 +232,7 @@ public class Node : MonoBehaviour {
         over = true;
 
         if(GameManager.lastControlled != null) {
-            if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
+            if(GameManager.lastControlled.controlled)   //cant select nodes when a turret is being controlled
                 return;
         }
 

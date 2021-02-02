@@ -6,7 +6,7 @@ public class TeslaTurret : BeamTurret {
 
     [Header("Tesla")]
     public float damage;
-    public float stunDuration,superFirerate;
+    public float stunDuration, superFirerate;
 
     [Header("Lightning")]
     public GameObject flash;
@@ -38,13 +38,14 @@ public class TeslaTurret : BeamTurret {
     }
 
     public override void AutoShoot() {
+        nextFire -= Time.deltaTime;
+
         if(nextFire <= 0.0f) {
             nextFire = 1 / fireRate;
         } else {
             nextFire -= Time.deltaTime;
             return;
         }
-        nextFire -= Time.deltaTime;
 
         //aim at target
         RotateOnShoot();
@@ -68,9 +69,8 @@ public class TeslaTurret : BeamTurret {
 
     public override void ManualShoot() {
         //gotta do the reverse since we cannot reset the timer if the shot is missed.
-        if(nextFire > 0.0f) {
+        if(nextFire >= 0.0f) {
             nextFire -= Time.deltaTime;
-            return;
         } else {
             float manualRange = range * 3;
 
@@ -104,7 +104,6 @@ public class TeslaTurret : BeamTurret {
                 }
             }
         }
-        nextFire -= Time.deltaTime;
     }
 
     void BuildLightning() {

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +14,20 @@ public class WaveSpawner : MonoBehaviour {
 
     private int waveIndex = 0;
     private bool waveStarted;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+
+    public static WaveSpawner instance;
 
     void Start() {
         enemiesAlive = currentWave = 0;
         maxWaves = waves.Length;
         waveStarted = false;
+        if(instance) {
+            Debug.LogError("more than 1 wavespawner, deleting current");
+            Destroy(this);
+            return;
+        }
+        instance = this;
     }
 
     void Update() {
@@ -51,7 +61,27 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void SpawnEnemy(GameObject enemy) {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        spawnedEnemies.Add(Instantiate(enemy, spawnPoint.position, spawnPoint.rotation));
+    }
+
+    void RemoveEnemyFromList(Enemy e) {
+        spawnedEnemies.Remove(e.gameObject);
+        spawnedEnemies.TrimExcess();
+        if(spawnedEnemies.Count <= 0) {
+            spawnedEnemies = new List<GameObject>();
+        }
+    }
+
+    public static void RemoveEnemyFromList_Static(Enemy e) {
+        instance.RemoveEnemyFromList(e);
+    }
+
+    List<GameObject> GetEnemyList() {
+        return spawnedEnemies;
+    }
+
+    public static List<GameObject> GetEnemyList_Static() {
+        return instance.GetEnemyList();
     }
 
     public void StartWave() {

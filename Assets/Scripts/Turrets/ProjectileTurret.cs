@@ -17,7 +17,7 @@ public class ProjectileTurret : Turret {
         Projectile proj = prpojectileGO.GetComponent<Projectile>();
 
         Ray ray = new Ray(pivot.position, target.position - pivot.position);
-        proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2.5f));
+        proj.SetLifePositions(pivot.position, ray.GetPoint(range));
         proj.SetDamage(damage);
 
         if(missileTurret) {
@@ -32,7 +32,7 @@ public class ProjectileTurret : Turret {
     }
 
     public void ManualShoot() {
-        float manualRange = range * 5;
+        float manualRange = range * manualRangeMultiplier;
 
         //spawn bullet, get the bullet info
         GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
@@ -47,7 +47,7 @@ public class ProjectileTurret : Turret {
             proj.GetRod().SetPenetration(penetration);
         }
 
-        //get a target only if theres a hit, otherwise the target is the mockEnemy; 
+        //get a target only if theres a hit, otherwise the target is the mockEnemy
         RaycastHit hit;
         if(Physics.Raycast(transform.position, pivot.forward, out hit, manualRange)) {
             if(hit.collider) {
