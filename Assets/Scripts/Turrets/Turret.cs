@@ -317,7 +317,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void UpdateMockEnemy() {
-        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, mockEnemy.transform.position.y, transform.position.z + (range * 5));
+        mockEnemy.transform.position = new Vector3(fireSpawn.position.x, mockEnemy.transform.position.y, transform.position.z + (range * 3));
     }
 
     public void EnableSpecial() {

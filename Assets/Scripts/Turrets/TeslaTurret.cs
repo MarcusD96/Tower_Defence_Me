@@ -6,7 +6,7 @@ public class TeslaTurret : BeamTurret {
 
     [Header("Tesla")]
     public float damage;
-    public float stunDuration;
+    public float stunDuration,superFirerate;
 
     [Header("Lightning")]
     public GameObject flash;
@@ -120,7 +120,7 @@ public class TeslaTurret : BeamTurret {
             var fwd = target.position - lastPoint;    //gives the direction to our target from the end of the last arc
             fwd.Normalize();
             fwd = RandomizeArc(fwd, inaccuracy);   //we don't want a straight line to the target though
-            fwd *= UnityEngine.Random.Range(arcLength * arcVar, arcLength);     //nature is never too uniform
+            fwd *= Random.Range(arcLength * arcVar, arcLength);     //nature is never too uniform
             fwd += lastPoint;   //point + distance * direction = new point. this is where our new arc ends
             if(fwd.y < 1.6f) { //point must be above the ground
                 fwd.y = 1.6f;
@@ -256,7 +256,7 @@ public class TeslaTurret : BeamTurret {
         StartCoroutine(SpecialTime());
         abilityActivation = true;
         var tmp = fireRate;
-        fireRate *= 3;
+        fireRate *= superFirerate;
         nextFire = 0;
         yield return new WaitForSeconds(specialTime);
         fireRate = tmp;

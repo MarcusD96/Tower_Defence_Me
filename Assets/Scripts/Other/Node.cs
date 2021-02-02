@@ -31,6 +31,7 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
+        //wave ends, check if turrret was controlled
         if(WaveSpawner.enemiesAlive <= 0) {
             if(turret)
                 if(controlled) {
@@ -39,11 +40,14 @@ public class Node : MonoBehaviour {
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.Escape) || PlayerStats.lives <= 0) {
+        //manual key pressed/player dies, revert turret control
+        if(Input.GetKeyDown(KeyCode.LeftAlt) || PlayerStats.lives <= 0) {
             if(turret) {
                 RevertTurret(false);
             }
         }
+
+        //wave starts and turret was controlled before previous round ended
         if(WaveSpawner.enemiesAlive > 0 && GameManager.lastControlled) {
             buildManager.DeselectNode();
         }

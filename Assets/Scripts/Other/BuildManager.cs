@@ -31,10 +31,15 @@ public class BuildManager : MonoBehaviour {
 
     public void SelectTurretToBuild(TurretFactory turret) {
         ToggleRange();
-        if(turretToBuild != null)
-            turretToBuild.border.gameObject.SetActive(false); //disable previous selection border
-        turretToBuild = turret;
-        turretToBuild.border.gameObject.SetActive(true); //enable new selection border
+        if(turretToBuild == turret) {
+            turretToBuild.border.gameObject.SetActive(false);
+            turretToBuild = null;
+        } else {
+            if(turretToBuild != null)
+                turretToBuild.border.gameObject.SetActive(false); //disable previous selection
+            turretToBuild = turret; //select the clicked turret to build
+            turretToBuild.border.gameObject.SetActive(true); //enable new selection border
+        }
         DeselectNode();
     }
 
