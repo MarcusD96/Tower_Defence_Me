@@ -41,39 +41,47 @@ public class MissileTurret : ProjectileTurret {
     }
 
     IEnumerator MissileBarrage() {
-        StartCoroutine(SpecialTime());
-        nextFire = 0;
-        FindAndSortEnemies();
-        GameObject tmp = projectilePrefab;
-        projectilePrefab = specialPrefab;
-        if(targetList.Count < missileCount) {
-            for(int i = 0; i < targetList.Count; i++) {
-                if(!targetList[i]) {
-                    break;
-                }
-                target = targetList[i].transform;
-                AutoShoot();
-                yield return new WaitForSeconds(0.1f);
-            }
-        } else {
-            for(int i = 0; i < missileCount; i++) {
-                if(!targetList[i]) {
-                    i = 1;
-                }
-                target = targetList[i].transform;
-                AutoShoot();
-                yield return new WaitForSeconds(0.1f);
-            }
-        }
+        if(FindAndSortEnemies()) {
 
-        projectilePrefab = tmp;
-        targetList = new List<Enemy>();
+            IEnumerator special = SpecialTime();
+            StartCoroutine(special);
+            nextFire = 0;
+
+            GameObject tmp = projectilePrefab;
+            projectilePrefab = specialPrefab;
+            if(targetList.Count < missileCount) {
+                for(int i = 0; i < targetList.Count; i++) {
+                    if(!targetList[i]) {
+                        break;
+                    }
+                    target = targetList[i].transform;
+                    AutoShoot();
+                    yield return new WaitForSeconds(0.1f);
+                }
+            } else {
+                for(int i = 0; i < missileCount; i++) {
+                    if(!targetList[i]) {
+                        i = 1;
+                    }
+                    target = targetList[i].transform;
+                    AutoShoot();
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+
+            projectilePrefab = tmp;
+            targetList = new List<Enemy>();
+        } else
+            yield return null;
     }
 
-    void FindAndSortEnemies() {
+    bool FindAndSortEnemies() {
         foreach(var e in GameObject.FindGameObjectsWithTag(enemyTag)) {
             targetList.Add(e.GetComponent<Enemy>());
+            if(targetList.Count <= 0)
+                return false;
         }
         targetList.Sort((a, b) => { return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); });
+        return true;
     }
 }

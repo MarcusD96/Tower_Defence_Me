@@ -131,6 +131,7 @@ MonoBehaviour:
     type: 3}
   speed: 125
   miss: 0
+  special: 1
 --- !u!135 &343179316192415491
 SphereCollider:
   m_ObjectHideFlags: 0

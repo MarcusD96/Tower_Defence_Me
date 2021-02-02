@@ -25,6 +25,7 @@ public class Bullet : Projectile {
         Destroy(effectInstance, 5.0f);
     }
     void OnTriggerEnter(Collider other) {
+        
         if(other.gameObject.CompareTag("Enemy")) {
             target = other.transform;
             HitTarget(false);

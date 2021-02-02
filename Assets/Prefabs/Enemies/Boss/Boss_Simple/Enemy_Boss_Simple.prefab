@@ -421,6 +421,8 @@ MonoBehaviour:
   lifeValue: 100
   healthBar: {fileID: 131314440}
   superSlow: 0
+  stunResist: 1
+  slowResist: 0
 --- !u!114 &4424576822074309443
 MonoBehaviour:
   m_ObjectHideFlags: 0

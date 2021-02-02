@@ -24,6 +24,10 @@ public class Enemy : MonoBehaviour {
     public bool superSlow = false;
     private bool isDead = false, isSlow = false;
 
+    [Header("Boss")]
+    public bool stunResist;
+    public bool slowResist;
+
     void Start() {
         speed = startSpeed * speedDifficultyMultiplier;
         startHp = currentHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
@@ -65,6 +69,8 @@ public class Enemy : MonoBehaviour {
     public void Slow(float slowFactor, float duration) {
         if(!slowEffect)
             return;
+        if(slowResist)
+            return;
 
         if(!isSlow) { //first slow, start to slow and start particles
             slow = StartCoroutine(SlowEnemy(slowFactor, duration));
@@ -95,6 +101,9 @@ public class Enemy : MonoBehaviour {
 
     public void Stun(float duration) {
         if(!stunEffect)
+            return;
+
+        if(stunResist)
             return;
 
         if(stun != null) {

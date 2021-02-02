@@ -7,7 +7,6 @@ public class Node : MonoBehaviour {
 
     public Color hoverColor, errorColor, selectColor;
     public Vector3 offset;
-    public RawImage range;
 
     [HideInInspector]
     public GameObject turret = null;
@@ -21,11 +20,14 @@ public class Node : MonoBehaviour {
     private Camera mainCam;
     private bool controlled = false;
 
+    public GameObject range;
+
     void Start() {
         mainCam = Camera.main;
         rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
+        startColor = rend.sharedMaterial.color;
         buildManager = BuildManager.instance;
+        range.SetActive(false);
     }
 
     void Update() {
@@ -66,7 +68,7 @@ public class Node : MonoBehaviour {
         t.sellPrice = turret_.GetCost();
 
         UpdateRange(t);
-        range.gameObject.SetActive(false);
+        range.SetActive(false);
 
         BuildEffect(buildManager.buildEffect);
     }
@@ -191,11 +193,13 @@ public class Node : MonoBehaviour {
         CameraController.isEnabled = true;
     }
 
+    bool over = false;
     void UpdateRange(Turret t) {
-        var scale = range.rectTransform.localScale;
-        scale.x = t.range;
-        scale.y = t.range;
-        range.rectTransform.localScale = scale;
+        range.transform.localScale = new Vector3(t.range / 2.5f, 0.01f, t.range / 2.5f);
+    }
+
+    public Vector3 GetBuildPosition() {
+        return transform.position + offset;
     }
 
     void OnMouseDown() {
@@ -219,6 +223,8 @@ public class Node : MonoBehaviour {
     }
 
     void OnMouseEnter() {
+        over = true;
+
         if(GameManager.lastControlled != null) {
             if(GameManager.lastControlled.manual)   //cant select nodes when a turret is being controlled
                 return;
@@ -239,20 +245,30 @@ public class Node : MonoBehaviour {
             rend.material.color = hoverColor;
             var t = buildManager.GetTurretToBuild().GetTurret();
             UpdateRange(t);
-            range.gameObject.SetActive(true);
+            range.SetActive(true);
         } else {
             rend.material.color = errorColor;
         }
     }
 
     void OnMouseExit() {
+        over = false;
         rend.material.color = startColor;
         if(!turret) {
-            range.gameObject.SetActive(false);
+            range.SetActive(false);
         }
     }
 
-    public Vector3 GetBuildPosition() {
-        return transform.position + offset;
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        if(over) {
+            if(buildManager.GetTurretToBuild() != null) {
+                Gizmos.DrawWireSphere(transform.position, buildManager.GetTurretToBuild().GetTurret().range);
+            }
+        }
+
+        if(turret != null) {
+            Gizmos.DrawWireSphere(transform.position, turret.GetComponent<Turret>().range);
+        }
     }
 }
