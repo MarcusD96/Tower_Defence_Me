@@ -38,12 +38,9 @@ public class TeslaTurret : BeamTurret {
     }
 
     public override void AutoShoot() {
-        nextFire -= Time.deltaTime;
-
         if(nextFire <= 0.0f) {
             nextFire = 1 / fireRate;
         } else {
-            nextFire -= Time.deltaTime;
             return;
         }
 
@@ -70,40 +67,40 @@ public class TeslaTurret : BeamTurret {
     public override void ManualShoot() {
         //gotta do the reverse since we cannot reset the timer if the shot is missed.
         if(nextFire >= 0.0f) {
-            nextFire -= Time.deltaTime;
-        } else {
-            float manualRange = range * 3;
+            return;
+        }
 
-            RaycastHit hit;
-            if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, manualRange)) {
-                if(hit.collider) {
-                    nextFire = 1 / fireRate;
-                    target = hit.transform;
-                    targetEnemy = target.GetComponent<Enemy>();
+        float manualRange = range * 3;
+        RaycastHit hit;
+        if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, manualRange)) {
+            if(hit.collider) {
+                nextFire = 1 / fireRate;
+                target = hit.transform;
+                targetEnemy = target.GetComponent<Enemy>();
 
-                    if(!abilityActivation) {
-                        BuildLightning();
-                        if(targetEnemy) {
-                            targetEnemy.TakeDamage(damage, true);
-                            targetEnemy.Stun(stunDuration);
-                        }
-                    } else {
-                        Enemy[] enemies = BuildSuperchargedLightning();
-                        foreach(var e in enemies) {
-                            e.TakeDamage(damage, true);
-                            e.Stun(stunDuration);
-                        }
+                if(!abilityActivation) {
+                    BuildLightning();
+                    if(targetEnemy) {
+                        targetEnemy.TakeDamage(damage, true);
+                        targetEnemy.Stun(stunDuration);
                     }
-
-                    if(!lineRenderer.enabled) {
-                        lineRenderer.enabled = true;
+                } else {
+                    Enemy[] enemies = BuildSuperchargedLightning();
+                    foreach(var e in enemies) {
+                        e.TakeDamage(damage, true);
+                        e.Stun(stunDuration);
                     }
-
-                    StopCoroutine("FadeOut");
-                    StartCoroutine(FadeOut());
                 }
+
+                if(!lineRenderer.enabled) {
+                    lineRenderer.enabled = true;
+                }
+
+                StopCoroutine("FadeOut");
+                StartCoroutine(FadeOut());
             }
         }
+
     }
 
     void BuildLightning() {

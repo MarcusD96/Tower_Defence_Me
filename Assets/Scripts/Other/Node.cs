@@ -152,6 +152,10 @@ public class Node : MonoBehaviour {
     }
 
     public void SellTurret() {
+        if(GameManager.lastControlled = this) {
+            GameManager.lastControlled = null;
+        }
+
         PlayerStats.money += turret.GetComponent<Turret>().GetSellPrice();
 
         BuildEffect(buildManager.sellEffect);

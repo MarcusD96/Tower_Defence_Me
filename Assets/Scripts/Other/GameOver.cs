@@ -10,7 +10,6 @@ public class GameOver : MonoBehaviour {
     }
 
     public void Retry() {
-        PlayerStats.ResetToDifficulty();
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 

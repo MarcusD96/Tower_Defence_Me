@@ -631,11 +631,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret View
       objectReference: {fileID: 0}
-    - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4051924596722818997, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -715,31 +710,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac544509da2972845a14cd3400e757d3, type: 3}

@@ -758,7 +758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold Left Click to Fire!
+  m_text: 'Left Click to Fire!
 
     Alt to EXIT'
   m_isRightToLeft: 0

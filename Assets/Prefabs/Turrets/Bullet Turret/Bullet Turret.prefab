@@ -456,26 +456,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5788378426735856805}
     m_Modifications:
-    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 610699747422799591, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -611,71 +591,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2637025285733610713, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835360145644661975, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 3371363597595310634, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3434655782107344850, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Camera
@@ -685,11 +600,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4051924596722818997, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -770,96 +680,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175563099160964525, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 71.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6986349995862053588, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 69.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355545802587533826, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390258561564062495, guid: ac544509da2972845a14cd3400e757d3,
-        type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac544509da2972845a14cd3400e757d3, type: 3}
