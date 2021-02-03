@@ -30,7 +30,7 @@ public class MissileTurret : ProjectileTurret {
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, expl.rad. + 5
         fireRate += ugB.upgradeFactorX;
         penetration += (int) ugB.upgradeFactorY;
-        explosionRadius += 5;
+        explosionRadius += 3;
     }
 
     public override void ActivateSpecial() {
@@ -41,38 +41,43 @@ public class MissileTurret : ProjectileTurret {
     }
 
     IEnumerator MissileBarrage() {
+        GameObject tmp = projectilePrefab;
+        projectilePrefab = specialPrefab;
+
         if(FindAndSortEnemies()) {
 
             IEnumerator special = SpecialTime();
             StartCoroutine(special);
             nextFire = 0;
 
-            GameObject tmp = projectilePrefab;
-            projectilePrefab = specialPrefab;
-            if(targetList.Count < missileCount) {
-                for(int i = 0; i < targetList.Count; i++) {
-                    if(!targetList[i]) {
-                        break;
+            int timesRestarted = 1;
+            for(int i = 0; i < missileCount; i++) {
+
+                int ii = i - (targetList.Count * (timesRestarted - 1));
+
+                if(ii < targetList.Count) {
+                    if(targetList[ii] != null) {
+                        target = targetList[ii].transform;
+                        damage = 2;
+                        AutoShoot();
+                        damage = 1;
+                        yield return new WaitForSeconds(0.1f);  
                     }
-                    target = targetList[i].transform;
-                    AutoShoot();
-                    yield return new WaitForSeconds(0.1f);
                 }
-            } else {
-                for(int i = 0; i < missileCount; i++) {
-                    if(!targetList[i]) {
-                        i = 1;
-                    }
-                    target = targetList[i].transform;
-                    AutoShoot();
-                    yield return new WaitForSeconds(0.1f);
+
+                if(targetList.Count == 1) {
+                    timesRestarted++;
+                }
+                else if (i % targetList.Count == 0) {
+                        if(i != 0)
+                            timesRestarted++;
                 }
             }
+        }
 
-            projectilePrefab = tmp;
-            targetList = new List<Enemy>();
-        } else
-            yield return null;
+        projectilePrefab = tmp;
+        targetList = new List<Enemy>();
+        yield return null;
     }
 
     bool FindAndSortEnemies() {

@@ -249,7 +249,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   fireRate: 0.3
   specialBar: {fileID: 1531281856564686637}
-  specialRate: 30
+  specialRate: 25
   targetting: First
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}

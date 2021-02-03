@@ -90,8 +90,8 @@ public class Projectile : MonoBehaviour {
             if(other.gameObject.CompareTag("Enemy")) {
                 target = other.transform;
                 HitTarget(false);
+                isCollided = true;
             }
-            isCollided = true;
         }
     }
 }

@@ -8,7 +8,7 @@ public class Missile : Projectile {
 
     void Awake() {
         missile = this;
-        speed = 1.05f;
+        Destroy(gameObject, 2.5F);
     }
 
     public void SetExplosion(int penetration_, float radius_) {
@@ -36,23 +36,24 @@ public class Missile : Projectile {
 
     public override void HitTarget(bool endOfLife) {
         Explode();
-        Destroy(gameObject);
 
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 3.0f);
     }
 
-    public List<GameObject> e = new List<GameObject>();
     void Explode() {
         //save the enemy list
-        e = new List<GameObject>(WaveSpawner.GetEnemyList_Static());
+        List<GameObject> e = new List<GameObject>(WaveSpawner.GetEnemyList_Static());
 
         //remove enemies not in explosion range
         for(int i = 0; i < e.Count - 1; i++) {
+            if(!target)
+                continue;
             if(Vector3.Distance(target.position, e[i].transform.position) > explosionRadius) {
                 e.RemoveAt(i);
             }
         }
+        e.TrimExcess();
 
         //sort enemies based on distance to target/explosion
         e.Sort((a, b) => { return Vector3.Distance(target.position, a.transform.position).CompareTo(Vector3.Distance(target.position, b.transform.position)); });
@@ -66,6 +67,8 @@ public class Missile : Projectile {
                 Damage(e[i].transform);
             }
         }
+
+        Destroy(gameObject);
     }
 
     void OnDrawGizmos() {
