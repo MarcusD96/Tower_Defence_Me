@@ -220,7 +220,7 @@ MonoBehaviour:
   manual: 0
   sellPrice: 0
   sellPecent: 75
-  range: 20
+  range: 21
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
   mockEnemy: {fileID: 3623115930618068434}
@@ -254,8 +254,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   damage: 1
-  explosionRadius: 10
-  penetration: 3
+  explosionRadius: 8
+  penetration: 5
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
     type: 3}
 --- !u!1 &4218313142294416001

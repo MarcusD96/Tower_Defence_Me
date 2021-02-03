@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1832025352985481506}
   m_Layer: 0
   m_Name: Rod
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,8 +131,10 @@ MonoBehaviour:
     type: 3}
   speed: 150
   miss: 0
+  special: 0
   rodExplodeEffect: {fileID: 4181203990692315674, guid: c8599b1b3daa26f439739b2ae585c84f,
     type: 3}
+  explosive: 0
 --- !u!136 &9142176459717518362
 CapsuleCollider:
   m_ObjectHideFlags: 0

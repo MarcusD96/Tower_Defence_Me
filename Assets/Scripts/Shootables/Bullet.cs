@@ -15,7 +15,7 @@ public class Bullet : Projectile {
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
-    protected override void HitTarget(bool endOfLife) {
+    public override void HitTarget(bool endOfLife) {
         if(!endOfLife) {
             Damage(target);
         }
@@ -23,12 +23,5 @@ public class Bullet : Projectile {
 
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 5.0f);
-    }
-    void OnTriggerEnter(Collider other) {
-        
-        if(other.gameObject.CompareTag("Enemy")) {
-            target = other.transform;
-            HitTarget(false);
-        }
     }
 }

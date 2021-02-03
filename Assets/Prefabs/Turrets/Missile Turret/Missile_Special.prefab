@@ -9638,7 +9638,7 @@ GameObject:
   - component: {fileID: 1027793529668338024}
   m_Layer: 0
   m_Name: Missile_Special
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9677,6 +9677,7 @@ MonoBehaviour:
   speed: 20
   miss: 0
   special: 1
+  e: []
 --- !u!136 &8104042212635986536
 CapsuleCollider:
   m_ObjectHideFlags: 0

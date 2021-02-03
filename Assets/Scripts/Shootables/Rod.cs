@@ -19,17 +19,20 @@ public class Rod : Projectile {
         base.Update();
 
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-
-        if(penetration <= 0) {
-            Destroy(gameObject);
-        }
     }
 
     public void SetPenetration(int penetration_) { //giggiddy
         penetration = penetration_;
     }
 
-    protected override void HitTarget(bool endOfLife) {
+    public override void HitTarget(bool endOfLife) {
+        if(penetration <= 0) {
+            Destroy(gameObject);
+            return;
+        }
+
+        isCollided = false;
+
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 3.0f);
 
@@ -45,6 +48,8 @@ public class Rod : Projectile {
             GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
             Destroy(explosiveEffectInstance, 3.0f);
         }
+
+        penetration--;
     }
 
     void Explode() {
@@ -58,14 +63,6 @@ public class Rod : Projectile {
                     break;
                 i--;
             }
-        }
-    }
-
-    void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Enemy")) {
-            target = other.transform;
-            HitTarget(false);
-            penetration--;
         }
     }
 }

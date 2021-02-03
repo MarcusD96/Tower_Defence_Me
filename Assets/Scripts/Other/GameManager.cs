@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
         gameEnd = false;
         lastControlled = null;
         PlayerStats.ResetToDifficulty();
+        if(Time.timeScale != 1) {
+            Time.timeScale = 1;
+        }
     }
 
     // Update is called once per frame
@@ -29,10 +32,10 @@ public class GameManager : MonoBehaviour {
 
         ///////
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            if(Time.timeScale == 20f) {
+            if(Time.timeScale == 0.1f) {
                 Time.timeScale = 1;
             } else {
-                Time.timeScale = 20f;
+                Time.timeScale = 0.1f;
             }
         }
 

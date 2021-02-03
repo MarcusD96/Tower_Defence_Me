@@ -6,7 +6,7 @@ public class MissileTurret : ProjectileTurret {
 
     public GameObject specialPrefab;
 
-    private int missileCount = 10;
+    private int missileCount = 20;
     private List<Enemy> targetList = new List<Enemy>();
 
     void Awake() {
@@ -27,10 +27,10 @@ public class MissileTurret : ProjectileTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //fireRate++, damage++, penetration +1
+    public override void ApplyUpgradeB() {  //fireRate++, penetration++, expl.rad. + 5
         fireRate += ugB.upgradeFactorX;
         penetration += (int) ugB.upgradeFactorY;
-        explosionRadius += (int) ugB.upgradeFactorY * 3;
+        explosionRadius += 5;
     }
 
     public override void ActivateSpecial() {
@@ -76,7 +76,7 @@ public class MissileTurret : ProjectileTurret {
     }
 
     bool FindAndSortEnemies() {
-        foreach(var e in GameObject.FindGameObjectsWithTag(enemyTag)) {
+        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
             targetList.Add(e.GetComponent<Enemy>());
             if(targetList.Count <= 0)
                 return false;

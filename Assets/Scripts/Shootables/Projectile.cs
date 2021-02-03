@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour {
     protected Transform target;
     protected float distanceThisFrame;
     protected float damage;
+    protected bool isCollided = false;
 
     protected Vector3 startPos, endPos;
 
@@ -61,7 +62,7 @@ public class Projectile : MonoBehaviour {
         target = _target;
     }
 
-    protected virtual void HitTarget(bool endOfLife) {
+    public virtual void HitTarget(bool endOfLife) {
         Debug.Log("acquire a target");
     }
 
@@ -82,5 +83,15 @@ public class Projectile : MonoBehaviour {
             }
         }
         transform.Translate(transform.forward * distanceThisFrame, Space.World);
+    }
+
+    protected void OnTriggerEnter(Collider other) {
+        if(!isCollided) {
+            if(other.gameObject.CompareTag("Enemy")) {
+                target = other.transform;
+                HitTarget(false);
+            }
+            isCollided = true;
+        }
     }
 }
