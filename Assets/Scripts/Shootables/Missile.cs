@@ -8,7 +8,7 @@ public class Missile : Projectile {
 
     void Awake() {
         missile = this;
-        Destroy(gameObject, 2.5F);
+        Destroy(gameObject, 2.5f); //tmp fix
     }
 
     public void SetExplosion(int penetration_, float radius_) {
@@ -18,6 +18,7 @@ public class Missile : Projectile {
 
     new void Update() {
         base.Update();
+
         speed = Mathf.Pow(speed, 1.015f);
         speed = Mathf.Clamp(speed, 0, 100);
         if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
@@ -56,13 +57,21 @@ public class Missile : Projectile {
         e.TrimExcess();
 
         //sort enemies based on distance to target/explosion
-        e.Sort((a, b) => { return Vector3.Distance(target.position, a.transform.position).CompareTo(Vector3.Distance(target.position, b.transform.position)); });
+        e.Sort((a, b) => {
+            if(target) {
+                return Vector3.Distance(target.position, a.transform.position).CompareTo(Vector3.Distance(target.position, b.transform.position));
+            } else
+                return 0;
+        });
+
 
         //if penetration is smaller then it will use max pentration, but if there arent as many viable enemies, then the penetration will match the enemy count
         penetration = Mathf.Min(penetration, e.Count);
 
         var s = WaveSpawner.GetEnemyList_Static();
         for(int i = 0; i < penetration; i++) {
+            if(!target)
+                continue;
             if(Vector3.Distance(target.position, e[i].transform.position) <= explosionRadius) {
                 Damage(e[i].transform);
             }

@@ -24,10 +24,16 @@ public class PauseMenu : MonoBehaviour {
     public void Toggle() {
         ui.SetActive(!ui.activeSelf);
         paused = ui.activeSelf;
-        if(ui.activeSelf) {
+        if(ui.activeSelf) { //paused
             Time.timeScale = 0;
-        } else {
+            foreach(var o in FindObjectsOfType<Outline>()) {
+                o.enabled = false;
+            }
+        } else {            //un paused
             Time.timeScale = 1;
+            foreach(var o in FindObjectsOfType<Outline>()) {
+                o.enabled = true;
+            }
         }
     }
 

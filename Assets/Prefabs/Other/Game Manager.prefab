@@ -51,11 +51,11 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
     count: 5
-    spawnRate: 2
+    spawnRate: 1
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
     count: 10
-    spawnRate: 2
+    spawnRate: 1
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
     count: 5
@@ -86,16 +86,16 @@ MonoBehaviour:
     spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
-    count: 1
-    spawnRate: 1
+    count: 2
+    spawnRate: 0.5
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
     count: 100
     spawnRate: 3
   - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
-    count: 1
-    spawnRate: 1
+    count: 4
+    spawnRate: 2
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
     count: 100
@@ -127,7 +127,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f,
       type: 3}
     count: 5
-    spawnRate: 0.3
+    spawnRate: 0.5
   spawnPoint: {fileID: 0}
   gameManager: {fileID: 1908031512084050244}
   startButton: {fileID: 0}

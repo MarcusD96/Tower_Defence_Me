@@ -83,7 +83,6 @@ MonoBehaviour:
   range: 12
   turretCam: {fileID: 4360696567918272748}
   turretView: {fileID: 1119547561756262436}
-  mockEnemy: {fileID: 4360696567884622005}
   pivot: {fileID: 4360696569148855307}
   enemyTag: Enemy
   turnSpeed: 10

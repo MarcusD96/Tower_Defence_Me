@@ -54,14 +54,6 @@ public class LaserTurret : BeamTurret {
             targetEnemy.Slow(slowFactor, slowDuration);
         }
 
-        ////refrain indicator to time step
-        //if(Time.time > laserIndicatorTime) {
-        //    laserIndicatorTime = Time.time + 0.5f;
-        //    GameObject indicatorInstance = Instantiate(indicator, target.position, Quaternion.identity);
-        //    indicatorInstance.GetComponent<DamageIndicator>().damage = damageOverTime;
-        //    Destroy(indicatorInstance, 0.5f);
-        //}
-
         //graphics
         if(!lineRenderer.enabled) {
             lineRenderer.enabled = true;
@@ -78,7 +70,7 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ManualShoot() {
-        lineRenderer.SetPosition(0, fireSpawn.position);
+        lineRenderer.SetPosition(0, Vector3.zero);
 
         float manualRange = range * manualRangeMultiplier;
 
@@ -106,7 +98,7 @@ public class LaserTurret : BeamTurret {
                 }
 
                 //set end position of the laser line renderer
-                lineRenderer.SetPosition(1, hit.point);
+                lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(Vector3.zero, hit.point));
 
                 //enable the light and particles
                 if(!impactEffect.isPlaying) {
@@ -122,7 +114,7 @@ public class LaserTurret : BeamTurret {
         } else {
             target = null;
             targetEnemy = null;
-            lineRenderer.SetPosition(1, mockEnemy.transform.position);
+            lineRenderer.SetPosition(1, Vector3.forward * manualRange);
             lineRenderer.enabled = true;
             impactEffect.Stop();
             impactLight.enabled = false;

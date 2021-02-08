@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour {
     }
 
     public virtual void HitTarget(bool endOfLife) {
-        Debug.Log("acquire a target");
+        Debug.Log("Projectile.HitTarget()");
     }
 
     protected void Damage(Transform enemy) {
@@ -90,7 +90,11 @@ public class Projectile : MonoBehaviour {
             if(other.gameObject.CompareTag("Enemy")) {
                 target = other.transform;
                 HitTarget(false);
-                isCollided = true;
+                if(rod)
+                    return;
+                else
+                    isCollided = true;
+
             }
         }
     }

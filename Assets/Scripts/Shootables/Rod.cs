@@ -26,20 +26,15 @@ public class Rod : Projectile {
     }
 
     public override void HitTarget(bool endOfLife) {
-        if(penetration <= 0) {
+        if(endOfLife) {
             Destroy(gameObject);
+            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effect, 3.0f);
             return;
         }
-
-        isCollided = false;
 
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 3.0f);
-
-        if(endOfLife) {
-            Destroy(gameObject);
-            return;
-        }
 
         if(!explosive) {
             Damage(target);
@@ -47,9 +42,16 @@ public class Rod : Projectile {
             Explode();
             GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
             Destroy(explosiveEffectInstance, 3.0f);
-        }
+        }        
 
         penetration--;
+
+        if(penetration <= 0) {
+            Destroy(gameObject);
+            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effect, 3.0f);
+            return;
+        }
     }
 
     void Explode() {

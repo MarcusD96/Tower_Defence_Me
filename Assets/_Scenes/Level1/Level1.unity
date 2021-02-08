@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657928, g: 0.4964133, b: 0.57481885, a: 1}
+  m_IndirectSpecularColor: {r: 0.17628048, g: 0.22062775, b: 0.30295068, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 592d54c8fb201464b8a677af09b6bbf5,
+  m_LightingDataAsset: {fileID: 112000000, guid: 247a1728d0553634c9a7e58a16a2a29e,
     type: 2}
   m_LightingSettings: {fileID: 1894377570}
 --- !u!196 &4
@@ -10097,16 +10097,16 @@ PrefabInstance:
       propertyPath: remainingText
       value: 
       objectReference: {fileID: 438323620}
-    - target: {fileID: 1908031512084050297, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
-        type: 3}
-      propertyPath: waves.Array.data[0].spawnRate
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1908031512084050298, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
         type: 3}
       propertyPath: nodeUI
       value: 
       objectReference: {fileID: 285759228}
+    - target: {fileID: 1908031512084050299, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
+        type: 3}
+      propertyPath: startMoney
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 1908031512084050303, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
         type: 3}
       propertyPath: m_Name

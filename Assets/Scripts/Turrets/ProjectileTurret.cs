@@ -24,6 +24,7 @@ public class ProjectileTurret : Turret {
             proj.GetMissile().SetExplosion(penetration, explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
+            proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2));
         }
 
         if(proj) {
@@ -57,11 +58,21 @@ public class ProjectileTurret : Turret {
             }
         } else {
             proj.miss = true;
-            target = mockEnemy.transform;
+            //target = mockEnemy.transform;
+            target = null;
         }
 
-        Ray ray = new Ray(pivot.position, target.position - pivot.position);
+        Ray ray;
+        if(target) {
+            ray = new Ray(pivot.position, target.position - pivot.position);
+        } else {
+            ray = new Ray(pivot.position, pivot.forward);
+        }
+
         proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
+        if(railgunTurret) {
+            proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange * 2));
+        }
 
         if(proj) {
             proj.MakeTarget(target);
