@@ -27,8 +27,11 @@ public class NodeUI : MonoBehaviour {
         if(PauseMenu.paused == true)
             return;
 
-        CheckInteractable();
         NodeUIKeyboardShortcuts();
+    }
+
+    private void FixedUpdate() {
+        CheckInteractable();
     }
 
     void NodeUIKeyboardShortcuts() {
@@ -62,10 +65,15 @@ public class NodeUI : MonoBehaviour {
     }
 
     void CheckInteractable() {
-        if(!target)
+        if(target == null) {
+            return;
+        }
+
+        if(target.turret == null)
             return;
 
         var t = target.turret.GetComponent<Turret>();
+
         var cash = PlayerStats.money;
 
         //control button
@@ -75,13 +83,13 @@ public class NodeUI : MonoBehaviour {
             controlButton.interactable = true;
 
         //upg A button
-        if(cash < t.ugA.upgradeCost)
+        if(cash < t.ugA.upgradeCost || t.ugA.GetLevel() > 4)
             upgradeButtonA.interactable = false;
         else
             upgradeButtonA.interactable = true;
 
         //upg B button
-        if(cash < t.ugB.upgradeCost)
+        if(cash < t.ugB.upgradeCost || t.ugB.GetLevel() > 2)
             upgradeButtonB.interactable = false;
         else
             upgradeButtonB.interactable = true;
@@ -90,6 +98,8 @@ public class NodeUI : MonoBehaviour {
         if(t.ugA.GetLevel() >= 3 && t.ugB.GetLevel() >= 3 && cash >= t.ugSpec.upgradeCost) {
             upgradeButtonSpecial.interactable = true;
         } else
+            upgradeButtonSpecial.interactable = false;
+        if(t.ugSpec.GetLevel() > 0)
             upgradeButtonSpecial.interactable = false;
     }
 
@@ -190,7 +200,7 @@ public class NodeUI : MonoBehaviour {
 
         var t = target.turret.GetComponent<Turret>();
 
-        if(t.ugA.GetLevel() > 2) {
+        if(t.ugA.GetLevel() > 4) {
             upgradeTextA.text = "MAX";
             upgradeCostA.text = "";
             upgradeButtonA.interactable = false;

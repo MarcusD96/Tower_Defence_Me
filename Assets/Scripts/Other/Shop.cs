@@ -17,10 +17,6 @@ public class Shop : MonoBehaviour {
         railgunTurret.costText.text = "$" + railgunTurret.GetCost();
     }
 
-    void Update() {
-        CloseShop();
-    }
-
     void LateUpdate() {
         CheckAffordability();
     }
@@ -60,7 +56,6 @@ public class Shop : MonoBehaviour {
     }
 
     public void OpenShop() {
-        print("open shop: " + anim.GetBool("Open"));
         //bool is false so shop is closed
         if(anim.GetBool("Open") == false) {
             anim.SetBool("Open", true);

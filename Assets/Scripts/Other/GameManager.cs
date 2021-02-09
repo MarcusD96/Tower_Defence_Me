@@ -26,16 +26,11 @@ public class GameManager : MonoBehaviour {
             EndGame();
 
         ///////
-        if(Input.GetKeyDown(KeyCode.L)) {
-            WinLevel();
-        }
-
-        ///////
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            if(Time.timeScale == 0.1f) {
+            if(Time.timeScale == 2.0f) {
                 Time.timeScale = 1;
             } else {
-                Time.timeScale = 0.1f;
+                Time.timeScale = 2.0f;
             }
         }
 
@@ -44,6 +39,8 @@ public class GameManager : MonoBehaviour {
             if(Input.GetKey(KeyCode.M)) {
                 if(Input.GetKeyDown(KeyCode.B)) {
                     Cheaty.play = true;
+                    PlayerStats.money = 99995;
+                    PlayerStats.lives = 9995;
                 }
             }
         }

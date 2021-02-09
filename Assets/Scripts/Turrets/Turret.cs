@@ -19,11 +19,12 @@ public class Turret : MonoBehaviour {
     #region Headers
     [Header("Global")]
     public float range;
-    protected float manualRangeMultiplier = 3;
+    public float manualRangeMultiplier = 1.75f;
     public Camera turretCam;
     private Camera mainCam;
     public GameObject turretView;
     public Image reloadedIndicator;
+    public AimIndicator aimIndicator;
 
     [Header("Setup")]
     public Transform pivot;
@@ -54,10 +55,10 @@ public class Turret : MonoBehaviour {
         mainCam = Camera.main;
         turretCam.enabled = false;
         turretView.SetActive(false);
-        //UpdateMockEnemy();
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
+        aimIndicator.SetTurret(this);
     }
 
     protected void Update() {
@@ -320,6 +321,7 @@ public class Turret : MonoBehaviour {
 
     public void ApplyUpgradeA() {
         range += ugA.upgradeFactorX;
+        aimIndicator.SetPositionAtRange();
     }
 
     public virtual void ApplyUpgradeB() {
@@ -356,7 +358,6 @@ public class Turret : MonoBehaviour {
     }
 
     public void RevertControl(bool roundEnd) {
-
         turretCam.enabled = false;
         turretView.SetActive(false);
         mainCam.enabled = true;

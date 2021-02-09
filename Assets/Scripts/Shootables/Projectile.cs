@@ -24,9 +24,6 @@ public class Projectile : MonoBehaviour {
     }
 
     protected void Update() {
-        //Debug.DrawLine(startPos, endPos, Color.cyan);
-        //Debug.DrawLine(startPos, transform.position, Color.green);
-
         if(!special) { //special projectiles may not need this feauture
             if(Vector3.Distance(transform.position, startPos) >= Vector3.Distance(endPos, startPos)) { //if the projectile has gone to its max range, die
                 HitTarget(true);
