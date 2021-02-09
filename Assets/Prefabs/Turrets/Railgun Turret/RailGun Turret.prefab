@@ -52,7 +52,6 @@ MonoBehaviour:
   range: 15
   turretCam: {fileID: 2990236815034801900}
   turretView: {fileID: 5082276650816418716}
-  mockEnemy: {fileID: 7503027408878592565}
   pivot: {fileID: 2981572170934538781}
   enemyTag: Enemy
   turnSpeed: 10
@@ -311,7 +310,6 @@ Transform:
   m_Children:
   - {fileID: 1962645183537205329}
   - {fileID: 282096771178888004}
-  - {fileID: 4999369788859724037}
   - {fileID: 3615457686794904422}
   m_Father: {fileID: 2284522653124279321}
   m_RootOrder: 0
@@ -346,7 +344,7 @@ Transform:
   m_Children:
   - {fileID: 7331824311998873725}
   m_Father: {fileID: 2981572170934538781}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2990236815034801900
 Camera:
@@ -391,64 +389,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &8702551916860592184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4999369788859724037}
-  - component: {fileID: 7503027408878592565}
-  m_Layer: 0
-  m_Name: Mock Enemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4999369788859724037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702551916860592184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2981572170934538781}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7503027408878592565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702551916860592184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e331ef89bfb2164d8d5c13d685d05bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
-  indicator: {fileID: 0}
-  slowEffect: {fileID: 0}
-  stunEffect: {fileID: 0}
-  startSpeed: 0
-  startHp: 0
-  currentHp: 0
-  speed: 0
-  distanceTravelled: 0
-  moneyValue: 0
-  lifeValue: 0
-  healthBar: {fileID: 0}
-  superSlow: 0
-  stunResist: 0
-  slowResist: 0
 --- !u!1001 &8352638966784660657
 PrefabInstance:
   m_ObjectHideFlags: 0

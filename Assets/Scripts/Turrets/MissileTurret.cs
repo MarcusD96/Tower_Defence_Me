@@ -61,16 +61,15 @@ public class MissileTurret : ProjectileTurret {
                         damage = 2;
                         AutoShoot();
                         damage = 1;
-                        yield return new WaitForSeconds(0.1f);  
+                        yield return new WaitForSeconds(0.1f);
                     }
                 }
 
                 if(targetList.Count == 1) {
                     timesRestarted++;
-                }
-                else if (i % targetList.Count == 0) {
-                        if(i != 0)
-                            timesRestarted++;
+                } else if(i % targetList.Count == 0) {
+                    if(i != 0)
+                        timesRestarted++;
                 }
             }
         }
@@ -82,11 +81,19 @@ public class MissileTurret : ProjectileTurret {
 
     bool FindAndSortEnemies() {
         foreach(var e in WaveSpawner.GetEnemyList_Static()) {
+            if(Vector3.Distance(e.gameObject.transform.position, transform.position) >= range) { //check to see if any targets are in range
+                continue;
+            }
             targetList.Add(e.GetComponent<Enemy>());
-            if(targetList.Count <= 0)
-                return false;
         }
-        targetList.Sort((a, b) => { return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); });
+
+        if(targetList.Count <= 0)
+            return false;
+
+        targetList.Sort((a, b) => {
+            return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); 
+        });
+
         return true;
     }
 }

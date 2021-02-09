@@ -60,8 +60,8 @@ public class LaserTurret : BeamTurret {
             impactEffect.Play();
             impactLight.enabled = true;
         }
-        lineRenderer.SetPosition(0, fireSpawn.position);
-        lineRenderer.SetPosition(1, target.position);
+        lineRenderer.SetPosition(0, Vector3.zero);
+        lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(pivot.position, target.position));
 
         //rotation
         Vector3 direction = fireSpawn.position - target.position;
@@ -98,7 +98,7 @@ public class LaserTurret : BeamTurret {
                 }
 
                 //set end position of the laser line renderer
-                lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(Vector3.zero, hit.point));
+                lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
 
                 //enable the light and particles
                 if(!impactEffect.isPlaying) {

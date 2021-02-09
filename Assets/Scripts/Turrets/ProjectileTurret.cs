@@ -58,12 +58,11 @@ public class ProjectileTurret : Turret {
             }
         } else {
             proj.miss = true;
-            //target = mockEnemy.transform;
             target = null;
         }
 
         Ray ray;
-        if(target) {
+        if(!target) {
             ray = new Ray(pivot.position, target.position - pivot.position);
         } else {
             ray = new Ray(pivot.position, pivot.forward);

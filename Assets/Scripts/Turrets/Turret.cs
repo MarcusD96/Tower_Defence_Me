@@ -22,7 +22,6 @@ public class Turret : MonoBehaviour {
     public Camera turretCam;
     private Camera mainCam;
     public GameObject turretView;
-    //public Enemy mockEnemy;
 
     [Header("Setup")]
     public Transform pivot;
@@ -317,16 +316,11 @@ public class Turret : MonoBehaviour {
 
     public void ApplyUpgradeA() {
         range += ugA.upgradeFactorX;
-        //UpdateMockEnemy();
     }
 
     public virtual void ApplyUpgradeB() {
         Debug.Log("upgrade 2");
     }
-
-    //public void UpdateMockEnemy() {
-        //mockEnemy.transform.position = new Vector3(fireSpawn.position.x, mockEnemy.transform.position.y, transform.position.z + (range * manualRangeMultiplier));
-    //}
 
     public void EnableSpecial() {
         hasSpecial = true;

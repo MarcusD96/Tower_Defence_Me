@@ -1,63 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &551151051363982954
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1363762548770423106}
-  - component: {fileID: 3623115930618068434}
-  m_Layer: 0
-  m_Name: Mock Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1363762548770423106
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551151051363982954}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3804968989015224051}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3623115930618068434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551151051363982954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e331ef89bfb2164d8d5c13d685d05bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
-  indicator: {fileID: 0}
-  slowEffect: {fileID: 0}
-  stunEffect: {fileID: 0}
-  startSpeed: 0
-  startHp: 0
-  currentHp: 0
-  speed: 0
-  distanceTravelled: 0
-  moneyValue: 0
-  lifeValue: 0
-  healthBar: {fileID: 0}
-  superSlow: 0
-  stunResist: 0
-  slowResist: 0
 --- !u!1 &2515756435912152056
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +12,7 @@ GameObject:
   - component: {fileID: 5392422913923435296}
   - component: {fileID: 7889299250721764399}
   m_Layer: 0
-  m_Name: Head
+  m_Name: Gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +165,6 @@ MonoBehaviour:
   range: 21
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
-  mockEnemy: {fileID: 3623115930618068434}
   pivot: {fileID: 3804968989015224051}
   enemyTag: Enemy
   turnSpeed: 10
@@ -286,7 +227,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7035362026757618537}
-  - {fileID: 1363762548770423106}
   - {fileID: 2484036753030999528}
   - {fileID: 7405449599853720162}
   m_Father: {fileID: 5814660438982561715}
@@ -402,7 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3804968989015224051}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8124139454799489037
 GameObject:
@@ -434,7 +374,7 @@ Transform:
   m_Children:
   - {fileID: 3794342337485002288}
   m_Father: {fileID: 3804968989015224051}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7206695569095409826
 Camera:
