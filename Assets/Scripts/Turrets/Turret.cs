@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turret : MonoBehaviour {
     #region Variables
@@ -22,6 +23,7 @@ public class Turret : MonoBehaviour {
     public Camera turretCam;
     private Camera mainCam;
     public GameObject turretView;
+    public Image reloadedIndicator;
 
     [Header("Setup")]
     public Transform pivot;
@@ -281,8 +283,10 @@ public class Turret : MonoBehaviour {
         ManualMovement();
 
         if(nextFire >= 0.0f) {
-            nextFire -= Time.deltaTime; 
+            nextFire -= Time.deltaTime;
         }
+
+        var manualFireRate = fireRate * 1.5f;
 
         if(beamTurret) {
             if(Input.GetMouseButton(0)) {
@@ -291,7 +295,6 @@ public class Turret : MonoBehaviour {
                 beamTurret.LaserOff();
             }
         } else {
-            var manualFireRate = fireRate * 1.5f;
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
@@ -299,6 +302,7 @@ public class Turret : MonoBehaviour {
                 }
             }
         }
+        reloadedIndicator.fillAmount = nextFire / (1 / manualFireRate);
     }
 
     void ManualMovement() {

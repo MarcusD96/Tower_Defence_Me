@@ -27,11 +27,11 @@ public class NodeUI : MonoBehaviour {
         if(PauseMenu.paused == true)
             return;
 
-        if(WaveSpawner.enemiesAlive <= 0)
-            controlButton.interactable = false;
-        else
-            controlButton.interactable = true;
+        CheckInteractable();
+        NodeUIKeyboardShortcuts();
+    }
 
+    void NodeUIKeyboardShortcuts() {
         if(Input.GetKeyDown(KeyCode.X)) { //open upgrade menu
             Upgrade();
         }
@@ -59,6 +59,38 @@ public class NodeUI : MonoBehaviour {
                 Control();
             }
         }
+    }
+
+    void CheckInteractable() {
+        if(!target)
+            return;
+
+        var t = target.turret.GetComponent<Turret>();
+        var cash = PlayerStats.money;
+
+        //control button
+        if(WaveSpawner.enemiesAlive <= 0)
+            controlButton.interactable = false;
+        else
+            controlButton.interactable = true;
+
+        //upg A button
+        if(cash < t.ugA.upgradeCost)
+            upgradeButtonA.interactable = false;
+        else
+            upgradeButtonA.interactable = true;
+
+        //upg B button
+        if(cash < t.ugB.upgradeCost)
+            upgradeButtonB.interactable = false;
+        else
+            upgradeButtonB.interactable = true;
+
+        //special button
+        if(t.ugA.GetLevel() >= 3 && t.ugB.GetLevel() >= 3 && cash >= t.ugSpec.upgradeCost) {
+            upgradeButtonSpecial.interactable = true;
+        } else
+            upgradeButtonSpecial.interactable = false;
     }
 
     public void SetTarget(Node target_) {

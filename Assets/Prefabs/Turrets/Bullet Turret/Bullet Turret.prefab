@@ -159,6 +159,7 @@ MonoBehaviour:
   range: 12
   turretCam: {fileID: 1772590479217720602}
   turretView: {fileID: 377269558289726356}
+  reloadedIndicator: {fileID: 3582605655545536743}
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
   turnSpeed: 10
@@ -677,5 +678,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4aacbd750233c964888c2d2ca759a958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3582605655545536743 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 137073072272325726, guid: ac544509da2972845a14cd3400e757d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3481568278009666745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
