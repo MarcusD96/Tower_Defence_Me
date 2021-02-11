@@ -138,11 +138,11 @@ public class LaserTurret : BeamTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //dps++, slow++
+    public override void ApplyUpgradeB() {  //dps++, slow++, slow duration++, laser thiccc++
         damageOverTime += ugB.upgradeFactorX;
         slowFactor -= ugB.upgradeFactorY;
-        slowDuration++;
-        lineRenderer.startWidth = lineRenderer.endWidth += 0.5f;
+        slowDuration += 2;
+        lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
     }
 
     public override void ActivateSpecial() {

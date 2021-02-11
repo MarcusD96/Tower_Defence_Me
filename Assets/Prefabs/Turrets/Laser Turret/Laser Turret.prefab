@@ -10100,7 +10100,7 @@ MonoBehaviour:
     upgradeName: Phatter Laser
     description: Phatter Lights. Phatter damage. Phatter slow.
     upgradeCost: 175
-    upgradeFactorX: 0.5
+    upgradeFactorX: 0.2
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
@@ -10116,8 +10116,8 @@ MonoBehaviour:
   indicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,
     type: 3}
   slowFactor: 0.8
-  slowDuration: 15
-  damageOverTime: 0.5
+  slowDuration: 5
+  damageOverTime: 0
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
   slowWave: {fileID: 4428419339345677791, guid: 8ecd0b841732a1142b096182ad355059,

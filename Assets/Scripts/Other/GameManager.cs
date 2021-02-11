@@ -27,10 +27,10 @@ public class GameManager : MonoBehaviour {
 
         ///////
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            if(Time.timeScale == 2.0f) {
+            if(Time.timeScale == 3.0f) {
                 Time.timeScale = 1;
             } else {
-                Time.timeScale = 2.0f;
+                Time.timeScale = 3.0f;
             }
         }
 
