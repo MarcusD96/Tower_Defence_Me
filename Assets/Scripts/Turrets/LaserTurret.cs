@@ -53,7 +53,6 @@ public class LaserTurret : BeamTurret {
             isDamaging = false;
         }
 
-
         RotateOnShoot();
 
         //apply new slow if not slowed
@@ -82,10 +81,14 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ManualShoot() {
+        if(lastTarget != target) {
+            lastTarget = target;
+            isDamaging = false;
+        }
+
         lineRenderer.SetPosition(0, Vector3.zero);
 
         float manualRange = range * manualRangeMultiplier;
-
 
         RaycastHit hit;
         if(Physics.Raycast(pivot.position, pivot.forward, out hit, manualRange)) {
