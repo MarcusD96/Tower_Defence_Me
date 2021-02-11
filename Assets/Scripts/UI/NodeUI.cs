@@ -151,6 +151,7 @@ public class NodeUI : MonoBehaviour {
     }
 
     public void Sell() {
+        target.RevertTurret(false);
         target.SellTurret();
         upgradeUI.SetActive(false);
         BuildManager.instance.DeselectNode();

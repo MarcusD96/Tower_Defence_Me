@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Barrage : MonoBehaviour {
 
-    private static Barrage instance;
+    private static Barrage instance = null;
 
     public List<MissileTurret> turrets;
     public Image recharge;
@@ -63,7 +63,9 @@ public class Barrage : MonoBehaviour {
     }
 
     public static void RemoveTurret(MissileTurret mt) {
-        instance.turrets.Remove(mt);
+        if(instance.turrets.Count > 0)
+            instance.turrets.Remove(mt);
+
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
         }

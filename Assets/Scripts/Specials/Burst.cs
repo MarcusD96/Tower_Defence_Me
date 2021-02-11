@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Burst : MonoBehaviour {
 
-    private static Burst instance;
+    private static Burst instance = null;
 
     public List<BulletTurret> turrets;
     public Image recharge;
@@ -63,7 +63,9 @@ public class Burst : MonoBehaviour {
     }
 
     public static void RemoveTurret(BulletTurret bt) {
-        instance.turrets.Remove(bt);
+        if(instance.turrets.Count > 0)
+            instance.turrets.Remove(bt);
+
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
         }

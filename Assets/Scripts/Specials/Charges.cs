@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Charges : MonoBehaviour {
 
-    private static Charges instance;
+    private static Charges instance = null;
 
     public List<RailgunTurret> turrets;
     public Image recharge;
@@ -63,7 +63,9 @@ public class Charges : MonoBehaviour {
     }
 
     public static void RemoveTurret(RailgunTurret rgt) {
-        instance.turrets.Remove(rgt);
+        if(instance.turrets.Count > 0)
+            instance.turrets.Remove(rgt);
+
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
         }

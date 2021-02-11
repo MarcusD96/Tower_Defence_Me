@@ -204,13 +204,14 @@ public class TeslaTurret : BeamTurret {
     }
 
     public override void ActivateSpecial() {
-        specialActivated = true;
-        specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
-        StartCoroutine(SpecialAbility());
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
+            specialActivated = true;
+            StartCoroutine(SpecialAbility());
+        }
     }
 
     Vector3 RandomizeArc(Vector3 v, float inaccuracy_) {
-        v += new Vector3(UnityEngine.Random.Range(-2.0f, 2.0f), UnityEngine.Random.Range(-2.0f, 2.0f), UnityEngine.Random.Range(-2.0f, 2.0f) * inaccuracy_);
+        v += new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f) * inaccuracy_);
         v.Normalize();
         return v;
     }

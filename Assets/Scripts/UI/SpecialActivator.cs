@@ -16,6 +16,14 @@ public class SpecialActivator : MonoBehaviour {
         superchargeButton.SetActive(false);
     }
 
+    void LateUpdate() {
+        CheckRoundEnd();
+    }
+
+    void CheckRoundEnd() {
+
+    }
+
     public static void MakeBurst(BulletTurret bt) {
         instance.burstButton.SetActive(true);
         Burst.AddNewBulletTurret(bt);

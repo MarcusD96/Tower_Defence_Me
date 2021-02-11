@@ -34,7 +34,7 @@ public class MissileTurret : ProjectileTurret {
     }
 
     public override void ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
             StartCoroutine(MissileBarrage());
         }
@@ -94,6 +94,21 @@ public class MissileTurret : ProjectileTurret {
             return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); 
         });
 
+        targetList = Shuffle(targetList);
+
         return true;
+    }
+
+    List<Enemy> Shuffle(List<Enemy> list) {
+        int n = list.Count;
+        System.Random rng = new System.Random();
+        while(n > 1) {
+            n--;
+            int k = rng.Next(n + 1);
+            Enemy value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+        return list;
     }
 }

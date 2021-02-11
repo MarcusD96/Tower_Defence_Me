@@ -157,7 +157,7 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   range: 12
-  manualRangeMultiplier: 3
+  manualRangeMultiplier: 1.75
   turretCam: {fileID: 1772590479217720602}
   turretView: {fileID: 377269558289726356}
   reloadedIndicator: {fileID: 3582605655545536743}
@@ -176,7 +176,7 @@ MonoBehaviour:
     upgradeName: FMJ
     description: Faster reload speed and more damage
     upgradeCost: 200
-    upgradeFactorX: 0.5
+    upgradeFactorX: 0.35
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst

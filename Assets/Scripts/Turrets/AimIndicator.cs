@@ -25,8 +25,7 @@ public class AimIndicator : MonoBehaviour {
     public void SetPositionAtRange() { //z and x
         var pos = transform.position;
         var posY = transform.position.y;
-
-        pos = turret.pivot.position + (Vector3.forward * turret.range * turret.manualRangeMultiplier);
+        pos = turret.pivot.position + (turret.pivot.forward.normalized * turret.range * turret.manualRangeMultiplier);
         pos.y = posY;
 
         transform.position = pos;

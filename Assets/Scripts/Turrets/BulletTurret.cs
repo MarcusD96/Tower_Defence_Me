@@ -31,16 +31,15 @@ public class BulletTurret : ProjectileTurret {
     }
 
     public override void ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
-            specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(BulletBurst());
         }
     }
 
     IEnumerator BulletBurst() {
-        StartCoroutine(SpecialTime());
-
+        var special = SpecialTime();
+        StartCoroutine(special);
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;
         var saveFireRate = fireRate;

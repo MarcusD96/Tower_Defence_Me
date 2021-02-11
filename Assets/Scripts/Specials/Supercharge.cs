@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Supercharge : MonoBehaviour {
 
-    private static Supercharge instance;
+    private static Supercharge instance = null;
 
     public List<TeslaTurret> turrets;
     public Image recharge;
@@ -63,7 +63,9 @@ public class Supercharge : MonoBehaviour {
     }
 
     public static void RemoveTurret(TeslaTurret tt) {
-        instance.turrets.Remove(tt);
+        if(instance.turrets.Count > 0)
+            instance.turrets.Remove(tt);
+
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
         }

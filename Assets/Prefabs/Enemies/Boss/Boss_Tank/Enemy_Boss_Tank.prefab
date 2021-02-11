@@ -414,9 +414,9 @@ MonoBehaviour:
   slowEffect: {fileID: 3869588846238179255}
   stunEffect: {fileID: 3000482628338361963}
   startSpeed: 5
-  startHp: 500
+  startHp: 800
   currentHp: 0
-  speed: 10
+  speed: 5
   distanceTravelled: 0
   moneyValue: 20
   lifeValue: 100

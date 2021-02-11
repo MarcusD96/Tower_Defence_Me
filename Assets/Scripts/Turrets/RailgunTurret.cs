@@ -31,9 +31,8 @@ public class RailgunTurret : ProjectileTurret {
     }
 
     public override void ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
-            specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(AttachCharges());
         }
     }

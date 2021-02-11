@@ -348,6 +348,27 @@ public class Turret : MonoBehaviour {
         }
     }
 
+    protected bool CheckEnemiesInRange() {
+        GameObject tmpEnemy = null;
+        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
+            if(!manual) {
+                if(Vector3.Distance(pivot.position, e.transform.position) <= range) {
+                    tmpEnemy = e;
+                    break;
+                }
+            } else {
+                if(Vector3.Distance(transform.position, e.transform.position) <= range * manualRangeMultiplier) {
+                    tmpEnemy = e;
+                    break;
+                }
+            }
+        }
+        if(tmpEnemy != null)
+            return true;
+        else
+            return false;
+    }
+
     public void AssumeControl() {
         turretCam.enabled = true;
         turretView.SetActive(true);

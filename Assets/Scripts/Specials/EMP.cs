@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EMP : MonoBehaviour {
 
-    private static EMP instance;
+    private static EMP instance = null;
 
     public List<LaserTurret> turrets;
     public Image recharge;
@@ -63,7 +63,9 @@ public class EMP : MonoBehaviour {
     }
 
     public static void RemoveTurret(LaserTurret lt) {
-        instance.turrets.Remove(lt);
+        if(instance.turrets.Count > 0)
+            instance.turrets.Remove(lt);
+
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
         }

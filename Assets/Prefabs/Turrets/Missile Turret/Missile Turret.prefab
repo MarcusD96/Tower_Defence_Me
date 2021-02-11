@@ -163,7 +163,7 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   range: 21
-  manualRangeMultiplier: 1.75
+  manualRangeMultiplier: 1.5
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
   reloadedIndicator: {fileID: 2529785784099798690}
