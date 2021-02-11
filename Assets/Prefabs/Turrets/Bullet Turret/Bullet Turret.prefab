@@ -164,8 +164,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 4610724075007527331}
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
-  turnSpeed: 10
-  manualTurnSpeed: 50
   ugA:
     upgradeName: Sniper Vision
     description: Greater Range
@@ -176,7 +174,7 @@ MonoBehaviour:
     upgradeName: FMJ
     description: Faster reload speed and more damage
     upgradeCost: 200
-    upgradeFactorX: 0.35
+    upgradeFactorX: 0.25
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
@@ -184,7 +182,7 @@ MonoBehaviour:
     upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 1
+  fireRate: 0.3
   specialBar: {fileID: 570926517585506664}
   specialRate: 30
   targetting: First

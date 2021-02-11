@@ -6,6 +6,6 @@ public class OrbitCamera : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        gameObject.transform.Rotate(Vector3.up, Time.deltaTime * orbitSpeed);
+        gameObject.transform.Rotate(Vector3.up, Time.fixedDeltaTime * Time.timeScale * orbitSpeed);
     }
 }

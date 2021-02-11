@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DamageIndicator : MonoBehaviour {
 
-    public float damage, fallTime = 0.5f;
+    public float damage, fallTime;
     public TextMeshProUGUI damageText;
 
     void Start() {
@@ -14,10 +14,10 @@ public class DamageIndicator : MonoBehaviour {
     void Update() {
         transform.LookAt(CameraManager.GetCurrentCam().transform, Vector3.up);
         Vector3 pos = transform.position;
-        pos.y = Mathf.Lerp(pos.y, pos.y + 3, Time.deltaTime * 2);
+        pos.y = Mathf.Lerp(pos.y, pos.y + 5, Time.fixedDeltaTime * Time.timeScale);
         transform.position = pos;
     }
-
+    
     public void IndicateDamage(float damage_) {
         damageText.text = damage_.ToString();
     }

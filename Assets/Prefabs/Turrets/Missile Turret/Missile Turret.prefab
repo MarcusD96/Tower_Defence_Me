@@ -170,8 +170,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 6491234510639788162}
   pivot: {fileID: 3804968989015224051}
   enemyTag: Enemy
-  turnSpeed: 10
-  manualTurnSpeed: 100
   ugA:
     upgradeName: Over the Wall
     description: Allows the launcher to see further over trumps wall.
@@ -183,7 +181,7 @@ MonoBehaviour:
     description: Trump is starting to use bigger ballistics causing more damage to
       more enemies with a bigger radius.
     upgradeCost: 400
-    upgradeFactorX: 0.3
+    upgradeFactorX: 0.1
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Missile Barrage
@@ -191,7 +189,7 @@ MonoBehaviour:
     upgradeCost: 1250
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.3
+  fireRate: 0.15
   specialBar: {fileID: 1531281856564686637}
   specialRate: 25
   targetting: First

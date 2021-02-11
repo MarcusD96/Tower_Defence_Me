@@ -8,7 +8,6 @@ public class Missile : Projectile {
 
     void Awake() {
         missile = this;
-        Destroy(gameObject, 2.5f); //tmp fix
     }
 
     public void SetExplosion(int penetration_, float radius_) {

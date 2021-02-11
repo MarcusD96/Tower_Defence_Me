@@ -17,9 +17,9 @@ public class EnemyMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * enemy.speed * Time.deltaTime, Space.World);
+        transform.Translate(direction.normalized * enemy.speed * Time.fixedDeltaTime * Time.timeScale, Space.World);
 
-        enemy.distanceTravelled += (direction * enemy.speed * Time.deltaTime).magnitude;
+        enemy.distanceTravelled += (direction * enemy.speed * Time.fixedDeltaTime * Time.timeScale).magnitude;
 
         if(Vector3.Distance(transform.position, target.position) <= 0.4f) {
             GetNextWayPoint();

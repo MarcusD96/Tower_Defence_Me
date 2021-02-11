@@ -5,12 +5,16 @@ public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
     public GameObject indicator;
+
     [Range(0.1f, 1.0f)]
-    public float slowFactor = 0.8f;
-    public float slowDuration = 2.0f;
-    public float damageOverTime = 0.5f;
+    public float slowFactor;
+    public float slowDuration;
+    public float damageOverTime;
     public ParticleSystem impactEffect;
     public Light impactLight;
+
+    private bool isDamaging = false;
+    private Transform lastTarget;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
@@ -44,14 +48,22 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void AutoShoot() {
-        RotateOnShoot();
+        if(lastTarget != target) {
+            lastTarget = target;
+            isDamaging = false;
+        }
 
-        //damage
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
+
+        RotateOnShoot();
 
         //apply new slow if not slowed
         if(targetEnemy.speed > slowFactor) {
             targetEnemy.Slow(slowFactor, slowDuration);
+        }
+
+        if(!isDamaging) {
+            isDamaging = true;
+            targetEnemy.DamageOverTime(damageOverTime, slowDuration);
         }
 
         //graphics
@@ -83,10 +95,12 @@ public class LaserTurret : BeamTurret {
                 targetEnemy = target.GetComponent<Enemy>();
 
                 if(targetEnemy) {
-                    //apply damage and slow
-                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
-                    if(!targetEnemy.superSlow) {
+                    if(!targetEnemy.superSlow)
                         targetEnemy.Slow(slowFactor, slowDuration);
+
+                    if(!isDamaging) {
+                        isDamaging = true;
+                        targetEnemy.DamageOverTime(damageOverTime, slowDuration);
                     }
 
                     //graphics
@@ -136,6 +150,7 @@ public class LaserTurret : BeamTurret {
             tempSW = Instantiate(slowWave, transform.position, transform.rotation);
             tempSW.slowFactor = slowFactor / 2;
             tempSW.slowDuration = slowDuration * 3.5f;
+            tempSW.damageOverTime = damageOverTime * 1.5f;
         }
     }
 }

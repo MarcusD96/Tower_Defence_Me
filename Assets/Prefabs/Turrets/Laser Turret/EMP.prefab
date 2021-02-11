@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb21d467c1f7e4bb4dcf03927f5b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  slowFactor: 0.5
-  slowDuration: 30
+  speed: 2
+  slowFactor: 0.8
+  slowDuration: 10
+  damageOverTime: 0
   maxSize: {x: 100, y: 100, z: 100}
   done: 0
 --- !u!54 &-5834591645109665293

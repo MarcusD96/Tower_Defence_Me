@@ -57,8 +57,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 3559833139435996107}
   pivot: {fileID: 2981572170934538781}
   enemyTag: Enemy
-  turnSpeed: 10
-  manualTurnSpeed: 100
   ugA:
     upgradeName: Mega Range
     description: See further
@@ -70,7 +68,7 @@ MonoBehaviour:
     description: ' Lighter rods allow this tower to shoot quicker and throught more
       enemies'
     upgradeCost: 300
-    upgradeFactorX: 0.25
+    upgradeFactorX: 0.1
     upgradeFactorY: 2
   ugSpec:
     upgradeName: Attached Charges
@@ -78,7 +76,7 @@ MonoBehaviour:
     upgradeCost: 1000
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.5
+  fireRate: 0.2
   specialBar: {fileID: 4924648402484541792}
   specialRate: 20
   targetting: First

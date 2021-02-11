@@ -29,8 +29,6 @@ public class Turret : MonoBehaviour {
     [Header("Setup")]
     public Transform pivot;
     public string enemyTag = "Enemy";
-    public float turnSpeed = 10.0f;
-    public float manualTurnSpeed = 100.0f;
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
 
@@ -258,7 +256,7 @@ public class Turret : MonoBehaviour {
 
     void AutomaticControl() {
         if(nextFire > 0.0f) {
-            nextFire -= Time.deltaTime;
+            nextFire -= Time.fixedDeltaTime * Time.timeScale;
         }
 
         FindEnemy();
@@ -284,7 +282,7 @@ public class Turret : MonoBehaviour {
         ManualMovement();
 
         if(nextFire >= 0.0f) {
-            nextFire -= Time.deltaTime;
+            nextFire -= Time.fixedDeltaTime * Time.timeScale;
         }
 
         var manualFireRate = fireRate * 1.5f;
@@ -307,15 +305,9 @@ public class Turret : MonoBehaviour {
     }
 
     void ManualMovement() {
-        if(Input.GetKey(KeyCode.A)) {
-            pivot.Rotate(Vector3.down * manualTurnSpeed * Time.deltaTime); //rotate along the -y axis/left
-        }
-        if(Input.GetKey(KeyCode.D)) {
-            pivot.Rotate(Vector3.up * manualTurnSpeed * Time.deltaTime); //rotate along the +y axis/right
-        }
 
         float mouseInput = Input.GetAxis("Mouse X");
-        Vector3 lookhere = new Vector3(0, mouseInput * Time.timeScale, 0);
+        Vector3 lookhere = new Vector3(0, mouseInput * Time.timeScale * 0.8f, 0); //apply sensitivity in settings later
         pivot.Rotate(lookhere);
     }
 
@@ -341,7 +333,7 @@ public class Turret : MonoBehaviour {
         float fillTime = specialRate;
         while(fillTime > 0) {
             if(WaveSpawner.enemiesAlive > 0) {
-                fillTime -= Time.deltaTime;
+                fillTime -= Time.fixedDeltaTime * Time.timeScale;
                 specialBar.fillBar.fillAmount = fillTime / specialRate;
             }
             yield return null;

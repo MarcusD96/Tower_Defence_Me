@@ -12,11 +12,10 @@ public class Enemy : MonoBehaviour {
 
     public float startSpeed, startHp;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float currentHp, speed, distanceTravelled = 0.0f;
     public int moneyValue, lifeValue;
 
-    private Coroutine slow;
     private IEnumerator stun = null;
 
     [Header("Unity Stuff")]
@@ -74,22 +73,22 @@ public class Enemy : MonoBehaviour {
             return;
 
         if(!isSlow) { //first slow, start to slow and start particles
-            slow = StartCoroutine(SlowEnemy(slowFactor, duration));
+            StartCoroutine(SlowEnemy(slowFactor, duration));
             slowEffect.gameObject.SetActive(true);
             slowEffect.Play();
-        } else { //restart the slow, but keep particles on
-            StopAllCoroutines();
-            slow = StartCoroutine(SlowEnemy(slowFactor, duration));
+            isSlow = true;
         }
     }
 
+    public void DamageOverTime(float dot, float duration) {
+        StartCoroutine(DoT(dot, duration));
+    }
+
     IEnumerator SlowEnemy(float slowFactor, float duration) {
+        isSlow = true;
         speed = startSpeed * slowFactor;
 
         yield return new WaitForSeconds(duration);
-
-        if(isSlow)
-            yield break;
 
         slowEffect.Stop();
         slowEffect.gameObject.SetActive(false);
@@ -97,7 +96,15 @@ public class Enemy : MonoBehaviour {
         speed = startSpeed;
         superSlow = false;
         isSlow = false;
-        slow = null;
+    }
+
+    IEnumerator DoT(float dot, float duration) {
+        float endTime = Time.time + duration;
+
+        while(Time.time < endTime) {
+            TakeDamage(dot * Time.fixedDeltaTime * Time.timeScale, false);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void Stun(float duration) {

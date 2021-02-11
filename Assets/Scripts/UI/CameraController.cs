@@ -25,22 +25,22 @@ public class CameraController : MonoBehaviour {
         }
 
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.forward * panSpeed * Time.fixedDeltaTime * Time.timeScale, Space.World);
         }
         if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.back * panSpeed * Time.fixedDeltaTime * Time.timeScale, Space.World);
         }
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.left * panSpeed * Time.fixedDeltaTime * Time.timeScale, Space.World);
         }
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.right * panSpeed * Time.fixedDeltaTime * Time.timeScale, Space.World);
         }
 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Vector3 pos = transform.position;
-        pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
+        pos.y -= scroll * 1000 * scrollSpeed * Time.fixedDeltaTime * Time.timeScale;
 
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);

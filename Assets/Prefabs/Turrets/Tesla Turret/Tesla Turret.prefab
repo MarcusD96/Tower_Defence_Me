@@ -88,8 +88,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 5435266239430490539}
   pivot: {fileID: 4360696569148855307}
   enemyTag: Enemy
-  turnSpeed: 10
-  manualTurnSpeed: 100
   ugA:
     upgradeName: Long Range
     description: Longer energy rods can jump further onto enemies.
@@ -101,7 +99,7 @@ MonoBehaviour:
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
     upgradeCost: 250
-    upgradeFactorX: 0.1666666
+    upgradeFactorX: 0.15
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Overload
@@ -109,7 +107,7 @@ MonoBehaviour:
     upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.5
+  fireRate: 3
   specialBar: {fileID: 961919420748696280}
   specialRate: 15
   targetting: First

@@ -10090,13 +10090,11 @@ MonoBehaviour:
   aimIndicator: {fileID: 4106244163764889944}
   pivot: {fileID: 508612932759547089}
   enemyTag: Enemy
-  turnSpeed: 10
-  manualTurnSpeed: 100
   ugA:
     upgradeName: Extra Range
     description: Gives a little bit extra reach for this tower
     upgradeCost: 25
-    upgradeFactorX: 1
+    upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
     upgradeName: Phatter Laser
