@@ -5,7 +5,10 @@ public class SpecialActivator : MonoBehaviour {
 
     private static SpecialActivator instance;
 
-    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton;
+    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, specBtn;
+
+
+    public Animator anim;
 
     void Awake() {
         instance = this;
@@ -16,12 +19,20 @@ public class SpecialActivator : MonoBehaviour {
         superchargeButton.SetActive(false);
     }
 
-    void LateUpdate() {
-        CheckRoundEnd();
+    public void OpenSpecials() {
+        //bool is false so shop is closed
+        if(anim.GetBool("Open") == false) {
+            anim.SetBool("Open", true);
+            specBtn.gameObject.SetActive(false);
+        }
     }
-
-    void CheckRoundEnd() {
-
+    
+    public void CloseSpecials() {
+        //bool is true so shop is open
+        if(anim.GetBool("Open") == true) {
+            anim.SetBool("Open", false);
+            specBtn.gameObject.SetActive(true);
+        }
     }
 
     public static void MakeBurst(BulletTurret bt) {
