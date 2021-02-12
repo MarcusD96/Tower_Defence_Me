@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour {
     public GameObject turretView;
     public Image reloadedIndicator;
     public AimIndicator aimIndicator;
+    public string shootSound;
 
     [Header("Setup")]
     public Transform pivot;
@@ -256,7 +257,7 @@ public class Turret : MonoBehaviour {
 
     void AutomaticControl() {
         if(nextFire > 0.0f) {
-            nextFire -= Time.fixedDeltaTime * Time.timeScale;
+            nextFire -= Time.deltaTime * Time.timeScale;
         }
 
         FindEnemy();
@@ -270,6 +271,7 @@ public class Turret : MonoBehaviour {
             if(nextFire <= 0.0f) {
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
+                AudioManager.PlaySound(shootSound);
                 nextFire = 1 / fireRate;
             }
 
@@ -282,7 +284,7 @@ public class Turret : MonoBehaviour {
         ManualMovement();
 
         if(nextFire >= 0.0f) {
-            nextFire -= Time.fixedDeltaTime * Time.timeScale;
+            nextFire -= Time.deltaTime * Time.timeScale;
         }
 
         var manualFireRate = fireRate * 1.5f;
@@ -297,6 +299,7 @@ public class Turret : MonoBehaviour {
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
+                    AudioManager.PlaySound(shootSound);
                     nextFire = 1 / manualFireRate;
                 }
             }
@@ -307,7 +310,7 @@ public class Turret : MonoBehaviour {
     void ManualMovement() {
 
         float mouseInput = Input.GetAxis("Mouse X");
-        Vector3 lookhere = new Vector3(0, mouseInput * Time.timeScale * 0.8f, 0); //apply sensitivity in settings later
+        Vector3 lookhere = new Vector3(0, mouseInput * 0.8f, 0); //apply sensitivity in settings later
         pivot.Rotate(lookhere);
     }
 
@@ -333,7 +336,7 @@ public class Turret : MonoBehaviour {
         float fillTime = specialRate;
         while(fillTime > 0) {
             if(WaveSpawner.enemiesAlive > 0) {
-                fillTime -= Time.fixedDeltaTime * Time.timeScale;
+                fillTime -= Time.deltaTime * Time.timeScale;
                 specialBar.fillBar.fillAmount = fillTime / specialRate;
             }
             yield return null;

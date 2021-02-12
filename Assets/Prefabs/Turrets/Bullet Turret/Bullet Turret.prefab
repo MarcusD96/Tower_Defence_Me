@@ -162,6 +162,7 @@ MonoBehaviour:
   turretView: {fileID: 377269558289726356}
   reloadedIndicator: {fileID: 3582605655545536743}
   aimIndicator: {fileID: 4610724075007527331}
+  shootSound: Shoot Bullet
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
   ugA:
@@ -184,7 +185,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   fireRate: 0.3
   specialBar: {fileID: 570926517585506664}
-  specialRate: 30
+  specialRate: 45
   targetting: First
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
@@ -193,7 +194,7 @@ MonoBehaviour:
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 2
+  specialTime: 5
 --- !u!1 &4432084885714431149
 GameObject:
   m_ObjectHideFlags: 0

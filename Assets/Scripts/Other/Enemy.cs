@@ -100,11 +100,12 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator DoT(float dot, float duration) {
         float endTime = Time.time + duration;
-
+        var s = AudioManager.PlaySound("Laser");
         while(Time.time < endTime) {
-            TakeDamage(dot * Time.fixedDeltaTime * Time.timeScale, false);
+            TakeDamage(dot * Time.deltaTime * Time.timeScale, false);
             yield return new WaitForEndOfFrame();
         }
+        AudioManager.StopSound(s);
     }
 
     public void Stun(float duration) {

@@ -28,7 +28,7 @@ public class SlowWave : MonoBehaviour {
     IEnumerator WaveBlast() {
         while(transform.localScale.x < maxSize.x - 5) {
             var scale = transform.localScale;
-            scale = Vector3.Slerp(scale, maxSize, Time.fixedDeltaTime * Time.timeScale * speed);
+            scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * Time.timeScale * speed);
             scale.y = 0.01f;
             transform.localScale = scale;
 

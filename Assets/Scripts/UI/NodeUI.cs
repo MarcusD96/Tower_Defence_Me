@@ -83,19 +83,19 @@ public class NodeUI : MonoBehaviour {
             controlButton.interactable = true;
 
         //upg A button
-        if(cash < t.ugA.upgradeCost || t.ugA.GetLevel() > 4)
+        if(cash < t.ugA.GetUpgradeCost() || t.ugA.GetLevel() > 4)
             upgradeButtonA.interactable = false;
         else
             upgradeButtonA.interactable = true;
 
         //upg B button
-        if(cash < t.ugB.upgradeCost || t.ugB.GetLevel() > 2)
+        if(cash < t.ugB.GetUpgradeCost() || t.ugB.GetLevel() > 2)
             upgradeButtonB.interactable = false;
         else
             upgradeButtonB.interactable = true;
 
         //special button
-        if(t.ugA.GetLevel() >= 3 && t.ugB.GetLevel() >= 3 && cash >= t.ugSpec.upgradeCost) {
+        if(t.ugA.GetLevel() >= 3 && t.ugB.GetLevel() >= 3 && cash >= t.ugSpec.GetUpgradeCost()) {
             upgradeButtonSpecial.interactable = true;
         } else
             upgradeButtonSpecial.interactable = false;

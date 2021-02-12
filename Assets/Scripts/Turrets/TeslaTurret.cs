@@ -50,6 +50,7 @@ public class TeslaTurret : BeamTurret {
         //build gfx
         if(!abilityActivation) {
             BuildLightning();
+            AudioManager.PlaySound(shootSound);
             targetEnemy.TakeDamage(damage, true);
             targetEnemy.Stun(stunDuration);
         } else {
@@ -81,6 +82,7 @@ public class TeslaTurret : BeamTurret {
                 if(!abilityActivation) {
                     BuildLightning();
                     if(targetEnemy) {
+                        AudioManager.PlaySound(shootSound);
                         targetEnemy.TakeDamage(damage, true);
                         targetEnemy.Stun(stunDuration);
                     }
@@ -239,8 +241,8 @@ public class TeslaTurret : BeamTurret {
             Color start = lineRenderer.startColor;
             Color end = lineRenderer.endColor;
 
-            start.a = Mathf.Lerp(start.a, -1, Time.fixedDeltaTime * Time.timeScale);
-            end.a = Mathf.Lerp(end.a, -1, Time.fixedDeltaTime * Time.timeScale);
+            start.a = Mathf.Lerp(start.a, -1, Time.deltaTime * Time.timeScale);
+            end.a = Mathf.Lerp(end.a, -1, Time.deltaTime * Time.timeScale);
 
             lineRenderer.startColor = start;
             lineRenderer.endColor = end;

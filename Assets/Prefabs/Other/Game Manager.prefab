@@ -67,7 +67,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c,
       type: 3}
     count: 15
-    spawnRate: 0.5
+    spawnRate: 1.5
   - enemyPrefab: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e,
       type: 3}
     count: 20
@@ -176,7 +176,6 @@ MonoBehaviour:
   tank: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4, type: 3}
   quick: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e, type: 3}
   boss: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f, type: 3}
-  waveIndex: 0
 --- !u!114 &1908031512084050298
 MonoBehaviour:
   m_ObjectHideFlags: 0

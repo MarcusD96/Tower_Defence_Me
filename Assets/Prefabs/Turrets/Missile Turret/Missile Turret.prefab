@@ -168,6 +168,7 @@ MonoBehaviour:
   turretView: {fileID: 1697917200879085009}
   reloadedIndicator: {fileID: 2529785784099798690}
   aimIndicator: {fileID: 6491234510639788162}
+  shootSound: Shoot Missile
   pivot: {fileID: 3804968989015224051}
   enemyTag: Enemy
   ugA:
