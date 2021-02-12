@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 0}
   winLevelUI: {fileID: 0}
+  fastForward: 3
 --- !u!114 &723318896832887331
 MonoBehaviour:
   m_ObjectHideFlags: 0

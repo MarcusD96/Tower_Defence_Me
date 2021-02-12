@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject gameOverUI, winLevelUI;
 
+    public float fastForward;
+
     public static Node lastControlled;
 
     void Start() {
@@ -27,10 +29,10 @@ public class GameManager : MonoBehaviour {
 
         ///////
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            if(Time.timeScale == 3.0f) {
+            if(Time.timeScale == fastForward) {
                 Time.timeScale = 1;
             } else {
-                Time.timeScale = 3.0f;
+                Time.timeScale = fastForward;
             }
         }
 

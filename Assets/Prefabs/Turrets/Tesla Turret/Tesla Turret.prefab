@@ -100,7 +100,7 @@ MonoBehaviour:
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
     upgradeCost: 250
-    upgradeFactorX: 0.15
+    upgradeFactorX: 0.2
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Overload
@@ -108,20 +108,20 @@ MonoBehaviour:
     upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.3
+  fireRate: 0.5
   specialBar: {fileID: 961919420748696280}
   specialRate: 15
   targetting: First
   lineRenderer: {fileID: 2649478308021584637}
   damage: 0
   stunDuration: 1
-  superFirerate: 1.25
+  superFirerate: 1.5
   flash: {fileID: 8277381689871076909, guid: 3d976d1cbd8208c4b962d7537c048e81, type: 3}
   arcLength: 2
   arcVar: 2
   inaccuracy: 2
   maxArcs: 10
-  specialTime: 1
+  specialTime: 2
 --- !u!1 &4360696567918272746
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletTurret : ProjectileTurret {
 
     public GameObject specialPrefab;
-    public float specialTime = 1.0f;
+    public float specialTime, specialFireRate;
 
     void Awake() {
         standardTurret = this;
@@ -44,7 +44,7 @@ public class BulletTurret : ProjectileTurret {
         projectilePrefab = specialPrefab;
         var saveFireRate = fireRate;
         nextFire = 0;
-        fireRate *= 3.0f;
+        fireRate *= specialFireRate;
 
         yield return new WaitForSeconds(specialTime);
 

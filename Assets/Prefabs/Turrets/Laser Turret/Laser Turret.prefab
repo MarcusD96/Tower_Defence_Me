@@ -10094,7 +10094,7 @@ MonoBehaviour:
   ugA:
     upgradeName: Extra Range
     description: Gives a little bit extra reach for this tower
-    upgradeCost: 25
+    upgradeCost: 40
     upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
@@ -10111,7 +10111,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   fireRate: 0
   specialBar: {fileID: 8472525781130761690}
-  specialRate: 45
+  specialRate: 40
   targetting: First
   lineRenderer: {fileID: 2404739084347467044}
   indicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,

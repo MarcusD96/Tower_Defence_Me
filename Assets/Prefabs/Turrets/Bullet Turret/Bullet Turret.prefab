@@ -175,7 +175,7 @@ MonoBehaviour:
     upgradeName: FMJ
     description: Faster reload speed and more damage
     upgradeCost: 200
-    upgradeFactorX: 0.25
+    upgradeFactorX: 0.35
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
@@ -183,7 +183,7 @@ MonoBehaviour:
     upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.3
+  fireRate: 1
   specialBar: {fileID: 570926517585506664}
   specialRate: 45
   targetting: First
@@ -194,7 +194,8 @@ MonoBehaviour:
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 5
+  specialTime: 8
+  specialFireRate: 4
 --- !u!1 &4432084885714431149
 GameObject:
   m_ObjectHideFlags: 0

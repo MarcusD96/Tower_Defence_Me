@@ -14,7 +14,7 @@ public class DamageIndicator : MonoBehaviour {
     void Update() {
         transform.LookAt(CameraManager.GetCurrentCam().transform, Vector3.up);
         Vector3 pos = transform.position;
-        pos.y = Mathf.Lerp(pos.y, pos.y + 5, time.deltaTime);
+        pos.y = Mathf.Lerp(pos.y, pos.y + 5, Time.deltaTime);
         transform.position = pos;
     }
     

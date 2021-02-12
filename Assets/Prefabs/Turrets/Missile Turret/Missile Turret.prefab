@@ -182,7 +182,7 @@ MonoBehaviour:
     description: Trump is starting to use bigger ballistics causing more damage to
       more enemies with a bigger radius.
     upgradeCost: 400
-    upgradeFactorX: 0.1
+    upgradeFactorX: 0.25
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Missile Barrage
@@ -190,7 +190,7 @@ MonoBehaviour:
     upgradeCost: 1250
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.15
+  fireRate: 0.3
   specialBar: {fileID: 1531281856564686637}
   specialRate: 25
   targetting: First

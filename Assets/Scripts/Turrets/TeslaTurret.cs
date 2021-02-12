@@ -10,11 +10,11 @@ public class TeslaTurret : BeamTurret {
 
     [Header("Lightning")]
     public GameObject flash;
-    public float arcLength = 3.0f;
-    public float arcVar = 2.0f, inaccuracy = 1.0f;
-    public int maxArcs = 10;
+    public float arcLength;
+    public float arcVar, inaccuracy ;
+    public int maxArcs;
 
-    public float specialTime = 1;
+    public float specialTime;
     private bool abilityActivation = false;
 
     new void Awake() {
@@ -254,11 +254,11 @@ public class TeslaTurret : BeamTurret {
     IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
         abilityActivation = true;
-        var tmp = fireRate;
+        var tmpFR = fireRate;
         fireRate *= superFirerate;
         nextFire = 0;
         yield return new WaitForSeconds(specialTime);
-        fireRate = tmp;
+        fireRate = tmpFR;
         abilityActivation = false;
     }
 }

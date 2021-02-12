@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 4573118995715554346, guid: 8bcadf8c6580b2e43a275bde57e28da5,
     type: 3}
-  speed: 60
+  speed: 150
   miss: 0
   special: 1
   rodExplodeEffect: {fileID: 4181203990692315674, guid: c8599b1b3daa26f439739b2ae585c84f,

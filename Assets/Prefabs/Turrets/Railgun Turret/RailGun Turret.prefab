@@ -69,15 +69,15 @@ MonoBehaviour:
     description: ' Lighter rods allow this tower to shoot quicker and throught more
       enemies'
     upgradeCost: 300
-    upgradeFactorX: 0.1
-    upgradeFactorY: 2
+    upgradeFactorX: 0.2
+    upgradeFactorY: 3
   ugSpec:
     upgradeName: Attached Charges
     description: Attach explosive charges which explode on each target it hits
     upgradeCost: 1000
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.2
+  fireRate: 0.5
   specialBar: {fileID: 4924648402484541792}
   specialRate: 20
   targetting: First
@@ -85,7 +85,7 @@ MonoBehaviour:
     type: 3}
   damage: 2
   explosionRadius: 0
-  penetration: 3
+  penetration: 5
   specialPrefab: {fileID: 2200754160205231155, guid: 28da8f9cafc95db4a85caa7ca966817b,
     type: 3}
 --- !u!1 &5899191927841377884
