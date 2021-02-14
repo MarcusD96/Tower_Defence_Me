@@ -56,10 +56,11 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Die() {
+
         isDead = true;
         PlayerStats.money += moneyValue;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5.0f);
+        Destroy(effect, 2.0f);
 
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);
@@ -100,12 +101,10 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator DoT(float dot, float duration) {
         float endTime = Time.time + duration;
-        var s = AudioManager.PlaySound("Laser");
         while(Time.time < endTime) {
             TakeDamage(dot * Time.deltaTime * Time.timeScale, false);
             yield return new WaitForEndOfFrame();
         }
-        AudioManager.StopSound(s);
     }
 
     public void Stun(float duration) {

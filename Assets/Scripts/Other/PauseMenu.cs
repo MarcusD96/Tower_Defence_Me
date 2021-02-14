@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour {
         if(ui.activeSelf) { //paused
             Time.timeScale = 0;
             foreach(var o in FindObjectsOfType<Outline>()) {
+                AudioManager.StopAllSounds();
                 o.enabled = false;
             }
         } else {            //un paused

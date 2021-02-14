@@ -12,6 +12,7 @@ public class WaveSpawner : MonoBehaviour {
     public Button startButton;
     public GameObject remainingText, simple, tank, quick, boss;
 
+    [SerializeField]
     private int waveIndex = 0;
     private bool waveStarted;
     private List<GameObject> spawnedEnemies = new List<GameObject>();

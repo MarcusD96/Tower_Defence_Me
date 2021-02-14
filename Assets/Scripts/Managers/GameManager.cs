@@ -51,11 +51,13 @@ public class GameManager : MonoBehaviour {
     void EndGame() {
         gameEnd = true;
         gameOverUI.SetActive(true);
+        AudioManager.StopAllSounds();
     }
 
     public void WinLevel() {
         gameEnd = true;
         winLevelUI.SetActive(true);
+        AudioManager.StopAllSounds();
     }
 
     public void LastControlled() {

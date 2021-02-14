@@ -344,15 +344,13 @@ public class Turret : MonoBehaviour {
     }
 
     protected bool CheckEnemiesInRange() {
+        if(manual)
+            return true;
+
         GameObject tmpEnemy = null;
         foreach(var e in WaveSpawner.GetEnemyList_Static()) {
             if(!manual) {
                 if(Vector3.Distance(pivot.position, e.transform.position) <= range) {
-                    tmpEnemy = e;
-                    break;
-                }
-            } else {
-                if(Vector3.Distance(transform.position, e.transform.position) <= range * manualRangeMultiplier) {
                     tmpEnemy = e;
                     break;
                 }

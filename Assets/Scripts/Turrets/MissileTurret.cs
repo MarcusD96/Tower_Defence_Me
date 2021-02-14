@@ -60,6 +60,7 @@ public class MissileTurret : ProjectileTurret {
                         target = targetList[ii].transform;
                         damage = 2;
                         AutoShoot();
+                        AudioManager.PlaySound(shootSound);
                         damage = 1;
                         yield return new WaitForSeconds(0.1f);
                     }
@@ -81,9 +82,6 @@ public class MissileTurret : ProjectileTurret {
 
     bool FindAndSortEnemies() {
         foreach(var e in WaveSpawner.GetEnemyList_Static()) {
-            if(Vector3.Distance(e.gameObject.transform.position, transform.position) >= range) { //check to see if any targets are in range
-                continue;
-            }
             targetList.Add(e.GetComponent<Enemy>());
         }
 

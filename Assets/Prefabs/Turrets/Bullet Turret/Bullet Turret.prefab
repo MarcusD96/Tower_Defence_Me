@@ -180,12 +180,12 @@ MonoBehaviour:
   ugSpec:
     upgradeName: Burst
     description: Briefly increase the fire rate dramatically
-    upgradeCost: 750
+    upgradeCost: 700
     upgradeFactorX: 0
     upgradeFactorY: 0
   fireRate: 1
   specialBar: {fileID: 570926517585506664}
-  specialRate: 45
+  specialRate: 35
   targetting: First
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
@@ -194,8 +194,8 @@ MonoBehaviour:
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 8
-  specialFireRate: 4
+  specialTime: 1
+  specialFireRate: 10
 --- !u!1 &4432084885714431149
 GameObject:
   m_ObjectHideFlags: 0

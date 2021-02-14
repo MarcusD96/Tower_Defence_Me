@@ -10153,6 +10153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1908031512084050297, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
         type: 3}
+      propertyPath: waveIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908031512084050297, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
+        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1162154359}
@@ -17758,6 +17763,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5471641422645149241, guid: 7e4d2c8a50640f44abb0ec560b3667af,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5471641422645149243, guid: 7e4d2c8a50640f44abb0ec560b3667af,
         type: 3}
       propertyPath: m_Name

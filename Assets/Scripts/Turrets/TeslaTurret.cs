@@ -11,7 +11,7 @@ public class TeslaTurret : BeamTurret {
     [Header("Lightning")]
     public GameObject flash;
     public float arcLength;
-    public float arcVar, inaccuracy ;
+    public float arcVar, inaccuracy;
     public int maxArcs;
 
     public float specialTime;
@@ -50,7 +50,6 @@ public class TeslaTurret : BeamTurret {
         //build gfx
         if(!abilityActivation) {
             BuildLightning();
-            AudioManager.PlaySound(shootSound);
             targetEnemy.TakeDamage(damage, true);
             targetEnemy.Stun(stunDuration);
         } else {
@@ -60,6 +59,7 @@ public class TeslaTurret : BeamTurret {
                 e.Stun(stunDuration);
             }
         }
+        AudioManager.PlaySound(shootSound);
 
         StopCoroutine("FadeOut");
         StartCoroutine(FadeOut());
@@ -71,9 +71,8 @@ public class TeslaTurret : BeamTurret {
             return;
         }
 
-        float manualRange = range * 3;
         RaycastHit hit;
-        if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, manualRange)) {
+        if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
             if(hit.collider) {
                 nextFire = 1 / fireRate;
                 target = hit.transform;
@@ -82,7 +81,6 @@ public class TeslaTurret : BeamTurret {
                 if(!abilityActivation) {
                     BuildLightning();
                     if(targetEnemy) {
-                        AudioManager.PlaySound(shootSound);
                         targetEnemy.TakeDamage(damage, true);
                         targetEnemy.Stun(stunDuration);
                     }
@@ -93,6 +91,7 @@ public class TeslaTurret : BeamTurret {
                         e.Stun(stunDuration);
                     }
                 }
+                AudioManager.PlaySound(shootSound);
 
                 if(!lineRenderer.enabled) {
                     lineRenderer.enabled = true;

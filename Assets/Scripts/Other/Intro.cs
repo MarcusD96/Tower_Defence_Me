@@ -9,7 +9,9 @@ public class Intro : MonoBehaviour {
     public SceneFader sceneFader;
 
     void Start() {
-        PlayerPrefs.DeleteAll(); //no saving allowed temp!
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteAll(); //no saving in editor mode
+#endif
         Application.targetFrameRate = 150;
         StartCoroutine(PlayIntro());
     }
@@ -29,6 +31,7 @@ public class Intro : MonoBehaviour {
         target.color = Color.white;
         target.texture = player.texture;
         player.Play();
+        AudioManager.PlaySound("Intro");
         while(player.isPlaying) {
             yield return new WaitForSeconds(1.0f);
         }

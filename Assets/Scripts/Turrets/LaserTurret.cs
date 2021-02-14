@@ -67,10 +67,12 @@ public class LaserTurret : BeamTurret {
 
         //graphics
         if(!lineRenderer.enabled) {
+            AudioManager.PlaySound(shootSound);
             lineRenderer.enabled = true;
             impactEffect.Play();
             impactLight.enabled = true;
         }
+
         lineRenderer.SetPosition(0, Vector3.zero);
         lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(pivot.position, target.position));
 
@@ -87,6 +89,10 @@ public class LaserTurret : BeamTurret {
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);
+
+        if(!lineRenderer.enabled) {
+            AudioManager.PlaySound(shootSound);
+        }
 
         float manualRange = range * manualRangeMultiplier;
 
@@ -116,12 +122,6 @@ public class LaserTurret : BeamTurret {
 
                 //set end position of the laser line renderer
                 lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
-
-                //enable the light and particles
-                if(!impactEffect.isPlaying) {
-                    impactEffect.Play();
-                    impactLight.enabled = true;
-                }
 
                 //turn the particles towards the turret
                 Vector3 direction = transform.position - target.transform.position;

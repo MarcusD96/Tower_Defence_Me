@@ -29,7 +29,7 @@ public class Rod : Projectile {
         if(endOfLife) {
             Destroy(gameObject);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 3.0f);
+            Destroy(effect, 2.0f);
             return;
         }
 
@@ -38,18 +38,20 @@ public class Rod : Projectile {
 
         if(!explosive) {
             Damage(target);
+            AudioManager.PlaySound("Rod Impact");
         } else {
             Explode();
+            AudioManager.PlaySound("Rod Explode");
             GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
-            Destroy(explosiveEffectInstance, 3.0f);
-        }        
+            Destroy(explosiveEffectInstance, 2.0f);
+        }
 
         penetration--;
 
         if(penetration <= 0) {
             Destroy(gameObject);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 3.0f);
+            Destroy(effect, 2.0f);
             return;
         }
     }

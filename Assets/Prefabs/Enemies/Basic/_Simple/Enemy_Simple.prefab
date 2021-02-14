@@ -274,11 +274,11 @@ GameObject:
   - component: {fileID: 3498438954662709574}
   - component: {fileID: 3498438954662709569}
   - component: {fileID: 3498438954662709568}
-  - component: {fileID: 3498438954662709571}
   - component: {fileID: 4322764439141097690}
   - component: {fileID: 4424576822074309443}
   - component: {fileID: 9023937180210436670}
-  m_Layer: 0
+  - component: {fileID: -6033176355410578235}
+  m_Layer: 9
   m_Name: Enemy_Simple
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -350,19 +350,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3498438954662709571
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3498438954662709570}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4322764439141097690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,6 +409,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!136 &-6033176355410578235
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498438954662709570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7829282844857762908
 GameObject:
   m_ObjectHideFlags: 0

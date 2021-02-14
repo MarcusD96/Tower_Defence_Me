@@ -10118,7 +10118,7 @@ MonoBehaviour:
     type: 3}
   slowFactor: 0.8
   slowDuration: 5
-  damageOverTime: 0
+  damageOverTime: 0.2
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
   slowWave: {fileID: 4428419339345677791, guid: 8ecd0b841732a1142b096182ad355059,

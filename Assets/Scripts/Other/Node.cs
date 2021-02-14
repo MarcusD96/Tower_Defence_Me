@@ -181,6 +181,7 @@ public class Node : MonoBehaviour {
         }
         //laser
         else if(turret.GetComponent<LaserTurret>()) {
+            AudioManager.StopSound(turret.GetComponent<LaserTurret>().shootSound);
             EMP.RemoveTurret(turret.GetComponent<LaserTurret>());
         }
         //tesla

@@ -45,62 +45,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Shoot Bullet
-    clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
-    volume: 0.02
-    pitch: 2
+    clip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
+    volume: 0.03
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Shoot Missile
     clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
-    volume: 0.04
+    volume: 0.03
     pitch: 0.5
     loop: 0
     source: {fileID: 0}
   - name: Shoot Rod
-    clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
-    volume: 0.02
+    clip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+    volume: 0.03
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Shoot Tesla
-    clip: {fileID: 8300000, guid: 9941dee934c1afa4c848514e8b527bd7, type: 3}
+    clip: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
     volume: 0.03
-    pitch: 2
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Laser
-    clip: {fileID: 8300000, guid: 2c8a139b302556949b00e8ad2bb97825, type: 3}
-    volume: 0.0532
+    clip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+    volume: 0.01
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Bullet Impact
+    clip: {fileID: 8300000, guid: a7cf79ba046d87748b2111e62df94aa9, type: 3}
+    volume: 0.01
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Rod Impact
+    clip: {fileID: 8300000, guid: 58b4243d9443cc54e818e0916f33acac, type: 3}
+    volume: 0.01
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Rod Explode
+    clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
+    volume: 0.01
+    pitch: 0.3
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: Intro
+    clip: {fileID: 8300000, guid: 70d17aeee0ac9e043be967b050e6e644, type: 3}
+    volume: 0.1
+    pitch: 1
     loop: 0
     source: {fileID: 0}

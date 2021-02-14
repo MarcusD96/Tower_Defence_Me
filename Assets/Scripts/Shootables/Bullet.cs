@@ -18,10 +18,13 @@ public class Bullet : Projectile {
     public override void HitTarget(bool endOfLife) {
         if(!endOfLife) {
             Damage(target);
+            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
+            AudioManager.PlaySound("Bullet Impact");
+            Destroy(effect, 2.0f);
+            return;
         }
         Destroy(gameObject);
-
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 5.0f);
+        Destroy(effectInstance, 2.0f);
     }
 }
