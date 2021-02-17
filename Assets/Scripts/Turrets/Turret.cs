@@ -19,17 +19,22 @@ public class Turret : MonoBehaviour {
     #region Headers
     [Header("Global")]
     public float range;
-    public float manualRangeMultiplier = 1.75f;
+    public float manualRangeMultiplier, manualFirerateMultiplier;
     public Camera turretCam;
-    private Camera mainCam;
     public GameObject turretView;
     public Image reloadedIndicator;
-    public AimIndicator aimIndicator;
     public string shootSound;
+    public AimIndicator aimIndicator;
+
+    private Camera mainCam;
 
     [Header("Setup")]
     public Transform pivot;
     public string enemyTag = "Enemy";
+    public Animator gfxAnim;
+    public ParticleSystem muzzleFlash;
+
+    protected string shootAnim = "Shoot";
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
 
@@ -39,6 +44,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Projectiles")]
     public float fireRate = 2.0f; //shots per second, higher is faster
+
     protected float nextFire = 0.0f;
 
     [Header("Special")]
@@ -47,6 +53,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Targetting")]
     public string targetting = "First";
+
     private int targettingMethod;
     #endregion
 
@@ -58,6 +65,7 @@ public class Turret : MonoBehaviour {
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
         aimIndicator.SetTurret(this);
+        gfxAnim = GetComponentInChildren<Animator>();
     }
 
     protected void Update() {
@@ -272,6 +280,8 @@ public class Turret : MonoBehaviour {
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
                 AudioManager.PlaySound(shootSound);
+                gfxAnim.SetTrigger(shootAnim);
+                muzzleFlash.Play();
                 nextFire = 1 / fireRate;
             }
 
@@ -287,7 +297,7 @@ public class Turret : MonoBehaviour {
             nextFire -= Time.deltaTime * Time.timeScale;
         }
 
-        var manualFireRate = fireRate * 1.5f;
+        var manualFireRate = fireRate * manualFirerateMultiplier;
 
         if(beamTurret) {
             if(Input.GetMouseButton(0)) {
@@ -300,6 +310,8 @@ public class Turret : MonoBehaviour {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
                     AudioManager.PlaySound(shootSound);
+                    gfxAnim.SetTrigger(shootAnim);
+                    muzzleFlash.Play();
                     nextFire = 1 / manualFireRate;
                 }
             }

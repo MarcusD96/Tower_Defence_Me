@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 
         enemy.distanceTravelled += (direction * enemy.speed * Time.deltaTime * Time.timeScale).magnitude;
 
-        if(Vector3.Distance(transform.position, target.position) <= 0.4f) {
+        if(Vector3.Distance(transform.position, target.position) <= 1.0f) {
             GetNextWayPoint();
         }
     }

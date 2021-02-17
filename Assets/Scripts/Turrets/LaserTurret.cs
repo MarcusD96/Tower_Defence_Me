@@ -4,17 +4,17 @@ using UnityEngine;
 public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
-    public GameObject indicator;
-
     [Range(0.1f, 1.0f)]
     public float slowFactor;
     public float slowDuration;
     public float damageOverTime;
+    public float slowMultiplier;
     public ParticleSystem impactEffect;
     public Light impactLight;
 
     private bool isDamaging = false;
     private Transform lastTarget;
+    private float manualSlowFactor;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
@@ -26,6 +26,7 @@ public class LaserTurret : BeamTurret {
         laserTurret = this;
         impactEffect.Stop();
         impactLight.enabled = false;
+        manualSlowFactor = slowFactor / slowMultiplier;
     }
 
     new void Update() {
@@ -105,7 +106,7 @@ public class LaserTurret : BeamTurret {
 
                 if(targetEnemy) {
                     if(!targetEnemy.superSlow)
-                        targetEnemy.Slow(slowFactor, slowDuration);
+                        targetEnemy.Slow(manualSlowFactor, slowDuration);
 
                     if(!isDamaging) {
                         isDamaging = true;
@@ -139,8 +140,9 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ApplyUpgradeB() {  //dps++, slow++, slow duration++, laser thiccc++
-        damageOverTime += ugB.upgradeFactorX;
+        damageOverTime += ugB.upgradeFactorX;   
         slowFactor -= ugB.upgradeFactorY;
+        manualSlowFactor = slowFactor / slowMultiplier;
         slowDuration += 2;
         lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
     }

@@ -134,8 +134,8 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void IncreaseEnemy(Enemy enemy, float factor) {
-        enemy.startHp += enemy.startHp * factor;
-        enemy.startSpeed += enemy.startSpeed * (factor / 2);
+        //enemy.startHp += enemy.startHp * factor;
+        //enemy.startSpeed += enemy.startSpeed * (factor / 2);
     }
 
     void MakeWave(Wave wave) {

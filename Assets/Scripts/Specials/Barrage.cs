@@ -63,6 +63,9 @@ public class Barrage : MonoBehaviour {
     }
 
     public static void RemoveTurret(MissileTurret mt) {
+        if(!instance)
+            return;
+
         if(instance.turrets.Count > 0)
             instance.turrets.Remove(mt);
 

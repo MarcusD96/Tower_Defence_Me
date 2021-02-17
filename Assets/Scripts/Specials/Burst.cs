@@ -63,6 +63,9 @@ public class Burst : MonoBehaviour {
     }
 
     public static void RemoveTurret(BulletTurret bt) {
+        if(!instance)
+            return;
+
         if(instance.turrets.Count > 0)
             instance.turrets.Remove(bt);
 

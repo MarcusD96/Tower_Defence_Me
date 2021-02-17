@@ -9759,6 +9759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2027637094117066746}
   - component: {fileID: 6901244913561445898}
+  - component: {fileID: 257664345644645916}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -9774,7 +9775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6451367747869313085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 1.69}
+  m_LocalPosition: {x: 0, y: 1.61, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6087872403074870471}
@@ -9824,6 +9825,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &257664345644645916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451367747869313085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &6709085864990717892
 GameObject:
   m_ObjectHideFlags: 0
@@ -10084,13 +10116,15 @@ MonoBehaviour:
   sellPecent: 75
   range: 7.5
   manualRangeMultiplier: 1.75
+  manualFirerateMultiplier: 1
   turretCam: {fileID: 6901244913561445898}
   turretView: {fileID: 8594125107726049062}
   reloadedIndicator: {fileID: 4886365149221569621}
-  aimIndicator: {fileID: 4106244163764889944}
   shootSound: Laser
+  aimIndicator: {fileID: 4106244163764889944}
   pivot: {fileID: 508612932759547089}
   enemyTag: Enemy
+  anim: {fileID: 0}
   ugA:
     upgradeName: Extra Range
     description: Gives a little bit extra reach for this tower
@@ -10109,16 +10143,15 @@ MonoBehaviour:
     upgradeCost: 500
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0
+  fireRate: 1
   specialBar: {fileID: 8472525781130761690}
   specialRate: 40
   targetting: First
   lineRenderer: {fileID: 2404739084347467044}
-  indicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,
-    type: 3}
   slowFactor: 0.8
   slowDuration: 5
   damageOverTime: 0.2
+  slowMultiplier: 2
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
   slowWave: {fileID: 4428419339345677791, guid: 8ecd0b841732a1142b096182ad355059,

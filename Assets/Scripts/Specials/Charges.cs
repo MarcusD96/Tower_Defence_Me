@@ -63,6 +63,9 @@ public class Charges : MonoBehaviour {
     }
 
     public static void RemoveTurret(RailgunTurret rgt) {
+        if(!instance)
+            return;
+
         if(instance.turrets.Count > 0)
             instance.turrets.Remove(rgt);
 

@@ -1,16 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats {
 
-    public static int money, lives = 100, maxLives = 100, rounds, difficulty;
-
-    public int startMoney, numLives, numMaxLives;
-
-    void Start() {
-        money = startMoney;
-        maxLives = numMaxLives;
-        rounds = 0;
-    }
+    public static int money = 500, lives = 100, maxLives = 9995, rounds = 0, difficulty;
 
     public static void ResetToDifficulty() {
         switch(difficulty) {
@@ -27,7 +19,7 @@ public class PlayerStats : MonoBehaviour {
             case 2:     //hard
                 GameMode.survival = false;
                 Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 1.25f;
-                lives = 1;
+                lives = 10;
                 break;
             case 3:     //survival
                 GameMode.survival = true;

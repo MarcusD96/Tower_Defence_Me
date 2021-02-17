@@ -82,13 +82,16 @@ MonoBehaviour:
   sellPecent: 75
   range: 12
   manualRangeMultiplier: 2
+  manualFirerateMultiplier: 2.5
   turretCam: {fileID: 4360696567918272748}
   turretView: {fileID: 1119547561756262436}
   reloadedIndicator: {fileID: 4252175290431085399}
-  aimIndicator: {fileID: 5435266239430490539}
   shootSound: Shoot Tesla
+  aimIndicator: {fileID: 5435266239430490539}
   pivot: {fileID: 4360696569148855307}
   enemyTag: Enemy
+  gfxAnim: {fileID: 4471419681733041692}
+  muzzleFlash: {fileID: 0}
   ugA:
     upgradeName: Long Range
     description: Longer energy rods can jump further onto enemies.
@@ -99,7 +102,7 @@ MonoBehaviour:
     upgradeName: Up Volt
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
-    upgradeCost: 250
+    upgradeCost: 215
     upgradeFactorX: 0.2
     upgradeFactorY: 1
   ugSpec:
@@ -208,6 +211,7 @@ GameObject:
   - component: {fileID: 4360696567973785859}
   - component: {fileID: 4360696567973785861}
   - component: {fileID: 4360696567973785858}
+  - component: {fileID: 4471419681733041692}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -222,13 +226,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360696567973785856}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.5000001, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4360696569148855307}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4360696567973785861
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -280,6 +284,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &4471419681733041692
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360696567973785856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6046a04476c35174b817b940852e50ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4360696568774688568
 GameObject:
   m_ObjectHideFlags: 0

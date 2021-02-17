@@ -63,6 +63,9 @@ public class Supercharge : MonoBehaviour {
     }
 
     public static void RemoveTurret(TeslaTurret tt) {
+        if(!instance)
+            return;
+
         if(instance.turrets.Count > 0)
             instance.turrets.Remove(tt);
 

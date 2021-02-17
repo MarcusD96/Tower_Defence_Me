@@ -405,7 +405,7 @@ MonoBehaviour:
   currentHp: 0
   speed: 5
   distanceTravelled: 0
-  moneyValue: 20
+  moneyValue: 100
   lifeValue: 100
   healthBar: {fileID: 131314440}
   superSlow: 0

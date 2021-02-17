@@ -38,7 +38,6 @@ public class Rod : Projectile {
 
         if(!explosive) {
             Damage(target);
-            AudioManager.PlaySound("Rod Impact");
         } else {
             Explode();
             AudioManager.PlaySound("Rod Explode");

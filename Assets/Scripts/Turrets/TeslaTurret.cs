@@ -46,6 +46,7 @@ public class TeslaTurret : BeamTurret {
 
         //aim at target
         RotateOnShoot();
+        gfxAnim.SetTrigger(shootAnim);
 
         //build gfx
         if(!abilityActivation) {
@@ -67,25 +68,29 @@ public class TeslaTurret : BeamTurret {
 
     public override void ManualShoot() {
         //gotta do the reverse since we cannot reset the timer if the shot is missed.
-        if(nextFire >= 0.0f) {
+        if(nextFire >= 0) {
             return;
         }
+
+        var manualFireRate = fireRate * manualFirerateMultiplier;
 
         RaycastHit hit;
         if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
             if(hit.collider) {
-                nextFire = 1 / fireRate;
+                nextFire = 1 / manualFireRate;
                 target = hit.transform;
                 targetEnemy = target.GetComponent<Enemy>();
 
                 if(!abilityActivation) {
                     BuildLightning();
                     if(targetEnemy) {
+                        gfxAnim.SetTrigger(shootAnim);
                         targetEnemy.TakeDamage(damage, true);
                         targetEnemy.Stun(stunDuration);
                     }
                 } else {
                     Enemy[] enemies = BuildSuperchargedLightning();
+                    gfxAnim.SetTrigger(shootAnim);
                     foreach(var e in enemies) {
                         e.TakeDamage(damage, true);
                         e.Stun(stunDuration);

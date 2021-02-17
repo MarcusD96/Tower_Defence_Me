@@ -19,7 +19,6 @@ public class Bullet : Projectile {
         if(!endOfLife) {
             Damage(target);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            AudioManager.PlaySound("Bullet Impact");
             Destroy(effect, 2.0f);
             return;
         }

@@ -40,11 +40,13 @@ public class PauseMenu : MonoBehaviour {
 
     public void Restart() {
         Toggle();
+        PlayerStats.money = 500;
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu() {
         Toggle();
+        PlayerStats.money = 500;
         sceneFader.FadeTo(menuSceneName);
     }
 }

@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour {
 
     void Start() {
         startPos = transform.position;
+        Destroy(gameObject, 3.0f); //fallback
     }
 
     protected void Update() {
