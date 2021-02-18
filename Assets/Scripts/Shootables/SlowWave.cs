@@ -26,7 +26,7 @@ public class SlowWave : MonoBehaviour {
     }
 
     IEnumerator WaveBlast() {
-        AudioManager.PlaySound("EMP");
+        AudioManager.PlaySound("EMP", transform.position);
         while(transform.localScale.x < maxSize.x - 5) {
             var scale = transform.localScale;
             scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * Time.timeScale * growSpeed);

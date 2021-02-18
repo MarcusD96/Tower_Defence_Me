@@ -40,7 +40,7 @@ public class Rod : Projectile {
             Damage(target);
         } else {
             Explode();
-            AudioManager.PlaySound("Rod Explode");
+            AudioManager.PlaySound("Rod Explode", target.position);
             GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
             Destroy(explosiveEffectInstance, 2.0f);
         }

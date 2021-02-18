@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour {
     public float panSpeed = 50.0f, scrollSpeed = 5.0f;
 
     private float minX = -20.0f, maxX = 20.0f;
-    private float minY = 40.0f, maxY = 100.0f;
+    private float minY = 30.0f, maxY = 100.0f;
     private float minZ = -45.0f, maxZ = 10.0f;
 
     void Start() {

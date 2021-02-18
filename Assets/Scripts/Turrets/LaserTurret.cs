@@ -68,7 +68,7 @@ public class LaserTurret : BeamTurret {
 
         //graphics
         if(!lineRenderer.enabled) {
-            AudioManager.PlaySound(shootSound);
+            AudioManager.PlaySound(shootSound, transform.position);
             lineRenderer.enabled = true;
             impactEffect.Play();
             impactLight.enabled = true;
@@ -92,7 +92,7 @@ public class LaserTurret : BeamTurret {
         lineRenderer.SetPosition(0, Vector3.zero);
 
         if(!lineRenderer.enabled) {
-            AudioManager.PlaySound(shootSound);
+            AudioManager.PlaySound(shootSound, transform.position);
         }
 
         float manualRange = range * manualRangeMultiplier;

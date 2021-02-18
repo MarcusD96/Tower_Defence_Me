@@ -20,6 +20,7 @@ public class Bullet : Projectile {
             Damage(target);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2.0f);
+            Destroy(gameObject);
             return;
         }
         Destroy(gameObject);

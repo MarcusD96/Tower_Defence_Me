@@ -60,7 +60,7 @@ public class TeslaTurret : BeamTurret {
                 e.Stun(stunDuration);
             }
         }
-        AudioManager.PlaySound(shootSound);
+        AudioManager.PlaySound(shootSound, transform.position);
 
         StopCoroutine("FadeOut");
         StartCoroutine(FadeOut());
@@ -96,7 +96,7 @@ public class TeslaTurret : BeamTurret {
                         e.Stun(stunDuration);
                     }
                 }
-                AudioManager.PlaySound(shootSound);
+                AudioManager.PlaySound(shootSound, transform.position);
 
                 if(!lineRenderer.enabled) {
                     lineRenderer.enabled = true;

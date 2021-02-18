@@ -40,18 +40,17 @@ public class AudioManager : MonoBehaviour {
         instance.Stop(name);
     }
 
-    public void Play(string name) {
+    public void Play(string name, Vector3 position) {
         Sound s = System.Array.Find(sounds, sounds => sounds.name == name);
         if(s == null) {
             Debug.LogWarning("Sound: " + name + " not found");
             return;
         }
-
-        s.source.Play();
+        AudioSource.PlayClipAtPoint(s.source.clip, position);
     }
 
-    public static void PlaySound(string name) {
-        instance.Play(name);
+    public static void PlaySound(string name, Vector3 position) {
+        instance.Play(name, position);
     }
 
     public static void StopAllSounds() {
