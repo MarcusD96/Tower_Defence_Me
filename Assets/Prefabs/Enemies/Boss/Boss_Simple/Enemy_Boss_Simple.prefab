@@ -409,6 +409,7 @@ MonoBehaviour:
   lifeValue: 100
   healthBar: {fileID: 131314440}
   superSlow: 0
+  isBoss: 1
   stunResist: 1
   slowResist: 0
 --- !u!114 &4424576822074309443

@@ -71,7 +71,12 @@ public class Missile : Projectile {
             if(!target)
                 continue;
             if(Vector3.Distance(target.position, e[i].transform.position) <= explosionRadius) {
-                Damage(e[i].transform);
+                if(target.GetComponent<Enemy>().isBoss) {
+                    damage *= 2;
+                    Damage(e[i].transform);
+                    damage /= 2;
+                } else
+                    Damage(e[i].transform);
             }
         }
 

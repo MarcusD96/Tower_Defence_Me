@@ -24,8 +24,8 @@ public class Enemy : MonoBehaviour {
     private bool isDead = false, isSlow = false;
 
     [Header("Boss")]
-    public bool stunResist;
-    public bool slowResist;
+    public bool isBoss;
+    public bool stunResist, slowResist;
 
     void Start() {
         speed = startSpeed * speedDifficultyMultiplier;
