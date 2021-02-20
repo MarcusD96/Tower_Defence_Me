@@ -14,7 +14,7 @@ public class LaserTurret : BeamTurret {
 
     private bool isDamaging = false;
     private Transform lastTarget;
-    private float manualSlowFactor;
+    private float manualSlowFactor, maxSlowFactor;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
@@ -27,8 +27,10 @@ public class LaserTurret : BeamTurret {
         impactEffect.Stop();
         impactLight.enabled = false;
         manualSlowFactor = slowFactor / slowMultiplier;
+        maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 3)) / slowMultiplier;
     }
 
+    Transform targetPrev; //used for sound purposes only
     new void Update() {
         base.Update();
 
@@ -58,17 +60,24 @@ public class LaserTurret : BeamTurret {
 
         //apply new slow if not slowed
         if(targetEnemy.speed > slowFactor) {
-            targetEnemy.Slow(slowFactor, slowDuration);
+            if(!hasSpecial)
+                targetEnemy.Slow(slowFactor, slowDuration);
+            else
+                targetEnemy.Slow(maxSlowFactor, slowDuration);
         }
 
         if(!isDamaging) {
             isDamaging = true;
-            targetEnemy.DamageOverTime(damageOverTime, slowDuration);
+            targetEnemy.DamageOverTime(0, slowDuration);
+        }
+
+        if(target != targetPrev) {
+            AudioManager.PlaySound(shootSound, transform.position);
+            targetPrev = target;
         }
 
         //graphics
         if(!lineRenderer.enabled) {
-            AudioManager.PlaySound(shootSound, transform.position);
             lineRenderer.enabled = true;
             impactEffect.Play();
             impactLight.enabled = true;
@@ -110,7 +119,12 @@ public class LaserTurret : BeamTurret {
 
                     if(!isDamaging) {
                         isDamaging = true;
-                        targetEnemy.DamageOverTime(damageOverTime, slowDuration);
+                        targetEnemy.DamageOverTime(0, slowDuration);
+                    }
+
+                    if(target != targetPrev) {
+                        AudioManager.PlaySound(shootSound, transform.position);
+                        targetPrev = target;
                     }
 
                     //graphics
@@ -139,11 +153,10 @@ public class LaserTurret : BeamTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //dps++, slow++, slow duration++, laser thiccc++
-        damageOverTime += ugB.upgradeFactorX;   
+    public override void ApplyUpgradeB() {  //slow++, slow duration++, laser thiccc++
+        slowDuration += ugB.upgradeFactorX;
         slowFactor -= ugB.upgradeFactorY;
-        manualSlowFactor = slowFactor / slowMultiplier;
-        slowDuration += 2;
+        manualSlowFactor = slowFactor / slowMultiplier;   //update MANUAL
         lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
     }
 
@@ -153,9 +166,8 @@ public class LaserTurret : BeamTurret {
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(SpecialTime());
             tempSW = Instantiate(slowWave, transform.position, transform.rotation);
-            tempSW.slowFactor = slowFactor / 2;
-            tempSW.slowDuration = slowDuration * 3.5f;
-            tempSW.damageOverTime = damageOverTime * 1.5f;
+            tempSW.slowFactor = maxSlowFactor;
+            tempSW.slowDuration = slowDuration * 5;
         }
     }
 }

@@ -39,7 +39,10 @@ public class TeslaTurret : BeamTurret {
 
     public override void AutoShoot() {
         if(nextFire <= 0.0f) {
-            nextFire = 1 / fireRate;
+            if(!hasSpecial)
+                nextFire = 1 / fireRate;
+            else
+                nextFire = 1 / maxFireRate;
         } else {
             return;
         }
@@ -72,7 +75,10 @@ public class TeslaTurret : BeamTurret {
             return;
         }
 
-        var manualFireRate = fireRate * manualFirerateMultiplier;
+        var manualFireRate = fireRate;
+        if(!hasSpecial) {
+            manualFireRate = fireRate * manualFirerateMultiplier;
+        }
 
         RaycastHit hit;
         if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, range * manualRangeMultiplier)) {

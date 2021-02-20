@@ -19,6 +19,6 @@ public class DamageIndicator : MonoBehaviour {
     }
     
     public void IndicateDamage(float damage_) {
-        damageText.text = damage_.ToString();
+        damageText.text = Mathf.CeilToInt(damage_).ToString();
     }
 }

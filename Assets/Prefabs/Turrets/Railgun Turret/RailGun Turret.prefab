@@ -52,6 +52,8 @@ MonoBehaviour:
   range: 15
   manualRangeMultiplier: 2.25
   manualFirerateMultiplier: 2
+  fireRate: 0.5
+  maxFireRate: 0
   turretCam: {fileID: 2990236815034801900}
   turretView: {fileID: 5082276650816418716}
   reloadedIndicator: {fileID: 8218070797992405231}
@@ -68,19 +70,17 @@ MonoBehaviour:
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
-    upgradeName: Advancements
-    description: ' Lighter rods allow this tower to shoot quicker and throught more
-      enemies'
+    upgradeName: Light n' Dense Rods
+    description: Lighter and more dense rods are fired faster and hit more enemies.
     upgradeCost: 300
-    upgradeFactorX: 0.2
+    upgradeFactorX: 0.17
     upgradeFactorY: 3
   ugSpec:
     upgradeName: Attached Charges
     description: Attach explosive charges which explode on each target it hits
-    upgradeCost: 1000
+    upgradeCost: 1300
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.5
   specialBar: {fileID: 4924648402484541792}
   specialRate: 20
   targetting: First

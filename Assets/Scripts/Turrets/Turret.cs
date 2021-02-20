@@ -20,6 +20,9 @@ public class Turret : MonoBehaviour {
     [Header("Global")]
     public float range;
     public float manualRangeMultiplier, manualFirerateMultiplier;
+    public float fireRate; //shots per second, higher is faster
+    [HideInInspector]
+    public float maxFireRate;
     public Camera turretCam;
     public GameObject turretView;
     public Image reloadedIndicator;
@@ -43,8 +46,6 @@ public class Turret : MonoBehaviour {
     public Upgrade ugB, ugSpec;
 
     [Header("Projectiles")]
-    public float fireRate = 2.0f; //shots per second, higher is faster
-
     protected float nextFire = 0.0f;
 
     [Header("Special")]
@@ -66,6 +67,7 @@ public class Turret : MonoBehaviour {
         targettingMethod = 0;
         aimIndicator.SetTurret(this);
         gfxAnim = GetComponentInChildren<Animator>();
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
     }
 
     protected void Update() {
@@ -282,7 +284,11 @@ public class Turret : MonoBehaviour {
                 AudioManager.PlaySound(shootSound, transform.position);
                 gfxAnim.SetTrigger(shootAnim);
                 muzzleFlash.Play();
-                nextFire = 1 / fireRate;
+                if(!hasSpecial)
+                    nextFire = 1 / fireRate;
+                else
+                    nextFire = 1 / maxFireRate;
+                
             }
 
         } else {
@@ -297,7 +303,10 @@ public class Turret : MonoBehaviour {
             nextFire -= Time.deltaTime * Time.timeScale;
         }
 
-        var manualFireRate = fireRate * manualFirerateMultiplier;
+        var manualFireRate = fireRate;
+        if(!hasSpecial) {
+            manualFireRate = fireRate * manualFirerateMultiplier; 
+        }
 
         if(beamTurret) {
             if(Input.GetMouseButton(0)) {
@@ -336,6 +345,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void EnableSpecial() {
+        fireRate = maxFireRate;
         hasSpecial = true;
         specialBar.gameObject.SetActive(true);
     }

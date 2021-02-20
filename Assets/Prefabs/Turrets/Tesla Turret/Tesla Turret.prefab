@@ -83,6 +83,8 @@ MonoBehaviour:
   range: 12
   manualRangeMultiplier: 2
   manualFirerateMultiplier: 2.5
+  fireRate: 0.5
+  maxFireRate: 0
   turretCam: {fileID: 4360696567918272748}
   turretView: {fileID: 1119547561756262436}
   reloadedIndicator: {fileID: 4252175290431085399}
@@ -93,25 +95,24 @@ MonoBehaviour:
   gfxAnim: {fileID: 4471419681733041692}
   muzzleFlash: {fileID: 0}
   ugA:
-    upgradeName: Long Range
-    description: Longer energy rods can jump further onto enemies.
+    upgradeName: Voltage Upgrade
+    description: Higher voltage allows this tower to hit enemies at a greater range.
     upgradeCost: 75
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
-    upgradeName: Up Volt
+    upgradeName: Upgraded Circuitry
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
     upgradeCost: 215
     upgradeFactorX: 0.2
     upgradeFactorY: 1
   ugSpec:
-    upgradeName: Overload
-    description: The lightning jumps to each target automatically and fast
-    upgradeCost: 750
+    upgradeName: Overloaded Capacitors
+    description: The lightning jumps to multiple targets per charge.
+    upgradeCost: 950
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.5
   specialBar: {fileID: 961919420748696280}
   specialRate: 15
   targetting: First

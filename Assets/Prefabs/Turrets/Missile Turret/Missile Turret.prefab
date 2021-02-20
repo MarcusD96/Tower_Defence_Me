@@ -185,6 +185,8 @@ MonoBehaviour:
   range: 21
   manualRangeMultiplier: 1.5
   manualFirerateMultiplier: 2
+  fireRate: 0.35
+  maxFireRate: 0
   turretCam: {fileID: 7206695569095409826}
   turretView: {fileID: 1697917200879085009}
   reloadedIndicator: {fileID: 2529785784099798690}
@@ -195,25 +197,23 @@ MonoBehaviour:
   gfxAnim: {fileID: 5666782259984581973}
   muzzleFlash: {fileID: 173412066861058886}
   ugA:
-    upgradeName: Over the Wall
-    description: Allows the launcher to see further over trumps wall.
-    upgradeCost: 150
+    upgradeName: Rocket Fuel Efficency
+    description: Dramatically increase the towers range.
+    upgradeCost: 100
     upgradeFactorX: 3
     upgradeFactorY: 0
   ugB:
-    upgradeName: Trump's Warheads
-    description: Trump is starting to use bigger ballistics causing more damage to
-      more enemies with a bigger radius.
-    upgradeCost: 400
-    upgradeFactorX: 0.25
+    upgradeName: Powerful Warheads
+    description: Increase warhead damage and its explosive power.
+    upgradeCost: 350
+    upgradeFactorX: 0.2
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Missile Barrage
-    description: Target up to the closest 10 enemies and launch missiles at each
-    upgradeCost: 1250
+    description: Swiftly launch a barrage of 20 missiles towards enemies.
+    upgradeCost: 1500
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.3
   specialBar: {fileID: 1531281856564686637}
   specialRate: 25
   targetting: First

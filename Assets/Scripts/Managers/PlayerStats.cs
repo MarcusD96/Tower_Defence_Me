@@ -2,7 +2,7 @@
 
 public class PlayerStats {
 
-    public static int money = 500, lives = 100, maxLives = 9995, rounds = 0, difficulty;
+    public static int money, startMoney = 500, lives = 100, maxLives = 9995, rounds = 0, difficulty;
 
     public static void ResetToDifficulty() {
         switch(difficulty) {
@@ -30,5 +30,7 @@ public class PlayerStats {
                 Debug.LogError("lol how tf you do dis?");
                 break;
         }
+
+        money = startMoney;
     }
 }

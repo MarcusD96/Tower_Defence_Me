@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SlowWave : MonoBehaviour {
     public float growSpeed, slowFactor, slowDuration;
-    [HideInInspector]
-    public float damageOverTime;
     public Vector3 maxSize;
     [HideInInspector]
     public bool done = false;
+
+    [SerializeField]
+    private float damagerPerSecond;
 
 
     void Start() {
@@ -20,8 +21,7 @@ public class SlowWave : MonoBehaviour {
         if(enemy) {
             enemy.superSlow = true;
             enemy.Slow(slowFactor, slowDuration);
-            enemy.DamageOverTime(damageOverTime, slowDuration);
-            ;
+            enemy.DamageOverTime(damagerPerSecond, slowDuration);
         }
     }
 

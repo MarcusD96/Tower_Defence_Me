@@ -10116,7 +10116,9 @@ MonoBehaviour:
   sellPecent: 75
   range: 7.5
   manualRangeMultiplier: 1.75
-  manualFirerateMultiplier: 1
+  manualFirerateMultiplier: 0
+  fireRate: 0
+  maxFireRate: 0
   turretCam: {fileID: 6901244913561445898}
   turretView: {fileID: 8594125107726049062}
   reloadedIndicator: {fileID: 4886365149221569621}
@@ -10124,26 +10126,26 @@ MonoBehaviour:
   aimIndicator: {fileID: 4106244163764889944}
   pivot: {fileID: 508612932759547089}
   enemyTag: Enemy
-  anim: {fileID: 0}
+  gfxAnim: {fileID: 0}
+  muzzleFlash: {fileID: 0}
   ugA:
-    upgradeName: Extra Range
-    description: Gives a little bit extra reach for this tower
-    upgradeCost: 40
-    upgradeFactorX: 1.5
+    upgradeName: Enhanced Range
+    description: Grants a little extra reach to hit extra track.
+    upgradeCost: 35
+    upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
-    upgradeName: Phatter Laser
-    description: Phatter Lights. Phatter damage. Phatter slow.
-    upgradeCost: 175
-    upgradeFactorX: 0.2
+    upgradeName: Mo' Powwa Babee
+    description: Slower effect that lasts longer with a bigger beam.
+    upgradeCost: 215
+    upgradeFactorX: 1
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
     description: Strike a very large area with a crippling slow effect
-    upgradeCost: 500
+    upgradeCost: 750
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 1
   specialBar: {fileID: 8472525781130761690}
   specialRate: 40
   targetting: First
@@ -10151,7 +10153,7 @@ MonoBehaviour:
   slowFactor: 0.8
   slowDuration: 5
   damageOverTime: 0.2
-  slowMultiplier: 2
+  slowMultiplier: 1.6666666
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
   slowWave: {fileID: 4428419339345677791, guid: 8ecd0b841732a1142b096182ad355059,

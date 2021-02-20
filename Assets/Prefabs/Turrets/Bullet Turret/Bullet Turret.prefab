@@ -190,6 +190,7 @@ MonoBehaviour:
   range: 12
   manualRangeMultiplier: 1.75
   manualFirerateMultiplier: 3
+  fireRate: 0.75
   turretCam: {fileID: 1772590479217720602}
   turretView: {fileID: 377269558289726356}
   reloadedIndicator: {fileID: 3582605655545536743}
@@ -201,23 +202,22 @@ MonoBehaviour:
   muzzleFlash: {fileID: 7654172783242055649}
   ugA:
     upgradeName: Sniper Vision
-    description: Greater Range
-    upgradeCost: 50
+    description: Slightly greater range
+    upgradeCost: 40
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
-    upgradeName: FMJ
-    description: Faster reload speed and more damage
+    upgradeName: Upgraded Belt Feeder and FMJ Rounds
+    description: Faster reload speed and more damage per shot.
     upgradeCost: 200
     upgradeFactorX: 0.25
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
-    description: Briefly increase the fire rate dramatically
-    upgradeCost: 700
+    description: Rapidly shoot a burst of bullets for 5 seconds.
+    upgradeCost: 1050
     upgradeFactorX: 0
     upgradeFactorY: 0
-  fireRate: 0.75
   specialBar: {fileID: 570926517585506664}
   specialRate: 35
   targetting: First

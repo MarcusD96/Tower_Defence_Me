@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -24,6 +25,7 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.spatialBlend = 1.0f;
         }
     }
 
@@ -40,23 +42,24 @@ public class AudioManager : MonoBehaviour {
         instance.Stop(name);
     }
 
+    public static void StopAllSounds() {
+        foreach(var s in instance.sounds) {
+            instance.Stop(s.name);
+        }
+    }
+
     public void Play(string name, Vector3 position) {
         Sound s = System.Array.Find(sounds, sounds => sounds.name == name);
         if(s == null) {
             Debug.LogWarning("Sound: " + name + " not found");
             return;
         }
-        AudioSource.PlayClipAtPoint(s.source.clip, position);
+
+        AudioSource.PlayClipAtPoint(s.clip, position);
     }
 
     public static void PlaySound(string name, Vector3 position) {
         instance.Play(name, position);
-    }
-
-    public static void StopAllSounds() {
-        foreach(var s in instance.sounds) {
-            instance.Stop(s.name);
-        }
     }
 }
 
@@ -68,7 +71,7 @@ public class Sound {
 
     public AudioClip clip;
 
-    [Range(0.0f, 0.1f)]
+    [Range(0.0f, 1.0f)]
     public float volume;
     [Range(0.1f, 3.0f)]
     public float pitch;

@@ -79,8 +79,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _AmbientCol: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _Clipped: 0
+    - _ColBright: 0
+    - _ColIntense: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -89,16 +93,27 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.109
     - _GlossyReflections: 1
+    - _Lumin: 0
+    - _MaxLight: 1
     - _Metallic: 0
+    - _MinLight: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Offset: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Segmented: 1
+    - _ShnIntense: 0
+    - _ShnOverlap: 0
+    - _ShnRange: 0.15
+    - _ShnSmooth: 0
     - _Smoothness: 0.109
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Steps: 3
+    - _StpSmooth: 0
     - _Surface: 0
     - _UVSec: 0
     - _WorkflowMode: 1
@@ -107,5 +122,6 @@ Material:
     - _BaseColor: {r: 0.7075471, g: 0.12348697, b: 0.12348697, a: 1}
     - _Color: {r: 0.7075472, g: 0.12348701, b: 0.12348701, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShnColor: {r: 1, g: 1, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

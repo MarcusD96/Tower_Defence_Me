@@ -306,10 +306,10 @@ GameObject:
   - component: {fileID: 3498438954662709574}
   - component: {fileID: 3498438954662709569}
   - component: {fileID: 3498438954662709568}
+  - component: {fileID: 6883252099786931913}
   - component: {fileID: 4322764439141097690}
   - component: {fileID: 4424576822074309443}
   - component: {fileID: 6029442283887072088}
-  - component: {fileID: 6883252099786931913}
   m_Layer: 9
   m_Name: Enemy_Boss_Tank
   m_TagString: Enemy
@@ -382,6 +382,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6883252099786931913
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498438954662709570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4322764439141097690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,13 +414,13 @@ MonoBehaviour:
     type: 3}
   slowEffect: {fileID: 3869588846238179255}
   stunEffect: {fileID: 3000482628338361963}
-  startSpeed: 5
+  startSpeed: 3
   startHp: 800
   currentHp: 0
   speed: 5
   distanceTravelled: 0
-  moneyValue: 100
-  lifeValue: 100
+  moneyValue: 250
+  lifeValue: 500
   healthBar: {fileID: 131314440}
   superSlow: 0
   isBoss: 1
@@ -437,25 +451,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 1, a: 1}
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!136 &6883252099786931913
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3498438954662709570}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2755105022890793550
 PrefabInstance:
   m_ObjectHideFlags: 0

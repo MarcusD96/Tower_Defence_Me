@@ -400,12 +400,12 @@ MonoBehaviour:
     type: 3}
   slowEffect: {fileID: 3869588846238179255}
   stunEffect: {fileID: 3000482628338361963}
-  startSpeed: 8
+  startSpeed: 7
   startHp: 200
   currentHp: 0
   speed: 7
   distanceTravelled: 0
-  moneyValue: 50
+  moneyValue: 150
   lifeValue: 100
   healthBar: {fileID: 131314440}
   superSlow: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 1, a: 1}
+  outlineColor: {r: 0.25943398, g: 0.25943398, b: 1, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
