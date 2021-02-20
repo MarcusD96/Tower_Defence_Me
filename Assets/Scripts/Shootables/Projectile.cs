@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour {
             }
         }
 
-        distanceThisFrame = speed * Time.deltaTime * Time.timeScale;
+        distanceThisFrame = speed * Time.deltaTime;
     }
 
     public Missile GetMissile() {
