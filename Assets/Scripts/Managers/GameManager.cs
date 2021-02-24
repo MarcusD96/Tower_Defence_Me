@@ -4,11 +4,16 @@ public class GameManager : MonoBehaviour {
 
     public static bool gameEnd;
 
-    public GameObject gameOverUI, winLevelUI;
+    private GameObject gameOverUI, winLevelUI;
 
     public float fastForward;
 
     public static Node lastControlled;
+
+    void Awake() {
+        winLevelUI = Resources.FindObjectsOfTypeAll<LevelWin>()[0].gameObject;
+        gameOverUI = Resources.FindObjectsOfTypeAll<GameOver>()[0].gameObject;
+    }
 
     void Start() {
         gameEnd = false;
@@ -28,12 +33,14 @@ public class GameManager : MonoBehaviour {
             EndGame();
 
         ///////
-        if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            if(Time.timeScale == fastForward) {
-                Time.timeScale = 1;
-            } else {
-                Time.timeScale = fastForward;
-            }
+        if(!PauseMenu.paused) {
+            if(Input.GetKeyDown(KeyCode.LeftShift)) {
+                if(Time.timeScale == fastForward) {
+                    Time.timeScale = 1;
+                } else {
+                    Time.timeScale = fastForward;
+                }
+            } 
         }
 
         //cheaty :P

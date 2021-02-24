@@ -46,20 +46,15 @@ public class Missile : Projectile {
 
         //remove enemies not in explosion range
         for(int i = 0; i < e.Count - 1; i++) {
-            if(!target)
-                continue;
-            if(Vector3.Distance(target.position, e[i].transform.position) > explosionRadius) {
+            if(Vector3.Distance(transform.position, e[i].transform.position) > explosionRadius) {
                 e.RemoveAt(i);
             }
         }
         e.TrimExcess();
 
         //sort enemies based on distance to target/explosion
-        e.Sort((a, b) => {
-            if(target) {
-                return Vector3.Distance(target.position, a.transform.position).CompareTo(Vector3.Distance(target.position, b.transform.position));
-            } else
-                return 0;
+        e.Sort((a, b) => { 
+            return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position));
         });
 
 
@@ -68,10 +63,8 @@ public class Missile : Projectile {
 
         var s = WaveSpawner.GetEnemyList_Static();
         for(int i = 0; i < penetration; i++) {
-            if(!target)
-                continue;
-            if(Vector3.Distance(target.position, e[i].transform.position) <= explosionRadius) {
-                if(target.GetComponent<Enemy>().isBoss) {
+            if(Vector3.Distance(transform.position, e[i].transform.position) <= explosionRadius) {
+                if(e[i].GetComponent<Enemy>().isBoss) {
                     damage *= 2;
                     Damage(e[i].transform);
                     damage /= 2;
@@ -79,7 +72,6 @@ public class Missile : Projectile {
                     Damage(e[i].transform);
             }
         }
-
         Destroy(gameObject);
     }
 

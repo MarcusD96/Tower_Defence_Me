@@ -29,7 +29,7 @@ public class SlowWave : MonoBehaviour {
         AudioManager.PlaySound("EMP", transform.position);
         while(transform.localScale.x < maxSize.x - 5) {
             var scale = transform.localScale;
-            scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * Time.timeScale * growSpeed);
+            scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * growSpeed);
             scale.y = 0.01f;
             transform.localScale = scale;
 

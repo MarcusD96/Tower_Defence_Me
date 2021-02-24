@@ -10115,7 +10115,7 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   range: 7.5
-  manualRangeMultiplier: 1.75
+  manualRangeMultiplier: 1.5
   manualFirerateMultiplier: 0
   fireRate: 0
   maxFireRate: 0
@@ -10150,9 +10150,9 @@ MonoBehaviour:
   specialRate: 40
   targetting: First
   lineRenderer: {fileID: 2404739084347467044}
-  slowFactor: 0.8
+  slowFactor: 0.7
   slowDuration: 5
-  damageOverTime: 0.2
+  damageOverTime: 0
   slowMultiplier: 1.6666666
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}

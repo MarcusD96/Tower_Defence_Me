@@ -46,25 +46,25 @@ MonoBehaviour:
   sounds:
   - name: Shoot Bullet
     clip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
-    volume: 0.03
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Shoot Missile
     clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
-    volume: 0.03
+    volume: 1
     pitch: 0.5
     loop: 0
     source: {fileID: 0}
   - name: Shoot Rod
     clip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
-    volume: 0.03
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Shoot Tesla
     clip: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
-    volume: 0.03
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -76,31 +76,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Bullet Impact
     clip: {fileID: 8300000, guid: a7cf79ba046d87748b2111e62df94aa9, type: 3}
-    volume: 0.01
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Rod Impact
     clip: {fileID: 8300000, guid: 58b4243d9443cc54e818e0916f33acac, type: 3}
-    volume: 0.01
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Rod Explode
     clip: {fileID: 8300000, guid: 1a651ac6406381449865e41a3e67a3ce, type: 3}
-    volume: 0.01
+    volume: 1
     pitch: 0.3
     loop: 0
     source: {fileID: 0}
   - name: Intro
     clip: {fileID: 8300000, guid: 70d17aeee0ac9e043be967b050e6e644, type: 3}
-    volume: 0.1
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: EMP
     clip: {fileID: 8300000, guid: 6b24dd26b00d5e64a90c09a6f060c712, type: 3}
-    volume: 0.01
+    volume: 1
     pitch: 1.52
     loop: 0
     source: {fileID: 0}

@@ -267,7 +267,7 @@ public class Turret : MonoBehaviour {
 
     void AutomaticControl() {
         if(nextFire > 0.0f) {
-            nextFire -= Time.deltaTime * Time.timeScale;
+            nextFire -= Time.deltaTime;
         }
 
         FindEnemy();
@@ -284,13 +284,8 @@ public class Turret : MonoBehaviour {
                 AudioManager.PlaySound(shootSound, transform.position);
                 gfxAnim.SetTrigger(shootAnim);
                 muzzleFlash.Play();
-                if(!hasSpecial)
-                    nextFire = 1 / fireRate;
-                else
-                    nextFire = 1 / maxFireRate;
-                
+                nextFire = 1 / fireRate;
             }
-
         } else {
             beamTurret.AutoShoot();
         }
@@ -300,12 +295,12 @@ public class Turret : MonoBehaviour {
         ManualMovement();
 
         if(nextFire >= 0.0f) {
-            nextFire -= Time.deltaTime * Time.timeScale;
+            nextFire -= Time.deltaTime;
         }
 
         var manualFireRate = fireRate;
         if(!hasSpecial) {
-            manualFireRate = fireRate * manualFirerateMultiplier; 
+            manualFireRate = fireRate * manualFirerateMultiplier;
         }
 
         if(beamTurret) {
@@ -329,10 +324,20 @@ public class Turret : MonoBehaviour {
     }
 
     void ManualMovement() {
-
-        float mouseInput = Input.GetAxis("Mouse X");
-        Vector3 lookhere = new Vector3(0, mouseInput * 0.8f, 0); //apply sensitivity in settings later
-        pivot.Rotate(lookhere);
+        if(Settings.UseKeys) {
+            if(Input.GetKey(KeyCode.A)) {
+                Vector3 lookHere = Vector3.down * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
+                pivot.Rotate(lookHere);
+            }
+            if(Input.GetKey(KeyCode.D)) {
+                Vector3 lookHere = Vector3.up * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
+                pivot.Rotate(lookHere);
+            }
+        } else {
+            float mouseInput = Input.GetAxis("Mouse X");
+            Vector3 lookhere = Vector3.up * mouseInput * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;  //apply sensitivity in settings later
+            pivot.Rotate(lookhere);
+        }
     }
 
     public void ApplyUpgradeA() {
@@ -358,7 +363,7 @@ public class Turret : MonoBehaviour {
         float fillTime = specialRate;
         while(fillTime > 0) {
             if(WaveSpawner.enemiesAlive > 0) {
-                fillTime -= Time.deltaTime * Time.timeScale;
+                fillTime -= Time.deltaTime;
                 specialBar.fillBar.fillAmount = fillTime / specialRate;
             }
             yield return null;

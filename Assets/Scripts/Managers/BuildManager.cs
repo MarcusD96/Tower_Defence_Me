@@ -4,7 +4,7 @@ public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
     public GameObject buildEffect, sellEffect, upgradeEffect;
-    public NodeUI nodeUI;
+    private NodeUI nodeUI;
 
     private TurretFactory turretToBuild;
     private Node selectedNode;
@@ -15,6 +15,7 @@ public class BuildManager : MonoBehaviour {
             return;
         }
         instance = this;
+        nodeUI = FindObjectOfType<NodeUI>();
     }
 
     public bool CanBuild {

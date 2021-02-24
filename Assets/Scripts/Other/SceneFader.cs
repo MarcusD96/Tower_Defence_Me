@@ -20,7 +20,7 @@ public class SceneFader : MonoBehaviour {
         float t = 1.0f;
 
         while(t > 0.0f) {
-            t -= Time.deltaTime * Time.timeScale;
+            t -= Time.deltaTime;
             float a = fadeCurve.Evaluate(t);
             image.color = new Color(0, 0, 0, a);
             yield return 0; //skip frame
@@ -31,7 +31,7 @@ public class SceneFader : MonoBehaviour {
         float t = 0.0f;
 
         while(t < 1.0f) {
-            t += Time.deltaTime * Time.timeScale;
+            t += Time.deltaTime;
             float a = fadeCurve.Evaluate(t);
             image.color = new Color(0, 0, 0, a);
             yield return 0; //skip frame

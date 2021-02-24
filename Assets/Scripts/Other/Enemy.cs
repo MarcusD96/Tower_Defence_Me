@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour {
     IEnumerator DoT(float dot, float duration) {
         float endTime = Time.time + duration;
         while(Time.time < endTime) {
-            TakeDamage(dot * Time.deltaTime * Time.timeScale, false);
+            TakeDamage(dot * Time.deltaTime, false);
             yield return new WaitForEndOfFrame();
         }
     }

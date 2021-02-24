@@ -39,10 +39,7 @@ public class TeslaTurret : BeamTurret {
 
     public override void AutoShoot() {
         if(nextFire <= 0.0f) {
-            if(!hasSpecial)
-                nextFire = 1 / fireRate;
-            else
-                nextFire = 1 / maxFireRate;
+            nextFire = 1 / fireRate;
         } else {
             return;
         }
@@ -251,8 +248,8 @@ public class TeslaTurret : BeamTurret {
             Color start = lineRenderer.startColor;
             Color end = lineRenderer.endColor;
 
-            start.a = Mathf.Lerp(start.a, -1, Time.deltaTime * Time.timeScale);
-            end.a = Mathf.Lerp(end.a, -1, Time.deltaTime * Time.timeScale);
+            start.a = Mathf.Lerp(start.a, -1, Time.deltaTime);
+            end.a = Mathf.Lerp(end.a, -1, Time.deltaTime);
 
             lineRenderer.startColor = start;
             lineRenderer.endColor = end;

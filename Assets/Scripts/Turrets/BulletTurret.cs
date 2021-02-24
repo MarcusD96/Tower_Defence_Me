@@ -42,13 +42,13 @@ public class BulletTurret : ProjectileTurret {
         StartCoroutine(special);
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;
-        var saveFireRate = maxFireRate;
+        var saveFireRate = fireRate;
         nextFire = 0;
-        maxFireRate *= specialFireRate;
+        fireRate *= specialFireRate;
 
         yield return new WaitForSeconds(specialTime);
 
-        maxFireRate = saveFireRate;
+        fireRate = saveFireRate;
         projectilePrefab = tmp;
     }
 }

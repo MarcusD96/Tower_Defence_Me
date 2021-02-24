@@ -52,7 +52,7 @@ MonoBehaviour:
   range: 15
   manualRangeMultiplier: 2.25
   manualFirerateMultiplier: 2
-  fireRate: 0.5
+  fireRate: 0.7
   maxFireRate: 0
   turretCam: {fileID: 2990236815034801900}
   turretView: {fileID: 5082276650816418716}
@@ -83,7 +83,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   specialBar: {fileID: 4924648402484541792}
   specialRate: 20
-  targetting: First
+  targetting: Last
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   damage: 2

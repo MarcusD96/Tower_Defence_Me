@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
-        AudioSource.PlayClipAtPoint(s.clip, position);
+        AudioSource.PlayClipAtPoint(s.source.clip, position, s.source.volume * Settings.Sounds);
     }
 
     public static void PlaySound(string name, Vector3 position) {

@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 4573118995715554346, guid: 8bcadf8c6580b2e43a275bde57e28da5,
     type: 3}
-  speed: 125
+  speed: 80
   miss: 0
   special: 1
 --- !u!135 &343179316192415491

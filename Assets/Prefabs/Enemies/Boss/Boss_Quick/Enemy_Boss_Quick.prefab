@@ -399,7 +399,7 @@ MonoBehaviour:
     type: 3}
   slowEffect: {fileID: 6002730257937060904}
   stunEffect: {fileID: 623608731997379672}
-  startSpeed: 12
+  startSpeed: 10
   startHp: 100
   currentHp: 0
   speed: 20
