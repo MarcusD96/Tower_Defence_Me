@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4396429174751010786}
   - component: {fileID: 3170849265355107562}
   - component: {fileID: 8897026054246225436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2316933074069036485}
   - component: {fileID: 3466031148834663376}
   - component: {fileID: 6175563099160964525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5503796567133189580}
   - component: {fileID: 3254191632103128538}
   - component: {fileID: 137073072272325726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4483398741150808449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Reload Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 1717615054056376677}
   - component: {fileID: 7782889321765974308}
   - component: {fileID: 6986349995862053588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 5438238193930691719}
   - component: {fileID: 8468557745540663631}
   - component: {fileID: 4117690144325219745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 4530214973093894128}
   - component: {fileID: 8757757545963681275}
   - component: {fileID: 3371363597595310634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 8401962637528341752}
   - component: {fileID: 1138028216827654749}
   - component: {fileID: 6545671031961991343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Remaining Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 7526768220955611028}
   - component: {fileID: 1504040887522964898}
   - component: {fileID: 2835360145644661975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Instruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 3434655782107344850}
   - component: {fileID: 6252137602310077343}
   - component: {fileID: 4989018103381920635}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 160263545377998180}
   - component: {fileID: 8871913272317411244}
   - component: {fileID: 7677013092271966955}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Special Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 5955773815883286086}
   - component: {fileID: 141774534988660074}
   - component: {fileID: 6285029086286675440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 330387794054824720}
   - component: {fileID: 4674449716688777854}
   - component: {fileID: 7617862599480643656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 1762695495007747660}
   - component: {fileID: 610699747422799591}
   - component: {fileID: 1062148890758530933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 1449352708528617169}
   - component: {fileID: 8355545802587533826}
   - component: {fileID: 7426824497134401973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,7 +1579,7 @@ GameObject:
   - component: {fileID: 4568448095701107267}
   - component: {fileID: 2839795456774225265}
   - component: {fileID: 4016460191242399185}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Special Meter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,7 +1669,7 @@ GameObject:
   - component: {fileID: 4051924596722818997}
   - component: {fileID: 1551130143072891245}
   - component: {fileID: 8648262709884689631}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

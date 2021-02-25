@@ -23,7 +23,7 @@ public class Turret : MonoBehaviour {
     public float fireRate; //shots per second, higher is faster
     [HideInInspector]
     public float maxFireRate;
-    public Camera turretCam;
+    public Camera turretCam, overlayCam;
     public GameObject turretView;
     public Image reloadedIndicator;
     public string shootSound;
@@ -61,6 +61,7 @@ public class Turret : MonoBehaviour {
     void Start() {
         mainCam = Camera.main;
         turretCam.enabled = false;
+        overlayCam.enabled = false;
         turretView.SetActive(false);
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
@@ -390,7 +391,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void AssumeControl() {
-        turretCam.enabled = true;
+        turretCam.enabled = overlayCam.enabled = true;
         turretView.SetActive(true);
         CameraManager.UpdateCam(turretCam);
         Cursor.visible = false;
@@ -399,7 +400,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void RevertControl(bool roundEnd) {
-        turretCam.enabled = false;
+        turretCam.enabled = overlayCam.enabled = false;
         turretView.SetActive(false);
         mainCam.enabled = true;
         CameraManager.UpdateCam(mainCam);

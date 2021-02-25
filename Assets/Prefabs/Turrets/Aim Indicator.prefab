@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5690110921030077862}
   - component: {fileID: 1818067623512509481}
   - component: {fileID: 7507833995397548296}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 102110207372400483}
   - component: {fileID: 5819019595052887841}
   - component: {fileID: 5616365655607285950}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Aim Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
