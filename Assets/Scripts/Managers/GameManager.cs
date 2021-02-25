@@ -32,25 +32,30 @@ public class GameManager : MonoBehaviour {
         if(PlayerStats.lives <= 0)
             EndGame();
 
-        ///////
         if(!PauseMenu.paused) {
+
+            //fast forward
             if(Input.GetKeyDown(KeyCode.LeftShift)) {
                 if(Time.timeScale == fastForward) {
                     Time.timeScale = 1;
                 } else {
                     Time.timeScale = fastForward;
                 }
-            } 
-        }
+            }
 
-        //cheaty :P
-        if(Input.GetKey(KeyCode.P)) {
-            if(Input.GetKey(KeyCode.M)) {
-                if(Input.GetKeyDown(KeyCode.B)) {
-                    Cheaty.play = true;
-                    PlayerStats.money = 99995;
-                    PlayerStats.lives = 9995;
+            //cheaty :P
+            if(Input.GetKey(KeyCode.P)) {
+                if(Input.GetKey(KeyCode.M)) {
+                    if(Input.GetKeyDown(KeyCode.B)) {
+                        Cheaty.play = true;
+                        PlayerStats.money = 99995;
+                        PlayerStats.lives = 9995;
+                    }
                 }
+            }
+
+            if(Input.GetKeyDown(KeyCode.F)) {
+                WinLevel();
             }
         }
     }

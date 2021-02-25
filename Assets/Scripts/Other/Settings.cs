@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-public class Settings {
+﻿
+public static class Settings {
 
     public static float Sounds { get; set; } = 0.5f;
 

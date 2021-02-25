@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
     public string levelToLoad = "Level Selection";
     public string survivalLevelToLoad = "Survival";
     public SceneFader sceneFader;
+    public GameObject settingsUI;
 
     public void Play() {
         GameMode.survival = false;
@@ -16,6 +17,11 @@ public class MainMenu : MonoBehaviour {
 #else
          Application.Quit();
 #endif
+    }
+
+    public void OpenSettings() {
+        settingsUI.SetActive(true);
+        settingsUI.GetComponent<SettingsMenu>().InitialUpdate();
     }
 
     public void ResetStats() {
