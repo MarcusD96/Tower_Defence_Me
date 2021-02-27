@@ -10203,11 +10203,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1908031512084050297, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
         type: 3}
-      propertyPath: waveIndex
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1908031512084050297, guid: 71c14aed8d4a6f3468a704c0f59ea47f,
-        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1162154359}
