@@ -12,7 +12,7 @@ public class SettingsMenu : MonoBehaviour {
 
     private void LateUpdate() {
         soundsNum.text = Mathf.RoundToInt(sounds.value * 100).ToString();
-        sensNum.text = Mathf.RoundToInt(sensitivity.value* 100).ToString();
+        sensNum.text = Mathf.RoundToInt(sensitivity.value * 100).ToString();
     }
 
     public void ApplyChanges() {

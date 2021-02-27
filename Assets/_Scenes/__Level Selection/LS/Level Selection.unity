@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 67489d5d74c7283458c08091c35e5a06,
+  m_LightingDataAsset: {fileID: 112000000, guid: 63e038dbd325001459c1fe59001b5434,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 27ac181b9dc249d4eb6f203755930fd4,
     type: 2}
@@ -3010,6 +3010,7 @@ MonoBehaviour:
   levelToLoad: Level1
   survivalLevelToLoad: Survival
   sceneFader: {fileID: 274700621}
+  settingsUI: {fileID: 0}
 --- !u!4 &1543839161
 Transform:
   m_ObjectHideFlags: 0

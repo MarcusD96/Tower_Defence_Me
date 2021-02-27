@@ -16,6 +16,10 @@ public class SceneFader : MonoBehaviour {
         StartCoroutine(FadeOut(scene));
     }
 
+    public void FadeToLevel() {
+        StartCoroutine(FadeOut(PlayerStats.nextLevel));
+    }
+
     IEnumerator FadeIn() {
         float t = 1.0f;
 

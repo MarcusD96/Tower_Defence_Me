@@ -3,6 +3,7 @@
 public class PlayerStats {
 
     public static int money, startMoney = 650, lives = 100, maxLives = 9995, rounds = 0, difficulty;
+    public static string nextLevel;
 
     public static void ResetToDifficulty() {
         switch(difficulty) {

@@ -24,13 +24,14 @@ public class LevelSelector : MonoBehaviour {
 
     public void SelectLevel(string levelName_) {
         levelName = levelName_;
+        PlayerStats.nextLevel = levelName_;
         difficulty.SetActive(true);
     }
 
     public void SelectDifficulty(int difficultyLevel) {
         PlayerStats.difficulty = difficultyLevel;
         PlayerStats.ResetToDifficulty();
-        sceneFader.FadeTo(levelName);
+        sceneFader.FadeTo("Controls");
     }
 
     public void Back() {
