@@ -10,8 +10,8 @@ public class Bullet : Projectile {
         direction = transform.forward;
     }
 
-    new void Update() {
-        base.Update();
+    new void FixedUpdate() {
+        base.FixedUpdate();
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 

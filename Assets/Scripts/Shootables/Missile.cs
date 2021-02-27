@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Missile : Projectile {
 
+    public float speedExponent;
+
     private int penetration;
     private float explosionRadius;
 
@@ -15,10 +17,10 @@ public class Missile : Projectile {
         explosionRadius = radius_;
     }
 
-    new void Update() {
-        base.Update();
-
-        speed = Mathf.Pow(speed, 1.015f);
+    private new void FixedUpdate() {
+        base.FixedUpdate();
+        
+        speed = Mathf.Pow(speed, speedExponent);
         speed = Mathf.Clamp(speed, 0, 100);
         if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
             if(target) {

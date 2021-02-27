@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
         Destroy(gameObject, 3.0f); //fallback
     }
 
-    protected void Update() {
+    protected void FixedUpdate() {
         if(!special) { //special projectiles may not need this feauture
             if(Vector3.Distance(transform.position, startPos) >= Vector3.Distance(endPos, startPos)) { //if the projectile has gone to its max range, die
                 HitTarget(true);
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour {
             }
         }
 
-        distanceThisFrame = speed * Time.deltaTime;
+        distanceThisFrame = speed * Time.fixedDeltaTime;
     }
 
     public Missile GetMissile() {

@@ -9677,6 +9677,7 @@ MonoBehaviour:
   speed: 1.75
   miss: 0
   special: 0
+  speedExponent: 1.05
 --- !u!136 &8104042212635986536
 CapsuleCollider:
   m_ObjectHideFlags: 0
