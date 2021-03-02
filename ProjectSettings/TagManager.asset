@@ -20,7 +20,7 @@ TagManager:
   - 
   - Environment
   - Turret
-  - 
+  - NodeUI
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: NodeUI
     uniqueID: 1479924517
+    locked: 0
+  - name: Camera
+    uniqueID: 873188351
     locked: 0

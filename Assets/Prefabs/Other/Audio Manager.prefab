@@ -104,3 +104,46 @@ MonoBehaviour:
     pitch: 1.52
     loop: 0
     source: {fileID: 0}
+  music:
+  - name: 8 Bit
+    clip: {fileID: 8300000, guid: a6f76410ef2fdfb499476b0cb3996b1a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Assault
+    clip: {fileID: 8300000, guid: 4635951a4dadf8e44bd3127d6c2a0847, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Back n' Forth
+    clip: {fileID: 8300000, guid: b6a654def8dd42d46a54045321300eba, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bumping
+    clip: {fileID: 8300000, guid: 3fdbae67fa7ebf2449f4e6ad30279ce6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Emotion
+    clip: {fileID: 8300000, guid: e792b352b9373124dac76e7379760681, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Feels Good
+    clip: {fileID: 8300000, guid: 50667aeda08bd894493bbc1b58cb3285, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shire Girl
+    clip: {fileID: 8300000, guid: 823178610ea58ec4b83d517441260ecd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

@@ -5,5 +5,6 @@ public class GetMainCamera : MonoBehaviour {
 
     void Awake() {
         canvas.worldCamera = Camera.main;
+        canvas.sortingLayerName = "Camera";
     }
 }

@@ -33,13 +33,13 @@ public class BuildManager : MonoBehaviour {
     public void SelectTurretToBuild(TurretFactory turret) {
         ToggleRange();
         if(turretToBuild == turret) {
-            turretToBuild.border.gameObject.SetActive(false);
+            ToggleBuildSelection(false);
             turretToBuild = null;
         } else {
             if(turretToBuild != null)
-                turretToBuild.border.gameObject.SetActive(false); //disable previous selection
+                ToggleBuildSelection(false); //disable previous selection
             turretToBuild = turret; //select the clicked turret to build
-            turretToBuild.border.gameObject.SetActive(true); //enable new selection border
+            ToggleBuildSelection(true); //enable new selection border
         }
         DeselectNode();
     }
@@ -53,7 +53,7 @@ public class BuildManager : MonoBehaviour {
         selectedNode = node;
         ToggleRange();
         if(turretToBuild != null) {
-            turretToBuild.border.gameObject.SetActive(false); //disable current selection border if you go into the nodeUI menu
+            ToggleBuildSelection(false); //disable current selection border if you go into the nodeUI menu
         }
         turretToBuild = null;
         nodeUI.SetTarget(node);
@@ -65,6 +65,11 @@ public class BuildManager : MonoBehaviour {
         }
         selectedNode = null;
         nodeUI.Hide();
+    }
+
+    public void ToggleBuildSelection(bool active) {
+        if(turretToBuild != null)
+            turretToBuild.border.gameObject.SetActive(active);
     }
 
     void ToggleRange() {

@@ -20,6 +20,7 @@ public class Intro : MonoBehaviour {
         if(Input.GetMouseButtonDown(0)) {
             StopAllCoroutines();
             sceneFader.FadeTo("Main Menu");
+            AudioManager.Main = true;
         }
     }
 
@@ -36,5 +37,7 @@ public class Intro : MonoBehaviour {
             yield return new WaitForSeconds(1.0f);
         }
         sceneFader.FadeTo("Main Menu");
+        AudioManager.Main = true;
+
     }
 }
