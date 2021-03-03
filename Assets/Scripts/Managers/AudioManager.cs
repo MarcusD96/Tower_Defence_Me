@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
     public Sound[] music;
-    public AudioSource currentSong;
+    public Sound currentSong;
 
     public static AudioManager instance;
 
@@ -23,8 +23,8 @@ public class AudioManager : MonoBehaviour {
         InitializeSounds(sounds, Settings.Sounds, 1.0f);
 
         InitializeSounds(music, Settings.Music, 0.0f);
-        music = Shuffle(music);
-        currentSong = music[0].source;
+        musicNum = Random.Range(0, music.Length - 1); //random starting position in list of songs
+        currentSong = music[musicNum];
     }
 
     public static bool Main = false;
@@ -39,10 +39,19 @@ public class AudioManager : MonoBehaviour {
         foreach(Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume * volumeScale;
+            s.volume *= volumeScale;
+            s.source.volume = s.volume;
             s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
             s.source.spatialBlend = spacial;
+        }
+    }
+
+    public void UpdateVolume() {
+        foreach(Sound s in music) {
+            s.source.volume = s.volume = Settings.Music;
+        }
+        foreach(Sound s in sounds) {
+            s.source.volume = s.volume = Settings.Sounds;
         }
     }
 
@@ -55,11 +64,11 @@ public class AudioManager : MonoBehaviour {
         s.source.Stop();
     }
 
-    public static void StopSound(string name) {
+    public static void StaticStop(string name) {
         instance.Stop(name);
     }
 
-    public static void StopAllSounds() {
+    public static void StaticStopAllSounds() {
         foreach(var s in instance.sounds) {
             instance.Stop(s.name);
         }
@@ -71,36 +80,43 @@ public class AudioManager : MonoBehaviour {
             Debug.LogWarning("Sound: " + name + " not found");
             return;
         }
-        AudioSource.PlayClipAtPoint(s.source.clip, position, s.source.volume * Settings.Sounds);
+        AudioSource.PlayClipAtPoint(s.source.clip, position, s.source.volume);
     }
 
-    public static void PlaySound(string name, Vector3 position) {
+    public static void StaticPlay(string name, Vector3 position) {
         instance.Play(name, position);
     }
 
-    Sound[] Shuffle(Sound[] list) {
-        int n = list.Length;
-        System.Random rng = new System.Random();
-        while(n > 1) {
-            n--;
-            int k = rng.Next(n + 1);
-            Sound value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-        return list;
+    public int musicNum;
+    IEnumerator BackgroundMusic() {
+        currentSong = music[musicNum];
+        currentSong.source.PlayOneShot(currentSong.clip);
+
+        musicNum++;
+        if(musicNum > music.Length - 1)
+            musicNum = 0;
+
+        yield return new WaitForSecondsRealtime(currentSong.clip.length);
+
+        StartCoroutine(BackgroundMusic());
     }
 
-    IEnumerator BackgroundMusic() {
-        //play the song, then the next once prev song finishes
-        for(int i = 0; i < music.Length; i++) {
-            music[i].source.PlayOneShot(music[i].clip, Settings.Music);
-
-            currentSong = music[i].source;
-            yield return new WaitForSecondsRealtime(music[i].clip.length);
-        }
-        //once all songs are complete, start new coroutine and finish current one
+    public void NextSong() {
+        currentSong.source.Stop();
+        StopAllCoroutines();
         StartCoroutine(BackgroundMusic());
+    }
+
+    public static void StaticNextSong() {
+        instance.NextSong();
+    }
+
+    public string GetSongName() {
+        return currentSong.name;
+    }
+
+    public static string StaticGetSongName() {
+        return instance.GetSongName();
     }
 }
 
@@ -116,8 +132,6 @@ public class Sound {
     public float volume;
     [Range(0.1f, 3.0f)]
     public float pitch;
-
-    public bool loop = false;
 
     [HideInInspector]
     public AudioSource source;

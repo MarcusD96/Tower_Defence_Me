@@ -1066,11 +1066,14 @@ MonoBehaviour:
 
     <color=red><b>ESC</b></color> to pause
 
+    <color=red><b>SPACE</b></color>
+    to start the round
+
 
     <u>Camera</u>
 
-    <color=red><b>WASD</b></color>
-    to move camera
+    <color=red><b>WASD</b></color> to
+    move camera
 
 
     <u>Turret</u>
@@ -1216,7 +1219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n<color=red><b>L SHIFT</b></color> for double speed\n\n \nMouse <color=red><b>SCROLL</b></color>
+  m_text: "\n<color=red><b>L SHIFT</b></color> for double speed\n\n \n\nMouse <color=red><b>SCROLL</b></color>
     to zoom\n\n\n<color=red><b>MOUSE/WASD</b></color> to move depending on if \"USE
     KEYS\" is enabled or not\n<color=red><b>RIGHT CLICK</b></color> to use a special
     ability"

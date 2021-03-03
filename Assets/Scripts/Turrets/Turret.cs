@@ -282,7 +282,7 @@ public class Turret : MonoBehaviour {
             if(nextFire <= 0.0f) {
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
-                AudioManager.PlaySound(shootSound, transform.position);
+                AudioManager.StaticPlay(shootSound, transform.position);
                 gfxAnim.SetTrigger(shootAnim);
                 muzzleFlash.Play();
                 nextFire = 1 / fireRate;
@@ -314,7 +314,7 @@ public class Turret : MonoBehaviour {
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
-                    AudioManager.PlaySound(shootSound, transform.position);
+                    AudioManager.StaticPlay(shootSound, transform.position);
                     gfxAnim.SetTrigger(shootAnim);
                     muzzleFlash.Play();
                     nextFire = 1 / manualFireRate;

@@ -60,7 +60,7 @@ public class MissileTurret : ProjectileTurret {
                         target = targetList[ii].transform;
                         damage = 2;
                         AutoShoot();
-                        AudioManager.PlaySound(shootSound, transform.position);
+                        AudioManager.StaticPlay(shootSound, transform.position);
                         damage = 1;
                         yield return new WaitForSeconds(0.1f);
                     }

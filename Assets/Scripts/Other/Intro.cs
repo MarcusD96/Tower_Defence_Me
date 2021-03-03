@@ -32,7 +32,7 @@ public class Intro : MonoBehaviour {
         target.color = Color.white;
         target.texture = player.texture;
         player.Play();
-        AudioManager.PlaySound("Intro", Vector3.zero);
+        AudioManager.StaticPlay("Intro", Vector3.zero);
         while(player.isPlaying) {
             yield return new WaitForSeconds(1.0f);
         }
