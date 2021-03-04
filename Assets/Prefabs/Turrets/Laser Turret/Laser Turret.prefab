@@ -9774,15 +9774,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6451367747869313085}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.61, z: 2.16}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 5, z: -8.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6087872403074870471}
   - {fileID: 5020044135996889429}
   m_Father: {fileID: 508612932759547089}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &6901244913561445898
 Camera:
   m_ObjectHideFlags: 0
@@ -10225,7 +10225,7 @@ MonoBehaviour:
   range: 7.5
   manualRangeMultiplier: 1.5
   manualFirerateMultiplier: 0
-  fireRate: 0.4
+  fireRate: 1
   maxFireRate: 0
   turretCam: {fileID: 6901244913561445898}
   overlayCam: {fileID: 6140497588513365492}
@@ -10246,7 +10246,7 @@ MonoBehaviour:
   ugB:
     upgradeName: Mo' Powwa Babee
     description: Slower effect that lasts longer with a bigger beam.
-    upgradeCost: 215
+    upgradeCost: 265
     upgradeFactorX: 3
     upgradeFactorY: 0.1
   ugSpec:
@@ -10259,8 +10259,8 @@ MonoBehaviour:
   specialRate: 40
   lineRenderer: {fileID: 2404739084347467044}
   slowFactor: 0.8
-  slowDuration: 5
-  damageOverTime: 1
+  slowDuration: 6
+  damageOverTime: 0.5
   slowMultiplier: 1.6666666
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
     [Header("Unity Stuff")]
     public Image healthBar;
     public bool superSlow = false;
+    public bool isDamaging = false;
     private bool isDead = false, isSlow = false;
 
     [Header("Boss")]
@@ -100,11 +101,13 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator DoT(float dot, float duration) {
+        isDamaging = true;
         float endTime = Time.time + duration;
         while(Time.time < endTime) {
             TakeDamage(dot * Time.deltaTime, false);
             yield return new WaitForEndOfFrame();
         }
+        isDamaging = false;
     }
 
     public void Stun(float duration) {

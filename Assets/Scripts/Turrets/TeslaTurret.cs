@@ -83,7 +83,7 @@ public class TeslaTurret : BeamTurret {
         }
 
         RaycastHit hit;
-        if(Physics.Raycast(turretCam.transform.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
+        if(Physics.Raycast(pivot.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
             if(hit.collider) {
                 nextFire = 1 / manualFireRate;
                 target = hit.transform;

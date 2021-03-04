@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e4b54e37206bf45b7c74a9e4704c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSpawn: {fileID: 282096771178888004}
   manual: 0
   sellPrice: 0
   sellPecent: 75
+  fireSpawn: {fileID: 282096771178888004}
   range: 15
   manualRangeMultiplier: 2.25
   manualFirerateMultiplier: 2
@@ -190,7 +190,6 @@ MonoBehaviour:
     upgradeFactorY: 0
   specialBar: {fileID: 4924648402484541792}
   specialRate: 20
-  targetting: First
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   damage: 2
@@ -473,15 +472,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8673940926007431683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.73, z: 0}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 5, z: -6.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7331824311998873725}
   - {fileID: 1604693284958628641}
   m_Father: {fileID: 2981572170934538781}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &2990236815034801900
 Camera:
   m_ObjectHideFlags: 0

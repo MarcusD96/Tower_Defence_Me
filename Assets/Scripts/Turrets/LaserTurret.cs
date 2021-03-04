@@ -10,8 +10,7 @@ public class LaserTurret : BeamTurret {
     public float slowMultiplier;
     public ParticleSystem impactEffect;
     public Light impactLight;
-
-    private bool isDamaging = false;
+    
     private Transform lastTarget;
     private float manualSlowFactor, maxSlowFactor;
 
@@ -57,7 +56,7 @@ public class LaserTurret : BeamTurret {
         //changed target, enable damage again
         if(lastTarget != target || Time.time >= slowDurationEnd) {
             lastTarget = target;
-            isDamaging = false;
+            LaserOff();
             slowDurationEnd = Time.time + slowDuration;
         }
 
@@ -77,8 +76,7 @@ public class LaserTurret : BeamTurret {
         }
 
         //only apply DoT to new enemies
-        if(!isDamaging) {
-            isDamaging = true;
+        if(!targetEnemy.isDamaging) {
             targetEnemy.DamageOverTime(damageOverTime, slowDuration);
         }
 
@@ -109,7 +107,7 @@ public class LaserTurret : BeamTurret {
 
         if(lastTarget != target) {
             lastTarget = target;
-            isDamaging = false;
+            LaserOff();
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);
@@ -131,10 +129,11 @@ public class LaserTurret : BeamTurret {
                     if(!targetEnemy.superSlow)
                         targetEnemy.Slow(manualSlowFactor, slowDuration);
 
-                    if(!isDamaging) {
-                        isDamaging = true;
-                        targetEnemy.DamageOverTime(0, slowDuration);
+                    if(!targetEnemy.isDamaging) {
+                        targetEnemy.DamageOverTime(damageOverTime, slowDuration);
                     }
+
+                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
 
                     if(target != targetPrev) {
                         AudioManager.StaticPlay(shootSound, transform.position);
