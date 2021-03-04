@@ -37,7 +37,12 @@ public class TeslaTurret : BeamTurret {
         }
     }
 
-    public override void AutoShoot() {
+    public override void AutoShoot() {        
+        if(!FindEnemy()) {
+            LaserOff();
+            return;
+        }
+
         if(nextFire <= 0.0f) {
             nextFire = 1 / fireRate;
         } else {

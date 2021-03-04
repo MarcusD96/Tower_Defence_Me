@@ -27,7 +27,6 @@ public class BeamTurret : Turret {
 
     public void LaserOff() {
         if(laserTurret) {
-            AudioManager.StaticStop(shootSound);
             lineRenderer.enabled = false;
             laserTurret.impactEffect.Stop();
             laserTurret.impactLight.enabled = false;

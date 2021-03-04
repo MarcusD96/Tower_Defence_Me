@@ -163,14 +163,8 @@ public class NodeUI : MonoBehaviour {
         BuildManager.instance.DeselectNode();
     }
 
-    public void NextTargetting() {
-        target.turret.GetComponent<Turret>().NextTargettingOption();
-        targetting.text = target.turret.GetComponent<Turret>().targetting;
-    }
-
-    public void LastTargetting() {
-        target.turret.GetComponent<Turret>().LastTargettingOption();
-        targetting.text = target.turret.GetComponent<Turret>().targetting;
+    public void ChangeTargetting(bool next) {
+        targetting.text = target.turret.GetComponent<Turret>().ChangeTargetting(next);
     }
 
     public void ToggleTooltip() {
@@ -180,7 +174,7 @@ public class NodeUI : MonoBehaviour {
     void SetUIInfo() {
         var t = target.turret.GetComponent<Turret>();
 
-        targetting.text = target.turret.GetComponent<Turret>().targetting;
+        targetting.text = target.turret.GetComponent<Turret>().GetTargetting();
 
         sellPrice.text = "$" + t.GetSellPrice();
 

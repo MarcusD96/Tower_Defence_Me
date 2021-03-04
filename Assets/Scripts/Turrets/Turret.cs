@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Turret : MonoBehaviour {
     #region Variables
-    public Transform fireSpawn;
-
     public bool manual = false;
     protected Transform target;
     protected Enemy targetEnemy;
@@ -18,6 +16,7 @@ public class Turret : MonoBehaviour {
 
     #region Headers
     [Header("Global")]
+    public Transform fireSpawn;
     public float range;
     public float manualRangeMultiplier, manualFirerateMultiplier;
     public float fireRate; //shots per second, higher is faster
@@ -52,9 +51,7 @@ public class Turret : MonoBehaviour {
     public SpecialBar specialBar;
     public float specialRate;
 
-    [Header("Targetting")]
-    public string targetting = "First";
-
+    private string targetting;
     private int targettingMethod;
     #endregion
 
@@ -66,6 +63,7 @@ public class Turret : MonoBehaviour {
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
+        UpdateTargettingName();
         aimIndicator.SetTurret(this);
         gfxAnim = GetComponentInChildren<Animator>();
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
@@ -80,7 +78,7 @@ public class Turret : MonoBehaviour {
         }
     }
 
-    void FindEnemy() {
+    protected bool FindEnemy() {
         switch(targettingMethod) {
             case 0:         //first
                 FindFirstTargetInRange();
@@ -97,22 +95,25 @@ public class Turret : MonoBehaviour {
             default:
                 break;
         }
+        if(target == null)
+            return false;
+        return true;
     }
 
-    public void NextTargettingOption() {
-        targettingMethod++;
+    public string ChangeTargetting(bool next) {
+        if(next)
+            targettingMethod++;
+        else
+            targettingMethod--;
+
         if(targettingMethod > 3) {
             targettingMethod = 0;
         }
-        UpdateTargettingName();
-    }
-
-    public void LastTargettingOption() {
-        targettingMethod--;
-        if(targettingMethod < 0) {
+        if(targettingMethod < 0)
             targettingMethod = 3;
-        }
+
         UpdateTargettingName();
+        return targetting;
     }
 
     void UpdateTargettingName() {
@@ -136,6 +137,10 @@ public class Turret : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public string GetTargetting() {
+        return targetting;
     }
 
     List<GameObject> enemiesInRange;
@@ -267,19 +272,13 @@ public class Turret : MonoBehaviour {
     }
 
     void AutomaticControl() {
-        if(nextFire > 0.0f) {
-            nextFire -= Time.deltaTime;
-        }
-
-        FindEnemy();
-        if(!target) {
-            if(beamTurret)
-                beamTurret.LaserOff();
-            return;
-        }
+        nextFire -= Time.deltaTime;
 
         if(!beamTurret) {
             if(nextFire <= 0.0f) {
+                FindEnemy();
+                if(target == null)
+                    return;
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
                 AudioManager.StaticPlay(shootSound, transform.position);
@@ -295,9 +294,9 @@ public class Turret : MonoBehaviour {
     void ManualControl() {
         ManualMovement();
 
-        if(nextFire >= 0.0f) {
-            nextFire -= Time.deltaTime;
-        }
+        //if(nextFire >= 0.0f) {
+        nextFire -= Time.deltaTime;
+        //}
 
         var manualFireRate = fireRate;
         if(!hasSpecial) {

@@ -4,7 +4,6 @@ using UnityEngine;
 public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
-    [Range(0.1f, 1.0f)]
     public float slowFactor;
     public float slowDuration;
     public float damageOverTime;
@@ -50,10 +49,21 @@ public class LaserTurret : BeamTurret {
         }
     }
 
+    float slowDurationEnd = float.MaxValue;
     public override void AutoShoot() {
-        if(lastTarget != target) {
+        if(!IsInvoking())
+            InvokeRepeating(nameof(FindEnemy), 0.01f, fireRate);
+
+        //changed target, enable damage again
+        if(lastTarget != target || Time.time >= slowDurationEnd) {
             lastTarget = target;
             isDamaging = false;
+            slowDurationEnd = Time.time + slowDuration;
+        }
+
+        if(target == null) {
+            LaserOff();
+            return;
         }
 
         RotateOnShoot();
@@ -66,9 +76,10 @@ public class LaserTurret : BeamTurret {
                 targetEnemy.Slow(maxSlowFactor, slowDuration);
         }
 
+        //only apply DoT to new enemies
         if(!isDamaging) {
             isDamaging = true;
-            targetEnemy.DamageOverTime(0, slowDuration);
+            targetEnemy.DamageOverTime(damageOverTime, slowDuration);
         }
 
         if(target != targetPrev) {
@@ -84,7 +95,7 @@ public class LaserTurret : BeamTurret {
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);
-        lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(pivot.position, target.position));
+        lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(transform.InverseTransformVector(fireSpawn.position), transform.InverseTransformVector(target.position)));
 
         //rotation
         Vector3 direction = fireSpawn.position - target.position;
@@ -93,6 +104,9 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ManualShoot() {
+        if(IsInvoking())
+            CancelInvoke();
+
         if(lastTarget != target) {
             lastTarget = target;
             isDamaging = false;
@@ -153,11 +167,21 @@ public class LaserTurret : BeamTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //slow++, slow duration++, laser thiccc++
+    public override void ApplyUpgradeB() {
+        if(IsInvoking())
+            CancelInvoke();
+
+        //slows enemies longer
         slowDuration += ugB.upgradeFactorX;
+
+        //finds enemies faster(also update invoke for when auto shoot) and slows enemies more
+        fireRate -= ugB.upgradeFactorY;
+        InvokeRepeating(nameof(FindEnemy), 0, fireRate);
         slowFactor -= ugB.upgradeFactorY;
-        manualSlowFactor = slowFactor / slowMultiplier;   //update MANUAL
-        lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
+
+        //make laser wider and update manual slow factor
+        manualSlowFactor = slowFactor / slowMultiplier;   
+        lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;//update MANUAL
     }
 
     public override void ActivateSpecial() {
