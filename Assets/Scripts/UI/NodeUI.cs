@@ -14,6 +14,7 @@ public class NodeUI : MonoBehaviour {
     public Button upgradeButtonB, upgradeButtonSpecial;
     public TextMeshProUGUI upgradeTextA, upgradeTextB, upgradeTextSpecial;
     public TextMeshProUGUI upgradeCostA, upgradeCostB, upgradeCostSpecial;
+    public TextMeshProUGUI upgradeLevelA, upgradeLevelB;
     public TextMeshProUGUI toolTipA, toolTipB, toolTipSpec;
 
     [Header("Targetting")]
@@ -180,10 +181,12 @@ public class NodeUI : MonoBehaviour {
 
         upgradeTextA.text = t.ugA.upgradeName;
         upgradeCostA.text = t.ugA.GetUpgradeCost().ToString();
+        upgradeLevelA.text = t.ugA.GetLevel().ToString() + "/5";
         toolTipA.text = t.ugA.description;
 
         upgradeTextB.text = t.ugB.upgradeName;
         upgradeCostB.text = t.ugB.GetUpgradeCost().ToString();
+        upgradeLevelB.text = t.ugB.GetLevel().ToString() + "/3";
         toolTipB.text = t.ugB.description;
 
         upgradeTextSpecial.text = t.ugSpec.upgradeName;
