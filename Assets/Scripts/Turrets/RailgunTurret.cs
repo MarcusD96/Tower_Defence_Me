@@ -30,11 +30,13 @@ public class RailgunTurret : ProjectileTurret {
         penetration += (int) ugB.upgradeFactorY;
     }
 
-    public override void ActivateSpecial() {
+    public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
             StartCoroutine(AttachCharges());
+            return true;
         }
+        return false;
     }
 
     IEnumerator AttachCharges() {

@@ -9,6 +9,7 @@ public class BulletTurret : ProjectileTurret {
     void Awake() {
         standardTurret = this;
         projectileTurret = this;
+
     }
 
     new void Update() {
@@ -30,11 +31,13 @@ public class BulletTurret : ProjectileTurret {
         damage += ugB.upgradeFactorY;
     }
 
-    public override void ActivateSpecial() {
+    public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
             StartCoroutine(BulletBurst());
+            return true;
         }
+        return false;
     }
 
     IEnumerator BulletBurst() {

@@ -217,11 +217,13 @@ public class TeslaTurret : BeamTurret {
         lineRenderer.endColor = end;
     }
 
-    public override void ActivateSpecial() {
+    public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
             StartCoroutine(SpecialAbility());
+            return true;
         }
+        return false;
     }
 
     Vector3 RandomizeArc(Vector3 v, float inaccuracy_) {

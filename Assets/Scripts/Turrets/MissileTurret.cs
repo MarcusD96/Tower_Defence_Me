@@ -33,11 +33,13 @@ public class MissileTurret : ProjectileTurret {
         explosionRadius += 3;
     }
 
-    public override void ActivateSpecial() {
+    public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
             StartCoroutine(MissileBarrage());
+            return true;
         }
+        return false;
     }
 
     IEnumerator MissileBarrage() {

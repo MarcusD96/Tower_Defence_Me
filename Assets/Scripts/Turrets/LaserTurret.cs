@@ -183,7 +183,7 @@ public class LaserTurret : BeamTurret {
         lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;//update MANUAL
     }
 
-    public override void ActivateSpecial() {
+    public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
@@ -191,6 +191,8 @@ public class LaserTurret : BeamTurret {
             tempSW = Instantiate(slowWave, transform.position, transform.rotation);
             tempSW.slowFactor = maxSlowFactor;
             tempSW.slowDuration = slowDuration * 5;
+            return true;
         }
+        return false;
     }
 }

@@ -77,8 +77,8 @@ public class Barrage : MonoBehaviour {
     public void DoSpecial() {
         foreach(var t in turrets) {
             if(t.specialBar.fillBar.fillAmount <= 0) {
-                t.ActivateSpecial();
-                break;
+                if(t.ActivateSpecial())
+                    break;
             }
         }
     }

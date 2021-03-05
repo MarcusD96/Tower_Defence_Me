@@ -355,8 +355,9 @@ public class Turret : MonoBehaviour {
         specialBar.gameObject.SetActive(true);
     }
 
-    public virtual void ActivateSpecial() {
+    public virtual bool ActivateSpecial() {
         Debug.Log("Activate Special");
+        return true;
     }
 
     protected IEnumerator SpecialTime() {
