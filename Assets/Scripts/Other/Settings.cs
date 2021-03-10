@@ -5,7 +5,7 @@ public class Settings {
 
     public static float Music = 0.5f;
 
-    public static float Sensitivity = 1;
+    public static float Sensitivity = 2;
 
-    public static bool UseKeys = false;
+    public static bool UseKeys = true;
 }

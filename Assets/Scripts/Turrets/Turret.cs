@@ -33,7 +33,7 @@ public class Turret : MonoBehaviour {
     [Header("Setup")]
     public Transform pivot;
     public string enemyTag = "Enemy";
-    public Animator gfxAnim;
+    public Animator gfxAnim, recoilAnim;
     public ParticleSystem muzzleFlash;
 
     protected string shootAnim = "Shoot";
@@ -264,6 +264,10 @@ public class Turret : MonoBehaviour {
         return Mathf.RoundToInt((sellPrice * sellPecent / 100) / 5) * 5; //rounds to nearest 5 value
     }
 
+    public Transform GetTarget() {
+        return target;
+    }
+
     protected void RotateOnShoot() {
         Vector3 direction = target.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
@@ -292,11 +296,7 @@ public class Turret : MonoBehaviour {
     }
 
     void ManualControl() {
-        ManualMovement();
-
-        //if(nextFire >= 0.0f) {
         nextFire -= Time.deltaTime;
-        //}
 
         var manualFireRate = fireRate;
         if(!hasSpecial) {
@@ -315,29 +315,13 @@ public class Turret : MonoBehaviour {
                     projectileTurret.ManualShoot();
                     AudioManager.StaticPlay(shootSound, transform.position);
                     gfxAnim.SetTrigger(shootAnim);
+                    recoilAnim.SetTrigger("Shoot");
                     muzzleFlash.Play();
                     nextFire = 1 / manualFireRate;
                 }
             }
         }
         reloadedIndicator.fillAmount = nextFire / (1 / manualFireRate);
-    }
-
-    void ManualMovement() {
-        if(Settings.UseKeys) {
-            if(Input.GetKey(KeyCode.A)) {
-                Vector3 lookHere = Vector3.down * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
-                pivot.Rotate(lookHere);
-            }
-            if(Input.GetKey(KeyCode.D)) {
-                Vector3 lookHere = Vector3.up * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
-                pivot.Rotate(lookHere);
-            }
-        } else {
-            float mouseInput = Input.GetAxis("Mouse X");
-            Vector3 lookhere = Vector3.up * mouseInput * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;  //apply sensitivity in settings later
-            pivot.Rotate(lookhere);
-        }
     }
 
     public void ApplyUpgradeA() {

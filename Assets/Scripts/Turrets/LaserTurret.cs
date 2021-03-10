@@ -10,7 +10,7 @@ public class LaserTurret : BeamTurret {
     public float slowMultiplier;
     public ParticleSystem impactEffect;
     public Light impactLight;
-    
+
     private Transform lastTarget;
     private float manualSlowFactor, maxSlowFactor;
 
@@ -23,7 +23,8 @@ public class LaserTurret : BeamTurret {
         beamTurret = this;
         laserTurret = this;
         impactEffect.Stop();
-        impactLight.enabled = false;
+        shootEffect.Stop();
+        impactLight.enabled = shootLight.enabled = false;
         manualSlowFactor = slowFactor / slowMultiplier;
         maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 3)) / slowMultiplier;
     }
@@ -89,7 +90,8 @@ public class LaserTurret : BeamTurret {
         if(!lineRenderer.enabled) {
             lineRenderer.enabled = true;
             impactEffect.Play();
-            impactLight.enabled = true;
+            shootEffect.Play();
+            impactLight.enabled = shootLight.enabled = true;
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);
@@ -111,6 +113,12 @@ public class LaserTurret : BeamTurret {
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);
+        shake.shakeDuration = 0.1f;
+
+        if(!shootEffect.isPlaying) {
+            shootEffect.Play();
+            shootLight.enabled = true;
+        }
 
         if(!lineRenderer.enabled) {
             AudioManager.StaticPlay(shootSound, transform.position);
@@ -179,7 +187,7 @@ public class LaserTurret : BeamTurret {
         slowFactor -= ugB.upgradeFactorY;
 
         //make laser wider and update manual slow factor
-        manualSlowFactor = slowFactor / slowMultiplier;   
+        manualSlowFactor = slowFactor / slowMultiplier;
         lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;//update MANUAL
     }
 

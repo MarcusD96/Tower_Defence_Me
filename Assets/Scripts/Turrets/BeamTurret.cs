@@ -8,6 +8,9 @@ public class BeamTurret : Turret {
 
     [Header("Beam Turret")]
     public LineRenderer lineRenderer;
+    public ParticleSystem shootEffect;
+    public Light shootLight;
+    public CameraShake shake;
 
     public void Awake() {
         lineRenderer.enabled = false;
@@ -31,5 +34,7 @@ public class BeamTurret : Turret {
             laserTurret.impactEffect.Stop();
             laserTurret.impactLight.enabled = false;
         }
+        shootEffect.Stop();
+        shootLight.enabled = false;
     }
 }

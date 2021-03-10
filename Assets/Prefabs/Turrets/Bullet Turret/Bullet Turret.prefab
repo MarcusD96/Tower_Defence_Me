@@ -56,14 +56,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250673935394468597}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 5, z: -7.68}
+  m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 5, z: -7.6800003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4425564963051865276}
   - {fileID: 2739407212295604341}
-  m_Father: {fileID: 2132953714685851362}
-  m_RootOrder: 2
+  m_Father: {fileID: 1230792555693890930}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &1772590479217720602
 Camera:
@@ -150,6 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3792607124008786777}
   - component: {fileID: 8541359354725232022}
+  - component: {fileID: 7789754457311897144}
   m_Layer: 0
   m_Name: Bullet Turret
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   pivot: {fileID: 2132953714685851362}
   enemyTag: Enemy
   gfxAnim: {fileID: 1846829089167816868}
+  recoilAnim: {fileID: 5674035845265910766}
   muzzleFlash: {fileID: 7654172783242055649}
   ugA:
     upgradeName: Sniper Vision
@@ -233,6 +235,20 @@ MonoBehaviour:
     type: 3}
   specialTime: 5
   specialFireRate: 3
+--- !u!114 &7789754457311897144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950878277575815669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fddd2d1e4166de4bb14291f1e2eadf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretCam: {fileID: 5788378426735856805}
+  angle: 0.5
 --- !u!1 &2171382126415426949
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +412,7 @@ Transform:
   m_Children:
   - {fileID: 3554877455929726980}
   - {fileID: 2129615165364960894}
-  - {fileID: 5788378426735856805}
+  - {fileID: 1230792555693890930}
   - {fileID: 3092041070126384219}
   m_Father: {fileID: 3792607124008786777}
   m_RootOrder: 0
@@ -526,7 +542,7 @@ GameObject:
   - component: {fileID: 5720442329981475874}
   - component: {fileID: 685390600339480100}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_Stack
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,6 +636,57 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &7072197475420694096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230792555693890930}
+  - component: {fileID: 5674035845265910766}
+  m_Layer: 0
+  m_Name: CameraObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230792555693890930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072197475420694096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5788378426735856805}
+  m_Father: {fileID: 2132953714685851362}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5674035845265910766
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072197475420694096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a3dff8d4cfb9134f92b14c8f002e7ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1253912840465044637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -689,15 +756,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 283b9028f4ed9bb4ea95a340a5e8355d, type: 3}
---- !u!198 &7654172783242055649 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1253912840465044637}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5236807365650660818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6470031746941970767, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1253912840465044637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7654172783242055649 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   m_PrefabInstance: {fileID: 1253912840465044637}
   m_PrefabAsset: {fileID: 0}
@@ -1090,12 +1157,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e284cdc822103459c1f6671c15d7be, type: 3}
---- !u!224 &3092041070126384219 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6405492131955873094, guid: a4e284cdc822103459c1f6671c15d7be,
-    type: 3}
-  m_PrefabInstance: {fileID: 8218440195541258525}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4610724075007527331 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5616365655607285950, guid: a4e284cdc822103459c1f6671c15d7be,
@@ -1108,3 +1169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4067d2622cd6e645a74e10910a069c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3092041070126384219 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6405492131955873094, guid: a4e284cdc822103459c1f6671c15d7be,
+    type: 3}
+  m_PrefabInstance: {fileID: 8218440195541258525}
+  m_PrefabAsset: {fileID: 0}

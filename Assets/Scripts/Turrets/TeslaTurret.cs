@@ -37,7 +37,7 @@ public class TeslaTurret : BeamTurret {
         }
     }
 
-    public override void AutoShoot() {        
+    public override void AutoShoot() {
         if(!FindEnemy()) {
             LaserOff();
             return;
@@ -52,6 +52,10 @@ public class TeslaTurret : BeamTurret {
         //aim at target
         RotateOnShoot();
         gfxAnim.SetTrigger(shootAnim);
+
+        //particle effects
+        shootEffect.Play();
+        shootLight.enabled = true;
 
         //build gfx
         if(!abilityActivation) {
@@ -89,6 +93,8 @@ public class TeslaTurret : BeamTurret {
                 target = hit.transform;
                 targetEnemy = target.GetComponent<Enemy>();
 
+                shake.shakeDuration = 0.1f;
+
                 if(!abilityActivation) {
                     BuildLightning();
                     if(targetEnemy) {
@@ -108,7 +114,12 @@ public class TeslaTurret : BeamTurret {
 
                 if(!lineRenderer.enabled) {
                     lineRenderer.enabled = true;
+
                 }
+
+                //particle effects
+                shootEffect.Play();
+                shootLight.enabled = true;
 
                 StopCoroutine("FadeOut");
                 StartCoroutine(FadeOut());
