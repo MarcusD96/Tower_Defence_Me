@@ -63,7 +63,7 @@ public class MissileTurret : ProjectileTurret {
                         damage = 2;
                         AutoShoot();
                         recoilAnim.SetTrigger("Shoot");
-                        AudioManager.StaticPlay(shootSound, transform.position);
+                        AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                         damage = 1;
                         yield return new WaitForSeconds(0.1f);
                     }

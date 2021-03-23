@@ -82,7 +82,7 @@ public class LaserTurret : BeamTurret {
         }
 
         if(target != targetPrev) {
-            AudioManager.StaticPlay(shootSound, transform.position);
+            AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
             targetPrev = target;
         }
 
@@ -121,7 +121,7 @@ public class LaserTurret : BeamTurret {
         }
 
         if(!lineRenderer.enabled) {
-            AudioManager.StaticPlay(shootSound, transform.position);
+            AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
         }
 
         float manualRange = range * manualRangeMultiplier;
@@ -144,7 +144,7 @@ public class LaserTurret : BeamTurret {
                     targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
 
                     if(target != targetPrev) {
-                        AudioManager.StaticPlay(shootSound, transform.position);
+                        AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                         targetPrev = target;
                     }
 

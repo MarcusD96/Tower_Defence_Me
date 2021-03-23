@@ -26,7 +26,7 @@ public class SlowWave : MonoBehaviour {
     }
 
     IEnumerator WaveBlast() {
-        AudioManager.StaticPlay("EMP", transform.position);
+        AudioManager.StaticPlayEffect(AudioManager.instance.sounds, "EMP", transform.position);
         while(transform.localScale.x < maxSize.x - 5) {
             var scale = transform.localScale;
             scale = Vector3.Slerp(scale, maxSize, Time.deltaTime * growSpeed);

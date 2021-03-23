@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     public Sound[] sounds;
     public Sound[] music;
+    public Sound[] ui;
     public Sound currentSong;
 
     public static AudioManager instance;
@@ -53,12 +54,15 @@ public class AudioManager : MonoBehaviour {
         foreach(Sound s in sounds) {
             s.source.volume = s.volume = Settings.Sounds;
         }
+        foreach(Sound s in ui) {
+            s.source.volume = s.volume = Settings.Sounds;
+        }
     }
 
     public void Stop(string name) {
         Sound s = System.Array.Find(sounds, sounds => sounds.name == name);
         if(s == null) {
-            Debug.LogWarning("Sound: " + name + " not found");
+            Debug.LogWarning("Sound: \"" + name + "\" not found");
             return;
         }
         s.source.Stop();
@@ -74,17 +78,17 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void Play(string name, Vector3 position) {
-        Sound s = System.Array.Find(sounds, sounds => sounds.name == name);
+    public void PlayEffect(Sound[] soundsList, string name, Vector3 position) {
+        Sound s = System.Array.Find(soundsList, sounds => sounds.name == name);
         if(s == null) {
-            Debug.LogWarning("Sound: " + name + " not found");
+            Debug.LogWarning("Sound: \"" + name + "\" not found");
             return;
         }
-        AudioSource.PlayClipAtPoint(s.source.clip, position, s.source.volume);
+        AudioSource.PlayClipAtPoint(s.clip, position, s.volume);
     }
 
-    public static void StaticPlay(string name, Vector3 position) {
-        instance.Play(name, position);
+    public static void StaticPlayEffect(Sound[] soundsList, string name, Vector3 position) {
+        instance.PlayEffect(soundsList, name, position);
     }
 
     public int musicNum;
