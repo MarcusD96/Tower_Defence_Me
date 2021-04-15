@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour {
     public float maxFireRate;
     public Camera turretCam, overlayCam;
     public GameObject turretView;
-    public Image reloadedIndicator;
+    public Image reloadIndicator;
     public string shootSound;
     public AimIndicator aimIndicator;
 
@@ -32,13 +32,14 @@ public class Turret : MonoBehaviour {
 
     [Header("Setup")]
     public Transform pivot;
-    public string enemyTag = "Enemy";
     public Animator gfxAnim, recoilAnim;
     public ParticleSystem muzzleFlash;
 
+    protected string enemyTag = "Enemy";
     protected string shootAnim = "Shoot";
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
+    protected FireTurret fireTurret;
 
     [Header("Upgrades")]
     public Upgrade ugA;
@@ -64,7 +65,9 @@ public class Turret : MonoBehaviour {
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
         UpdateTargettingName();
-        aimIndicator.SetTurret(this);
+        if(aimIndicator) {
+            aimIndicator.SetTurret(this);
+        }
         gfxAnim = GetComponentInChildren<Animator>();
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
     }
@@ -278,7 +281,7 @@ public class Turret : MonoBehaviour {
     void AutomaticControl() {
         nextFire -= Time.deltaTime;
 
-        if(!beamTurret) {
+        if(projectileTurret) {
             if(nextFire <= 0.0f) {
                 FindEnemy();
                 if(target == null)
@@ -290,9 +293,20 @@ public class Turret : MonoBehaviour {
                 muzzleFlash.Play();
                 nextFire = 1 / fireRate;
             }
-        } else {
+        } else if(fireTurret) {
+            if(nextFire <= 0.0f) {
+                FindEnemy();
+                if(target == null)
+                    return;
+                fireTurret.AutoShoot();
+                AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
+                gfxAnim.SetTrigger(shootAnim);
+                nextFire = 1 / fireRate;
+            }
+        } else if(beamTurret) {
             beamTurret.AutoShoot();
-        }
+        } else
+            Debug.LogError("non existant tower???");
     }
 
     void ManualControl() {
@@ -303,13 +317,7 @@ public class Turret : MonoBehaviour {
             manualFireRate = fireRate * manualFirerateMultiplier;
         }
 
-        if(beamTurret) {
-            if(Input.GetMouseButton(0)) {
-                beamTurret.ManualShoot();
-            } else {
-                beamTurret.LaserOff();
-            }
-        } else {
+        if(projectileTurret) {
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
@@ -320,13 +328,33 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
             }
-        }
-        reloadedIndicator.fillAmount = nextFire / (1 / manualFireRate);
+        } else if(fireTurret) {
+            if(Input.GetMouseButton(0)) {
+                if(nextFire <= 0.0f) {
+                    fireTurret.ManualShoot();
+                    AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
+                    gfxAnim.SetTrigger(shootAnim);
+                    recoilAnim.SetTrigger("Shoot");
+                    nextFire = 1 / manualFireRate;
+                }
+            }
+        } else if(beamTurret) {
+            if(Input.GetMouseButton(0)) {
+                beamTurret.ManualShoot();
+            } else {
+                beamTurret.LaserOff();
+            }
+        } else
+            Debug.LogError("non existant tower???");
+
+        reloadIndicator.fillAmount = nextFire / (1 / manualFireRate);
     }
 
     public void ApplyUpgradeA() {
         range += ugA.upgradeFactorX;
-        aimIndicator.SetPositionAtRange();
+        if(aimIndicator) {
+            aimIndicator.SetPositionAtRange();
+        }
     }
 
     public virtual void ApplyUpgradeB() {

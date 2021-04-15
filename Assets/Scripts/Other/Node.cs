@@ -204,7 +204,6 @@ public class Node : MonoBehaviour {
         CameraController.isEnabled = true;
     }
 
-    bool over = false;
     void UpdateRange(Turret t) {
         range.transform.localScale = new Vector3(t.range / 2.5f, 0.01f, t.range / 2.5f);
     }
@@ -233,6 +232,7 @@ public class Node : MonoBehaviour {
         BuildTurret(buildManager.GetTurretToBuild());
     }
 
+    bool over = false;
     void OnMouseEnter() {
         over = true;
 
@@ -271,15 +271,15 @@ public class Node : MonoBehaviour {
     }
 
     private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        if(over) {
-            if(buildManager.GetTurretToBuild() != null) {
-                Gizmos.DrawWireSphere(transform.position, buildManager.GetTurretToBuild().GetTurret().range);
-            }
-        }
+        //Gizmos.color = Color.red;
+        //if(over) {
+        //    if(buildManager.GetTurretToBuild() != null) {
+        //        Gizmos.DrawWireSphere(transform.position, buildManager.GetTurretToBuild().GetTurret().range);
+        //    }
+        //}
 
-        if(turret != null) {
-            Gizmos.DrawWireSphere(transform.position, turret.GetComponent<Turret>().range);
-        }
+        //if(turret != null) {
+        //    Gizmos.DrawWireSphere(transform.position, turret.GetComponent<Turret>().range);
+        //}
     }
 }
