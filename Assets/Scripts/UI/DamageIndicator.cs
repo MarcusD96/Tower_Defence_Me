@@ -4,10 +4,11 @@ using UnityEngine;
 public class DamageIndicator : MonoBehaviour {
 
     public float damage, fallTime;
+    public Color color;
     public TextMeshProUGUI damageText;
 
     void Start() {
-        IndicateDamage(damage);
+        IndicateDamage(damage, color);
         Destroy(gameObject, fallTime);
     }
 
@@ -29,7 +30,8 @@ public class DamageIndicator : MonoBehaviour {
         damageText.color = aa;
     }
     
-    public void IndicateDamage(float damage_) {
+    public void IndicateDamage(float damage_, Color color) {
         damageText.text = Mathf.CeilToInt(damage_).ToString();
+        damageText.color = color;
     }
 }

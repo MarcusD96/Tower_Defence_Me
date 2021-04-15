@@ -141,7 +141,7 @@ public class LaserTurret : BeamTurret {
                         targetEnemy.DamageOverTime(damageOverTime, slowDuration);
                     }
 
-                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, false);
+                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, Color.white, false);
 
                     if(target != targetPrev) {
                         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);

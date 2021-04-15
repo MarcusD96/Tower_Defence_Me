@@ -5,7 +5,7 @@ public class SpecialActivator : MonoBehaviour {
 
     private static SpecialActivator instance;
 
-    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, specBtn;
+    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, specBtn;
 
 
     public Animator anim;
@@ -17,6 +17,7 @@ public class SpecialActivator : MonoBehaviour {
         chargesButton.SetActive(false);
         empButton.SetActive(false);
         superchargeButton.SetActive(false);
+        infernoBtn.SetActive(false);
     }
 
     public void OpenSpecials() {
@@ -55,8 +56,14 @@ public class SpecialActivator : MonoBehaviour {
         EMP.AddNewLaserTurret(lt);
     }
 
-    public static void MakeSuperChrge(TeslaTurret tt) {
+    public static void MakeSuperCharge(TeslaTurret tt) {
         instance.superchargeButton.SetActive(true);
         Supercharge.AddNewTeslaTurret(tt);
     }
+
+    public static void MakeInferno(FireTurret ft) {
+        instance.infernoBtn.SetActive(true);
+        Inferno.AddNewFireTurret(ft);
+    }
+    
 }

@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
     public static float speedDifficultyMultiplier = 1.0f, hpDifficultyMultiplier = 1.0f;
 
     public GameObject deathEffect, indicator;
-    public ParticleSystem slowEffect, stunEffect;
+    public ParticleSystem slowEffect, stunEffect, burnEffect;
 
     public float startSpeed, startHp;
 
@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     public int moneyValue, lifeValue;
 
     private IEnumerator stun = null;
+    private IEnumerator burn = null;
 
     [Header("Unity Stuff")]
     public Image healthBar;
@@ -32,21 +33,26 @@ public class Enemy : MonoBehaviour {
         speed = startSpeed * speedDifficultyMultiplier;
         startHp = currentHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
 
-        if(slowEffect) {
+        if(slowEffect != null) {
             slowEffect.gameObject.SetActive(false);
         }
-        if(stunEffect) {
+        if(stunEffect != null) {
             stunEffect.gameObject.SetActive(false);
+        }
+        if(burnEffect != null) {
+            burnEffect.gameObject.SetActive(false);
         }
     }
 
-    public void TakeDamage(float amount, bool indicateDmg) {
+    public void TakeDamage(float amount, Color color, bool indicateDmg) {
         if(healthBar) {
             currentHp -= amount;
 
             if(indicateDmg) {
                 GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-                indicatorInstance.GetComponent<DamageIndicator>().damage = amount;
+                var i = indicatorInstance.GetComponent<DamageIndicator>();
+                i.damage = amount;
+                i.color = color;
             }
 
             healthBar.fillAmount = currentHp / startHp;
@@ -69,8 +75,10 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Slow(float slowFactor, float duration) {
-        if(!slowEffect)
+        if(slowEffect == null) {
+            print("no slow effect");
             return;
+        }
         if(slowResist)
             return;
 
@@ -104,15 +112,17 @@ public class Enemy : MonoBehaviour {
         isDamaging = true;
         float endTime = Time.time + duration;
         while(Time.time < endTime) {
-            TakeDamage(dot * Time.deltaTime, false);
+            TakeDamage(dot * Time.deltaTime, Color.white, false);
             yield return new WaitForEndOfFrame();
         }
         isDamaging = false;
     }
 
     public void Stun(float duration) {
-        if(!stunEffect)
+        if(stunEffect == null) {
+            print("no stun effect");
             return;
+        }
 
         if(stunResist)
             return;
@@ -139,5 +149,31 @@ public class Enemy : MonoBehaviour {
 
         speed = startSpeed;
         stun = null;
+    }
+
+    public void Burn(int numBurns, float burnInterval) {
+        if(burnEffect == null) {
+            print("no burn effect");
+        }
+
+        if(burn != null) {
+            burnEffect.gameObject.SetActive(false);
+            StopCoroutine(burn);
+        }
+
+        burn = BurnEnemy(numBurns, burnInterval);
+        StartCoroutine(burn);
+
+    }
+
+    IEnumerator BurnEnemy(int numBurns, float burnInterval) {
+        burnEffect.gameObject.SetActive(true);
+        burnEffect.Play();
+        for(int i = 0; i <= numBurns; i++) {
+            yield return new WaitForSeconds(burnInterval);
+            TakeDamage(1, Color.white, false);
+        }
+        burnEffect.Stop();
+        burnEffect.gameObject.SetActive(false);
     }
 }

@@ -6,8 +6,11 @@ using UnityEngine;
 public class FireShot : MonoBehaviour {
 
     ParticleSystem fire;
-    float radius, damage;
-    int penetration;
+    public Gradient mainGradient, specGradient;
+    float radius, damage, burnInterval;
+    int penetration, burnTime;
+
+    bool special;
 
     private void Start() {
         fire = GetComponent<ParticleSystem>();
@@ -25,9 +28,9 @@ public class FireShot : MonoBehaviour {
         }
     }
 
-    public List<Collider> hits;
+
     void CheckHits() {
-        hits = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
+        List<Collider> hits = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
 
         if(hits.Count > 0) {
             //trim out non enemies
@@ -49,16 +52,41 @@ public class FireShot : MonoBehaviour {
 
                 if(penetration == 0)
                     break;
+                var e = h.gameObject.GetComponent<Enemy>();
 
-                h.gameObject.GetComponent<Enemy>().TakeDamage(damage, true);
+                ParticleSystem.ColorOverLifetimeModule grad = fire.colorOverLifetime;
+
+                if(special) {
+
+                    grad.color = specGradient;
+
+                    if(e.isBoss)
+                        e.TakeDamage(damage * 10, Color.red, true);
+                    else {
+                        e.TakeDamage(damage * 3, Color.red, true);
+                    }
+
+                    e.Burn(burnTime * 2, burnInterval / 2);
+                
+                } else {
+
+                    grad.color = mainGradient;
+
+                    e.TakeDamage(damage, Color.red, true);
+                    e.Burn(burnTime, burnInterval);
+                }
+
                 penetration--;
             }
         }
     }
 
-    public void SetStats(float damage_, float radius_, int penetration_) {
+    public void SetStats(float damage_, float radius_, float burnInterval_, int burnTime_, int penetration_, bool special_) {
         damage = damage_;
         radius = radius_;
+        burnInterval = burnInterval_;
+        burnTime = burnTime_;
         penetration = penetration_;
+        special = special_;
     }
 }

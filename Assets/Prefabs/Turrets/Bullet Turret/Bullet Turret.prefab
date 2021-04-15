@@ -198,11 +198,10 @@ MonoBehaviour:
   turretCam: {fileID: 1772590479217720602}
   overlayCam: {fileID: 5720442329981475874}
   turretView: {fileID: 377269558289726356}
-  reloadedIndicator: {fileID: 3582605655545536743}
+  reloadIndicator: {fileID: 3582605655545536743}
   shootSound: Shoot Bullet
   aimIndicator: {fileID: 4610724075007527331}
   pivot: {fileID: 2132953714685851362}
-  enemyTag: Enemy
   gfxAnim: {fileID: 1846829089167816868}
   recoilAnim: {fileID: 5674035845265910766}
   muzzleFlash: {fileID: 7654172783242055649}

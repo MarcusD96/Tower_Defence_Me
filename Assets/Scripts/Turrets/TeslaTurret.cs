@@ -10,6 +10,7 @@ public class TeslaTurret : BeamTurret {
 
     [Header("Lightning")]
     public GameObject flash;
+    public Gradient mainGrad, specGrad;
     public float arcLength;
     public float arcVar, inaccuracy;
     public int maxArcs;
@@ -60,12 +61,12 @@ public class TeslaTurret : BeamTurret {
         //build gfx
         if(!abilityActivation) {
             BuildLightning();
-            targetEnemy.TakeDamage(damage, true);
+            targetEnemy.TakeDamage(damage, Color.yellow, true);
             targetEnemy.Stun(stunDuration);
         } else {
             Enemy[] enemies = BuildSuperchargedLightning();
             foreach(var e in enemies) {
-                e.TakeDamage(damage, true);
+                e.TakeDamage(damage, Color.yellow, true);
                 e.Stun(stunDuration);
             }
         }
@@ -99,14 +100,14 @@ public class TeslaTurret : BeamTurret {
                     BuildLightning();
                     if(targetEnemy) {
                         gfxAnim.SetTrigger(shootAnim);
-                        targetEnemy.TakeDamage(damage, true);
+                        targetEnemy.TakeDamage(damage, Color.white, true);
                         targetEnemy.Stun(stunDuration);
                     }
                 } else {
                     Enemy[] enemies = BuildSuperchargedLightning();
                     gfxAnim.SetTrigger(shootAnim);
                     foreach(var e in enemies) {
-                        e.TakeDamage(damage, true);
+                        e.TakeDamage(damage, Color.white, true);
                         e.Stun(stunDuration);
                     }
                 }
@@ -159,22 +160,22 @@ public class TeslaTurret : BeamTurret {
             lineRenderer.enabled = true;
     }
 
+    List<Enemy> targetList;
     Enemy[] BuildSuperchargedLightning() {
-        List<Enemy> targetList = new List<Enemy>();
-
+        targetList = new List<Enemy>();
         //finding and sorting enemies
         {
-            //find all the enemies on screen
-            foreach(var e in GameObject.FindGameObjectsWithTag(enemyTag)) {
+            //find all the enemies on screen, sort by the ones in range
+            foreach(var e in WaveSpawner.GetEnemyList_Static()) {
                 targetList.Add(e.GetComponent<Enemy>());
             }
+
             //sort them by how far they have travelled
             targetList.Sort((a, b) => { return b.distanceTravelled.CompareTo(a.distanceTravelled); });
-
+            
             //reduce list to only the first max enemies
             while(targetList.Count > maxArcs) {
                 targetList.RemoveAt(targetList.Count - 1);
-                targetList.TrimExcess();
             }
             targetList.Capacity = targetList.Count;
 
@@ -198,7 +199,7 @@ public class TeslaTurret : BeamTurret {
                     var fwd = target.position - lastPoint;
                     fwd.Normalize();
                     fwd = RandomizeArc(fwd, inaccuracy);
-                    fwd *= UnityEngine.Random.Range(arcLength * arcVar, arcLength);
+                    fwd *= Random.Range(arcLength * arcVar, arcLength);
                     fwd += lastPoint;
                     if(fwd.y < 1.6f) {
                         fwd.y = 1.6f;
@@ -259,6 +260,7 @@ public class TeslaTurret : BeamTurret {
     public override void ApplyUpgradeB() { //upgrade firerate and damage
         fireRate += ugB.upgradeFactorX;
         damage += ugB.upgradeFactorY;
+        lineRenderer.startWidth = lineRenderer.endWidth += 0.2f;
     }
 
     IEnumerator FadeOut() {
@@ -279,10 +281,12 @@ public class TeslaTurret : BeamTurret {
     IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
         abilityActivation = true;
+        lineRenderer.colorGradient = specGrad;
         var tmpFR = fireRate;
         fireRate *= superFirerate;
         nextFire = 0;
         yield return new WaitForSeconds(specialTime);
+        lineRenderer.colorGradient = mainGrad;
         fireRate = tmpFR;
         abilityActivation = false;
     }

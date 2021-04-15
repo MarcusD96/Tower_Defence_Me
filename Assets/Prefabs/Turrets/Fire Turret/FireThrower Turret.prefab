@@ -27,7 +27,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7460080549722839046}
   - {fileID: 356987433022173089}
   - {fileID: 6996489438783503313}
   m_Father: {fileID: 7138049169311413326}
@@ -64,8 +63,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2850607301495325775}
-  m_Father: {fileID: 6758524805992453998}
-  m_RootOrder: 0
+  m_Father: {fileID: 7138049169311413326}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5554583162968374824
 MeshFilter:
@@ -324,11 +323,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3854745606148596915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.42, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 6758524805992453998}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5051542955032198562
 GameObject:
@@ -387,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5531076809480734647}
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 15.56, z: -12}
+  m_LocalPosition: {x: 0, y: 20, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5841553335633846380}
@@ -607,6 +606,7 @@ Transform:
   m_Children:
   - {fileID: 6758524805992453998}
   - {fileID: 6888844630864358241}
+  - {fileID: 7460080549722839046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -645,7 +645,7 @@ MonoBehaviour:
   ugA:
     upgradeName: Range++
     description: 
-    upgradeCost: 75
+    upgradeCost: 10
     upgradeFactorX: 1
     upgradeFactorY: 0
   ugB:
@@ -664,8 +664,11 @@ MonoBehaviour:
   specialRate: 30
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
-  damage: 1
+  damage: 0.25
+  burnInterval: 2
   penetration: 10
+  numBurns: 2
+  specialTime: 5
 --- !u!114 &9053171323780503090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,7 +712,7 @@ Transform:
   m_Children:
   - {fileID: 1848786462502563540}
   m_Father: {fileID: 6758524805992453998}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7501573834970983993
 Animator:
@@ -964,6 +967,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac544509da2972845a14cd3400e757d3, type: 3}
+--- !u!224 &6279030305762677530 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4717185761083426774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8560105079731431943 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4016460191242399185, guid: ac544509da2972845a14cd3400e757d3,
@@ -991,12 +1000,6 @@ MonoBehaviour:
 --- !u!1 &8366448107420721403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4717185761083426774}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &6279030305762677530 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
     type: 3}
   m_PrefabInstance: {fileID: 4717185761083426774}
   m_PrefabAsset: {fileID: 0}

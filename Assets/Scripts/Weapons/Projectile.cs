@@ -67,7 +67,7 @@ public class Projectile : MonoBehaviour {
     protected void Damage(Transform enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
         if(e) {
-            e.TakeDamage(damage, true);
+            e.TakeDamage(damage, Color.grey, true);
         }
     }
 

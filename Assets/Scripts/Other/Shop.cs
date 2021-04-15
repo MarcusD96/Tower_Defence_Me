@@ -15,7 +15,7 @@ public class Shop : MonoBehaviour {
         laserBeamer.costText.text = "$" + laserBeamer.GetCost();
         teslaTurret.costText.text = "$" + teslaTurret.GetCost();
         railgunTurret.costText.text = "$" + railgunTurret.GetCost();
-        flameTurret.costText.text = "$" + railgunTurret.GetCost();
+        flameTurret.costText.text = "$" + flameTurret.GetCost();
     }
 
     void LateUpdate() {

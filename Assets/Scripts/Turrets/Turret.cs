@@ -20,8 +20,10 @@ public class Turret : MonoBehaviour {
     public float range;
     public float manualRangeMultiplier, manualFirerateMultiplier;
     public float fireRate; //shots per second, higher is faster
+
     [HideInInspector]
     public float maxFireRate;
+
     public Camera turretCam, overlayCam;
     public GameObject turretView;
     public Image reloadIndicator;
@@ -35,8 +37,10 @@ public class Turret : MonoBehaviour {
     public Animator gfxAnim, recoilAnim;
     public ParticleSystem muzzleFlash;
 
+    protected float startRange;
     protected string enemyTag = "Enemy";
     protected string shootAnim = "Shoot";
+    protected Node thisNode;
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
     protected FireTurret fireTurret;
@@ -64,6 +68,7 @@ public class Turret : MonoBehaviour {
         specialBar.fillBar.fillAmount = 0;
         specialBar.gameObject.SetActive(false);
         targettingMethod = 0;
+        startRange = range;
         UpdateTargettingName();
         if(aimIndicator) {
             aimIndicator.SetTurret(this);
@@ -79,6 +84,10 @@ public class Turret : MonoBehaviour {
         } else {
             AutomaticControl();
         }
+    }
+
+    public void AttachNode(Node n) {
+        thisNode = n;
     }
 
     protected bool FindEnemy() {

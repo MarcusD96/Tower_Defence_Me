@@ -71,6 +71,7 @@ public class Node : MonoBehaviour {
 
         var t = turret.GetComponent<Turret>();
         t.sellPrice = turret_.GetCost();
+        t.AttachNode(this);
 
         UpdateRange(t);
         range.SetActive(false);
@@ -147,7 +148,11 @@ public class Node : MonoBehaviour {
         }
         //tesla
         else if(turret.GetComponent<TeslaTurret>()) {
-            SpecialActivator.MakeSuperChrge(turret.GetComponent<TeslaTurret>());
+            SpecialActivator.MakeSuperCharge(turret.GetComponent<TeslaTurret>());
+        }
+        //fire
+        else if(turret.GetComponent<FireTurret>()) {
+            SpecialActivator.MakeInferno(turret.GetComponent<FireTurret>());
         }
     }
 
@@ -204,7 +209,7 @@ public class Node : MonoBehaviour {
         CameraController.isEnabled = true;
     }
 
-    void UpdateRange(Turret t) {
+    public void UpdateRange(Turret t) {
         range.transform.localScale = new Vector3(t.range / 2.5f, 0.01f, t.range / 2.5f);
     }
 
