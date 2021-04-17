@@ -7,9 +7,8 @@ public class BulletTurret : ProjectileTurret {
     public float specialTime, specialFireRate;
 
     void Awake() {
-        standardTurret = this;
         projectileTurret = this;
-
+        bulletTurret = this;
     }
 
     new void Update() {
@@ -26,9 +25,9 @@ public class BulletTurret : ProjectileTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //fireRate++, damage++
+    public override void ApplyUpgradeB() {  //fireRate++, bossDamage++
         fireRate += ugB.upgradeFactorX;
-        damage += ugB.upgradeFactorY;
+        bossDamage += (int) ugB.upgradeFactorY;
     }
 
     public override bool ActivateSpecial() {
@@ -44,13 +43,27 @@ public class BulletTurret : ProjectileTurret {
         var special = SpecialTime();
         StartCoroutine(special);
         GameObject tmp = projectilePrefab;
-        projectilePrefab = specialPrefab;
-        var saveFireRate = fireRate;
-        nextFire = 0;
-        fireRate *= specialFireRate;
 
+        var saveFireRate = fireRate;
+        fireRate = 0;
+        var tmpCamPos = turretCam.transform.localPosition;
+
+        //zoom camera in slowly
+        float endTime = Time.time + 1.5f;
+        for(float i = Time.time; i <= endTime; i += Time.deltaTime) {
+            var pos = turretCam.transform.localPosition;
+            pos.z = Mathf.Lerp(pos.z, pos.z + 3, Time.deltaTime);
+            turretCam.transform.localPosition = pos;
+            yield return null;
+        }
+
+        nextFire = 0;
+        projectilePrefab = specialPrefab;
+        fireRate = specialFireRate;        
+        turretCam.transform.localPosition = tmpCamPos;
         yield return new WaitForSeconds(specialTime);
 
+        //reset back to normal
         fireRate = saveFireRate;
         projectilePrefab = tmp;
     }

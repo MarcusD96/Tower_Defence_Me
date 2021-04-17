@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour {
 
     protected Transform target;
     protected float distanceThisFrame;
-    protected float damage;
+    protected float damage, bossDamage;
     protected bool isCollided = false;
 
     protected Vector3 startPos, endPos;
@@ -47,8 +47,9 @@ public class Projectile : MonoBehaviour {
         return rod;
     }
 
-    public void SetDamage(float damage_) {
+    public void SetDamage(float damage_, float bossDamage_) {
         damage = damage_;
+        bossDamage = bossDamage_;
     }
 
     public void SetLifePositions(Vector3 startPos_, Vector3 endPos_) {
@@ -67,7 +68,11 @@ public class Projectile : MonoBehaviour {
     protected void Damage(Transform enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
         if(e) {
-            e.TakeDamage(damage, Color.grey, true);
+            if(e.isBoss && bossDamage > 0)
+                e.TakeDamage(bossDamage, Color.grey, true);
+            else {
+                e.TakeDamage(damage, Color.grey, true);
+            }
         }
     }
 

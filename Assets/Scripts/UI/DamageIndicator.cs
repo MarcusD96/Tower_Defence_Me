@@ -25,7 +25,7 @@ public class DamageIndicator : MonoBehaviour {
         transform.localScale = scale;
 
         float a = damageText.color.a;
-        a = Mathf.Lerp(a, 0, Time.deltaTime * 2);
+        a = Mathf.Lerp(a, 0, Time.deltaTime);
         Color aa = new Color(damageText.color.r, damageText.color.g, damageText.color.b, a);
         damageText.color = aa;
     }

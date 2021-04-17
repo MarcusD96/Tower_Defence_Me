@@ -8,4 +8,6 @@ public class Settings {
     public static float Sensitivity = 2;
 
     public static bool UseKeys = true;
+
+    public static bool ReturnTurret = true;
 }

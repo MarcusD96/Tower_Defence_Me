@@ -66,11 +66,11 @@ public class Missile : Projectile {
         var s = WaveSpawner.GetEnemyList_Static();
         for(int i = 0; i < penetration; i++) {
             if(Vector3.Distance(transform.position, e[i].transform.position) <= explosionRadius) {
-                if(e[i].GetComponent<Enemy>().isBoss) {
-                    damage *= 2;
-                    Damage(e[i].transform);
-                    damage /= 2;
-                } else
+                //if(e[i].GetComponent<Enemy>().isBoss) {
+                //    damage *= 2;
+                //    Damage(e[i].transform);
+                //    damage /= 2;
+                //} else
                     Damage(e[i].transform);
             }
         }

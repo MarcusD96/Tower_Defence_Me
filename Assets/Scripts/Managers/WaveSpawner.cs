@@ -111,7 +111,7 @@ public class WaveSpawner : MonoBehaviour {
         waveIndex++;
     }
 
-    //Survival//
+    #region Survival Stuff
 
     IEnumerator SurvivalWaves() {
         PlayerStats.rounds++;
@@ -159,4 +159,5 @@ public class WaveSpawner : MonoBehaviour {
         }
         enemiesAlive = wave.count;
     }
+    #endregion
 }

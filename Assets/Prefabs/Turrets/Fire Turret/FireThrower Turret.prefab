@@ -643,32 +643,34 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:
-    upgradeName: Range++
-    description: 
-    upgradeCost: 10
+    upgradeName: Range
+    description: Increase the range
+    upgradeCost: 50
     upgradeFactorX: 1
     upgradeFactorY: 0
   ugB:
-    upgradeName: damage++
-    description: 
-    upgradeCost: 10
+    upgradeName: Hotter Flames
+    description: This tower can hit more emeies and at a higher speed
+    upgradeCost: 275
     upgradeFactorX: 0.2
-    upgradeFactorY: 5
+    upgradeFactorY: 4
   ugSpec:
-    upgradeName: Range++
-    description: 
-    upgradeCost: 10
+    upgradeName: Inferno
+    description: A small amount of premium fuel sparks an inferno doing massive damage
+      for a short amount of time!
+    upgradeCost: 1200
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 8560105079731431943}
-  specialRate: 30
+  specialRate: 45
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
-  damage: 0.25
-  burnInterval: 2
-  penetration: 10
+  damage: 1
+  burnDamage: 0.5
+  burnInterval: 1
+  penetration: 8
   numBurns: 2
-  specialTime: 5
+  specialTime: 4
 --- !u!114 &9053171323780503090
 MonoBehaviour:
   m_ObjectHideFlags: 0

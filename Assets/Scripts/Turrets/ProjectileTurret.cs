@@ -5,12 +5,12 @@ public class ProjectileTurret : Turret {
 
     [Header("Projectile Stuff")]
     public GameObject projectilePrefab;
-    protected BulletTurret standardTurret;
+    protected BulletTurret bulletTurret;
     protected MissileTurret missileTurret;
     protected RailgunTurret railgunTurret;
 
-    public float damage = 50;
-    public int explosionRadius = 0, penetration = 0;
+    public float damage, bossDamage;
+    public int explosionRadius, penetration;
 
     public void AutoShoot() {
         GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
@@ -18,7 +18,7 @@ public class ProjectileTurret : Turret {
 
         Ray ray = new Ray(pivot.position, target.position - pivot.position);
         proj.SetLifePositions(pivot.position, ray.GetPoint(range));
-        proj.SetDamage(damage);
+        proj.SetDamage(damage, bossDamage);
 
         if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration, explosionRadius);
@@ -40,7 +40,7 @@ public class ProjectileTurret : Turret {
         Projectile proj = projGO.GetComponent<Projectile>();
 
 
-        proj.SetDamage(damage);
+        proj.SetDamage(damage, bossDamage);
 
         if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration, explosionRadius);

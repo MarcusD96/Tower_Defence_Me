@@ -151,27 +151,29 @@ public class Enemy : MonoBehaviour {
         stun = null;
     }
 
-    public void Burn(int numBurns, float burnInterval) {
+    public void Burn(float damage, int numBurns, float burnInterval) {
         if(burnEffect == null) {
             print("no burn effect");
         }
 
+        //if enemy is currently burning
         if(burn != null) {
-            burnEffect.gameObject.SetActive(false);
+            //burnEffect.gameObject.SetActive(false);
             StopCoroutine(burn);
         }
 
-        burn = BurnEnemy(numBurns, burnInterval);
+        burn = BurnEnemy(damage, numBurns, burnInterval);
         StartCoroutine(burn);
-
+        if(!burnEffect.isPlaying) {
+            burnEffect.Play();
+        }
     }
 
-    IEnumerator BurnEnemy(int numBurns, float burnInterval) {
+    IEnumerator BurnEnemy(float damage, int numBurns, float burnInterval) {
         burnEffect.gameObject.SetActive(true);
-        burnEffect.Play();
         for(int i = 0; i <= numBurns; i++) {
             yield return new WaitForSeconds(burnInterval);
-            TakeDamage(1, Color.white, false);
+            TakeDamage(damage, Color.white, false);
         }
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);

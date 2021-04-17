@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireTurret : Turret {
     [Header("Fire Turret")]
     public FireShot fireShot;
-    public float damage, burnInterval;
+    public float damage, burnDamage, burnInterval;
     public int penetration, numBurns, specialTime;
 
     void Awake() {
@@ -27,12 +27,12 @@ public class FireTurret : Turret {
 
     public void AutoShoot() {
         var f = Instantiate(fireShot.gameObject, fireSpawn.position, fireShot.transform.rotation);
-        f.GetComponent<FireShot>().SetStats(damage, range, burnInterval, numBurns, penetration, isUsingSpecial);
+        f.GetComponent<FireShot>().SetStats(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
     }
 
     public void ManualShoot() {
         var f = Instantiate(fireShot.gameObject, fireSpawn.position, fireShot.transform.rotation);
-        f.GetComponent<FireShot>().SetStats(damage, range, burnInterval, numBurns, penetration, isUsingSpecial);
+        f.GetComponent<FireShot>().SetStats(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
     }
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, burn++,
         fireRate += ugB.upgradeFactorX;
@@ -55,12 +55,13 @@ public class FireTurret : Turret {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 
-        var tmp = range;
         range *= 1.5f;
         thisNode.UpdateRange(this);
 
         var tmpPos = turretCam.transform.localPosition;
         turretCam.transform.localPosition *= 2;
+
+        penetration *= 2;
 
         yield return new WaitForSeconds(specialTime);
 
@@ -68,6 +69,8 @@ public class FireTurret : Turret {
         thisNode.UpdateRange(this);
 
         turretCam.transform.localPosition = tmpPos;
+
+        penetration /= 2;
 
         isUsingSpecial = false;
     }

@@ -7,7 +7,7 @@ public class FireShot : MonoBehaviour {
 
     ParticleSystem fire;
     public Gradient mainGradient, specGradient;
-    float radius, damage, burnInterval;
+    float radius, damage, burnDamage, burnInterval;
     int penetration, burnTime;
 
     bool special;
@@ -17,7 +17,7 @@ public class FireShot : MonoBehaviour {
         fire.Play();
 
         ParticleSystem.MainModule main = fire.main;
-        main.startSpeed = (radius * 2) + 4;
+        main.startSpeed = (radius * 3) + 5;
 
         CheckHits();
     }
@@ -57,23 +57,25 @@ public class FireShot : MonoBehaviour {
                 ParticleSystem.ColorOverLifetimeModule grad = fire.colorOverLifetime;
 
                 if(special) {
-
                     grad.color = specGradient;
 
-                    if(e.isBoss)
+                    if(e.isBoss) {
                         e.TakeDamage(damage * 10, Color.red, true);
-                    else {
+                    } else {
                         e.TakeDamage(damage * 3, Color.red, true);
                     }
 
-                    e.Burn(burnTime * 2, burnInterval / 2);
+                    e.Burn(burnDamage, burnTime * 2, burnInterval);
                 
                 } else {
 
                     grad.color = mainGradient;
 
-                    e.TakeDamage(damage, Color.red, true);
-                    e.Burn(burnTime, burnInterval);
+                    if(e.isBoss) {
+                        e.TakeDamage(damage * 3, Color.red, true); 
+                    } else
+                        e.TakeDamage(damage, Color.red, true);
+                    e.Burn(burnDamage, burnTime, burnInterval); 
                 }
 
                 penetration--;
@@ -81,9 +83,10 @@ public class FireShot : MonoBehaviour {
         }
     }
 
-    public void SetStats(float damage_, float radius_, float burnInterval_, int burnTime_, int penetration_, bool special_) {
+    public void SetStats(float damage_, float radius_, float burnDamage_, float burnInterval_, int burnTime_, int penetration_, bool special_) {
         damage = damage_;
         radius = radius_;
+        burnDamage = burnDamage_;
         burnInterval = burnInterval_;
         burnTime = burnTime_;
         penetration = penetration_;

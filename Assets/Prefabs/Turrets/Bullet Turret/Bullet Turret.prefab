@@ -192,8 +192,8 @@ MonoBehaviour:
   fireSpawn: {fileID: 2129615165364960894}
   range: 12
   manualRangeMultiplier: 1.75
-  manualFirerateMultiplier: 2.5
-  fireRate: 0.9
+  manualFirerateMultiplier: 2
+  fireRate: 1
   maxFireRate: 0
   turretCam: {fileID: 1772590479217720602}
   overlayCam: {fileID: 5720442329981475874}
@@ -213,9 +213,9 @@ MonoBehaviour:
     upgradeFactorY: 0
   ugB:
     upgradeName: Upgraded Belt Feeder and FMJ Rounds
-    description: Faster reload speed and more damage per shot.
+    description: Faster reload speed and more damage to bosses
     upgradeCost: 200
-    upgradeFactorX: 0.3
+    upgradeFactorX: 0.5
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
@@ -228,12 +228,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
   damage: 1
+  bossDamage: 1
   explosionRadius: 0
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 5
-  specialFireRate: 3
+  specialTime: 2.5
+  specialFireRate: 25
 --- !u!114 &7789754457311897144
 MonoBehaviour:
   m_ObjectHideFlags: 0

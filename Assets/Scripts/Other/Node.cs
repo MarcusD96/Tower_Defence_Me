@@ -237,9 +237,7 @@ public class Node : MonoBehaviour {
         BuildTurret(buildManager.GetTurretToBuild());
     }
 
-    bool over = false;
     void OnMouseEnter() {
-        over = true;
 
         if(GameManager.lastControlled != null) {
             if(GameManager.lastControlled.controlled)   //cant select nodes when a turret is being controlled
@@ -268,7 +266,6 @@ public class Node : MonoBehaviour {
     }
 
     void OnMouseExit() {
-        over = false;
         rend.material.color = startColor;
         if(!turret) {
             range.SetActive(false);

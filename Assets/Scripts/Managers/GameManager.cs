@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
-        gameEnd = false;
+        gameEnd = false; 
         lastControlled = null;
         PlayerStats.ResetToDifficulty();
         if(Time.timeScale != 1) {
@@ -73,6 +73,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LastControlled() {
+        if(!Settings.ReturnTurret) {
+            if(lastControlled) {
+                lastControlled.RevertTurret(false); 
+            }
+            return;
+        }
+            
         if(lastControlled) {
             lastControlled.ControlTurret();
         }

@@ -378,6 +378,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   damage: 1
+  bossDamage: 2
   explosionRadius: 8
   penetration: 5
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,

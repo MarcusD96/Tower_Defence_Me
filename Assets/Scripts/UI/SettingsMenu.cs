@@ -7,7 +7,7 @@ public class SettingsMenu : MonoBehaviour {
 
     public Slider sounds, music, sensitivity;
     public TextMeshProUGUI soundsNum, musicNum, songName, sensNum;
-    public Toggle useKeys;
+    public Toggle useKeys, returnTurret;
     public Button apply, nextSong;
 
     private void LateUpdate() {
@@ -24,6 +24,7 @@ public class SettingsMenu : MonoBehaviour {
         AudioManager.instance.UpdateVolume();
         Settings.Sensitivity = sensitivity.value;
         Settings.UseKeys = useKeys.isOn;
+        Settings.ReturnTurret = returnTurret.isOn;
         gameObject.SetActive(false);
     }
 
@@ -32,6 +33,7 @@ public class SettingsMenu : MonoBehaviour {
         music.value = Settings.Music;
         sensitivity.value = Settings.Sensitivity;
         useKeys.isOn = Settings.UseKeys;
+        returnTurret.isOn = Settings.ReturnTurret;
     }
 
     public void NextSong() {
