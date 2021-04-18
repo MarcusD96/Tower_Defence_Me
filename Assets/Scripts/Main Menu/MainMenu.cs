@@ -6,6 +6,14 @@ public class MainMenu : MonoBehaviour {
     public SceneFader sceneFader;
     public GameObject settingsUI;
 
+    public Transform turretSpot;
+    public GameObject[] menuTurrets;
+
+    private void Awake() {
+        GameObject t = menuTurrets[Random.Range(0, menuTurrets.Length)];
+        Instantiate(t, turretSpot);
+    }
+
     public void Play() {
         GameMode.survival = false;
         sceneFader.FadeTo(levelToLoad);
