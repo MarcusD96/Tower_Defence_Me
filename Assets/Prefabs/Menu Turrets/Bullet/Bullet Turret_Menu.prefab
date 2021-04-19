@@ -161,8 +161,8 @@ MonoBehaviour:
   weapon: {fileID: 7074306895517076699, guid: ff56b9ef46e578945b1c3a52f6b35752, type: 3}
   weaponSound: Shoot Bullet
   fireSpawn: {fileID: 4756216741042342762}
-  shootNum: 3
   shootInterval: 8
+  maxShootNum: 5
 --- !u!1 &5988046539835629584
 GameObject:
   m_ObjectHideFlags: 0

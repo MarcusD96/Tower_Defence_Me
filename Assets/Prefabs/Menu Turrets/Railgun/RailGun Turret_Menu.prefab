@@ -48,8 +48,8 @@ MonoBehaviour:
   weapon: {fileID: 1643263655097349012, guid: a68135d176c704d4d9266d951ad0c71c, type: 3}
   weaponSound: Shoot Rod
   fireSpawn: {fileID: 4836310321066837794}
-  shootNum: 2
   shootInterval: 10
+  maxShootNum: 1
 --- !u!1 &3301838733474539724
 GameObject:
   m_ObjectHideFlags: 0

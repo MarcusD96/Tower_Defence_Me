@@ -357,5 +357,5 @@ MonoBehaviour:
   weapon: {fileID: 1543377569414801785, guid: d9aedcacc350bfb4f873e170ddaebede, type: 3}
   weaponSound: Flame
   fireSpawn: {fileID: 6214893075837438371}
-  shootNum: 2
   shootInterval: 5
+  maxShootNum: 3

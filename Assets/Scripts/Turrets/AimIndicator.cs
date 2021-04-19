@@ -29,7 +29,6 @@ public class AimIndicator : MonoBehaviour {
         pos.y = posY;
 
         transform.position = pos;
-
     }
 
 }

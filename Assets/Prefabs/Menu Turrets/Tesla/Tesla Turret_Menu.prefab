@@ -78,8 +78,8 @@ MonoBehaviour:
   weapon: {fileID: 4973540765431139444, guid: eba929d9e4ab2124cb1e0f2e398411c8, type: 3}
   weaponSound: Shoot Tesla
   fireSpawn: {fileID: 4791983520598568808}
-  shootNum: 1
   shootInterval: 5
+  maxShootNum: 5
 --- !u!1 &4360696567973785856
 GameObject:
   m_ObjectHideFlags: 0

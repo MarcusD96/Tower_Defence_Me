@@ -207,10 +207,10 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   fireSpawn: {fileID: 282096771178888004}
-  range: 15
-  manualRangeMultiplier: 2.25
-  manualFirerateMultiplier: 2
-  fireRate: 0.7
+  range: 10
+  manualRangeMultiplier: 2.5
+  manualFirerateMultiplier: 1
+  fireRate: 0.5
   maxFireRate: 0
   turretCam: {fileID: 2990236815034801900}
   overlayCam: {fileID: 6947563146166291967}
@@ -231,8 +231,8 @@ MonoBehaviour:
   ugB:
     upgradeName: Light n' Dense Rods
     description: Lighter and more dense rods are fired faster and hit more enemies.
-    upgradeCost: 300
-    upgradeFactorX: 0.17
+    upgradeCost: 375
+    upgradeFactorX: 2
     upgradeFactorY: 3
   ugSpec:
     upgradeName: Attached Charges
@@ -245,6 +245,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   damage: 2
+  bossDamage: 0
   explosionRadius: 0
   penetration: 5
   specialPrefab: {fileID: 2200754160205231155, guid: 28da8f9cafc95db4a85caa7ca966817b,
@@ -319,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100204221331116130}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 1.292, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.100000024}
   m_Children: []
   m_Father: {fileID: 2284522653124279321}
@@ -502,7 +503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614803469191241576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1962645183537205329}

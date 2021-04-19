@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Node : MonoBehaviour {
 
     public Color hoverColor, errorColor, selectColor;
-    public Vector3 offset;
 
     [HideInInspector]
     public GameObject turret = null;
@@ -214,7 +213,7 @@ public class Node : MonoBehaviour {
     }
 
     public Vector3 GetBuildPosition() {
-        return transform.position + offset;
+        return transform.position + (Vector3.up * 0.5f);
     }
 
     void OnMouseDown() {

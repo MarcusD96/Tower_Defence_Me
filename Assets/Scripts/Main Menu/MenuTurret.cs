@@ -7,7 +7,7 @@ public class MenuTurret : MonoBehaviour {
     public GameObject weapon;
     public string weaponSound;
     public Transform fireSpawn;
-    public int shootInterval;
+    public int shootInterval, maxShootNum;
     int shootNum;
 
     float nextFire;
@@ -24,7 +24,7 @@ public class MenuTurret : MonoBehaviour {
     }
 
     IEnumerator Shoot() {
-        shootNum = Random.Range(1, 5);
+        shootNum = Random.Range(1, maxShootNum + 1);
         for(int i = 0; i < shootNum; i++) {
             var g = Instantiate(weapon, fireSpawn.position, Quaternion.identity);
             AudioManager.StaticPlayEffect(AudioManager.instance.sounds, weaponSound, fireSpawn.position);

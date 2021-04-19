@@ -130,9 +130,8 @@ MonoBehaviour:
   weapon: {fileID: 3318440105034951815, guid: 88bd5eb575d819c49b56696b5c04843c, type: 3}
   weaponSound: Shoot Missile
   fireSpawn: {fileID: 1937666932042586147}
-  shootNum: 1
   shootInterval: 10
-  shootSpeed: 1
+  maxShootNum: 2
 --- !u!1 &3969553127253764314
 GameObject:
   m_ObjectHideFlags: 0

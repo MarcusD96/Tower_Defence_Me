@@ -12,6 +12,7 @@ public class MissileTurret : ProjectileTurret {
     void Awake() {
         missileTurret = this;
         projectileTurret = this;
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
     }
 
     new void Update() {

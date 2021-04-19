@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour {
     public GameObject[] menuTurrets;
 
     private void Awake() {
+        Time.timeScale = 1;
         GameObject t = menuTurrets[Random.Range(0, menuTurrets.Length)];
         Instantiate(t, turretSpot);
     }

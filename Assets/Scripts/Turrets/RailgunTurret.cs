@@ -9,6 +9,7 @@ public class RailgunTurret : ProjectileTurret {
     void Awake() {
         projectileTurret = this;
         railgunTurret = this;
+        maxFireRate = fireRate;
     }
 
     new void Update() {
@@ -26,7 +27,7 @@ public class RailgunTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() { //fireRate++, penetration++;
-        fireRate += ugB.upgradeFactorX;
+        damage += ugB.upgradeFactorX;
         penetration += (int) ugB.upgradeFactorY;
     }
 

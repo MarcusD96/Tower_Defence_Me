@@ -22,6 +22,7 @@ public class TeslaTurret : BeamTurret {
         base.Awake();
         beamTurret = this;
         teslaTurret = this;
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
     }
 
     new void Update() {
@@ -88,7 +89,7 @@ public class TeslaTurret : BeamTurret {
         }
 
         RaycastHit hit;
-        if(Physics.Raycast(pivot.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
             if(hit.collider) {
                 nextFire = 1 / manualFireRate;
                 target = hit.transform;
@@ -100,14 +101,14 @@ public class TeslaTurret : BeamTurret {
                     BuildLightning();
                     if(targetEnemy) {
                         gfxAnim.SetTrigger(shootAnim);
-                        targetEnemy.TakeDamage(damage, Color.white, true);
+                        targetEnemy.TakeDamage(damage, Color.yellow, true);
                         targetEnemy.Stun(stunDuration);
                     }
                 } else {
                     Enemy[] enemies = BuildSuperchargedLightning();
                     gfxAnim.SetTrigger(shootAnim);
                     foreach(var e in enemies) {
-                        e.TakeDamage(damage, Color.white, true);
+                        e.TakeDamage(damage, Color.yellow, true);
                         e.Stun(stunDuration);
                     }
                 }
@@ -115,7 +116,6 @@ public class TeslaTurret : BeamTurret {
 
                 if(!lineRenderer.enabled) {
                     lineRenderer.enabled = true;
-
                 }
 
                 //particle effects
@@ -276,6 +276,7 @@ public class TeslaTurret : BeamTurret {
 
             yield return null;
         }
+        shootLight.enabled = false;
     }
 
     IEnumerator SpecialAbility() {

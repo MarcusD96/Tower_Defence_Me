@@ -74,7 +74,6 @@ public class Turret : MonoBehaviour {
             aimIndicator.SetTurret(this);
         }
         gfxAnim = GetComponentInChildren<Animator>();
-        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
     }
 
     protected void Update() {
@@ -361,7 +360,7 @@ public class Turret : MonoBehaviour {
 
     public void ApplyUpgradeA() {
         range += ugA.upgradeFactorX;
-        if(aimIndicator) {
+        if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
         }
     }
@@ -412,6 +411,9 @@ public class Turret : MonoBehaviour {
     }
 
     public void AssumeControl() {
+        if(aimIndicator != null) {
+            aimIndicator.SetPositionAtRange(); 
+        }
         turretCam.enabled = overlayCam.enabled = true;
         turretView.SetActive(true);
         CameraManager.UpdateCam(turretCam);
@@ -421,6 +423,9 @@ public class Turret : MonoBehaviour {
     }
 
     public void RevertControl(bool roundEnd) {
+        if(aimIndicator != null) {
+            aimIndicator.SetPositionAtRange();
+        }
         turretCam.enabled = overlayCam.enabled = false;
         turretView.SetActive(false);
         mainCam.enabled = true;

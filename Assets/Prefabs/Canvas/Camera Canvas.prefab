@@ -3197,7 +3197,7 @@ MonoBehaviour:
     border: {fileID: 6401177835929366411}
     cost: 250
   teslaTurret:
-    turretPrefab: {fileID: 4360696567681830834, guid: 70a1714064370774fbe78f4c1f902f1b,
+    turretPrefab: {fileID: 8411359435569429709, guid: 70a1714064370774fbe78f4c1f902f1b,
       type: 3}
     costText: {fileID: 9032568181952397384}
     border: {fileID: 2519321582417842847}

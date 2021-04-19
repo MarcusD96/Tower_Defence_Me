@@ -111,7 +111,7 @@ public class NodeUI : MonoBehaviour {
         tooltips.SetActive(false);
 
         target = target_;
-        transform.position = target.GetBuildPosition();
+        transform.position = target.GetBuildPosition() + new Vector3(0, 1, 4);
 
         upgradeButtonA.interactable = true;
         upgradeButtonB.interactable = true;

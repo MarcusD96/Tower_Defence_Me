@@ -14,6 +14,7 @@ public class BeamTurret : Turret {
 
     public void Awake() {
         lineRenderer.enabled = false;
+        maxFireRate = fireRate;
     }
 
     new void Update() {
