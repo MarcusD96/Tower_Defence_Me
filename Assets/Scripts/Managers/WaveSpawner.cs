@@ -145,7 +145,8 @@ public class WaveSpawner : MonoBehaviour {
             SpawnEnemy(c.enemyPrefab);
             if(c.spawnRate > 0) {
                 yield return new WaitForSeconds(1 / c.spawnRate);
-            }
+            } else
+                yield return new WaitForEndOfFrame();
         }
     }
 
