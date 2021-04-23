@@ -32,23 +32,53 @@ public class RailgunTurret : ProjectileTurret {
     }
 
     public override bool ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
-            StartCoroutine(AttachCharges());
+            StartCoroutine(MegaShot());
             return true;
         }
         return false;
     }
 
-    IEnumerator AttachCharges() {
+    IEnumerator MegaShot() {
         StartCoroutine(SpecialTime());
 
+        //save info
+        var tmpCamPos = turretCam.transform.localPosition;
+        var tmpDamage = damage;
+        var tmpPenetraition = penetration;
+
+        //delay tower from shooting
+        nextFire += 2.5f;
+
+        //zoom camera in slowly
+        float endTime = Time.time + 2.0f;
+        turretCam.transform.localPosition += Vector3.forward * 3;
+        for(float i = Time.time; i <= endTime; i += Time.deltaTime) {
+            var pos = turretCam.transform.localPosition;
+            pos.z = Mathf.Lerp(pos.z, pos.z - 3, Time.deltaTime);
+            turretCam.transform.localPosition = pos;
+            yield return null;
+        }
+
+        //do special
         GameObject tmp = projectilePrefab;
         projectilePrefab = specialPrefab;
-        nextFire = 0; //reset fire and fire special right away
+        damage = 100;
+        penetration = 100;
 
-        yield return new WaitForSeconds(5.0f);
+        if(manual)
+            ManualShoot();
+        else {
+            FindFirstTarget(true);
+            RotateOnShoot();
+            AutoShoot();
+        }
 
+        //return to normal
         projectilePrefab = tmp;
+        turretCam.transform.localPosition = tmpCamPos;
+        damage = tmpDamage;
+        penetration = tmpPenetraition;
     }
 }

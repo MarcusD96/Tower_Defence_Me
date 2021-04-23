@@ -19,7 +19,7 @@ public class PlayerStats {
                 break;
             case 2:     //hard
                 GameMode.survival = false;
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 1.25f;
+                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 1.1f;
                 lives = 10;
                 break;
             case 3:     //survival

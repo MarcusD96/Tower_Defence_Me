@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
     [Header("Projectile Properties")]
     public GameObject impactEffect;
     public float speed = 100.0f;
-    public bool miss, special;
+    public bool special;
 
     protected Missile missile;
     protected Bullet bullet;
@@ -81,7 +81,6 @@ public class Projectile : MonoBehaviour {
         if(Physics.Raycast(transform.position, transform.forward, out hit, float.MaxValue)) {
             if(hit.collider.gameObject.CompareTag("Enemy")) {
                 target = hit.collider.transform;
-                miss = false;
                 return;
             }
         }

@@ -1,4 +1,4 @@
-﻿
+﻿    
 using UnityEngine;
 
 public class LaserTurret : BeamTurret {
@@ -61,7 +61,8 @@ public class LaserTurret : BeamTurret {
             slowDurationEnd = Time.time + slowDuration;
         }
 
-        if(target == null) {
+        if(target == null || Vector3.Distance(transform.position, target.position) > range) {
+            target = null;
             LaserOff();
             return;
         }
@@ -157,7 +158,7 @@ public class LaserTurret : BeamTurret {
                 }
 
                 //set end position of the laser line renderer
-                lineRenderer.SetPosition(1, Vector3.forward * hit.distance);
+                lineRenderer.SetPosition(1, transform.forward * hit.distance);
 
                 //turn the particles towards the turret
                 Vector3 direction = transform.position - target.transform.position;
@@ -167,7 +168,8 @@ public class LaserTurret : BeamTurret {
         } else {
             target = null;
             targetEnemy = null;
-            lineRenderer.SetPosition(1, Vector3.forward * manualRange);
+            //lineRenderer.SetPosition(1, Vector3.forward * manualRange);
+            lineRenderer.SetPosition(1, (Vector3.forward * manualRange) + new Vector3(0, 0, fireSpawn.localPosition.z * transform.localScale.z));
             lineRenderer.enabled = true;
             impactEffect.Stop();
             impactLight.enabled = false;
@@ -181,7 +183,7 @@ public class LaserTurret : BeamTurret {
         //slows enemies longer
         slowDuration += ugB.upgradeFactorX;
 
-        //finds enemies faster(also update invoke for when auto shoot) and slows enemies more
+        //finds enemies faster(also update invoke for when auto shoot and slows enemies more
         fireRate -= ugB.upgradeFactorY;
         InvokeRepeating(nameof(FindEnemy), 0, fireRate);
         slowFactor -= ugB.upgradeFactorY;

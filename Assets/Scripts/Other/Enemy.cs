@@ -20,14 +20,15 @@ public class Enemy : MonoBehaviour {
     private IEnumerator burn = null;
 
     [Header("Unity Stuff")]
-    public Image healthBar;
+    public Image healthBarL;
+    public Image healthBarR;
     public bool superSlow = false;
     public bool isDamaging = false;
     private bool isDead = false, isSlow = false;
 
     [Header("Boss")]
     public bool isBoss;
-    public bool stunResist, slowResist;
+    public bool stunResist, slowResist, burnResist;
 
     void Start() {
         speed = startSpeed * speedDifficultyMultiplier;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(float amount, Color color, bool indicateDmg) {
-        if(healthBar) {
+        if(healthBarL && healthBarR) {
             currentHp -= amount;
 
             if(indicateDmg) {
@@ -55,7 +56,8 @@ public class Enemy : MonoBehaviour {
                 i.color = color;
             }
 
-            healthBar.fillAmount = currentHp / startHp;
+            healthBarL.fillAmount = currentHp / startHp;
+            healthBarR.fillAmount = currentHp / startHp;
 
             if(currentHp <= 0 && !isDead)
                 Die();
@@ -155,6 +157,9 @@ public class Enemy : MonoBehaviour {
         if(burnEffect == null) {
             print("no burn effect");
         }
+
+        if(burnResist)
+            return;
 
         //if enemy is currently burning
         if(burn != null) {

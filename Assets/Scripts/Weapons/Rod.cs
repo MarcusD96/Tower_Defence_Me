@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class Rod : Projectile {
 
-    public GameObject rodExplodeEffect;
-
     private int penetration;
-    public bool explosive;
     private Vector3 direction;
 
 
@@ -33,39 +30,19 @@ public class Rod : Projectile {
             return;
         }
 
-        GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 3.0f);
-
-        if(!explosive) {
-            Damage(target);
-        } else {
-            Explode();
-            AudioManager.StaticPlayEffect(AudioManager.instance.sounds, "Rod Explode", target.position);
-            GameObject explosiveEffectInstance = Instantiate(rodExplodeEffect, transform.position, transform.rotation);
-            Destroy(explosiveEffectInstance, 2.0f);
-        }
-
-        penetration--;
-
         if(penetration <= 0) {
             Destroy(gameObject);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2.0f);
             return;
         }
-    }
 
-    void Explode() {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 4);
-        int i = 3;
-        foreach(var c in colliders) {
-            if(c.gameObject.CompareTag("Enemy")) {
-                if(i > 0) {
-                    Damage(c.transform);
-                } else
-                    break;
-                i--;
-            }
-        }
+        GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectInstance, 3.0f);
+
+
+        Damage(target);
+
+        penetration--;
     }
 }

@@ -89,19 +89,20 @@ public class Turret : MonoBehaviour {
         thisNode = n;
     }
 
+    #region Targetting
     protected bool FindEnemy() {
         switch(targettingMethod) {
             case 0:         //first
-                FindFirstTargetInRange();
+                FindFirstTarget(false);
                 break;
             case 1:         //last
-                FindLastTargetInRange();
+                FindLastTarget(false);
                 break;
             case 2:         //close
-                FindNearestTargetInRange();
+                FindNearestTarget();
                 break;
-            case 3:         //far
-                FindFurthestTargetInRange();
+            case 3:         //strong
+                FindStrongestTarget(false);
                 break;
             default:
                 break;
@@ -142,7 +143,7 @@ public class Turret : MonoBehaviour {
                 break;
 
             case 3:
-                targetting = "Far";
+                targetting = "Strong";
                 break;
 
             default:
@@ -155,17 +156,19 @@ public class Turret : MonoBehaviour {
     }
 
     List<GameObject> enemiesInRange;
-    protected void FindFirstTargetInRange() {
+    protected void FindFirstTarget(bool global) {
         //find all enemies
         GameObject[] enemies = WaveSpawner.GetEnemyList_Static().ToArray();
         enemiesInRange = new List<GameObject>();
 
-        //filter found enemies in range
-        foreach(var e in enemies) {
-            float distance = Vector3.Distance(pivot.position, e.transform.position);
-            if(distance <= range) {
-                enemiesInRange.Add(e);
-            }
+        if(!global) {
+            //filter for enemies in range
+            foreach(var e in enemies) {
+                float distance = Vector3.Distance(pivot.position, e.transform.position);
+                if(distance <= range) {
+                    enemiesInRange.Add(e);
+                }
+            } 
         }
 
         //find the enemy with the greatest distanceTravelled variable
@@ -187,17 +190,19 @@ public class Turret : MonoBehaviour {
             target = null;
     }
 
-    protected void FindLastTargetInRange() {
+    protected void FindLastTarget(bool global) {
         //find all enemies
         GameObject[] enemies = WaveSpawner.GetEnemyList_Static().ToArray();
         enemiesInRange = new List<GameObject>();
 
-        //filter found enemies in range
-        foreach(var e in enemies) {
-            float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance <= range) {
-                enemiesInRange.Add(e);
-            }
+        if(!global) {
+            //filter for enemies in range
+            foreach(var e in enemies) {
+                float distance = Vector3.Distance(transform.position, e.transform.position);
+                if(distance <= range) {
+                    enemiesInRange.Add(e);
+                }
+            } 
         }
 
         //find the enemy with the least distanceTrvelled variable
@@ -219,7 +224,7 @@ public class Turret : MonoBehaviour {
             target = null;
     }
 
-    protected void FindNearestTargetInRange() {
+    protected void FindNearestTarget() {
         GameObject[] enemies = WaveSpawner.GetEnemyList_Static().ToArray();
         float shortestDistance = float.MaxValue;
         GameObject nearestEnemy = null;
@@ -239,37 +244,59 @@ public class Turret : MonoBehaviour {
             target = null;
     }
 
-    protected void FindFurthestTargetInRange() {
+    protected void FindStrongestTarget(bool global) {
         //find all enemies
         GameObject[] enemies = WaveSpawner.GetEnemyList_Static().ToArray();
         enemiesInRange = new List<GameObject>();
 
-        //filter found enemies in range
-        foreach(var e in enemies) {
-            float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance <= range) {
-                enemiesInRange.Add(e);
-            }
+        if(!global) {
+            //filter for enemies in range
+            foreach(var e in enemies) {
+                float distance = Vector3.Distance(transform.position, e.transform.position);
+                if(distance <= range) {
+                    enemiesInRange.Add(e);
+                }
+            } 
         }
 
         //find the enemy with the greatest distance
-        float longestDistance = 0;
-        GameObject furthestEnemy = null;
+        float mostHP = 0;
+        GameObject strongestEnemy = null;
         foreach(var e in enemiesInRange) {
-            float distance = Vector3.Distance(transform.position, e.transform.position);
-            if(distance > longestDistance) {
-                longestDistance = distance;
-                furthestEnemy = e;
+            float hp = e.GetComponent<Enemy>().currentHp;
+            if(hp > mostHP) {
+                mostHP = hp;
+                strongestEnemy = e;
             }
         }
 
         //target that enemy if one was found
-        if(furthestEnemy) {
-            target = furthestEnemy.transform;
-            targetEnemy = furthestEnemy.GetComponent<Enemy>();
+        if(strongestEnemy) {
+            target = strongestEnemy.transform;
+            targetEnemy = strongestEnemy.GetComponent<Enemy>();
         } else
             target = null;
     }
+
+    protected bool CheckEnemiesInRange() {
+        if(manual)
+            return true;
+
+        GameObject tmpEnemy = null;
+        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
+            if(!manual) {
+                if(Vector3.Distance(pivot.position, e.transform.position) <= range) {
+                    tmpEnemy = e;
+                    break;
+                }
+            }
+        }
+        if(tmpEnemy != null)
+            return true;
+        else
+            return false;
+    }
+    #endregion
 
     public int GetSellPrice() {
         return Mathf.RoundToInt((sellPrice * sellPecent / 100) / 5) * 5; //rounds to nearest 5 value
@@ -288,6 +315,7 @@ public class Turret : MonoBehaviour {
 
     void AutomaticControl() {
         nextFire -= Time.deltaTime;
+        nextFire = Mathf.Clamp(nextFire, 0, float.MaxValue);
 
         if(projectileTurret) {
             if(nextFire <= 0.0f) {
@@ -308,7 +336,7 @@ public class Turret : MonoBehaviour {
                     return;
                 fireTurret.AutoShoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                gfxAnim.SetTrigger(shootAnim);
+                gfxAnim.SetTrigger("Shoot");
                 nextFire = 1 / fireRate;
             }
         } else if(beamTurret) {
@@ -319,6 +347,7 @@ public class Turret : MonoBehaviour {
 
     void ManualControl() {
         nextFire -= Time.deltaTime;
+        nextFire = Mathf.Clamp(nextFire, 0, float.MaxValue);
 
         var manualFireRate = fireRate;
         if(!hasSpecial) {
@@ -336,7 +365,8 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
             }
-        } else if(fireTurret) {
+        }
+        else if(fireTurret) {
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
                     fireTurret.ManualShoot();
@@ -346,18 +376,23 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
             }
-        } else if(beamTurret) {
+        }
+        else if(beamTurret) {
             if(Input.GetMouseButton(0)) {
                 beamTurret.ManualShoot();
             } else {
                 beamTurret.LaserOff();
             }
-        } else
+        }
+        else
             Debug.LogError("non existant tower???");
 
-        reloadIndicator.fillAmount = nextFire / (1 / manualFireRate);
+        if(reloadIndicator != null) {
+            reloadIndicator.fillAmount = nextFire / (1 / manualFireRate);
+        }
     }
 
+    #region Upgrades and Special
     public void ApplyUpgradeA() {
         range += ugA.upgradeFactorX;
         if(aimIndicator != null) {
@@ -390,26 +425,8 @@ public class Turret : MonoBehaviour {
             yield return null;
         }
     }
-
-    protected bool CheckEnemiesInRange() {
-        if(manual)
-            return true;
-
-        GameObject tmpEnemy = null;
-        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
-            if(!manual) {
-                if(Vector3.Distance(pivot.position, e.transform.position) <= range) {
-                    tmpEnemy = e;
-                    break;
-                }
-            }
-        }
-        if(tmpEnemy != null)
-            return true;
-        else
-            return false;
-    }
-
+    #endregion
+    
     public void AssumeControl() {
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange(); 

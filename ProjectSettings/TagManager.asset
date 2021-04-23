@@ -9,6 +9,8 @@ TagManager:
   - Projectile
   - LevelWin
   - GameOver
+  - StartButton
+  - Remaining
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Environment
   - Turret
   - NodeUI
-  - 
+  - Enemy
   - 
   - 
   - 

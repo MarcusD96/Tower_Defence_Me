@@ -58,14 +58,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740200597484509252}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.572, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2850607301495325775}
   m_Father: {fileID: 7138049169311413326}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5554583162968374824
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 356987433022173089}
   range: 8
   manualRangeMultiplier: 1
-  manualFirerateMultiplier: 2
+  manualFirerateMultiplier: 1.25
   fireRate: 0.5
   maxFireRate: 0
   turretCam: {fileID: 6138538804516712490}
@@ -650,7 +650,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   ugB:
     upgradeName: Hotter Flames
-    description: This tower can hit more emeies and at a higher speed
+    description: This tower can hit more enemeies and at a higher speed
     upgradeCost: 325
     upgradeFactorX: 0.1
     upgradeFactorY: 4
@@ -666,10 +666,10 @@ MonoBehaviour:
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
   damage: 1
-  burnDamage: 0.25
+  burnDamage: 0.5
   burnInterval: 1
   penetration: 8
-  numBurns: 2
+  numBurns: 5
   specialTime: 4
 --- !u!114 &9053171323780503090
 MonoBehaviour:

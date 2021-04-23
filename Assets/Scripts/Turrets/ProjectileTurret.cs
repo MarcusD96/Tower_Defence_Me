@@ -35,37 +35,41 @@ public class ProjectileTurret : Turret {
     public void ManualShoot() {
         float manualRange = range * manualRangeMultiplier;
 
-        //spawn bullet, get the bullet info
+        //spawn proj, get the proj info
         GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = projGO.GetComponent<Projectile>();
 
-
+        //set proj info
         proj.SetDamage(damage, bossDamage);
 
+        //set more specific infor based on the type of proj
         if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration, explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
         }
 
-        //get a target only if theres a hit, otherwise the target is the mockEnemy
+        //raycast to find target
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, pivot.forward, out hit, manualRange)) {
-            if(hit.collider) {
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
+            if(hit.collider.CompareTag("Enemy")) {
                 //set the target
-                proj.miss = false;
                 target = hit.collider.transform;
+                targetEnemy = target.GetComponent<Enemy>();
+            } else {
+                target = null;
+                targetEnemy = null;
             }
         } else {
-            proj.miss = true;
             target = null;
+            targetEnemy = null;
         }
 
         Ray ray;
         if(target) {
-            ray = new Ray(pivot.position, target.position - pivot.position);
+            ray = new Ray(fireSpawn.position, target.position - pivot.position);
         } else {
-            ray = new Ray(pivot.position, pivot.forward);
+            ray = new Ray(fireSpawn.position, pivot.forward);
         }
 
         proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));

@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour {
     public static Node lastControlled;
 
     void Awake() {
-        winLevelUI = Resources.FindObjectsOfTypeAll<LevelWin>()[0].gameObject;
-        gameOverUI = Resources.FindObjectsOfTypeAll<GameOver>()[0].gameObject;
+        winLevelUI = FindObjectOfType<LevelWin>(true).gameObject;
+        gameOverUI = FindObjectOfType<GameOver>(true).gameObject;
     }
 
     void Start() {
@@ -52,10 +52,6 @@ public class GameManager : MonoBehaviour {
                         PlayerStats.lives = 9995;
                     }
                 }
-            }
-
-            if(Input.GetKeyDown(KeyCode.F)) {
-                WinLevel();
             }
         }
     }

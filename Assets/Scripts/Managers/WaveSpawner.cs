@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,28 +8,56 @@ public class WaveSpawner : MonoBehaviour {
     public static int enemiesAlive = 0, maxWaves, currentWave;
 
     public Wave[] waves;
-    public Transform spawnPoint;
-    public GameManager gameManager;
-    public Button startButton;
-    public GameObject remainingText, simple, tank, quick, boss;
 
     [SerializeField]
     private int waveIndex = 0;
+    private Transform spawnPoint;
+    private GameManager gameManager;
+    private Button startButton;
+    private GameObject remainingText;
     private bool waveStarted;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     public static WaveSpawner instance;
 
+    void Awake() {
+        foreach(var s in FindObjectsOfType<Transform>(true)) {
+            if(s.CompareTag("Respawn")) {
+                spawnPoint = s;
+                break;
+            }
+        }
+        gameManager = GetComponent<GameManager>();
+        foreach(var s in FindObjectsOfType<Button>(true)) {
+            if(s.CompareTag("StartButton")) {
+                startButton = s;
+                break;
+            }
+        }
+        foreach(var s in FindObjectsOfType<GameObject>(true)) {
+            if(s.CompareTag("Remaining")) {
+                remainingText = s;
+                break;
+            }
+        }
+    }
+
     void Start() {
-        enemiesAlive = currentWave = 0;
-        maxWaves = waves.Length;
-        waveStarted = false;
         if(instance) {
             Debug.LogError("more than 1 wavespawner, deleting current");
             Destroy(this);
             return;
         }
         instance = this;
+
+        InitializeWaves();
+    }
+    public void InitializeWaves() {
+        //string s = File.ReadAllText(Application.dataPath + "/waves.json");
+        //waves = JsonHelper.FromJson<Wave>(s);
+        enemiesAlive = currentWave = 0;
+        maxWaves = waves.Length;
+        waveStarted = false;
     }
 
     void Update() {
@@ -90,13 +119,37 @@ public class WaveSpawner : MonoBehaviour {
         gameManager.LastControlled();
         remainingText.SetActive(true);
         if(!GameMode.survival) {
-            StartCoroutine(SpawnWave());
+            SpawnWave();
         } else {
-            StartCoroutine(SurvivalWaves());
+            //StartCoroutine(SurvivalWaves());
+            print("TODO: survival");
         }
     }
 
-    IEnumerator SpawnWave() {
+    void SpawnWave() {
+        PlayerStats.rounds++;
+        Wave wave = waves[waveIndex];
+        waveStarted = true;
+        enemiesAlive = wave.GetTotalEnemies();
+
+        foreach(var c in wave.chunks) {
+            StartCoroutine(SpawnChunk(c));
+        }
+
+        waveIndex++;
+    }
+
+    IEnumerator SpawnChunk(WaveChunk c) {
+        yield return new WaitForSeconds(c.startDelay);
+        for(int i = 0; i < c.count; i++) {
+            SpawnEnemy(c.enemyPrefab);
+            if(c.spawnRate > 0) {
+                yield return new WaitForSeconds(1 / c.spawnRate);
+            }
+        }
+    }
+
+    /*IEnumerator SpawnWave() {
         PlayerStats.rounds++;
 
         Wave wave = waves[waveIndex];
@@ -109,9 +162,9 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForSeconds(1 / wave.spawnRate);
         }
         waveIndex++;
-    }
+    }*/
 
-    #region Survival Stuff
+    /*#region Survival Stuff
 
     IEnumerator SurvivalWaves() {
         PlayerStats.rounds++;
@@ -159,5 +212,5 @@ public class WaveSpawner : MonoBehaviour {
         }
         enemiesAlive = wave.count;
     }
-    #endregion
+    #endregion*/
 }

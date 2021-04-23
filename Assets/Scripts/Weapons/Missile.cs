@@ -19,18 +19,13 @@ public class Missile : Projectile {
 
     private new void FixedUpdate() {
         base.FixedUpdate();
-        
+
         speed = Mathf.Pow(speed, speedExponent);
         speed = Mathf.Clamp(speed, 0, 100);
-        if(!miss) { //has target that is not the mock enemy, the bullet is locked in on an enemy, still need to check if target died on the way           
-            if(target) {
-                Vector3 direction = target.position - transform.position;
-                transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-                transform.LookAt(target);
-            } else {
-                miss = true;
-                TryFindNewTargetInfront();
-            }
+        if(target) {
+            Vector3 direction = target.position - transform.position;
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+            transform.LookAt(target);
         } else {
             TryFindNewTargetInfront();
         }
@@ -55,7 +50,7 @@ public class Missile : Projectile {
         e.TrimExcess();
 
         //sort enemies based on distance to target/explosion
-        e.Sort((a, b) => { 
+        e.Sort((a, b) => {
             return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position));
         });
 
@@ -66,12 +61,7 @@ public class Missile : Projectile {
         var s = WaveSpawner.GetEnemyList_Static();
         for(int i = 0; i < penetration; i++) {
             if(Vector3.Distance(transform.position, e[i].transform.position) <= explosionRadius) {
-                //if(e[i].GetComponent<Enemy>().isBoss) {
-                //    damage *= 2;
-                //    Damage(e[i].transform);
-                //    damage /= 2;
-                //} else
-                    Damage(e[i].transform);
+                Damage(e[i].transform);
             }
         }
         Destroy(gameObject);

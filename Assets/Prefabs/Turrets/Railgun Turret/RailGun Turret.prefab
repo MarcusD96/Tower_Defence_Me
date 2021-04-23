@@ -241,7 +241,7 @@ MonoBehaviour:
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 4924648402484541792}
-  specialRate: 20
+  specialRate: 60
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   damage: 2

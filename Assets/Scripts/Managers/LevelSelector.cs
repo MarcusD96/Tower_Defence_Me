@@ -8,14 +8,16 @@ public class LevelSelector : MonoBehaviour {
     public GameObject difficulty;
 
     private string levelName;
+    private Scrollbar scroll;
 
     void Start() {
         difficulty.SetActive(false);
 
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
-        //**********CHANGE WHEN NOT IN DEVELOPMENT BACK TO 1*************//
+        Debug.LogWarning("IMPORTANT: CHANGE BACK TO 1 AFTER DEVELOPMENT");
         levelReached = 6;
+        //**********CHANGE WHEN NOT IN DEVELOPMENT BACK TO 1*************//
 
         for(int i = 0; i < levelButtons.Length; i++) {
             if(i + 1 > levelReached) {
@@ -23,6 +25,9 @@ public class LevelSelector : MonoBehaviour {
             } else
                 levelButtons[i].interactable = true;
         }
+
+        scroll = FindObjectOfType<Scrollbar>();
+        scroll.value = 0;
     }
 
     public void SelectLevel(string levelName_) {

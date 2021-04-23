@@ -342,7 +342,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 2484036753030999528}
   range: 21
   manualRangeMultiplier: 1.5
-  manualFirerateMultiplier: 2
+  manualFirerateMultiplier: 1.25
   fireRate: 0.5
   maxFireRate: 0
   turretCam: {fileID: 7206695569095409826}

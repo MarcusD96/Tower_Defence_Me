@@ -40,7 +40,7 @@ public class TurretMovement : MonoBehaviour {
 
     float angle = 0.5f;
     void SwayCamera(Vector3 dir) {
-        float dt = Time.deltaTime * 5;
+        float dt = Time.unscaledDeltaTime * 5;
 
         Vector3 v = turretCam.localPosition;
 

@@ -192,7 +192,7 @@ MonoBehaviour:
   fireSpawn: {fileID: 2129615165364960894}
   range: 12
   manualRangeMultiplier: 1.75
-  manualFirerateMultiplier: 2
+  manualFirerateMultiplier: 1.3
   fireRate: 1
   maxFireRate: 0
   turretCam: {fileID: 1772590479217720602}
@@ -215,7 +215,7 @@ MonoBehaviour:
     upgradeName: Upgraded Belt Feeder and FMJ Rounds
     description: Faster reload speed and more damage to bosses
     upgradeCost: 200
-    upgradeFactorX: 0.5
+    upgradeFactorX: 0.65
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst

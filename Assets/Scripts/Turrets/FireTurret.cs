@@ -38,8 +38,7 @@ public class FireTurret : Turret {
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, burn++,
         fireRate += ugB.upgradeFactorX;
         penetration += (int) ugB.upgradeFactorY;
-        burnInterval -= 0.5f;
-        numBurns += 1;
+        numBurns += 2;
     }
 
     public override bool ActivateSpecial() {
