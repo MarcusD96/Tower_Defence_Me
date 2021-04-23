@@ -1,4 +1,5 @@
-﻿    
+﻿
+using System.Collections;
 using UnityEngine;
 
 public class LaserTurret : BeamTurret {
@@ -51,8 +52,12 @@ public class LaserTurret : BeamTurret {
 
     float slowDurationEnd = float.MaxValue;
     public override void AutoShoot() {
-        if(!IsInvoking())
-            InvokeRepeating(nameof(FindEnemy), 0.01f, fireRate);
+        if(nextFire <= 0.0f && WaveSpawner.enemiesAlive > 0) {
+            FindEnemy(false);
+            if(target == null)
+                return;
+            nextFire = 1 / fireRate;
+        }
 
         //changed target, enable damage again
         if(lastTarget != target || Time.time >= slowDurationEnd) {
@@ -61,7 +66,8 @@ public class LaserTurret : BeamTurret {
             slowDurationEnd = Time.time + slowDuration;
         }
 
-        if(target == null || Vector3.Distance(transform.position, target.position) > range) {
+        //target falls out of range
+        if(target == null || Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(target.position.x, target.position.z)) > range) {
             target = null;
             LaserOff();
             return;
@@ -70,7 +76,7 @@ public class LaserTurret : BeamTurret {
         RotateOnShoot();
 
         //apply new slow if not slowed
-        if(targetEnemy.speed > slowFactor) {
+        if(targetEnemy.currentSpeed > slowFactor) {
             if(!hasSpecial)
                 targetEnemy.Slow(slowFactor, slowDuration);
             else
@@ -82,6 +88,7 @@ public class LaserTurret : BeamTurret {
             targetEnemy.DamageOverTime(damageOverTime, slowDuration);
         }
 
+        //play sound if new target is hit
         if(target != targetPrev) {
             AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
             targetPrev = target;
@@ -95,6 +102,7 @@ public class LaserTurret : BeamTurret {
             impactLight.enabled = shootLight.enabled = true;
         }
 
+        //set line positions
         lineRenderer.SetPosition(0, Vector3.zero);
         lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(transform.InverseTransformVector(fireSpawn.position), transform.InverseTransformVector(target.position)));
 
@@ -105,9 +113,6 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ManualShoot() {
-        if(IsInvoking())
-            CancelInvoke();
-
         if(lastTarget != target) {
             lastTarget = target;
             LaserOff();
@@ -177,15 +182,23 @@ public class LaserTurret : BeamTurret {
     }
 
     public override void ApplyUpgradeB() {
-        if(IsInvoking())
-            CancelInvoke();
-
         //slows enemies longer
         slowDuration += ugB.upgradeFactorX;
 
-        //finds enemies faster(also update invoke for when auto shoot and slows enemies more
-        fireRate -= ugB.upgradeFactorY;
-        InvokeRepeating(nameof(FindEnemy), 0, fireRate);
+        //finds enemies faster
+        switch(ugB.GetLevel()) {
+            case 1:
+                fireRate = 1.0f / 0.7f;
+                break;
+            case 2:
+                fireRate = 1.0f / 0.4f;
+                break;
+            case 3:
+                fireRate = 1.0f / 0.1f;
+                break;
+        }
+
+        //slows enemies more
         slowFactor -= ugB.upgradeFactorY;
 
         //make laser wider and update manual slow factor

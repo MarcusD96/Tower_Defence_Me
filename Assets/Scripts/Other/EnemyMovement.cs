@@ -4,6 +4,7 @@
 public class EnemyMovement : MonoBehaviour {
 
     private Transform target;
+    [SerializeField]
     private int wayPointIndex = 0;
     private Enemy enemy;
 
@@ -11,15 +12,14 @@ public class EnemyMovement : MonoBehaviour {
     void Start() {
         target = Path.waypoints[0];
         enemy = GetComponent<Enemy>();
-        enemy.speed = enemy.startSpeed;
     }
 
     // Update is called once per frame
     void LateUpdate() {
         Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * enemy.speed * Time.deltaTime, Space.World);
+        transform.Translate(direction.normalized * enemy.currentSpeed * Time.deltaTime, Space.World);
 
-        enemy.distanceTravelled += (direction * enemy.speed * Time.deltaTime).sqrMagnitude;
+        enemy.distanceTravelled += (direction * enemy.currentSpeed * Time.deltaTime).sqrMagnitude;
 
         if(Vector3.Distance(transform.position, target.position) <= 0.5f) {
             GetNextWayPoint();
@@ -35,13 +35,19 @@ public class EnemyMovement : MonoBehaviour {
         target = Path.waypoints[wayPointIndex];
     }
 
+    public void ResetPath() {
+        wayPointIndex = 0;
+        target = Path.waypoints[0];
+        enemy.ResetEnemy();
+    }
+
     void EndPath() {
         PlayerStats.lives -= enemy.lifeValue;
         PlayerStats.lives = Mathf.Clamp(PlayerStats.lives, 0, PlayerStats.maxLives);
         WaveSpawner.RemoveEnemyFromList_Static(enemy);
         WaveSpawner.enemiesAlive--;
         Destroy(Instantiate(enemy.deathEffect, transform.position, transform.rotation), 5.0f);
-        Destroy(gameObject);
+        ResetPath();
+        EnemyPool.instance.Deactivate(gameObject);
     }
-
 }

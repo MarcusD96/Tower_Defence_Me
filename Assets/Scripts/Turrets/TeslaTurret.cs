@@ -40,7 +40,7 @@ public class TeslaTurret : BeamTurret {
     }
 
     public override void AutoShoot() {
-        if(!FindEnemy()) {
+        if(!FindEnemy(false)) {
             LaserOff();
             return;
         }
@@ -165,7 +165,7 @@ public class TeslaTurret : BeamTurret {
         Vector3 startPos;
 
         //find first target to hit
-        if(FindEnemy()) {
+        if(FindEnemy(false)) {
             startPos = target.position;
             enemyList.Add(targetEnemy);
 

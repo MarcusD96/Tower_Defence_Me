@@ -89,9 +89,9 @@ public class Node : MonoBehaviour {
         t.sellPrice += t.ugA.GetUpgradeCost();
 
         BuildEffect(buildManager.upgradeEffect);
+        t.ugA.IncreaseUpgrade();
         t.ApplyUpgradeA();
         UpdateRange(t);
-        t.ugA.IncreaseUpgrade();
     }
 
     public void UpgradeB() {
@@ -106,8 +106,8 @@ public class Node : MonoBehaviour {
         PlayerStats.money -= t.ugB.GetUpgradeCost();
         t.sellPrice += t.ugB.GetUpgradeCost();
 
-        t.ApplyUpgradeB();
         t.ugB.IncreaseUpgrade();
+        t.ApplyUpgradeB();
     }
 
     public void UpgradeSpecial() {

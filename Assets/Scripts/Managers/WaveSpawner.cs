@@ -52,6 +52,7 @@ public class WaveSpawner : MonoBehaviour {
 
         InitializeWaves();
     }
+
     public void InitializeWaves() {
         //string s = File.ReadAllText(Application.dataPath + "/waves.json");
         //waves = JsonHelper.FromJson<Wave>(s);
@@ -91,7 +92,7 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void SpawnEnemy(GameObject enemy) {
-        spawnedEnemies.Add(Instantiate(enemy, spawnPoint.position, spawnPoint.rotation));
+        spawnedEnemies.Add(EnemyPool.instance.Activate(enemy.GetComponent<Enemy>().enemyType, spawnPoint.position, spawnPoint.rotation));
     }
 
     void RemoveEnemyFromList(Enemy e) {

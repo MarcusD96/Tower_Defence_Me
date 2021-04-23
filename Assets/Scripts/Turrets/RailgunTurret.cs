@@ -46,7 +46,7 @@ public class RailgunTurret : ProjectileTurret {
         //save info
         var tmpCamPos = turretCam.transform.localPosition;
         var tmpDamage = damage;
-        var tmpPenetraition = penetration;
+        var tmpPenetration = penetration;
 
         //delay tower from shooting
         nextFire += 2.5f;
@@ -70,15 +70,18 @@ public class RailgunTurret : ProjectileTurret {
         if(manual)
             ManualShoot();
         else {
-            FindFirstTarget(true);
-            RotateOnShoot();
-            AutoShoot();
+            if(!FindEnemy(true)) {
+                ManualShoot();
+            } else {
+                RotateOnShoot();
+                AutoShoot();
+            }
         }
 
         //return to normal
         projectilePrefab = tmp;
         turretCam.transform.localPosition = tmpCamPos;
         damage = tmpDamage;
-        penetration = tmpPenetraition;
+        penetration = tmpPenetration;
     }
 }

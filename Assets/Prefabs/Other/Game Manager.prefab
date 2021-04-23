@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1908031512084050297}
   - component: {fileID: 1908031512084050298}
   - component: {fileID: 1908031512084050244}
+  - component: {fileID: 8381443254788746151}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -773,3 +774,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fastForward: 2
+--- !u!114 &8381443254788746151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908031512084050303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b239281a7a5fd340b6f797a0d56327f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - enemy: {fileID: 3498438954662709570, guid: 7bddb3fdc7384d8489458765fad8390c, type: 3}
+    amount: 250
+  - enemy: {fileID: 3498438954662709570, guid: 82a05825ade59034393d1390beff4a7e, type: 3}
+    amount: 250
+  - enemy: {fileID: 3498438954662709570, guid: 4df2b1488658ad040944409f6fce92d4, type: 3}
+    amount: 250
+  - enemy: {fileID: 3498438954662709570, guid: bf2a15e4f1e7ae44288b64ec8cf9212f, type: 3}
+    amount: 50
+  - enemy: {fileID: 3498438954662709570, guid: 3774a30bca8d6684c89b9bca4e8e4adb, type: 3}
+    amount: 50
+  - enemy: {fileID: 3498438954662709570, guid: 25df34836e88df34292bbbfe929a94c2, type: 3}
+    amount: 50

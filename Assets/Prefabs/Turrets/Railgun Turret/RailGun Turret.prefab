@@ -247,7 +247,7 @@ MonoBehaviour:
   damage: 2
   bossDamage: 0
   explosionRadius: 0
-  penetration: 5
+  penetration: 2
   specialPrefab: {fileID: 2200754160205231155, guid: 28da8f9cafc95db4a85caa7ca966817b,
     type: 3}
 --- !u!114 &6116370414663378372

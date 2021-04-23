@@ -195,6 +195,7 @@ MonoBehaviour:
   distanceTravelled: 0
   moneyValue: 150
   lifeValue: 100
+  enemyType: 3
   healthBarL: {fileID: 3936011818976260382}
   healthBarR: {fileID: 7600003704568035380}
   superSlow: 0

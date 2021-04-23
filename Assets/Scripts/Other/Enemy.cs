@@ -13,8 +13,10 @@ public class Enemy : MonoBehaviour {
     public float startSpeed, startHp;
 
     //[HideInInspector]
-    public float currentHp, speed, distanceTravelled = 0.0f;
+    public float currentHp, currentSpeed, distanceTravelled = 0.0f;
     public int moneyValue, lifeValue;
+
+    public EnemyType enemyType;
 
     private IEnumerator stun = null;
     private IEnumerator burn = null;
@@ -31,8 +33,8 @@ public class Enemy : MonoBehaviour {
     public bool stunResist, slowResist, burnResist;
 
     void Start() {
-        speed = startSpeed * speedDifficultyMultiplier;
-        startHp = currentHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
+        currentSpeed = startSpeed = startSpeed * speedDifficultyMultiplier;
+        currentHp = startHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
 
         if(slowEffect != null) {
             slowEffect.gameObject.SetActive(false);
@@ -65,7 +67,6 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Die() {
-
         isDead = true;
         PlayerStats.money += moneyValue;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -73,7 +74,9 @@ public class Enemy : MonoBehaviour {
 
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);
-        Destroy(gameObject);
+        GetComponent<EnemyMovement>().ResetPath();
+        ResetEnemy();
+        EnemyPool.instance.Deactivate(gameObject);
     }
 
     public void Slow(float slowFactor, float duration) {
@@ -98,14 +101,14 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator SlowEnemy(float slowFactor, float duration) {
         isSlow = true;
-        speed = startSpeed * slowFactor;
+        currentSpeed = startSpeed * slowFactor;
 
         yield return new WaitForSeconds(duration);
 
         slowEffect.Stop();
         slowEffect.gameObject.SetActive(false);
 
-        speed = startSpeed;
+        currentSpeed = startSpeed;
         superSlow = false;
         isSlow = false;
     }
@@ -131,7 +134,7 @@ public class Enemy : MonoBehaviour {
 
         if(stun != null) {
             stunEffect.gameObject.SetActive(false);
-            speed = startSpeed;
+            currentSpeed = startSpeed;
             StopCoroutine(stun);
         }
         stun = StunEnemy(duration);
@@ -139,7 +142,7 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator StunEnemy(float duration) {
-        speed = 0;
+        currentSpeed = 0;
 
         stunEffect.gameObject.SetActive(true);
         stunEffect.Play();
@@ -149,7 +152,7 @@ public class Enemy : MonoBehaviour {
         stunEffect.Stop();
         stunEffect.gameObject.SetActive(false);
 
-        speed = startSpeed;
+        currentSpeed = startSpeed;
         stun = null;
     }
 
@@ -182,5 +185,23 @@ public class Enemy : MonoBehaviour {
         }
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);
+    }
+
+    public void ResetEnemy() {
+        currentSpeed = startSpeed;
+        currentHp = startHp;
+        healthBarL.fillAmount = healthBarR.fillAmount = 1;
+        distanceTravelled = 0;
+        isDead = false;
+
+        if(slowEffect != null) {
+            slowEffect.gameObject.SetActive(false);
+        }
+        if(stunEffect != null) {
+            stunEffect.gameObject.SetActive(false);
+        }
+        if(burnEffect != null) {
+            burnEffect.gameObject.SetActive(false);
+        }
     }
 }
