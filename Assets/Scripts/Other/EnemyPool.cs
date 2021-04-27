@@ -44,15 +44,18 @@ public class EnemyPool : MonoBehaviour {
                 currObj.SetActive(true);
                 currTrans.position = pos;
                 currTrans.rotation = rot;
+                currObj.GetComponent<Enemy>().isDead = false;
                 return currObj;
             }
         }
+        //not enough stored, bring in new enemy type, store it for future use
         GameObject newObj = Instantiate(enemies[(int) e].enemy);
         Transform newTrans = newObj.transform;
         newTrans.position = pos;
         newTrans.rotation = rot;
         newTrans.parent = transform;
         pool[(int) e].Add(newObj);
+        newObj.GetComponent<Enemy>().isDead = false;
         return newObj;
     }
 

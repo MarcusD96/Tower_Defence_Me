@@ -14,12 +14,14 @@ public class TeslaTurret : BeamTurret {
     public float arcLength;
     public float arcVar, inaccuracy;
     public int maxArcs;
-
     public float specialTime;
+    [SerializeField]
+    private IEnumerator fade;
     private bool abilityActivation = false;
 
     new void Awake() {
         base.Awake();
+        fade = FadeOut();
         beamTurret = this;
         teslaTurret = this;
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
@@ -41,7 +43,7 @@ public class TeslaTurret : BeamTurret {
 
     public override void AutoShoot() {
         if(!FindEnemy(false)) {
-            LaserOff();
+            BeamOff();
             return;
         }
 
@@ -73,8 +75,7 @@ public class TeslaTurret : BeamTurret {
         }
         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
 
-        StopCoroutine("FadeOut");
-        StartCoroutine(FadeOut());
+        Fade();
     }
 
     public override void ManualShoot() {
@@ -122,8 +123,7 @@ public class TeslaTurret : BeamTurret {
                 shootEffect.Play();
                 shootLight.enabled = true;
 
-                StopCoroutine("FadeOut");
-                StartCoroutine(FadeOut());
+                Fade();
             }
         }
     }
@@ -235,6 +235,8 @@ public class TeslaTurret : BeamTurret {
         if(!lineRenderer.enabled)
             lineRenderer.enabled = true;
 
+        enemyList = Shuffle(enemyList);
+
         return enemyList.ToArray();
     }
 
@@ -278,6 +280,12 @@ public class TeslaTurret : BeamTurret {
         fireRate += ugB.upgradeFactorX;
         damage += ugB.upgradeFactorY;
         lineRenderer.startWidth = lineRenderer.endWidth += 0.2f;
+    }
+
+    void Fade() {
+        StopCoroutine(fade);
+        fade = FadeOut();
+        StartCoroutine(fade);
     }
 
     IEnumerator FadeOut() {

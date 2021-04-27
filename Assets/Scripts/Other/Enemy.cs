@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour {
 
     public float startSpeed, startHp;
 
-    //[HideInInspector]
     public float currentHp, currentSpeed, distanceTravelled = 0.0f;
     public int moneyValue, lifeValue;
 
@@ -25,8 +24,7 @@ public class Enemy : MonoBehaviour {
     public Image healthBarL;
     public Image healthBarR;
     public bool superSlow = false;
-    public bool isDamaging = false;
-    private bool isDead = false, isSlow = false;
+    public bool isDamaging = false, isDead = true, isSlow = false;
 
     [Header("Boss")]
     public bool isBoss;
@@ -84,6 +82,10 @@ public class Enemy : MonoBehaviour {
             print("no slow effect");
             return;
         }
+
+        if(!gameObject.activeSelf)
+            return;
+
         if(slowResist)
             return;
 
@@ -96,7 +98,8 @@ public class Enemy : MonoBehaviour {
     }
 
     public void DamageOverTime(float dot, float duration) {
-        StartCoroutine(DoT(dot, duration));
+        if(gameObject.activeSelf)
+            StartCoroutine(DoT(dot, duration));
     }
 
     IEnumerator SlowEnemy(float slowFactor, float duration) {
@@ -128,6 +131,9 @@ public class Enemy : MonoBehaviour {
             print("no stun effect");
             return;
         }
+
+        if(!gameObject.activeSelf)
+            return;
 
         if(stunResist)
             return;
@@ -164,6 +170,9 @@ public class Enemy : MonoBehaviour {
         if(burnResist)
             return;
 
+        if(!gameObject.activeSelf)
+            return;
+
         //if enemy is currently burning
         if(burn != null) {
             //burnEffect.gameObject.SetActive(false);
@@ -192,16 +201,14 @@ public class Enemy : MonoBehaviour {
         currentHp = startHp;
         healthBarL.fillAmount = healthBarR.fillAmount = 1;
         distanceTravelled = 0;
-        isDead = false;
+        isSlow = superSlow = isDamaging = false;
 
-        if(slowEffect != null) {
-            slowEffect.gameObject.SetActive(false);
-        }
-        if(stunEffect != null) {
-            stunEffect.gameObject.SetActive(false);
-        }
-        if(burnEffect != null) {
-            burnEffect.gameObject.SetActive(false);
-        }
+        StopAllCoroutines();
+
+        stun = burn = null;
+
+        slowEffect.gameObject.SetActive(false);
+        stunEffect.gameObject.SetActive(false);
+        burnEffect.gameObject.SetActive(false);
     }
 }

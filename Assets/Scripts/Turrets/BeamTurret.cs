@@ -17,8 +17,13 @@ public class BeamTurret : Turret {
         maxFireRate = fireRate;
     }
 
-    new void Update() {
+    protected new void Update() {
         base.Update();
+        if(lineRenderer.enabled && !target && !manual)
+            BeamOff();
+
+        if(lineRenderer.enabled && WaveSpawner.enemiesAlive == 0)
+            BeamOff();
     }
 
     public virtual void AutoShoot() {
@@ -29,7 +34,7 @@ public class BeamTurret : Turret {
         Debug.Log("Beam Manual Shoot!");
     }
 
-    public void LaserOff() {
+    public void BeamOff() {
         if(laserTurret) {
             lineRenderer.enabled = false;
             laserTurret.impactEffect.Stop();

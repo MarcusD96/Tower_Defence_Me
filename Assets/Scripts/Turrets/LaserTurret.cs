@@ -31,9 +31,8 @@ public class LaserTurret : BeamTurret {
     }
 
     Transform targetPrev; //used for sound purposes only
-    new void Update() {
+    protected new void Update() {
         base.Update();
-
         if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();
@@ -62,14 +61,14 @@ public class LaserTurret : BeamTurret {
         //changed target, enable damage again
         if(lastTarget != target || Time.time >= slowDurationEnd) {
             lastTarget = target;
-            LaserOff();
+            BeamOff();
             slowDurationEnd = Time.time + slowDuration;
         }
 
         //target falls out of range
         if(target == null || Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(target.position.x, target.position.z)) > range) {
             target = null;
-            LaserOff();
+            BeamOff();
             return;
         }
 
@@ -115,7 +114,7 @@ public class LaserTurret : BeamTurret {
     public override void ManualShoot() {
         if(lastTarget != target) {
             lastTarget = target;
-            LaserOff();
+            BeamOff();
         }
 
         lineRenderer.SetPosition(0, Vector3.zero);

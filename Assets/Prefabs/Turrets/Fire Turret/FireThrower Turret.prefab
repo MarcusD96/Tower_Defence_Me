@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5554583162968374824}
   - component: {fileID: 5383525666351575374}
   - component: {fileID: 5498294915479182390}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4204147311871339132}
   - component: {fileID: 4137909410333693386}
   - component: {fileID: 7144129721420005678}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 2850607301495325775}
   - component: {fileID: 7213966968326469083}
   - component: {fileID: 1342945484218042462}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Tanks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,6 +742,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1848786462502563540}
     m_Modifications:
+    - target: {fileID: 280575961634572230, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 385241945244274708, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 503568421197793969, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 856093218313078106, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1609288921316660428, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -877,6 +897,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1836373977536196176, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877095833368447810, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330993347720880597, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407015472108493207, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096048018306321819, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3434655782107344850, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Camera
@@ -886,6 +931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849829244937283373, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4051924596722818997, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
@@ -910,6 +960,11 @@ PrefabInstance:
     - target: {fileID: 4051924596722818997, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527592905159920935, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
@@ -942,6 +997,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5136530101062975949, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5438238193930691719, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -965,6 +1025,31 @@ PrefabInstance:
     - target: {fileID: 5438238193930691719, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162451257359858769, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387621703771094216, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406725579664278618, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202867335360148442, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214866500438888616, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

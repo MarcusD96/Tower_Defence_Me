@@ -355,7 +355,7 @@ public class Turret : MonoBehaviour {
             if(Input.GetMouseButton(0)) {
                 beamTurret.ManualShoot();
             } else {
-                beamTurret.LaserOff();
+                beamTurret.BeamOff();
             }
         } else
             Debug.LogError("non existant tower???");
@@ -401,6 +401,7 @@ public class Turret : MonoBehaviour {
     #endregion
 
     public void AssumeControl() {
+        ChangeLayer(9);
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
         }
@@ -413,6 +414,7 @@ public class Turret : MonoBehaviour {
     }
 
     public void RevertControl(bool roundEnd) {
+        ChangeLayer(0);
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
         }
@@ -427,5 +429,11 @@ public class Turret : MonoBehaviour {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         manual = false;
+    }
+
+    void ChangeLayer(int layerNum) {
+        foreach(var c in gameObject.GetComponentsInChildren<Transform>(true)) {
+            c.gameObject.layer = layerNum;
+        }
     }
 }

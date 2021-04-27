@@ -23,6 +23,12 @@ public class Missile : Projectile {
         speed = Mathf.Pow(speed, speedExponent);
         speed = Mathf.Clamp(speed, 0, 100);
         if(target) {
+            if(!target.gameObject.activeSelf) {
+                target = null;
+                TryFindNewTargetInfront();
+                return;
+            }                
+
             Vector3 direction = target.position - transform.position;
             transform.Translate(direction.normalized * distanceThisFrame, Space.World);
             transform.LookAt(target);
