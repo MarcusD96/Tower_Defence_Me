@@ -214,8 +214,8 @@ MonoBehaviour:
   ugB:
     upgradeName: Upgraded Belt Feeder and FMJ Rounds
     description: Faster reload speed and more damage to bosses
-    upgradeCost: 200
-    upgradeFactorX: 0.65
+    upgradeCost: 150
+    upgradeFactorX: 1.25
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst

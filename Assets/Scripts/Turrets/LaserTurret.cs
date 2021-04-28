@@ -185,17 +185,7 @@ public class LaserTurret : BeamTurret {
         slowDuration += ugB.upgradeFactorX;
 
         //finds enemies faster
-        switch(ugB.GetLevel()) {
-            case 1:
-                fireRate = 1.0f / 0.7f;
-                break;
-            case 2:
-                fireRate = 1.0f / 0.4f;
-                break;
-            case 3:
-                fireRate = 1.0f / 0.1f;
-                break;
-        }
+        fireRate = 5 * ugB.GetLevel();
 
         //slows enemies more
         slowFactor -= ugB.upgradeFactorY;

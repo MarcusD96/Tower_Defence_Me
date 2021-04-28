@@ -89,6 +89,9 @@ public class Enemy : MonoBehaviour {
         if(slowResist)
             return;
 
+        if(isBoss)
+            duration /= 2;
+
         if(!isSlow) { //first slow, start to slow and start particles
             StartCoroutine(SlowEnemy(slowFactor, duration));
             slowEffect.gameObject.SetActive(true);
@@ -98,6 +101,9 @@ public class Enemy : MonoBehaviour {
     }
 
     public void DamageOverTime(float dot, float duration) {
+        if(isBoss)
+            duration /= 2;
+
         if(gameObject.activeSelf)
             StartCoroutine(DoT(dot, duration));
     }
@@ -138,6 +144,9 @@ public class Enemy : MonoBehaviour {
         if(stunResist)
             return;
 
+        if(isBoss)
+            duration /= 2;
+
         if(stun != null) {
             stunEffect.gameObject.SetActive(false);
             currentSpeed = startSpeed;
@@ -172,6 +181,9 @@ public class Enemy : MonoBehaviour {
 
         if(!gameObject.activeSelf)
             return;
+
+        if(isBoss)
+            numBurns /= 2;
 
         //if enemy is currently burning
         if(burn != null) {

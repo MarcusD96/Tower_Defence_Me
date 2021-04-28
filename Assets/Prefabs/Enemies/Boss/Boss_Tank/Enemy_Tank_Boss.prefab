@@ -103,21 +103,23 @@ MonoBehaviour:
   stunEffect: {fileID: 3000482628338361963}
   burnEffect: {fileID: 7425189573211302370}
   startSpeed: 1.5
-  startHp: 1200
+  startHp: 7000
   currentHp: 0
-  speed: 5
+  currentSpeed: 0
   distanceTravelled: 0
-  moneyValue: 250
+  moneyValue: 1000
   lifeValue: 500
   enemyType: 5
   healthBarL: {fileID: 9067233987489537125}
   healthBarR: {fileID: 2464154790848238927}
   superSlow: 0
   isDamaging: 0
+  isDead: 0
+  isSlow: 0
   isBoss: 1
   stunResist: 1
   slowResist: 1
-  burnResist: 0
+  burnResist: 1
 --- !u!114 &4424576822074309443
 MonoBehaviour:
   m_ObjectHideFlags: 0

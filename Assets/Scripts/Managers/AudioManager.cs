@@ -21,9 +21,9 @@ public class AudioManager : MonoBehaviour {
         }
         DontDestroyOnLoad(gameObject);
 
-        InitializeSounds(sounds, Settings.Sounds, 1.0f);
+        InitializeSounds(sounds, Settings.Sounds / 100, 1.0f);
 
-        InitializeSounds(music, Settings.Music, 0.0f);
+        InitializeSounds(music, Settings.Music / 1000, 0.0f);
         musicNum = Random.Range(0, music.Length - 1); //random starting position in list of songs
         currentSong = music[musicNum];
     }
@@ -49,13 +49,13 @@ public class AudioManager : MonoBehaviour {
 
     public void UpdateVolume() {
         foreach(Sound s in music) {
-            s.source.volume = s.volume = Settings.Music;
+            s.source.volume = s.volume = Settings.Music / 1000;
         }
         foreach(Sound s in sounds) {
-            s.source.volume = s.volume = Settings.Sounds;
+            s.source.volume = s.volume = Settings.Sounds / 100;
         }
         foreach(Sound s in ui) {
-            s.source.volume = s.volume = Settings.Sounds;
+            s.source.volume = s.volume = Settings.Sounds / 100;
         }
     }
 

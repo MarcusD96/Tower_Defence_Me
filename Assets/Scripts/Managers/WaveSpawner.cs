@@ -15,7 +15,7 @@ public class WaveSpawner : MonoBehaviour {
     private GameManager gameManager;
     private Button startButton;
     private GameObject remainingText;
-    private bool waveStarted;
+    private bool waveStarted, autoStart, firstRoundStarted = false;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     public static WaveSpawner instance;
@@ -89,6 +89,11 @@ public class WaveSpawner : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Space)) {
             StartWave();
         }
+
+        autoStart = Settings.AutoStart;
+        if(enemiesAlive == 0 && autoStart && firstRoundStarted) {
+            StartWave();
+        }
     }
 
     void SpawnEnemy(GameObject enemy) {
@@ -116,6 +121,8 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     public void StartWave() {
+        if(firstRoundStarted == false)
+            firstRoundStarted = true;
         startButton.gameObject.SetActive(false);
         gameManager.LastControlled();
         remainingText.SetActive(true);

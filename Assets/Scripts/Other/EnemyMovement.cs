@@ -4,7 +4,6 @@
 public class EnemyMovement : MonoBehaviour {
 
     private Transform target;
-    [SerializeField]
     private int wayPointIndex = 0;
     private Enemy enemy;
 

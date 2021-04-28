@@ -20023,7 +20023,7 @@ MonoBehaviour:
     upgradeName: Mo' Powwa Babee
     description: Slower effect that lasts longer with a bigger beam.
     upgradeCost: 265
-    upgradeFactorX: 3
+    upgradeFactorX: 5
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
@@ -20038,8 +20038,8 @@ MonoBehaviour:
   shootLight: {fileID: 4441568151547372766}
   shake: {fileID: 750746476305891136}
   slowFactor: 0.8
-  slowDuration: 6
-  damageOverTime: 0.5
+  slowDuration: 15
+  damageOverTime: 0.25
   slowMultiplier: 1.6666666
   impactEffect: {fileID: 8992267078964416945}
   impactLight: {fileID: 1524415196513961273}
@@ -20340,6 +20340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentLR: {fileID: 2404739084347467044}
+  canFade: 0
 --- !u!1001 &4767376922753857547
 PrefabInstance:
   m_ObjectHideFlags: 0

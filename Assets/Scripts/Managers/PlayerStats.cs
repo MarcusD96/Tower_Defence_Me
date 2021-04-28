@@ -9,7 +9,7 @@ public class PlayerStats {
         switch(difficulty) {
             case 0:     //easy
                 GameMode.survival = false;
-                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 0.8f;
+                Enemy.speedDifficultyMultiplier = Enemy.hpDifficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 0.85f;
                 lives = 100;
                 break;
             case 1:     //medium

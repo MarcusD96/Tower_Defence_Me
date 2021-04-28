@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour {
 
     void Awake() {
         winLevelUI = FindObjectOfType<LevelWin>(true).gameObject;
+        winLevelUI.SetActive(false);
         gameOverUI = FindObjectOfType<GameOver>(true).gameObject;
+        gameOverUI.SetActive(false);
         if(FindObjectOfType<FPSCounter>() == null)
             Instantiate(new GameObject("FPS", typeof(FPSCounter)));
         Application.targetFrameRate = 200;

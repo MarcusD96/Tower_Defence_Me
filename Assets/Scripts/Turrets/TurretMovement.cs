@@ -18,21 +18,23 @@ public class TurretMovement : MonoBehaviour {
     }
 
     void ManualMovement() {
-        Vector3 lookHere = Vector3.zero;
-
-        float mouseInput = Input.GetAxis("Mouse X");
-        lookHere = Vector3.up * mouseInput * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
-        turret.pivot.Rotate(lookHere);
+        Vector3 lookHere = Vector3.zero;        
 
         if(Settings.UseKeys) {
             if(Input.GetKey(KeyCode.A)) {
-                lookHere = Vector3.down * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
+                lookHere = Vector3.down * Time.unscaledDeltaTime * Settings.Sensitivity;
                 turret.pivot.Rotate(lookHere);
             }
             if(Input.GetKey(KeyCode.D)) {
-                lookHere = Vector3.up * Time.unscaledDeltaTime * 100 * Settings.Sensitivity;
+                lookHere = Vector3.up * Time.unscaledDeltaTime * Settings.Sensitivity;
                 turret.pivot.Rotate(lookHere);
             }
+        }
+        
+        else {
+            float mouseInput = Input.GetAxis("Mouse X");
+            lookHere = Vector3.up * mouseInput * Time.unscaledDeltaTime * Settings.Sensitivity;
+            turret.pivot.Rotate(lookHere); 
         }
 
         SwayCamera(lookHere);
