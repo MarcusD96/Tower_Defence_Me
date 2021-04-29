@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Node : MonoBehaviour {
 
-    public Color hoverColor, errorColor, selectColor;
+    private Color hoverColor = Color.grey, errorColor = Color.red, selectColor = Color.blue;
 
     [HideInInspector]
     public GameObject turret = null;

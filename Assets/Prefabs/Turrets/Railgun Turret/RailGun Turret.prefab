@@ -230,7 +230,7 @@ MonoBehaviour:
     upgradeFactorY: 0
   ugB:
     upgradeName: Light n' Dense Rods
-    description: Lighter and more dense rods are fired faster and hit more enemies.
+    description: Lighter and more dense rods are fired harder and hit more enemies.
     upgradeCost: 375
     upgradeFactorX: 2
     upgradeFactorY: 3

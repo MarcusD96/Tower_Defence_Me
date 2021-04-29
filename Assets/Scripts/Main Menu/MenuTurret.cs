@@ -24,6 +24,7 @@ public class MenuTurret : MonoBehaviour {
     }
 
     IEnumerator Shoot() {
+        yield return new WaitForSeconds(1.0f);
         shootNum = Random.Range(1, maxShootNum + 1);
         for(int i = 0; i < shootNum; i++) {
             var g = Instantiate(weapon, fireSpawn.position, Quaternion.identity);

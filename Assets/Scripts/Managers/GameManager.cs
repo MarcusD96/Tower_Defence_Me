@@ -30,22 +30,25 @@ public class GameManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void LateUpdate() {
         if(gameEnd)
             return;
 
-        if(PlayerStats.lives <= 0)
+        if(PlayerStats.lives <= 0) {
             EndGame();
+            return;
+        }
 
         if(!PauseMenu.paused) {
-
-            //fast forward
-            if(Input.GetKeyDown(KeyCode.LeftShift)) {
-                if(Time.timeScale == fastForward) {
-                    Time.timeScale = 1;
-                } else {
-                    Time.timeScale = fastForward;
-                }
+            if(WaveSpawner.enemiesAlive <= 0) {
+                //fast forward
+                if(Input.GetKeyDown(KeyCode.LeftShift)) {
+                    if(Time.timeScale == fastForward) {
+                        Time.timeScale = 1;
+                    } else {
+                        Time.timeScale = fastForward;
+                    }
+                } 
             }
 
             //cheaty :P

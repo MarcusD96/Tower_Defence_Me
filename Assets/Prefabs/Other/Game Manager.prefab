@@ -967,7 +967,13 @@ MonoBehaviour:
       count: 1
       spawnRate: 1
       startDelay: 0
-  waveIndex: 0
+  - chunks:
+    - enemyPrefab: {fileID: 3498438954662709570, guid: 3774a30bca8d6684c89b9bca4e8e4adb,
+        type: 3}
+      count: 10
+      spawnRate: 0
+      startDelay: 0
+  waveIndex: 40
 --- !u!114 &1908031512084050298
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class FPSCounter : MonoBehaviour {
         DontDestroyOnLoad(this);
         GUI.depth = 2;
         while(true) {
-            if(Time.timeScale == 1) {
+            if(Time.timeScale >= 1) {
                 yield return new WaitForSeconds(0.1f);
                 count = (1 / Time.deltaTime);
                 label = "FPS :" + (Mathf.Round(count));
