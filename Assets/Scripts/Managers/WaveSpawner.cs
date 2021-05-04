@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour {
     public static int enemiesAlive = 0, maxWaves, currentWave;
 
-    public Wave[] waves;
+    [SerializeField]
+    private List<GameObject> enemyTypes;
+
+    [SerializeField]
+    Wave[] waves;
 
     [SerializeField]
     private int waveIndex = 0;
@@ -49,19 +53,44 @@ public class WaveSpawner : MonoBehaviour {
             return;
         }
         instance = this;
-
         InitializeWaves();
     }
 
     public void InitializeWaves() {
-        //string s = File.ReadAllText(Application.dataPath + "/waves.json");
-        //waves = JsonHelper.FromJson<Wave>(s);
+        string dataPath;
+#if UNITY_EDITOR
+        dataPath = Application.dataPath;
+
+#else
+        dataPath = Application.streamingAssetsPath;
+        if(!Directory.Exists(dataPath)) {
+            Directory.CreateDirectory(dataPath);
+        }
+#endif
+
+        //set file
+        File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
+
+        //get file
+        string s = File.ReadAllText(System.IO.Path.Combine(dataPath, "waves.json"));
+        waves = JsonHelper.FromJson<Wave>(s);
+
         enemiesAlive = currentWave = 0;
-        maxWaves = waves.Length;
+        maxWaves = PlayerStats.maxRounds;
         waveStarted = false;
     }
 
-    void Update() {
+    GameObject ChooseEnemyPrefab(EnemyType e) {
+        foreach(var t in enemyTypes) {
+            if(t.GetComponent<Enemy>().enemyType == e) {
+                return t;
+            }
+        }
+        print("No enemy type found!");
+        return null;
+    }
+
+    void LateUpdate() {
         if(enemiesAlive > 0)
             return;
 
@@ -69,9 +98,10 @@ public class WaveSpawner : MonoBehaviour {
             return;
 
         if(!GameMode.survival) {
-            if(waveIndex == waves.Length) {
+            if(waveIndex == maxWaves - 1) {
                 gameManager.WinLevel();
                 this.enabled = false; //disables 'this' script 
+                return;
             }
         }
 
@@ -85,22 +115,18 @@ public class WaveSpawner : MonoBehaviour {
             }
         }
 
-        if(GameMode.survival && enemiesAlive == 0) {
-            StartWave();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            StartWave();
-        }
-
         autoStart = Settings.AutoStart;
-        if(enemiesAlive == 0 && autoStart && firstRoundStarted) {
+        if((GameMode.survival && enemiesAlive == 0)
+            || Input.GetKeyDown(KeyCode.Space)
+            || (enemiesAlive == 0 && autoStart && firstRoundStarted)) {
             StartWave();
         }
     }
 
     void SpawnEnemy(GameObject enemy) {
-        spawnedEnemies.Add(EnemyPool.instance.Activate(enemy.GetComponent<Enemy>().enemyType, spawnPoint.position, spawnPoint.rotation));
+        Enemy e = enemy.GetComponent<Enemy>();
+        e.ResetEnemy();
+        spawnedEnemies.Add(EnemyPool.instance.Activate(e.enemyType, spawnPoint.position, spawnPoint.rotation));
     }
 
     void RemoveEnemyFromList(Enemy e) {
@@ -129,6 +155,18 @@ public class WaveSpawner : MonoBehaviour {
         startButton.gameObject.SetActive(false);
         gameManager.LastControlled();
         remainingText.SetActive(true);
+
+        int r = PlayerStats.rounds;
+        if(r + 1 >= 10) {
+            Enemy.difficultyMultiplier += 0.02f;
+
+        }
+        if(((r + 1) >= 15) && ((r - 4) % 10 == 0)) { //over round 15 at 15, 25, or 35
+            foreach(Enemy e in FindObjectsOfType<Enemy>(true)) {
+                e.DecreaseMoneyValue();
+            }
+        }
+
         if(!GameMode.survival) {
             SpawnWave();
         } else {
@@ -138,43 +176,27 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void SpawnWave() {
-        PlayerStats.rounds++;
         Wave wave = waves[waveIndex];
+        waveIndex++;
         waveStarted = true;
         enemiesAlive = wave.GetTotalEnemies();
+        PlayerStats.rounds++;
 
         foreach(var c in wave.chunks) {
             StartCoroutine(SpawnChunk(c));
         }
-
-        waveIndex++;
     }
 
     IEnumerator SpawnChunk(WaveChunk c) {
         yield return new WaitForSeconds(c.startDelay);
         for(int i = 0; i < c.count; i++) {
-            SpawnEnemy(c.enemyPrefab);
+            SpawnEnemy(ChooseEnemyPrefab(c.e));
             if(c.spawnRate > 0) {
                 yield return new WaitForSeconds(1 / c.spawnRate);
             } else
                 yield return new WaitForEndOfFrame();
         }
     }
-
-    /*IEnumerator SpawnWave() {
-        PlayerStats.rounds++;
-
-        Wave wave = waves[waveIndex];
-
-        enemiesAlive = wave.count;
-        waveStarted = true;
-
-        for(int i = 0; i < wave.count; i++) {
-            SpawnEnemy(wave.enemyPrefab);
-            yield return new WaitForSeconds(1 / wave.spawnRate);
-        }
-        waveIndex++;
-    }*/
 
     /*#region Survival Stuff
 
@@ -224,5 +246,5 @@ public class WaveSpawner : MonoBehaviour {
         }
         enemiesAlive = wave.count;
     }
-    #endregion*/
+#endregion*/
 }

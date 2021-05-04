@@ -277,7 +277,7 @@ public class TeslaTurret : BeamTurret {
     }
 
     public override void ApplyUpgradeB() { //upgrade firerate and damage
-        fireRate += ugB.upgradeFactorX;
+        fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         damage += ugB.upgradeFactorY;
         lineRenderer.startWidth = lineRenderer.endWidth += 0.2f;
     }

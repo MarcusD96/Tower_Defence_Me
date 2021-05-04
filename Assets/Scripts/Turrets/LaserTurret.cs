@@ -28,6 +28,7 @@ public class LaserTurret : BeamTurret {
         impactLight.enabled = shootLight.enabled = false;
         manualSlowFactor = slowFactor / slowMultiplier;
         maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 3)) / slowMultiplier;
+        startFR = fireRate;
     }
 
     Transform targetPrev; //used for sound purposes only
@@ -180,19 +181,22 @@ public class LaserTurret : BeamTurret {
         }
     }
 
+    float startFR;
     public override void ApplyUpgradeB() {
+        //finds enemies faster
+        fireRate = startFR * ugB.GetLevel() * 5;
+
         //slows enemies longer
         slowDuration += ugB.upgradeFactorX;
-
-        //finds enemies faster
-        fireRate = 5 * ugB.GetLevel();
 
         //slows enemies more
         slowFactor -= ugB.upgradeFactorY;
 
-        //make laser wider and update manual slow factor
+        //make laser wider
+        lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
+
+        //update manual slow factor
         manualSlowFactor = slowFactor / slowMultiplier;
-        lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;//update MANUAL
     }
 
     public override bool ActivateSpecial() {
@@ -200,7 +204,7 @@ public class LaserTurret : BeamTurret {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(SpecialTime());
-            tempSW = Instantiate(slowWave, transform.position, transform.rotation);
+            tempSW = Instantiate(slowWave, new Vector3(0, transform.position.y, 0), transform.rotation);
             tempSW.slowFactor = maxSlowFactor;
             tempSW.slowDuration = slowDuration * 5;
             return true;

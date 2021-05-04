@@ -19,7 +19,7 @@ public class Wave {
 
 [System.Serializable]
 public class WaveChunk {
-    public GameObject enemyPrefab;
+    public EnemyType e;
     public int count;
     public float spawnRate;
     public float startDelay;

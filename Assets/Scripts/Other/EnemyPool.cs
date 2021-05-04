@@ -38,30 +38,30 @@ public class EnemyPool : MonoBehaviour {
     public GameObject Activate(EnemyType e, Vector3 pos, Quaternion rot) {
         for(int count = 0; count < pool[(int) e].Count; count++) {
             if(!pool[(int) e][count].activeSelf) {
-                GameObject currObj = pool[(int) e][count];
-                Transform currTrans = currObj.transform;
+                GameObject currEnemy = pool[(int) e][count];
+                Transform currTrans = currEnemy.transform;
 
-                currObj.SetActive(true);
+                currEnemy.SetActive(true);
                 currTrans.position = pos;
                 currTrans.rotation = rot;
-                currObj.GetComponent<Enemy>().isDead = false;
-                return currObj;
+                currEnemy.GetComponent<Enemy>().isDead = false;
+                return currEnemy;
             }
         }
         //not enough stored, bring in new enemy type, store it for future use
-        GameObject newObj = Instantiate(enemies[(int) e].enemy);
-        Transform newTrans = newObj.transform;
+        GameObject newEnemy = Instantiate(enemies[(int) e].enemy);
+        Transform newTrans = newEnemy.transform;
         newTrans.position = pos;
         newTrans.rotation = rot;
         newTrans.parent = transform;
-        pool[(int) e].Add(newObj);
-        newObj.GetComponent<Enemy>().isDead = false;
-        return newObj;
+        pool[(int) e].Add(newEnemy);
+        newEnemy.GetComponent<Enemy>().isDead = false;
+        return newEnemy;
     }
 
-    public void Deactivate(GameObject obj) {
-        obj.SetActive(false);
-        obj.transform.position = spawn;
+    public void Deactivate(GameObject e) {
+        e.SetActive(false);
+        e.transform.position = spawn;
     }
 }
 
@@ -72,7 +72,7 @@ public class PooledEnemy {
 }
 
 public enum EnemyType {
-    Simple = 0,
+    Simple,
     Quick,
     Tank,
     Simple_Boss,

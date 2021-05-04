@@ -343,7 +343,7 @@ MonoBehaviour:
   range: 21
   manualRangeMultiplier: 1.5
   manualFirerateMultiplier: 1.25
-  fireRate: 0.5
+  fireRate: 0.7
   maxFireRate: 0
   turretCam: {fileID: 7206695569095409826}
   overlayCam: {fileID: 5086105993992064825}
@@ -365,7 +365,7 @@ MonoBehaviour:
     upgradeName: Powerful Warheads
     description: Increase warhead damage and its explosive power.
     upgradeCost: 350
-    upgradeFactorX: 0.2
+    upgradeFactorX: 0.3
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Missile Barrage

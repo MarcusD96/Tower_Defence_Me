@@ -36,8 +36,8 @@ public class LevelSelector : MonoBehaviour {
         difficulty.SetActive(true);
     }
 
-    public void SelectDifficulty(int difficultyLevel) {
-        PlayerStats.difficulty = difficultyLevel;
+    public void SelectDifficulty(int d) {
+        PlayerStats.difficulty = (Difficulty) d;
         PlayerStats.ResetToDifficulty();
         sceneFader.FadeTo("Controls");
     }

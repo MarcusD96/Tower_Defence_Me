@@ -36,7 +36,7 @@ public class FireTurret : Turret {
         f.GetComponent<FireShot>().SetStats(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
     }
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, burn++,
-        fireRate += ugB.upgradeFactorX;
+        fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         penetration += (int) ugB.upgradeFactorY;
         numBurns += 2;
     }

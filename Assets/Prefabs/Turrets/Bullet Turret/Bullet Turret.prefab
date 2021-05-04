@@ -206,20 +206,20 @@ MonoBehaviour:
   recoilAnim: {fileID: 5674035845265910766}
   muzzleFlash: {fileID: 7654172783242055649}
   ugA:
-    upgradeName: Sniper Vision
-    description: Slightly greater range
+    upgradeName: Longer Barrels
+    description: Hit targets at a greater range
     upgradeCost: 40
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
-    upgradeName: Upgraded Belt Feeder and FMJ Rounds
+    upgradeName: FMJ Rounds & Tighter Recoil Springs
     description: Faster reload speed and more damage to bosses
-    upgradeCost: 150
-    upgradeFactorX: 1.25
+    upgradeCost: 140
+    upgradeFactorX: 0.75
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Burst
-    description: Rapidly shoot a burst of bullets for 5 seconds.
+    description: Extreme speed for a short time
     upgradeCost: 1050
     upgradeFactorX: 0
     upgradeFactorY: 0

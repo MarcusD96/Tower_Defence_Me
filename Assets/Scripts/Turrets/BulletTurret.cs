@@ -27,7 +27,7 @@ public class BulletTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, bossDamage++
-        fireRate += ugB.upgradeFactorX;
+        fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         bossDamage += (int) ugB.upgradeFactorY;
     }
 

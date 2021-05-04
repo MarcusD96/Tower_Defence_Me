@@ -6,7 +6,7 @@ public class Upgrade {
 
     public static float costDifficultyMultiplier = 1.0f;
 
-    public string upgradeName = "Range++", description = "";
+    public string upgradeName = "", description = "";
     public int upgradeCost;
     public float upgradeFactorX, upgradeFactorY;
     private int upgradeLevel = 0;
@@ -16,7 +16,9 @@ public class Upgrade {
         return Mathf.RoundToInt((costDifficultyMultiplier * upgradeCost) / 5) * 5;
     }
 
-    public void IncreaseUpgrade() {
+    public void IncreaseUpgrade(bool multiply) {
+        if(multiply)
+            upgradeCost = Mathf.RoundToInt(upgradeCost * 1.5f / 5) * 5;
         upgradeLevel++;
     }
 

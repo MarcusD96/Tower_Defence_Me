@@ -190,6 +190,8 @@ MonoBehaviour:
   burnEffect: {fileID: 4425035765975771196}
   startSpeed: 4
   startHp: 1500
+  baseSpeed: 4
+  baseHp: 1500
   currentHp: 0
   currentSpeed: 0
   distanceTravelled: 0

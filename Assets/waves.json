@@ -1,0 +1,1220 @@
+{
+    "Items": [
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 16,
+                    "spawnRate": 1.149999976158142,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 1.5,
+                    "startDelay": 9.0
+                },
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 2.0,
+                    "startDelay": 15.5
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 1.5,
+                    "startDelay": 9.0
+                },
+                {
+                    "e": 0,
+                    "count": 8,
+                    "spawnRate": 2.0,
+                    "startDelay": 15.5
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 30,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 15.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 30,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 2.0,
+                    "startDelay": 5.0
+                },
+                {
+                    "e": 1,
+                    "count": 5,
+                    "spawnRate": 4.0,
+                    "startDelay": 25.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 20,
+                    "spawnRate": 5.0,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 1,
+                    "count": 40,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 15,
+                    "spawnRate": 5.0,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 0,
+                    "count": 15,
+                    "spawnRate": 5.0,
+                    "startDelay": 20.0
+                },
+                {
+                    "e": 0,
+                    "count": 15,
+                    "spawnRate": 5.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 1,
+                    "count": 40,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 5.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 15.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 20.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 25.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 35.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 40.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 45.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 50.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 55.0
+                },
+                {
+                    "e": 0,
+                    "count": 5,
+                    "spawnRate": 3.0,
+                    "startDelay": 60.0
+                },
+                {
+                    "e": 1,
+                    "count": 25,
+                    "spawnRate": 0.5,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 50,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 9,
+                    "spawnRate": 0.20000000298023225,
+                    "startDelay": 5.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 1,
+                    "count": 20,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 15,
+                    "spawnRate": 0.4000000059604645,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 20,
+                    "spawnRate": 2.0,
+                    "startDelay": 30.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 50,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 50,
+                    "spawnRate": 2.5,
+                    "startDelay": 10.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 50,
+                    "spawnRate": 1.5,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 50,
+                    "spawnRate": 3.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 2,
+                    "count": 15,
+                    "spawnRate": 0.5,
+                    "startDelay": 10.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 200,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 20,
+                    "spawnRate": 7.0,
+                    "startDelay": 15.0
+                },
+                {
+                    "e": 1,
+                    "count": 20,
+                    "spawnRate": 7.0,
+                    "startDelay": 35.0
+                },
+                {
+                    "e": 1,
+                    "count": 20,
+                    "spawnRate": 7.0,
+                    "startDelay": 50.0
+                },
+                {
+                    "e": 1,
+                    "count": 40,
+                    "spawnRate": 5.0,
+                    "startDelay": 75.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 200,
+                    "spawnRate": 3.3299999237060549,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 150,
+                    "spawnRate": 2.5,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 100,
+                    "spawnRate": 1.6699999570846558,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 300,
+                    "spawnRate": 4.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 150,
+                    "spawnRate": 3.0,
+                    "startDelay": 20.0
+                },
+                {
+                    "e": 2,
+                    "count": 125,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 2,
+                    "count": 100,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 0,
+                    "count": 75,
+                    "spawnRate": 7.5,
+                    "startDelay": 1.0
+                },
+                {
+                    "e": 1,
+                    "count": 150,
+                    "spawnRate": 7.5,
+                    "startDelay": 11.0
+                },
+                {
+                    "e": 0,
+                    "count": 75,
+                    "spawnRate": 7.5,
+                    "startDelay": 21.0
+                },
+                {
+                    "e": 1,
+                    "count": 150,
+                    "spawnRate": 7.5,
+                    "startDelay": 31.0
+                },
+                {
+                    "e": 0,
+                    "count": 75,
+                    "spawnRate": 7.5,
+                    "startDelay": 41.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 1000,
+                    "spawnRate": 20.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 1,
+                    "count": 750,
+                    "spawnRate": 30.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 2.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 4.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 6.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 8.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 12.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 14.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 16.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 18.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 20.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 22.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 24.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 26.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 28.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 32.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 34.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 36.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 38.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 40.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 42.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 44.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 46.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 48.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 50.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 52.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 54.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 56.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 58.0
+                },
+                {
+                    "e": 2,
+                    "count": 3,
+                    "spawnRate": 2.0,
+                    "startDelay": 60.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 3,
+                    "spawnRate": 0.06700000166893006,
+                    "startDelay": 15.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 3.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 6.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 9.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 12.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 15.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 18.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 21.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 24.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 27.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 33.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 36.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 39.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 42.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 45.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 48.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 51.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 54.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 57.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 60.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 63.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 66.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 69.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 72.0
+                },
+                {
+                    "e": 1,
+                    "count": 10,
+                    "spawnRate": 8.0,
+                    "startDelay": 75.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 100,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 50,
+                    "spawnRate": 0.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 2,
+                    "count": 50,
+                    "spawnRate": 0.0,
+                    "startDelay": 7.0
+                },
+                {
+                    "e": 2,
+                    "count": 50,
+                    "spawnRate": 0.0,
+                    "startDelay": 14.0
+                },
+                {
+                    "e": 2,
+                    "count": 50,
+                    "spawnRate": 0.0,
+                    "startDelay": 21.0
+                },
+                {
+                    "e": 3,
+                    "count": 2,
+                    "spawnRate": 0.25,
+                    "startDelay": 22.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 150,
+                    "spawnRate": 40.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 100,
+                    "spawnRate": 60.0,
+                    "startDelay": 20.0
+                },
+                {
+                    "e": 2,
+                    "count": 80,
+                    "spawnRate": 20.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 3,
+                    "count": 1,
+                    "spawnRate": 0.0,
+                    "startDelay": 35.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 1,
+                    "count": 400,
+                    "spawnRate": 20.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 3,
+                    "count": 5,
+                    "spawnRate": 0.25,
+                    "startDelay": 1.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 10,
+                    "spawnRate": 0.20000000298023225,
+                    "startDelay": 15.0
+                },
+                {
+                    "e": 0,
+                    "count": 200,
+                    "spawnRate": 4.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 200,
+                    "spawnRate": 5.0,
+                    "startDelay": 60.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 10,
+                    "spawnRate": 0.30000001192092898,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 2,
+                    "count": 150,
+                    "spawnRate": 5.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 10,
+                    "spawnRate": 0.10000000149011612,
+                    "startDelay": 5.0
+                },
+                {
+                    "e": 3,
+                    "count": 10,
+                    "spawnRate": 0.10000000149011612,
+                    "startDelay": 5.75
+                },
+                {
+                    "e": 0,
+                    "count": 165,
+                    "spawnRate": 1.5,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 10,
+                    "spawnRate": 0.20000000298023225,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 300,
+                    "spawnRate": 6.0,
+                    "startDelay": 5.0
+                },
+                {
+                    "e": 2,
+                    "count": 100,
+                    "spawnRate": 2.0,
+                    "startDelay": 5.0
+                },
+                {
+                    "e": 0,
+                    "count": 200,
+                    "spawnRate": 4.0,
+                    "startDelay": 5.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 4,
+                    "count": 5,
+                    "spawnRate": 0.33000001311302187,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 300,
+                    "spawnRate": 5.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 4,
+                    "count": 4,
+                    "spawnRate": 0.10000000149011612,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 4,
+                    "count": 4,
+                    "spawnRate": 0.10000000149011612,
+                    "startDelay": 11.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 2,
+                    "count": 200,
+                    "spawnRate": 2.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 3,
+                    "count": 4,
+                    "spawnRate": 0.05000000074505806,
+                    "startDelay": 10.0
+                },
+                {
+                    "e": 3,
+                    "count": 4,
+                    "spawnRate": 0.05000000074505806,
+                    "startDelay": 12.0
+                },
+                {
+                    "e": 4,
+                    "count": 4,
+                    "spawnRate": 0.05000000074505806,
+                    "startDelay": 15.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 200,
+                    "spawnRate": 5.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 1,
+                    "count": 200,
+                    "spawnRate": 5.0,
+                    "startDelay": 30.0
+                },
+                {
+                    "e": 2,
+                    "count": 200,
+                    "spawnRate": 5.0,
+                    "startDelay": 60.0
+                },
+                {
+                    "e": 3,
+                    "count": 5,
+                    "spawnRate": 0.75,
+                    "startDelay": 90.0
+                },
+                {
+                    "e": 4,
+                    "count": 5,
+                    "spawnRate": 0.5,
+                    "startDelay": 95.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 30,
+                    "spawnRate": 1.5,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 0,
+                    "count": 30,
+                    "spawnRate": 1.5,
+                    "startDelay": 0.10000000149011612
+                },
+                {
+                    "e": 0,
+                    "count": 30,
+                    "spawnRate": 1.5,
+                    "startDelay": 0.20000000298023225
+                },
+                {
+                    "e": 1,
+                    "count": 30,
+                    "spawnRate": 2.5,
+                    "startDelay": 21.0
+                },
+                {
+                    "e": 1,
+                    "count": 30,
+                    "spawnRate": 2.5,
+                    "startDelay": 21.100000381469728
+                },
+                {
+                    "e": 1,
+                    "count": 30,
+                    "spawnRate": 2.5,
+                    "startDelay": 21.200000762939454
+                },
+                {
+                    "e": 2,
+                    "count": 20,
+                    "spawnRate": 0.5,
+                    "startDelay": 33.0
+                },
+                {
+                    "e": 2,
+                    "count": 20,
+                    "spawnRate": 0.5,
+                    "startDelay": 33.5
+                },
+                {
+                    "e": 2,
+                    "count": 20,
+                    "spawnRate": 0.5,
+                    "startDelay": 34.0
+                },
+                {
+                    "e": 3,
+                    "count": 3,
+                    "spawnRate": 0.6000000238418579,
+                    "startDelay": 80.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 3,
+                    "count": 20,
+                    "spawnRate": 0.5,
+                    "startDelay": 0.0
+                },
+                {
+                    "e": 4,
+                    "count": 12,
+                    "spawnRate": 0.6650000214576721,
+                    "startDelay": 15.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 0,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        },
+        {
+            "chunks": [
+                {
+                    "e": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ]
+        }
+    ]
+}

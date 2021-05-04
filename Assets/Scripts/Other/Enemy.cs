@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public static float speedDifficultyMultiplier = 1.0f, hpDifficultyMultiplier = 1.0f;
+    public static float difficultyMultiplier = 1.0f;
 
     public GameObject deathEffect, indicator;
     public ParticleSystem slowEffect, stunEffect, burnEffect;
 
+    public float baseSpeed, baseHp;
     public float startSpeed, startHp;
 
-    public float currentHp, currentSpeed, distanceTravelled = 0.0f;
-    public int moneyValue, lifeValue;
+    public float currentHp, currentSpeed, distanceTravelled = 0.0f, moneyValue, currentMoneyValue;
+    public int lifeValue;
 
     public EnemyType enemyType;
 
@@ -30,9 +31,14 @@ public class Enemy : MonoBehaviour {
     public bool isBoss;
     public bool stunResist, slowResist, burnResist;
 
-    void Start() {
-        currentSpeed = startSpeed = startSpeed * speedDifficultyMultiplier;
-        currentHp = startHp = Mathf.RoundToInt(startHp * hpDifficultyMultiplier);
+    void Awake() {
+        startHp = baseHp * difficultyMultiplier;
+        startSpeed = baseSpeed * difficultyMultiplier;
+
+        currentSpeed = baseSpeed * difficultyMultiplier;
+        currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
+
+        currentMoneyValue = moneyValue;
 
         if(slowEffect != null) {
             slowEffect.gameObject.SetActive(false);
@@ -43,6 +49,10 @@ public class Enemy : MonoBehaviour {
         if(burnEffect != null) {
             burnEffect.gameObject.SetActive(false);
         }
+    }
+
+    public void DecreaseMoneyValue() {
+        currentMoneyValue /= 2.0f;
     }
 
     public void TakeDamage(float amount, Color color, bool indicateDmg) {
@@ -56,8 +66,8 @@ public class Enemy : MonoBehaviour {
                 i.color = color;
             }
 
-            healthBarL.fillAmount = currentHp / startHp;
-            healthBarR.fillAmount = currentHp / startHp;
+            healthBarL.fillAmount = currentHp / baseHp;
+            healthBarR.fillAmount = currentHp / baseHp;
 
             if(currentHp <= 0 && !isDead)
                 Die();
@@ -66,7 +76,7 @@ public class Enemy : MonoBehaviour {
 
     public void Die() {
         isDead = true;
-        PlayerStats.money += moneyValue;
+        PlayerStats.money += currentMoneyValue;
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2.0f);
 
@@ -110,14 +120,14 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator SlowEnemy(float slowFactor, float duration) {
         isSlow = true;
-        currentSpeed = startSpeed * slowFactor;
+        currentSpeed = baseSpeed * slowFactor;
 
         yield return new WaitForSeconds(duration);
 
         slowEffect.Stop();
         slowEffect.gameObject.SetActive(false);
 
-        currentSpeed = startSpeed;
+        currentSpeed = baseSpeed;
         superSlow = false;
         isSlow = false;
     }
@@ -149,7 +159,7 @@ public class Enemy : MonoBehaviour {
 
         if(stun != null) {
             stunEffect.gameObject.SetActive(false);
-            currentSpeed = startSpeed;
+            currentSpeed = baseSpeed;
             StopCoroutine(stun);
         }
         stun = StunEnemy(duration);
@@ -167,7 +177,7 @@ public class Enemy : MonoBehaviour {
         stunEffect.Stop();
         stunEffect.gameObject.SetActive(false);
 
-        currentSpeed = startSpeed;
+        currentSpeed = baseSpeed;
         stun = null;
     }
 
@@ -209,8 +219,8 @@ public class Enemy : MonoBehaviour {
     }
 
     public void ResetEnemy() {
-        currentSpeed = startSpeed;
-        currentHp = startHp;
+        currentSpeed = baseSpeed * difficultyMultiplier;
+        currentHp = baseHp * difficultyMultiplier;
         healthBarL.fillAmount = healthBarR.fillAmount = 1;
         distanceTravelled = 0;
         isSlow = superSlow = isDamaging = false;

@@ -7,6 +7,6 @@ public class MoneyUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        moneyText.text = "$" + PlayerStats.money.ToString();
+        moneyText.text = "$" + (Mathf.Round(PlayerStats.money / 5) * 5).ToString(); //round to the nearest 5
     }
 }

@@ -12,10 +12,10 @@ public class FPSCounter : MonoBehaviour {
         while(true) {
             if(Time.timeScale >= 1) {
                 yield return new WaitForSeconds(0.1f);
-                count = (1 / Time.deltaTime);
+                count = (1 / Time.unscaledDeltaTime);
                 label = "FPS :" + (Mathf.Round(count));
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
         }
     }
 

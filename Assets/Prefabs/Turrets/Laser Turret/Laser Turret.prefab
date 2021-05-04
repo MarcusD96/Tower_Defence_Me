@@ -20001,7 +20001,7 @@ MonoBehaviour:
   range: 7.5
   manualRangeMultiplier: 1.5
   manualFirerateMultiplier: 1
-  fireRate: 1
+  fireRate: 2
   maxFireRate: 0
   turretCam: {fileID: 6901244913561445898}
   overlayCam: {fileID: 6140497588513365492}
@@ -20022,7 +20022,7 @@ MonoBehaviour:
   ugB:
     upgradeName: Mo' Powwa Babee
     description: Slower effect that lasts longer with a bigger beam.
-    upgradeCost: 265
+    upgradeCost: 200
     upgradeFactorX: 5
     upgradeFactorY: 0.1
   ugSpec:

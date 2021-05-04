@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
         }
 
         if(!PauseMenu.paused) {
-            if(WaveSpawner.enemiesAlive <= 0) {
+            if(WaveSpawner.enemiesAlive > 0) {
                 //fast forward
                 if(Input.GetKeyDown(KeyCode.LeftShift)) {
                     if(Time.timeScale == fastForward) {

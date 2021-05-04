@@ -688,8 +688,10 @@ MonoBehaviour:
   burnEffect: {fileID: 5889361882941650722}
   startSpeed: 16
   startHp: 5
+  baseSpeed: 16
+  baseHp: 5
   currentHp: 0
-  speed: 22
+  currentSpeed: 0
   distanceTravelled: 0
   moneyValue: 5
   lifeValue: 1
@@ -698,6 +700,8 @@ MonoBehaviour:
   healthBarR: {fileID: 8793134823035684867}
   superSlow: 0
   isDamaging: 0
+  isDead: 1
+  isSlow: 0
   isBoss: 0
   stunResist: 0
   slowResist: 0
