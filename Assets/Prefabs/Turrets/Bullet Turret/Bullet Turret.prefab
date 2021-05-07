@@ -202,8 +202,8 @@ MonoBehaviour:
   shootSound: Shoot Bullet
   aimIndicator: {fileID: 4610724075007527331}
   pivot: {fileID: 2132953714685851362}
-  gfxAnim: {fileID: 1846829089167816868}
-  recoilAnim: {fileID: 5674035845265910766}
+  recoilAnim_Body: {fileID: 1846829089167816868}
+  recoilAnim_Cam: {fileID: 5674035845265910766}
   muzzleFlash: {fileID: 7654172783242055649}
   ugA:
     upgradeName: Longer Barrels

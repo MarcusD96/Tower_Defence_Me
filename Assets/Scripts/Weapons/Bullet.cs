@@ -19,12 +19,12 @@ public class Bullet : Projectile {
         if(!endOfLife) {
             Damage(target);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 2.0f);
+            Destroy(effect, 1.0f);
             Destroy(gameObject);
             return;
         }
         Destroy(gameObject);
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 2.0f);
+        Destroy(effectInstance, 1.0f);
     }
 }

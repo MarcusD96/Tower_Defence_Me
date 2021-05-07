@@ -9,7 +9,7 @@ public class Settings {
 
     public static bool UseKeys = false;
 
-    public static bool ReturnTurret = false;
+    public static bool ReturnTurret = true;
 
-    public static bool AutoStart = false;
+    public static bool AutoStart = true;
 }

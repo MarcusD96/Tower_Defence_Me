@@ -34,7 +34,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Setup")]
     public Transform pivot;
-    public Animator gfxAnim, recoilAnim;
+    public Animator recoilAnim_Body, recoilAnim_Cam;
     public ParticleSystem muzzleFlash;
 
     protected float startRange;
@@ -73,7 +73,7 @@ public class Turret : MonoBehaviour {
         if(aimIndicator) {
             aimIndicator.SetTurret(this);
         }
-        gfxAnim = GetComponentInChildren<Animator>();
+        recoilAnim_Body = GetComponentInChildren<Animator>();
     }
 
     protected void Update() {
@@ -155,10 +155,8 @@ public class Turret : MonoBehaviour {
         return targetting;
     }
 
-    protected List<GameObject> enemiesInRange;
-
-    List<GameObject> FilterEnemies(bool global) {
-        enemiesInRange = new List<GameObject>();
+    List<GameObject> FilterEnemiesInRange(bool global) {
+        List<GameObject> enemiesInRange = new List<GameObject>();
 
         //only see enemies in range
         if(global == false) {
@@ -177,7 +175,14 @@ public class Turret : MonoBehaviour {
         //find the enemy with the greatest distanceTravelled variable
         float greatestDistanceTravelled = 0;
         GameObject firstEnemy = null;
-        foreach(var e in FilterEnemies(global)) {
+
+        List<GameObject> eList = FilterEnemiesInRange(global);
+        if(eList.Count < 1) {
+            target = null;
+            return;
+        }
+
+        foreach(var e in eList) {
             float time = e.GetComponent<Enemy>().distanceTravelled;
             if(time > greatestDistanceTravelled) {
                 greatestDistanceTravelled = time;
@@ -197,7 +202,14 @@ public class Turret : MonoBehaviour {
         //find the enemy with the least distanceTrvelled variable
         float leastDistanceTravelled = float.MaxValue;
         GameObject firstEnemy = null;
-        foreach(var e in FilterEnemies(global)) {
+
+        List<GameObject> eList = FilterEnemiesInRange(global);
+        if(eList.Count < 1) {
+            target = null;
+            return;
+        }
+
+        foreach(var e in eList) {
             float time = e.GetComponent<Enemy>().distanceTravelled;
             if(time < leastDistanceTravelled) {
                 leastDistanceTravelled = time;
@@ -217,7 +229,13 @@ public class Turret : MonoBehaviour {
         float shortestDistance = float.MaxValue;
         GameObject nearestEnemy = null;
 
-        foreach(var e in FilterEnemies(false)) {
+        List<GameObject> eList = FilterEnemiesInRange(false);
+        if(eList.Count < 1) {
+            target = null;
+            return;
+        }
+
+        foreach(var e in eList) {
             float distance = Vector3.Distance(transform.position, e.transform.position);
             if(distance < shortestDistance) {
                 shortestDistance = distance;
@@ -233,14 +251,39 @@ public class Turret : MonoBehaviour {
     }
 
     protected void FindStrongestTarget(bool global) {
-        //find the enemy with the most hp
-        float mostHP = 0;
         GameObject strongestEnemy = null;
-        foreach(var e in FilterEnemies(global)) {
-            float hp = e.GetComponent<Enemy>().currentHp;
-            if(hp > mostHP) {
-                mostHP = hp;
-                strongestEnemy = e;
+
+        //get enemies in range
+        //find the highest tier
+        int rank = -1;
+        List<GameObject> eList = FilterEnemiesInRange(global);
+        if(eList.Count < 1) {
+            target = null;
+            return;
+        }
+
+        foreach(var enemy in eList) {
+            Enemy e = enemy.GetComponent<Enemy>();
+            int r = (int) e.enemyType;
+            if(r > rank) {
+                rank = r;
+            }
+        }
+
+        //filter list to only enemies with highest rank
+        for(int i = eList.Count - 1; i >= 0; i--) {
+            if((int)eList[i].GetComponent<Enemy>().enemyType != rank) {
+                eList.RemoveAt(i);
+            }
+        }
+
+        float greatestDistanceTravelled = 0;
+        //find the strongest enemy which has travelled the furthest
+        foreach(var enemy in eList) {
+            Enemy e = enemy.GetComponent<Enemy>();
+            if(e.distanceTravelled > greatestDistanceTravelled) {
+                greatestDistanceTravelled = e.distanceTravelled;
+                strongestEnemy = enemy;
             }
         }
 
@@ -256,19 +299,11 @@ public class Turret : MonoBehaviour {
         if(manual)
             return true;
 
-        GameObject tmpEnemy = null;
-        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
-            if(!manual) {
-                if(Vector3.Distance(pivot.position, e.transform.position) <= range) {
-                    tmpEnemy = e;
-                    break;
-                }
-            }
-        }
-        if(tmpEnemy != null)
+        if(FilterEnemiesInRange(false).Count > 0) {
             return true;
-        else
-            return false;
+        }
+
+        return false;
     }
     #endregion
 
@@ -299,7 +334,9 @@ public class Turret : MonoBehaviour {
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                gfxAnim.SetTrigger(shootAnim);
+                if(recoilAnim_Body) {
+                    recoilAnim_Body.SetTrigger(shootAnim); 
+                }
                 muzzleFlash.Play();
                 nextFire = 1 / fireRate;
             }
@@ -310,7 +347,9 @@ public class Turret : MonoBehaviour {
                     return;
                 fireTurret.AutoShoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                gfxAnim.SetTrigger("Shoot");
+                if(recoilAnim_Body) {
+                    recoilAnim_Body.SetTrigger(shootAnim);
+                }
                 nextFire = 1 / fireRate;
             }
         } else if(beamTurret) {
@@ -335,8 +374,10 @@ public class Turret : MonoBehaviour {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
                     AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                    gfxAnim.SetTrigger(shootAnim);
-                    recoilAnim.SetTrigger("Shoot");
+                    if(recoilAnim_Body && recoilAnim_Cam) {
+                        recoilAnim_Body.SetTrigger(shootAnim);
+                        recoilAnim_Cam.SetTrigger("Shoot"); 
+                    }
                     muzzleFlash.Play();
                     nextFire = 1 / manualFireRate;
                 }
@@ -346,8 +387,10 @@ public class Turret : MonoBehaviour {
                 if(nextFire <= 0.0f) {
                     fireTurret.ManualShoot();
                     AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                    gfxAnim.SetTrigger(shootAnim);
-                    recoilAnim.SetTrigger("Shoot");
+                    if(recoilAnim_Body && recoilAnim_Cam) {
+                        recoilAnim_Body.SetTrigger(shootAnim);
+                        recoilAnim_Cam.SetTrigger("Shoot");
+                    }
                     nextFire = 1 / manualFireRate;
                 }
             }

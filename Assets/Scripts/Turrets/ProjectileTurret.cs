@@ -8,11 +8,17 @@ public class ProjectileTurret : Turret {
     protected BulletTurret bulletTurret;
     protected MissileTurret missileTurret;
     protected RailgunTurret railgunTurret;
+    protected TankTurret tankTurret;
 
     public float damage, bossDamage;
     public int explosionRadius, penetration;
 
     public void AutoShoot() {
+        if(tankTurret) {
+            tankTurret.AutoShotgun();
+            return;
+        }
+
         GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = prpojectileGO.GetComponent<Projectile>();
 
@@ -27,12 +33,15 @@ public class ProjectileTurret : Turret {
             proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2));
         }
 
-        if(proj) {
-            proj.MakeTarget(target);
-        }
+        proj.MakeTarget(target);
     }
 
     public void ManualShoot() {
+        if(tankTurret) {
+            tankTurret.ManualShotgun();
+            return;
+        }
+
         float manualRange = range * manualRangeMultiplier;
 
         //spawn proj, get the proj info
@@ -42,16 +51,30 @@ public class ProjectileTurret : Turret {
         //set proj info
         proj.SetDamage(damage, bossDamage);
 
-        //set more specific infor based on the type of proj
+        //set more specific info based on the type of proj
         if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration, explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
         }
 
+        Ray ray = TryRayCastAndRay(manualRange);
+
+        proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
+
+        if(railgunTurret) {
+            proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange * 2));
+        }
+
+        if(proj) {
+            proj.MakeTarget(target);
+        }
+    }
+
+    protected Ray TryRayCastAndRay(float manRange) {
         //raycast to find target
         RaycastHit hit;
-        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manualRange)) {
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, manRange)) {
             if(hit.collider.CompareTag("Enemy")) {
                 //set the target
                 target = hit.collider.transform;
@@ -65,20 +88,11 @@ public class ProjectileTurret : Turret {
             targetEnemy = null;
         }
 
-        Ray ray;
         if(target) {
-            ray = new Ray(fireSpawn.position, target.position - pivot.position);
+            return new Ray(fireSpawn.position, target.position - pivot.position);
         } else {
-            ray = new Ray(fireSpawn.position, pivot.forward);
+            return new Ray(fireSpawn.position, pivot.forward);
         }
 
-        proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
-        if(railgunTurret) {
-            proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange * 2));
-        }
-
-        if(proj) {
-            proj.MakeTarget(target);
-        }
     }
 }

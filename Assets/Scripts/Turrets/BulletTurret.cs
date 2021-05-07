@@ -41,8 +41,7 @@ public class BulletTurret : ProjectileTurret {
     }
 
     IEnumerator BulletBurst() {
-        var special = SpecialTime();
-        StartCoroutine(special);
+        StartCoroutine(SpecialTime());
         GameObject tmp = projectilePrefab;
 
         var saveFireRate = fireRate;

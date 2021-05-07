@@ -686,14 +686,15 @@ MonoBehaviour:
   slowEffect: {fileID: 7120279019753958961}
   stunEffect: {fileID: 9022718480122335464}
   burnEffect: {fileID: 5889361882941650722}
-  startSpeed: 16
-  startHp: 5
   baseSpeed: 16
   baseHp: 5
-  currentHp: 0
-  currentSpeed: 0
+  startSpeed: 16
+  startHp: 5
+  currentHp: 6.299999
+  currentSpeed: 20.159998
   distanceTravelled: 0
   moneyValue: 5
+  currentMoneyValue: 0
   lifeValue: 1
   enemyType: 1
   healthBarL: {fileID: 2729281944714428713}
@@ -987,6 +988,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1002880654301486395, guid: 108bd045918cd214880ee2f379ed5e9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108bd045918cd214880ee2f379ed5e9e, type: 3}
 --- !u!4 &5889361882941650723 stripped
@@ -1073,6 +1079,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1125832177097538599, guid: 53db06f86b2f4db40af7d1e7bd3f66e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53db06f86b2f4db40af7d1e7bd3f66e3, type: 3}
 --- !u!4 &7120279019753958960 stripped
@@ -1158,6 +1169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125832177097538599, guid: acaf4faa3bc50344ea56ddda31727e7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acaf4faa3bc50344ea56ddda31727e7e, type: 3}

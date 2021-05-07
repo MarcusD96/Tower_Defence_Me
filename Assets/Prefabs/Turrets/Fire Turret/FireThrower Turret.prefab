@@ -638,8 +638,8 @@ MonoBehaviour:
   shootSound: Flame
   aimIndicator: {fileID: 0}
   pivot: {fileID: 6758524805992453998}
-  gfxAnim: {fileID: 5498294915479182390}
-  recoilAnim: {fileID: 7501573834970983993}
+  recoilAnim_Body: {fileID: 5498294915479182390}
+  recoilAnim_Cam: {fileID: 7501573834970983993}
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:

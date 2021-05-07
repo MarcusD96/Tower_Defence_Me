@@ -1142,8 +1142,8 @@ MonoBehaviour:
   shootSound: Shoot Tesla
   aimIndicator: {fileID: 239422380984981313}
   pivot: {fileID: 8411359434381458145}
-  gfxAnim: {fileID: 8517085596255875318}
-  recoilAnim: {fileID: 8517085596255875318}
+  recoilAnim_Body: {fileID: 8517085596255875318}
+  recoilAnim_Cam: {fileID: 0}
   muzzleFlash: {fileID: 3371452123005213704}
   ugA:
     upgradeName: Voltage Upgrade

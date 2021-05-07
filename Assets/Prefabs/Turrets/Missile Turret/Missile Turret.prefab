@@ -352,8 +352,8 @@ MonoBehaviour:
   shootSound: Shoot Missile
   aimIndicator: {fileID: 6491234510639788162}
   pivot: {fileID: 3804968989015224051}
-  gfxAnim: {fileID: 5666782259984581973}
-  recoilAnim: {fileID: 7561079027407901617}
+  recoilAnim_Body: {fileID: 5666782259984581973}
+  recoilAnim_Cam: {fileID: 7561079027407901617}
   muzzleFlash: {fileID: 173412066861058886}
   ugA:
     upgradeName: Rocket Fuel Efficency

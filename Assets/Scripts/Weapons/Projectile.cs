@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour {
     protected Missile missile;
     protected Bullet bullet;
     protected Rod rod;
+    protected TankShot tankShot;
 
     protected Transform target;
     protected float distanceThisFrame;
@@ -45,6 +46,10 @@ public class Projectile : MonoBehaviour {
 
     public Rod GetRod() {
         return rod;
+    }
+
+    public TankShot GetTankShot() {
+        return tankShot;
     }
 
     public void SetDamage(float damage_, float bossDamage_) {

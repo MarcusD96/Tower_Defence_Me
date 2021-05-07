@@ -55,7 +55,7 @@ public class TeslaTurret : BeamTurret {
 
         //aim at target
         RotateOnShoot();
-        gfxAnim.SetTrigger(shootAnim);
+        recoilAnim_Body.SetTrigger(shootAnim);
 
         //particle effects
         shootEffect.Play();
@@ -101,13 +101,13 @@ public class TeslaTurret : BeamTurret {
                 if(!abilityActivation) {
                     BuildLightning();
                     if(targetEnemy) {
-                        gfxAnim.SetTrigger(shootAnim);
+                        recoilAnim_Body.SetTrigger(shootAnim);
                         targetEnemy.TakeDamage(damage, Color.yellow, true);
                         targetEnemy.Stun(stunDuration);
                     }
                 } else {
                     Enemy[] enemies = BuildSuperChargedLightning();
-                    gfxAnim.SetTrigger(shootAnim);
+                    recoilAnim_Body.SetTrigger(shootAnim);
                     foreach(var e in enemies) {
                         e.TakeDamage(damage, Color.yellow, true);
                         e.Stun(stunDuration);

@@ -60,7 +60,6 @@ public class WaveSpawner : MonoBehaviour {
         string dataPath;
 #if UNITY_EDITOR
         dataPath = Application.dataPath;
-
 #else
         dataPath = Application.streamingAssetsPath;
         if(!Directory.Exists(dataPath)) {
@@ -98,7 +97,7 @@ public class WaveSpawner : MonoBehaviour {
             return;
 
         if(!GameMode.survival) {
-            if(waveIndex == maxWaves - 1) {
+            if(waveIndex == maxWaves) {
                 gameManager.WinLevel();
                 this.enabled = false; //disables 'this' script 
                 return;

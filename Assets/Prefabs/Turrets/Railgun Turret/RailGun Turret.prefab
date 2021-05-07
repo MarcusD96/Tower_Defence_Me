@@ -219,8 +219,8 @@ MonoBehaviour:
   shootSound: Shoot Rod
   aimIndicator: {fileID: 3559833139435996107}
   pivot: {fileID: 2981572170934538781}
-  gfxAnim: {fileID: 7324848281821480544}
-  recoilAnim: {fileID: 7674416440654165999}
+  recoilAnim_Body: {fileID: 7324848281821480544}
+  recoilAnim_Cam: {fileID: 7674416440654165999}
   muzzleFlash: {fileID: 1646419074991899261}
   ugA:
     upgradeName: Mega Range
