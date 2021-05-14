@@ -130,29 +130,32 @@ public class Node : MonoBehaviour {
 
     void CheckTurretTypeAndMakeSpecial() {
         //bullet
-        if(turret.GetComponent<BulletTurret>()) {
+        if(turret.GetComponent<BulletTurret>())
             SpecialActivator.MakeBurst(turret.GetComponent<BulletTurret>());
-        }
+
         //missile
-        else if(turret.GetComponent<MissileTurret>()) {
+        else if(turret.GetComponent<MissileTurret>())
             SpecialActivator.MakeBarrage(turret.GetComponent<MissileTurret>());
-        }
+
         //railgun
-        else if(turret.GetComponent<RailgunTurret>()) {
+        else if(turret.GetComponent<RailgunTurret>())
             SpecialActivator.MakeCharges(turret.GetComponent<RailgunTurret>());
-        }
+
         //laser
-        else if(turret.GetComponent<LaserTurret>()) {
+        else if(turret.GetComponent<LaserTurret>())
             SpecialActivator.MakeEMP(turret.GetComponent<LaserTurret>());
-        }
+
         //tesla
-        else if(turret.GetComponent<TeslaTurret>()) {
+        else if(turret.GetComponent<TeslaTurret>())
             SpecialActivator.MakeSuperCharge(turret.GetComponent<TeslaTurret>());
-        }
+
         //fire
-        else if(turret.GetComponent<FireTurret>()) {
+        else if(turret.GetComponent<FireTurret>())
             SpecialActivator.MakeInferno(turret.GetComponent<FireTurret>());
-        }
+
+        //tank
+        else if(turret.GetComponent<TankTurret>())
+            SpecialActivator.MakeRundown(turret.GetComponent<TankTurret>());
     }
 
     public void SellTurret() {

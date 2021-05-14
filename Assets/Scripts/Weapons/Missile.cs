@@ -3,18 +3,16 @@ using UnityEngine;
 
 public class Missile : Projectile {
 
-    public float speedExponent;
+    public float speedExponent, explosionRadius;
 
     private int penetration;
-    private float explosionRadius;
 
     void Awake() {
         missile = this;
     }
 
-    public void SetExplosion(int penetration_, float radius_) {
+    public void SetExplosion(int penetration_) {
         penetration = penetration_;
-        explosionRadius = radius_;
     }
 
     private new void FixedUpdate() {

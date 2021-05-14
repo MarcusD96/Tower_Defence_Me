@@ -11,7 +11,7 @@ public class ProjectileTurret : Turret {
     protected TankTurret tankTurret;
 
     public float damage, bossDamage;
-    public int explosionRadius, penetration;
+    public int penetration;
 
     public void AutoShoot() {
         if(tankTurret) {
@@ -27,7 +27,7 @@ public class ProjectileTurret : Turret {
         proj.SetDamage(damage, bossDamage);
 
         if(missileTurret) {
-            proj.GetMissile().SetExplosion(penetration, explosionRadius);
+            proj.GetMissile().SetExplosion(penetration);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
             proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2));
@@ -53,7 +53,7 @@ public class ProjectileTurret : Turret {
 
         //set more specific info based on the type of proj
         if(missileTurret) {
-            proj.GetMissile().SetExplosion(penetration, explosionRadius);
+            proj.GetMissile().SetExplosion(penetration);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
         }

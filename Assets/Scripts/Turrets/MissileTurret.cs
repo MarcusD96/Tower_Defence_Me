@@ -12,7 +12,7 @@ public class MissileTurret : ProjectileTurret {
     void Awake() {
         missileTurret = this;
         projectileTurret = this;
-        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
     }
 
     new void Update() {
@@ -31,7 +31,6 @@ public class MissileTurret : ProjectileTurret {
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, expl.rad. + 5
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         penetration += (int) ugB.upgradeFactorY;
-        explosionRadius += 3;
     }
 
     public override bool ActivateSpecial() {
@@ -63,7 +62,6 @@ public class MissileTurret : ProjectileTurret {
                         target = targetList[ii].transform;
                         damage = 2;
                         AutoShoot();
-                        recoilAnim_Cam.SetTrigger("Shoot");
                         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                         damage = 1;
                         yield return new WaitForSeconds(0.1f);

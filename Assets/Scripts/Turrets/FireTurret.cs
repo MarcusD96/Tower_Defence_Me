@@ -10,7 +10,7 @@ public class FireTurret : Turret {
 
     void Awake() {
         fireTurret = this;
-        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
     }
 
     private new void Update() {

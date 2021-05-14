@@ -18,14 +18,15 @@ public class GameManager : MonoBehaviour {
         if(FindObjectOfType<FPSCounter>() == null)
             Instantiate(new GameObject("FPS", typeof(FPSCounter)));
         Application.targetFrameRate = 200;
+        PlayerStats.ResetToDifficulty();
     }
 
     void Start() {
-        gameEnd = false; 
+        gameEnd = false;
         lastControlled = null;
-        PlayerStats.ResetToDifficulty();
         if(Time.timeScale != 1) {
             Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.01f;
         }
     }
 
@@ -38,19 +39,28 @@ public class GameManager : MonoBehaviour {
             EndGame();
             return;
         }
+        CheatVideo();
+        if(Input.GetKeyDown(KeyCode.LeftShift)) {
+            FastForward(); 
+        }
+    }
 
+    public void FastForward() {
         if(!PauseMenu.paused) {
             if(WaveSpawner.enemiesAlive > 0) {
-                //fast forward
-                if(Input.GetKeyDown(KeyCode.LeftShift)) {
-                    if(Time.timeScale == fastForward) {
-                        Time.timeScale = 1;
-                    } else {
-                        Time.timeScale = fastForward;
-                    }
-                } 
+                if(Time.timeScale == fastForward) {
+                    Time.timeScale = 1;
+                    Time.fixedDeltaTime = 0.01f;
+                } else {
+                    Time.timeScale = fastForward;
+                    Time.fixedDeltaTime /= fastForward;
+                }
             }
+        }
+    }
 
+    public void CheatVideo() {
+        if(!PauseMenu.paused) {
             //cheaty :P
             if(Input.GetKey(KeyCode.P)) {
                 if(Input.GetKey(KeyCode.M)) {
@@ -79,11 +89,11 @@ public class GameManager : MonoBehaviour {
     public void LastControlled() {
         if(!Settings.ReturnTurret) {
             if(lastControlled) {
-                lastControlled.RevertTurret(false); 
+                lastControlled.RevertTurret(false);
             }
             return;
         }
-            
+
         if(lastControlled) {
             lastControlled.ControlTurret();
         }

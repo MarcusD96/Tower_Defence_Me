@@ -10,6 +10,10 @@ public class TankTurret : ProjectileTurret {
     [Range(0, 0.5f)]
     public float spreadVariance;
 
+    [Header("Special")]
+    public TankSpecial specialPrefab;
+    private TankSpecial tankSpecial = null;
+
     private Vector3 shotDirection = Vector3.zero;
 
     private void Awake() {
@@ -21,14 +25,14 @@ public class TankTurret : ProjectileTurret {
     private new void Update() {
         base.Update();
 
+        if(specialBar.fillBar.fillAmount <= 0) {
+            specialActivated = false;
+        }
+
         if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();
             }
-        }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
         }
     }
 
@@ -80,21 +84,24 @@ public class TankTurret : ProjectileTurret {
     public override void ApplyUpgradeB() {  //fireRate++, bossDamage++
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         projectileNum += (int) ugB.upgradeFactorY;
-        spreadVariance -= 0.15f;
+        spreadVariance += 0.15f;
     }
 
     public override bool ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
-            specialActivated = true;
-            StartCoroutine(TankSpecial());
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
+            thisNode.RevertTurret(false);
+            tankSpecial = Instantiate(specialPrefab);
+            tankSpecial.SetOwner(gameObject, this);
             return true;
         }
         return false;
     }
 
-    IEnumerator TankSpecial() {
-        print("TODO: implement tank special!");
+    public void SetSpecial(bool activated) {
+        specialActivated = activated;
+    }
+
+    public void StartSpecialTime() {
         StartCoroutine(SpecialTime());
-        yield return null;
     }
 }

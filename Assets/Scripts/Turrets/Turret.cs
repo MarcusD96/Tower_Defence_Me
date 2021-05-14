@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour {
     protected Transform target;
     protected Enemy targetEnemy;
     protected bool hasSpecial = false;
+    [SerializeField]
     protected bool specialActivated = false; //to restrain from activating again until the special bar is recharged
     [HideInInspector]
     public int sellPrice, sellPecent = 75;
@@ -34,7 +35,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Setup")]
     public Transform pivot;
-    public Animator recoilAnim_Body, recoilAnim_Cam;
+    public Animator recoilAnim_Body;
     public ParticleSystem muzzleFlash;
 
     protected float startRange;
@@ -70,9 +71,10 @@ public class Turret : MonoBehaviour {
         targettingMethod = 0;
         startRange = range;
         UpdateTargettingName();
-        if(aimIndicator) {
+        if(aimIndicator)
             aimIndicator.SetTurret(this);
-        }
+        if(muzzleFlash)
+            muzzleFlash.Stop();
         recoilAnim_Body = GetComponentInChildren<Animator>();
     }
 
@@ -272,7 +274,7 @@ public class Turret : MonoBehaviour {
 
         //filter list to only enemies with highest rank
         for(int i = eList.Count - 1; i >= 0; i--) {
-            if((int)eList[i].GetComponent<Enemy>().enemyType != rank) {
+            if((int) eList[i].GetComponent<Enemy>().enemyType != rank) {
                 eList.RemoveAt(i);
             }
         }
@@ -335,7 +337,7 @@ public class Turret : MonoBehaviour {
                 projectileTurret.AutoShoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                 if(recoilAnim_Body) {
-                    recoilAnim_Body.SetTrigger(shootAnim); 
+                    recoilAnim_Body.SetTrigger(shootAnim);
                 }
                 muzzleFlash.Play();
                 nextFire = 1 / fireRate;
@@ -374,9 +376,8 @@ public class Turret : MonoBehaviour {
                 if(nextFire <= 0.0f) {
                     projectileTurret.ManualShoot();
                     AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                    if(recoilAnim_Body && recoilAnim_Cam) {
+                    if(recoilAnim_Body) {
                         recoilAnim_Body.SetTrigger(shootAnim);
-                        recoilAnim_Cam.SetTrigger("Shoot"); 
                     }
                     muzzleFlash.Play();
                     nextFire = 1 / manualFireRate;
@@ -387,9 +388,8 @@ public class Turret : MonoBehaviour {
                 if(nextFire <= 0.0f) {
                     fireTurret.ManualShoot();
                     AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                    if(recoilAnim_Body && recoilAnim_Cam) {
+                    if(recoilAnim_Body) {
                         recoilAnim_Body.SetTrigger(shootAnim);
-                        recoilAnim_Cam.SetTrigger("Shoot");
                     }
                     nextFire = 1 / manualFireRate;
                 }

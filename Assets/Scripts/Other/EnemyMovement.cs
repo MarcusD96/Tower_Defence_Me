@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void LateUpdate() {
+    void FixedUpdate() {
         Vector3 direction = target.position - transform.position;
         Vector3 curPos = transform.position;
         transform.Translate(direction.normalized * enemy.currentSpeed * Time.deltaTime, Space.World);

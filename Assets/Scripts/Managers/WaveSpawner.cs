@@ -17,20 +17,13 @@ public class WaveSpawner : MonoBehaviour {
     private int waveIndex = 0;
     private Transform spawnPoint;
     private GameManager gameManager;
-    private Button startButton;
-    private GameObject remainingText;
+    private Button startButton, FFButton;
     private bool waveStarted, autoStart, firstRoundStarted = false;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     public static WaveSpawner instance;
 
     void Awake() {
-        foreach(var s in FindObjectsOfType<Transform>(true)) {
-            if(s.CompareTag("Respawn")) {
-                spawnPoint = s;
-                break;
-            }
-        }
         gameManager = GetComponent<GameManager>();
         foreach(var s in FindObjectsOfType<Button>(true)) {
             if(s.CompareTag("StartButton")) {
@@ -38,9 +31,9 @@ public class WaveSpawner : MonoBehaviour {
                 break;
             }
         }
-        foreach(var s in FindObjectsOfType<GameObject>(true)) {
-            if(s.CompareTag("Remaining")) {
-                remainingText = s;
+        foreach(var s in FindObjectsOfType<Button>(true)) {
+            if(s.CompareTag("FF")) {
+                FFButton = s;
                 break;
             }
         }
@@ -53,6 +46,7 @@ public class WaveSpawner : MonoBehaviour {
             return;
         }
         instance = this;
+        spawnPoint = Path.waypoints[0];
         InitializeWaves();
     }
 
@@ -104,9 +98,9 @@ public class WaveSpawner : MonoBehaviour {
             }
         }
 
-        if(enemiesAlive == 0) {
-            startButton.gameObject.SetActive(true);
-            remainingText.SetActive(false);
+        if(enemiesAlive <= 0) {
+            startButton.GetComponent<Button>().interactable = true;
+            FFButton.GetComponent<Button>().interactable = false;
             if(waveStarted) {
                 waveStarted = false;
                 PlayerStats.money += 100 + (waveIndex * 5);
@@ -151,9 +145,9 @@ public class WaveSpawner : MonoBehaviour {
     public void StartWave() {
         if(firstRoundStarted == false)
             firstRoundStarted = true;
-        startButton.gameObject.SetActive(false);
+        startButton.GetComponent<Button>().interactable = false;
+        FFButton.GetComponent<Button>().interactable = true;
         gameManager.LastControlled();
-        remainingText.SetActive(true);
 
         int r = PlayerStats.rounds;
         if(r + 1 >= 10) {

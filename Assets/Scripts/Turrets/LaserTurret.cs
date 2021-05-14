@@ -13,7 +13,7 @@ public class LaserTurret : BeamTurret {
     public Light impactLight;
 
     private Transform lastTarget;
-    private float manualSlowFactor, maxSlowFactor;
+    private float maxSlowFactor;
 
     [Header("Laser Special")]
     public SlowWave slowWave;
@@ -26,8 +26,7 @@ public class LaserTurret : BeamTurret {
         impactEffect.Stop();
         shootEffect.Stop();
         impactLight.enabled = shootLight.enabled = false;
-        manualSlowFactor = slowFactor / slowMultiplier;
-        maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 3)) / slowMultiplier;
+        maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 6)) / slowMultiplier;
         startFR = fireRate;
     }
 
@@ -141,7 +140,7 @@ public class LaserTurret : BeamTurret {
 
                 if(targetEnemy) {
                     if(!targetEnemy.superSlow)
-                        targetEnemy.Slow(manualSlowFactor, slowDuration);
+                        targetEnemy.Slow(slowFactor, slowDuration);
 
                     if(!targetEnemy.isDamaging) {
                         targetEnemy.DamageOverTime(damageOverTime, slowDuration);
@@ -190,13 +189,10 @@ public class LaserTurret : BeamTurret {
         slowDuration += ugB.upgradeFactorX;
 
         //slows enemies more
-        slowFactor -= ugB.upgradeFactorY;
+        slowFactor -= ugB.upgradeFactorY * ugB.GetLevel();
 
         //make laser wider
         lineRenderer.startWidth = lineRenderer.endWidth += 0.3f;
-
-        //update manual slow factor
-        manualSlowFactor = slowFactor / slowMultiplier;
     }
 
     public override bool ActivateSpecial() {

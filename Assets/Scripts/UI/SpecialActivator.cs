@@ -5,7 +5,7 @@ public class SpecialActivator : MonoBehaviour {
 
     private static SpecialActivator instance;
 
-    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, specBtn;
+    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, rundownBtn, specBtn;
 
 
     public Animator anim;
@@ -18,6 +18,7 @@ public class SpecialActivator : MonoBehaviour {
         empButton.SetActive(false);
         superchargeButton.SetActive(false);
         infernoBtn.SetActive(false);
+        rundownBtn.SetActive(false);
     }
 
     public void OpenSpecials() {
@@ -65,5 +66,9 @@ public class SpecialActivator : MonoBehaviour {
         instance.infernoBtn.SetActive(true);
         Inferno.AddNewFireTurret(ft);
     }
-    
+
+    public static void MakeRundown(TankTurret tank) {
+        instance.rundownBtn.SetActive(true);
+        Rundown.AddNewTankTurret(tank);
+    }    
 }

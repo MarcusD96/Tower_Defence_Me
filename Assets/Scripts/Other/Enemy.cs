@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
     public float baseSpeed, baseHp;
     public float startSpeed, startHp;
 
-    public float currentHp, currentSpeed, distanceTravelled = 0.0f, moneyValue, currentMoneyValue;
+    public float currentHp, currentSpeed, distanceTravelled, moneyValue, currentMoneyValue;
     public int lifeValue;
 
     public EnemyType enemyType;
@@ -24,10 +24,9 @@ public class Enemy : MonoBehaviour {
     [Header("Unity Stuff")]
     public Image healthBarL;
     public Image healthBarR;
-    public bool superSlow = false;
-    public bool isDamaging = false, isDead = true, isSlow = false;
+    public bool superSlow, isDamaging, isDead, isSlow;
 
-    [Header("Boss")]
+    [Header("Resistances")]
     public bool isBoss;
     public bool stunResist, slowResist, burnResist;
 
@@ -39,6 +38,10 @@ public class Enemy : MonoBehaviour {
         currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
 
         currentMoneyValue = moneyValue;
+        distanceTravelled = 0.0f;
+
+        superSlow = isDamaging = isSlow = false;
+        isDead = true;
 
         if(slowEffect != null) {
             slowEffect.gameObject.SetActive(false);
@@ -59,12 +62,12 @@ public class Enemy : MonoBehaviour {
         if(healthBarL && healthBarR) {
             currentHp -= amount;
 
-            if(indicateDmg) {
-                GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-                var i = indicatorInstance.GetComponent<DamageIndicator>();
-                i.damage = amount;
-                i.color = color;
-            }
+            //if(indicateDmg) {
+            //    GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
+            //    var i = indicatorInstance.GetComponent<DamageIndicator>();
+            //    i.damage = amount;
+            //    i.color = color;
+            //}
 
             healthBarL.fillAmount = currentHp / baseHp;
             healthBarR.fillAmount = currentHp / baseHp;
@@ -219,18 +222,9 @@ public class Enemy : MonoBehaviour {
     }
 
     public void ResetEnemy() {
-        currentSpeed = baseSpeed * difficultyMultiplier;
-        currentHp = baseHp * difficultyMultiplier;
-        healthBarL.fillAmount = healthBarR.fillAmount = 1;
-        distanceTravelled = 0;
-        isSlow = superSlow = isDamaging = false;
-
-        StopAllCoroutines();
-
         stun = burn = null;
-
-        slowEffect.gameObject.SetActive(false);
-        stunEffect.gameObject.SetActive(false);
-        burnEffect.gameObject.SetActive(false);
+        Awake();
+        healthBarL.fillAmount = healthBarR.fillAmount = 1;
+        StopAllCoroutines();
     }
 }

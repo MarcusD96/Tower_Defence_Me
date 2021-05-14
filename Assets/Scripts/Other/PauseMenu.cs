@@ -29,15 +29,9 @@ public class PauseMenu : MonoBehaviour {
             timeScale_prev = Time.timeScale;
             AudioManager.StaticStopAllSounds();
             Time.timeScale = 0;
-            foreach(var o in FindObjectsOfType<Outline>()) {
-                o.enabled = false;
-            }
         } else {            //un paused
             Time.timeScale = timeScale_prev;
             settings.SetActive(false);
-            foreach(var o in FindObjectsOfType<Outline>()) {
-                o.enabled = true;
-            }
         }
     }
 

@@ -49,7 +49,7 @@ CapsuleCollider:
   m_Radius: 0.6
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &4322764439141097690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,14 +69,15 @@ MonoBehaviour:
   slowEffect: {fileID: 6002730257937060904}
   stunEffect: {fileID: 623608731997379672}
   burnEffect: {fileID: 328546551931008581}
-  startSpeed: 10
-  startHp: 750
   baseSpeed: 10
   baseHp: 750
+  startSpeed: 10
+  startHp: 750
   currentHp: 0
   currentSpeed: 0
   distanceTravelled: 0
   moneyValue: 400
+  currentMoneyValue: 0
   lifeValue: 75
   enemyType: 4
   healthBarL: {fileID: 3374941956701577398}
@@ -125,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5207737894010313408}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.329, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6002730257937060905}
@@ -145,7 +146,6 @@ GameObject:
   - component: {fileID: 5327861178086533}
   - component: {fileID: 8953710547775799704}
   - component: {fileID: 1887984855182002519}
-  - component: {fileID: 7317837371044641053}
   m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
@@ -161,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9200261764277336386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3498438954662709574}
@@ -216,24 +216,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7317837371044641053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200261764277336386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 1, g: 0.99999994, b: 0, a: 1}
-  outlineWidth: 3
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &520239080728125565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 2867636807961254806, guid: b6752a2c3baafd84986b1311bb7733b8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2867636807961254806, guid: b6752a2c3baafd84986b1311bb7733b8,
         type: 3}

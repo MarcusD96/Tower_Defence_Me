@@ -9677,7 +9677,7 @@ MonoBehaviour:
   speed: 1.75
   special: 1
   speedExponent: 1.05
-  turningSpeed: 0.1
+  explosionRadius: 10
 --- !u!136 &8104042212635986536
 CapsuleCollider:
   m_ObjectHideFlags: 0

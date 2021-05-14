@@ -128,11 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growSpeed: 4
-  slowFactor: 0.25
-  slowDuration: 20
+  slowFactor: 0.2
+  slowDuration: 25
   maxSize: {x: 100, y: 100, z: 100}
   done: 0
-  damagerPerSecond: 1
+  damagerPerSecond: 0.5
 --- !u!54 &-5834591645109665293
 Rigidbody:
   m_ObjectHideFlags: 0

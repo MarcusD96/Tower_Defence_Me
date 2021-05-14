@@ -24,7 +24,7 @@ public class TeslaTurret : BeamTurret {
         fade = FadeOut();
         beamTurret = this;
         teslaTurret = this;
-        maxFireRate = (fireRate + (ugB.upgradeFactorX * 3)) * manualFirerateMultiplier;
+        maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
     }
 
     new void Update() {

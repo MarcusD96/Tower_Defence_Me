@@ -4885,7 +4885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977790376915525466}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.20000005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 508612932759547089}
@@ -4968,7 +4968,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432570609866826074}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.04, y: 2.52, z: 4.48}
+  m_LocalPosition: {x: 0.04, y: 1.86, z: 11.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3494146850268421551}
@@ -9789,7 +9789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2465098625561552748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.061, z: 3}
+  m_LocalPosition: {x: 0, y: 1.8914, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3785336672144645349}
@@ -19658,13 +19658,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6709085864990717892}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.098, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.6370336}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076481029323885468}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!33 &8439851973651991120
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19845,7 +19845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7173648929806757207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.537, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2341934829681111668}
@@ -19995,6 +19995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manual: 0
+  specialActivated: 0
   sellPrice: 0
   sellPecent: 75
   fireSpawn: {fileID: 6639674273788320467}
@@ -20010,8 +20011,8 @@ MonoBehaviour:
   shootSound: Laser
   aimIndicator: {fileID: 4106244163764889944}
   pivot: {fileID: 508612932759547089}
-  gfxAnim: {fileID: 0}
-  recoilAnim: {fileID: 0}
+  recoilAnim_Body: {fileID: 0}
+  recoilAnim_Cam: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ugA:
     upgradeName: Enhanced Range
@@ -20038,7 +20039,7 @@ MonoBehaviour:
   shootLight: {fileID: 4441568151547372766}
   shake: {fileID: 750746476305891136}
   slowFactor: 0.8
-  slowDuration: 15
+  slowDuration: 10
   damageOverTime: 0.25
   slowMultiplier: 1.6666666
   impactEffect: {fileID: 8992267078964416945}

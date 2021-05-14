@@ -12,24 +12,19 @@ public class EnemyPool : MonoBehaviour {
 
     private void Awake() {
         instance = this;
-        foreach(var s in FindObjectsOfType<Transform>()) {
-            if(s.CompareTag("Respawn")) {
-                spawn = s.position;
-                break;
-            }
-        }
     }
 
     private void Start() {
         GameObject tmp;
         pool = new List<GameObject>[enemies.Length];
+        spawn = Path.waypoints[0].position;
 
         for(int count = 0; count < enemies.Length; count++) {
+            var p = Instantiate(new GameObject(enemies[count].enemy.name), gameObject.transform);
             pool[count] = new List<GameObject>();
             for(int num = 0; num < enemies[count].amount; num++) {
-                tmp = Instantiate(enemies[count].enemy, new Vector3(0.0f, 1000.0f, 0.0f), Quaternion.identity);
+                tmp = Instantiate(enemies[count].enemy, p.transform);
                 tmp.SetActive(false);
-                tmp.transform.parent = transform;
                 pool[count].Add(tmp);
             }
         }
