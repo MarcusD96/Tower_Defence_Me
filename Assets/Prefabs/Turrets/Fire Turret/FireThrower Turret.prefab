@@ -639,7 +639,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 0}
   pivot: {fileID: 6758524805992453998}
   recoilAnim_Body: {fileID: 5498294915479182390}
-  recoilAnim_Cam: {fileID: 7501573834970983993}
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:
@@ -658,7 +657,7 @@ MonoBehaviour:
   ugSpec:
     upgradeName: Inferno
     description: Melt targets down with a infernal mixture of premiem fuel
-    upgradeCost: 1200
+    upgradeCost: 4000
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 8560105079731431943}

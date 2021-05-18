@@ -20012,7 +20012,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 4106244163764889944}
   pivot: {fileID: 508612932759547089}
   recoilAnim_Body: {fileID: 0}
-  recoilAnim_Cam: {fileID: 0}
   muzzleFlash: {fileID: 0}
   ugA:
     upgradeName: Enhanced Range
@@ -20023,13 +20022,13 @@ MonoBehaviour:
   ugB:
     upgradeName: Mo' Powwa Babee
     description: Slower effect that lasts longer with a bigger beam.
-    upgradeCost: 200
+    upgradeCost: 145
     upgradeFactorX: 5
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
     description: Strike a very large area with a crippling slow effect
-    upgradeCost: 750
+    upgradeCost: 1950
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 8472525781130761690}

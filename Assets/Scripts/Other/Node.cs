@@ -89,7 +89,10 @@ public class Node : MonoBehaviour {
         t.sellPrice += t.ugA.GetUpgradeCost();
 
         BuildEffect(buildManager.upgradeEffect);
-        t.ugA.IncreaseUpgrade(false);
+        if(t.GetComponent<FarmTower>()) {
+            t.ugA.IncreaseUpgrade(true);
+        } else
+            t.ugA.IncreaseUpgrade(false);
         t.ApplyUpgradeA();
         UpdateRange(t);
     }
@@ -123,7 +126,7 @@ public class Node : MonoBehaviour {
         t.sellPrice += t.ugSpec.GetUpgradeCost();
         t.ugSpec.IncreaseUpgrade(false);
 
-        t.EnableSpecial();
+        t.ApplySpecial();
 
         CheckTurretTypeAndMakeSpecial();
     }

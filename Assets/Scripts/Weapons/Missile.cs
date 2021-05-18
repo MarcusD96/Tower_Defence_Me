@@ -21,7 +21,7 @@ public class Missile : Projectile {
         speed = Mathf.Pow(speed, speedExponent);
         speed = Mathf.Clamp(speed, 0, 100);
         if(target) {
-            if(!target.gameObject.activeSelf) {
+            if(target.gameObject.activeSelf != true) {
                 target = null;
                 TryFindNewTargetInfront();
                 return;
@@ -69,10 +69,5 @@ public class Missile : Projectile {
             }
         }
         Destroy(gameObject);
-    }
-
-    void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

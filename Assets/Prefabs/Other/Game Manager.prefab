@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3009d483b6cedae44a5163d7f845a4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastForward: 2.5
+  fastForward: 3
 --- !u!114 &8381443254788746151
 MonoBehaviour:
   m_ObjectHideFlags: 0

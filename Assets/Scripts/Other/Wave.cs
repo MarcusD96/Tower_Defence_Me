@@ -15,6 +15,21 @@ public class Wave {
 
         return total;
     }
+
+    public float GetWaveTime() {
+        float highestTime = 0;
+        foreach(var c in chunks) {
+            float r = c.spawnRate;
+            if(r <= 0) //DIVIDE BY 0 IS A NO NO :)
+                r = Time.deltaTime;
+
+            float t = ((1 / r) * c.count) + c.startDelay;
+
+            if(t > highestTime)
+                highestTime = t;
+        }
+        return highestTime;
+    }
 }
 
 [System.Serializable]

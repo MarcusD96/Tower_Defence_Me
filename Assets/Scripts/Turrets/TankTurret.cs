@@ -84,7 +84,7 @@ public class TankTurret : ProjectileTurret {
     public override void ApplyUpgradeB() {  //fireRate++, bossDamage++
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
         projectileNum += (int) ugB.upgradeFactorY;
-        spreadVariance += 0.15f;
+        spreadVariance += 0.125f;
     }
 
     public override bool ActivateSpecial() {

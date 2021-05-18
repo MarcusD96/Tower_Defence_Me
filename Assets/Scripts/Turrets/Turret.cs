@@ -19,8 +19,6 @@ public class Turret : MonoBehaviour {
     [Header("Global")]
     public Transform fireSpawn;
     public float range;
-    public float manualRangeMultiplier, manualFirerateMultiplier;
-    public float fireRate; //shots per second, higher is faster
 
     [HideInInspector]
     public float maxFireRate;
@@ -45,12 +43,15 @@ public class Turret : MonoBehaviour {
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
     protected FireTurret fireTurret;
+    protected FarmTower farmTower;
 
     [Header("Upgrades")]
     public Upgrade ugA;
     public Upgrade ugB, ugSpec;
 
-    [Header("Projectiles")]
+    [Header("Weapon Stats")]
+    public float manualRangeMultiplier, manualFirerateMultiplier;
+    public float fireRate; //shots per second, higher is faster
     protected float nextFire = 0.0f;
 
     [Header("Special")]
@@ -61,7 +62,7 @@ public class Turret : MonoBehaviour {
     private int targettingMethod;
     #endregion
 
-    void Start() {
+    protected void Start() {
         mainCam = Camera.main;
         turretCam.enabled = false;
         overlayCam.enabled = false;
@@ -410,6 +411,10 @@ public class Turret : MonoBehaviour {
 
     #region Upgrades and Special
     public void ApplyUpgradeA() {
+        if(farmTower != null) {
+            farmTower.ApplyUpgradeA();
+            return;
+        }
         range += ugA.upgradeFactorX;
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
@@ -420,7 +425,7 @@ public class Turret : MonoBehaviour {
         Debug.Log("upgrade 2");
     }
 
-    public void EnableSpecial() {
+    public void ApplySpecial() {
         fireRate = maxFireRate;
         hasSpecial = true;
         specialBar.gameObject.SetActive(true);
@@ -444,6 +449,9 @@ public class Turret : MonoBehaviour {
     #endregion
 
     public void AssumeControl() {
+        if(farmTower)
+            return;
+
         ChangeLayer(9);
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
@@ -457,6 +465,9 @@ public class Turret : MonoBehaviour {
     }
 
     public void RevertControl(bool roundEnd) {
+        if(farmTower)
+            return;
+
         ChangeLayer(0);
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();

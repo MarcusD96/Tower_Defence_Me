@@ -73,6 +73,10 @@ public class WaveSpawner : MonoBehaviour {
         waveStarted = false;
     }
 
+    public Wave GetCurrentWave() {
+        return waves[waveIndex];
+    }
+
     GameObject ChooseEnemyPrefab(EnemyType e) {
         foreach(var t in enemyTypes) {
             if(t.GetComponent<Enemy>().enemyType == e) {
@@ -154,7 +158,7 @@ public class WaveSpawner : MonoBehaviour {
             Enemy.difficultyMultiplier += 0.02f;
 
         }
-        if(((r + 1) >= 15) && ((r - 4) % 10 == 0)) { //over round 15 at 15, 25, or 35
+        if(((r + 1) >= 10) && ((r - 4) % 10 == 0)) { //over round 10 in intervals of 10
             foreach(Enemy e in FindObjectsOfType<Enemy>(true)) {
                 e.DecreaseMoneyValue();
             }

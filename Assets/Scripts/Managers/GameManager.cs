@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
                     Time.fixedDeltaTime = 0.01f;
                 } else {
                     Time.timeScale = fastForward;
-                    Time.fixedDeltaTime /= fastForward;
+                    Time.fixedDeltaTime /= 2;
                 }
             }
         }

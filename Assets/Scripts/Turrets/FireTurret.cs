@@ -42,11 +42,14 @@ public class FireTurret : Turret {
     }
 
     public override bool ActivateSpecial() {
+        range *= 3;
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
+            range /= 3;
             StartCoroutine(Inferno());
             specialActivated = true;
             return true;
         }
+        range /= 3;
         return false;
     }
 
@@ -55,11 +58,11 @@ public class FireTurret : Turret {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 
-        range *= 1.5f;
+        range *= 3.0f;
         thisNode.UpdateRange(this);
 
         var tmpPos = turretCam.transform.localPosition;
-        turretCam.transform.localPosition *= 2;
+        turretCam.transform.localPosition *= 3;
 
         penetration *= 2;
 

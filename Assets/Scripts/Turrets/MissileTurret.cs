@@ -6,7 +6,7 @@ public class MissileTurret : ProjectileTurret {
 
     public GameObject specialPrefab;
 
-    private int missileCount = 20;
+    public int specialMissileCount;
     private List<Enemy> targetList = new List<Enemy>();
 
     void Awake() {
@@ -36,7 +36,8 @@ public class MissileTurret : ProjectileTurret {
     public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
-            StartCoroutine(MissileBarrage());
+            //StartCoroutine(MissileBarrage());
+            StartCoroutine(MissileMaelstrom());
             return true;
         }
         return false;
@@ -48,12 +49,11 @@ public class MissileTurret : ProjectileTurret {
 
         if(FindAndSortEnemies()) {
 
-            IEnumerator special = SpecialTime();
-            StartCoroutine(special);
+            StartCoroutine(SpecialTime());
             nextFire = 0;
 
             int timesRestarted = 1;
-            for(int i = 0; i < missileCount; i++) {
+            for(int i = 0; i < specialMissileCount; i++) {
 
                 int ii = i - (targetList.Count * (timesRestarted - 1));
 
@@ -82,6 +82,34 @@ public class MissileTurret : ProjectileTurret {
         yield return null;
     }
 
+    IEnumerator MissileMaelstrom() {
+        StartCoroutine(SpecialTime());
+        var g = new GameObject("Missiles");
+        print(g.transform.position);
+        g.transform.parent = transform;
+        g.transform.position = transform.position + Vector3.up;
+        for(int i = 0; i < specialMissileCount; i++) {
+            GameObject tmp = projectilePrefab;
+            projectilePrefab = specialPrefab;
+
+            Missile[] missiles = new Missile[3];
+            missiles[0] = Instantiate(projectilePrefab, g.transform).GetComponent<Missile>();
+            missiles[0].transform.rotation = Quaternion.Euler(0, 10 * i, 0);
+            missiles[1] = Instantiate(projectilePrefab, g.transform).GetComponent<Missile>();
+            missiles[1].transform.rotation = Quaternion.Euler(0, 10 * i + 120, 0);
+            missiles[2] = Instantiate(projectilePrefab, g.transform).GetComponent<Missile>();
+            missiles[2].transform.rotation = Quaternion.Euler(0, 10 * i + 240, 0);
+
+            foreach(var m in missiles) {
+                m.SetDamage(damage * 2, damage * 5);
+                m.SetExplosion(penetration);
+            }
+            projectilePrefab = tmp;
+            yield return new WaitForSeconds(0.05f);
+        }
+        Destroy(g, 3.0f);
+    }
+
     bool FindAndSortEnemies() {
         foreach(var e in WaveSpawner.GetEnemyList_Static()) {
             targetList.Add(e.GetComponent<Enemy>());
@@ -91,10 +119,10 @@ public class MissileTurret : ProjectileTurret {
             return false;
 
         targetList.Sort((a, b) => {
-            return Vector3.Distance(transform.position, a.transform.position).CompareTo(Vector3.Distance(transform.position, b.transform.position)); 
+            return b.distanceTravelled.CompareTo(a.distanceTravelled);
         });
 
-        targetList = Shuffle(targetList);
+        //targetList = Shuffle(targetList);
 
         return true;
     }

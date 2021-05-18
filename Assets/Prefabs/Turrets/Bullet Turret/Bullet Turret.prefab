@@ -173,7 +173,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 4610724075007527331}
   pivot: {fileID: 2132953714685851362}
   recoilAnim_Body: {fileID: 0}
-  recoilAnim_Cam: {fileID: 5674035845265910766}
   muzzleFlash: {fileID: 7654172783242055649}
   ugA:
     upgradeName: Longer Barrels
@@ -190,7 +189,7 @@ MonoBehaviour:
   ugSpec:
     upgradeName: Burst
     description: Extreme speed for a short time
-    upgradeCost: 1050
+    upgradeCost: 2500
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 570926517585506664}

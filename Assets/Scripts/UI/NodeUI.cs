@@ -175,6 +175,11 @@ public class NodeUI : MonoBehaviour {
     void SetUIInfo() {
         var t = target.turret.GetComponent<Turret>();
 
+        if(target.turret.GetComponent<FarmTower>() != null)
+            controlButton.interactable = false;
+        else
+            controlButton.interactable = true;
+
         targetting.text = target.turret.GetComponent<Turret>().GetTargetting();
 
         sellPrice.text = "$" + t.GetSellPrice();

@@ -60,9 +60,9 @@ public class FireShot : MonoBehaviour {
                     grad.color = specGradient;
 
                     if(e.isBoss) {
-                        e.TakeDamage(damage * 10, Color.red, true);
+                        e.TakeDamage(damage * 100, Color.red, true);
                     } else {
-                        e.TakeDamage(damage * 3, Color.red, true);
+                        e.TakeDamage(damage * 5, Color.red, true);
                     }
 
                     e.Burn(burnDamage, burnTime * 2, burnInterval);

@@ -145,13 +145,12 @@ MonoBehaviour:
   aimIndicator: {fileID: 7099398542050109468}
   pivot: {fileID: 872283397870976999}
   recoilAnim_Body: {fileID: 4877109321379219212}
-  recoilAnim_Cam: {fileID: 1987750477993102616}
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:
     upgradeName: Moar Powder
     description: Adding more gunpower to the shells allows shots to travel further
-    upgradeCost: 60
+    upgradeCost: 40
     upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
@@ -161,9 +160,10 @@ MonoBehaviour:
     upgradeFactorX: 0.25
     upgradeFactorY: 3
   ugSpec:
-    upgradeName: UHM
-    description: uhhhhhhhhh
-    upgradeCost: 1000
+    upgradeName: Rundown
+    description: The tank runs along the track backwards running over anything in
+      its path
+    upgradeCost: 15000
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 1500517532482397155}

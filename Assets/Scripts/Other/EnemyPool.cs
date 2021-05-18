@@ -20,7 +20,8 @@ public class EnemyPool : MonoBehaviour {
         spawn = Path.waypoints[0].position;
 
         for(int count = 0; count < enemies.Length; count++) {
-            var p = Instantiate(new GameObject(enemies[count].enemy.name), gameObject.transform);
+            var p = new GameObject(enemies[count].enemy.name);
+            p.transform.SetParent(gameObject.transform);
             pool[count] = new List<GameObject>();
             for(int num = 0; num < enemies[count].amount; num++) {
                 tmp = Instantiate(enemies[count].enemy, p.transform);

@@ -2,8 +2,10 @@
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour {
-    public TurretFactory standardTurret, missileLauncher, laserBeamer, teslaTurret, railgunTurret, flameTurret, tankTurret;
-    public Button standardTurretBtn, missileLauncherBtn, laserBeamerBtn, teslaTurretBtn, railgunTurretBtn, flameTurretBtn, tankTurretBtn, shopBtn;
+    //public TurretFactory[] factories;
+    public TurretFactory standardTurret, missileLauncher, laserBeamer, teslaTurret, railgunTurret, flameTurret, tankTurret, farmTower;
+    //public Button[] turretBtns;
+    public Button standardTurretBtn, missileLauncherBtn, laserBeamerBtn, teslaTurretBtn, railgunTurretBtn, flameTurretBtn, tankTurretBtn, farmTowerBtn, shopBtn;
     public Animator anim;
 
     private BuildManager buildManager;
@@ -17,6 +19,7 @@ public class Shop : MonoBehaviour {
         railgunTurret.costText.text = "$" + railgunTurret.GetCost();
         flameTurret.costText.text = "$" + flameTurret.GetCost();
         tankTurret.costText.text = "$" + flameTurret.GetCost();
+        farmTower.costText.text = "$" + farmTower.GetCost();
     }
 
     void LateUpdate() {
@@ -67,6 +70,12 @@ public class Shop : MonoBehaviour {
             tankTurretBtn.interactable = false;
         else
             tankTurretBtn.interactable = true;
+
+        //farm tower
+        if(cash < farmTower.GetCost())
+            farmTowerBtn.interactable = false;
+        else
+            farmTowerBtn.interactable = true;
     }
 
     public void OpenShop() {
@@ -111,5 +120,9 @@ public class Shop : MonoBehaviour {
 
     public void SelectTankTurret() {
         buildManager.SelectTurretToBuild(tankTurret);
+    }
+
+    public void SelectFarmTower() {
+        buildManager.SelectTurretToBuild(farmTower);
     }
 }

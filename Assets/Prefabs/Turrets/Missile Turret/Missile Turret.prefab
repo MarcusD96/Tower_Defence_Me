@@ -354,7 +354,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 6491234510639788162}
   pivot: {fileID: 3804968989015224051}
   recoilAnim_Body: {fileID: 5666782259984581973}
-  recoilAnim_Cam: {fileID: 7561079027407901617}
   muzzleFlash: {fileID: 173412066861058886}
   ugA:
     upgradeName: Rocket Fuel Efficency
@@ -371,7 +370,7 @@ MonoBehaviour:
   ugSpec:
     upgradeName: Missile Barrage
     description: Swiftly launch a barrage of 20 missiles towards enemies.
-    upgradeCost: 1500
+    upgradeCost: 2050
     upgradeFactorX: 0
     upgradeFactorY: 0
   specialBar: {fileID: 1531281856564686637}
@@ -383,6 +382,7 @@ MonoBehaviour:
   penetration: 5
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
     type: 3}
+  specialMissileCount: 100
 --- !u!114 &6568727638329882637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,6 +971,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1913566336651288072, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913566336651288072, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913566336651288072, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913566336651288072, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2330993347720880597, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Layer
@@ -979,6 +999,26 @@ PrefabInstance:
     - target: {fileID: 2407015472108493207, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976849518644143005, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976849518644143005, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976849518644143005, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976849518644143005, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3096048018306321819, guid: ac544509da2972845a14cd3400e757d3,
@@ -1109,6 +1149,26 @@ PrefabInstance:
     - target: {fileID: 8202867335360148442, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305379202736146682, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305379202736146682, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305379202736146682, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8305379202736146682, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9214866500438888616, guid: ac544509da2972845a14cd3400e757d3,
