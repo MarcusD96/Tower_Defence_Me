@@ -16,6 +16,10 @@ public class Upgrade {
         return Mathf.RoundToInt((costDifficultyMultiplier * upgradeCost) / 5) * 5;
     }
 
+    public void SetUpgradeCost(int cost) {
+        upgradeCost = cost;
+    }
+
     public void IncreaseUpgrade(bool multiply) {
         if(multiply)
             upgradeCost = Mathf.RoundToInt(upgradeCost * 1.5f / 5) * 5;

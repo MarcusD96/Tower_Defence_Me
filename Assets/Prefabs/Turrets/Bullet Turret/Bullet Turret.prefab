@@ -161,9 +161,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 2129615165364960894}
   range: 12
-  manualRangeMultiplier: 1.75
-  manualFirerateMultiplier: 1.3
-  fireRate: 1
   maxFireRate: 0
   turretCam: {fileID: 1772590479217720602}
   overlayCam: {fileID: 5720442329981475874}
@@ -192,8 +189,13 @@ MonoBehaviour:
     upgradeCost: 2500
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 1.75
+  manualFirerateMultiplier: 1.3
+  fireRate: 1
   specialBar: {fileID: 570926517585506664}
   specialRate: 35
+  specialAmount: 0
+  specialTime: 3
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
   damage: 1
@@ -201,8 +203,7 @@ MonoBehaviour:
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}
-  specialTime: 2.5
-  specialFireRate: 25
+  specialFireRate: 30
 --- !u!114 &7789754457311897144
 MonoBehaviour:
   m_ObjectHideFlags: 0

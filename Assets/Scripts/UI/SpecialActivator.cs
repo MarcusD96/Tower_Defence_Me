@@ -5,7 +5,7 @@ public class SpecialActivator : MonoBehaviour {
 
     private static SpecialActivator instance;
 
-    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, rundownBtn, specBtn;
+    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, rundownBtn, doubleCashBtn, specBtn;
 
 
     public Animator anim;
@@ -19,6 +19,7 @@ public class SpecialActivator : MonoBehaviour {
         superchargeButton.SetActive(false);
         infernoBtn.SetActive(false);
         rundownBtn.SetActive(false);
+        doubleCashBtn.SetActive(false);
     }
 
     public void OpenSpecials() {
@@ -71,4 +72,9 @@ public class SpecialActivator : MonoBehaviour {
         instance.rundownBtn.SetActive(true);
         Rundown.AddNewTankTurret(tank);
     }    
+
+    public static void MakeDoubleCash(FarmTower farm) {
+        instance.doubleCashBtn.SetActive(true);
+        DoubleCash.AddNewFarmTower(farm);
+    }
 }

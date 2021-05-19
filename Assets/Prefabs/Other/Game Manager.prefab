@@ -55,746 +55,746 @@ MonoBehaviour:
   - {fileID: 3498438954662709570, guid: 25df34836e88df34292bbbfe929a94c2, type: 3}
   waves:
   - chunks:
-    - e: 0
-      count: 8
+    - type: 0
+      count: 6
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 0
-      count: 16
+    - type: 0
+      count: 12
       spawnRate: 1.15
       startDelay: 0
   - chunks:
-    - e: 0
-      count: 8
+    - type: 0
+      count: 6
       spawnRate: 1
       startDelay: 0
-    - e: 0
-      count: 8
-      spawnRate: 1.5
-      startDelay: 9
-    - e: 0
-      count: 8
+    - type: 0
+      count: 10
       spawnRate: 2
+      startDelay: 9
+    - type: 0
+      count: 6
+      spawnRate: 1
       startDelay: 15.5
   - chunks:
-    - e: 0
+    - type: 0
       count: 8
       spawnRate: 1
       startDelay: 0
-    - e: 0
-      count: 8
+    - type: 0
+      count: 15
       spawnRate: 1.5
-      startDelay: 9
-    - e: 0
+      startDelay: 10
+    - type: 0
       count: 8
       spawnRate: 2
-      startDelay: 15.5
+      startDelay: 20
   - chunks:
-    - e: 0
-      count: 30
+    - type: 0
+      count: 25
       spawnRate: 1
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 5
-      spawnRate: 3
+      spawnRate: 2
       startDelay: 15
   - chunks:
-    - e: 0
+    - type: 0
       count: 30
       spawnRate: 1
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 2
       startDelay: 5
-    - e: 1
+    - type: 1
       count: 5
       spawnRate: 4
       startDelay: 25
   - chunks:
-    - e: 0
+    - type: 0
       count: 20
       spawnRate: 5
       startDelay: 10
-    - e: 1
+    - type: 1
       count: 40
       spawnRate: 2
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 15
       spawnRate: 5
       startDelay: 10
-    - e: 0
+    - type: 0
       count: 15
       spawnRate: 5
       startDelay: 20
-    - e: 0
+    - type: 0
       count: 15
       spawnRate: 5
       startDelay: 30
-    - e: 1
+    - type: 1
       count: 40
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 0
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 5
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 10
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 15
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 20
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 25
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 30
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 35
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 40
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 45
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 50
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 55
-    - e: 0
+    - type: 0
       count: 5
       spawnRate: 3
       startDelay: 60
-    - e: 1
+    - type: 1
       count: 25
       spawnRate: 0.5
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 50
       spawnRate: 1
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 9
       spawnRate: 0.2
       startDelay: 5
   - chunks:
-    - e: 1
+    - type: 1
       count: 20
       spawnRate: 2
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 15
       spawnRate: 0.4
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 20
       spawnRate: 2
       startDelay: 30
   - chunks:
-    - e: 0
+    - type: 0
       count: 50
       spawnRate: 1
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 50
       spawnRate: 2.5
       startDelay: 10
   - chunks:
-    - e: 0
+    - type: 0
       count: 50
       spawnRate: 1.5
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 50
       spawnRate: 3
       startDelay: 30
-    - e: 2
+    - type: 2
       count: 15
       spawnRate: 0.5
       startDelay: 10
   - chunks:
-    - e: 0
+    - type: 0
       count: 200
       spawnRate: 2
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 20
       spawnRate: 7
       startDelay: 15
-    - e: 1
+    - type: 1
       count: 20
       spawnRate: 7
       startDelay: 35
-    - e: 1
+    - type: 1
       count: 20
       spawnRate: 7
       startDelay: 50
-    - e: 1
+    - type: 1
       count: 40
       spawnRate: 5
       startDelay: 75
   - chunks:
-    - e: 0
+    - type: 0
       count: 200
       spawnRate: 3.33
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 150
       spawnRate: 2.5
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 100
       spawnRate: 1.67
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 300
       spawnRate: 4
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 150
       spawnRate: 3
       startDelay: 20
-    - e: 2
+    - type: 2
       count: 125
       spawnRate: 2
       startDelay: 0
   - chunks:
-    - e: 2
+    - type: 2
       count: 100
       spawnRate: 2
       startDelay: 0
-    - e: 0
+    - type: 0
       count: 75
       spawnRate: 7.5
       startDelay: 1
-    - e: 1
+    - type: 1
       count: 150
       spawnRate: 7.5
       startDelay: 11
-    - e: 0
+    - type: 0
       count: 75
       spawnRate: 7.5
       startDelay: 21
-    - e: 1
+    - type: 1
       count: 150
       spawnRate: 7.5
       startDelay: 31
-    - e: 0
+    - type: 0
       count: 75
       spawnRate: 7.5
       startDelay: 41
   - chunks:
-    - e: 0
+    - type: 0
       count: 1000
       spawnRate: 20
       startDelay: 0
   - chunks:
-    - e: 1
+    - type: 1
       count: 750
       spawnRate: 30
       startDelay: 0
   - chunks:
-    - e: 3
+    - type: 3
       count: 1
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 3
+    - type: 3
       count: 1
       spawnRate: 1
       startDelay: 30
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 2
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 4
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 6
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 8
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 10
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 12
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 14
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 16
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 18
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 20
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 22
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 24
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 26
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 28
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 30
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 32
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 34
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 36
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 38
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 40
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 42
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 44
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 46
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 48
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 50
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 52
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 54
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 56
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 58
-    - e: 2
+    - type: 2
       count: 3
       spawnRate: 2
       startDelay: 60
   - chunks:
-    - e: 3
+    - type: 3
       count: 3
       spawnRate: 0.067
       startDelay: 15
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 3
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 6
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 9
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 12
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 15
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 18
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 21
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 24
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 27
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 30
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 33
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 36
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 39
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 42
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 45
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 48
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 51
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 54
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 57
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 60
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 63
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 66
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 69
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 72
-    - e: 1
+    - type: 1
       count: 10
       spawnRate: 8
       startDelay: 75
   - chunks:
-    - e: 0
+    - type: 0
       count: 100
       spawnRate: 2
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 50
       spawnRate: 0
       startDelay: 0
-    - e: 2
+    - type: 2
       count: 50
       spawnRate: 0
       startDelay: 7
-    - e: 2
+    - type: 2
       count: 50
       spawnRate: 0
       startDelay: 14
-    - e: 2
+    - type: 2
       count: 50
       spawnRate: 0
       startDelay: 21
-    - e: 3
+    - type: 3
       count: 2
       spawnRate: 0.25
       startDelay: 22
   - chunks:
-    - e: 0
+    - type: 0
       count: 150
       spawnRate: 40
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 100
       spawnRate: 60
       startDelay: 20
-    - e: 2
+    - type: 2
       count: 80
       spawnRate: 20
       startDelay: 30
-    - e: 3
+    - type: 3
       count: 1
       spawnRate: 0
       startDelay: 35
   - chunks:
-    - e: 1
+    - type: 1
       count: 400
       spawnRate: 20
       startDelay: 0
-    - e: 3
+    - type: 3
       count: 5
       spawnRate: 0.25
       startDelay: 1
   - chunks:
-    - e: 3
+    - type: 3
       count: 10
       spawnRate: 0.2
       startDelay: 15
-    - e: 0
+    - type: 0
       count: 200
       spawnRate: 4
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 200
       spawnRate: 5
       startDelay: 60
   - chunks:
-    - e: 3
+    - type: 3
       count: 10
       spawnRate: 0.3
       startDelay: 10
-    - e: 2
+    - type: 2
       count: 150
       spawnRate: 5
       startDelay: 0
   - chunks:
-    - e: 3
+    - type: 3
       count: 10
       spawnRate: 0.1
       startDelay: 5
-    - e: 3
+    - type: 3
       count: 10
       spawnRate: 0.1
       startDelay: 5.75
-    - e: 0
+    - type: 0
       count: 165
       spawnRate: 1.5
       startDelay: 0
   - chunks:
-    - e: 3
+    - type: 3
       count: 10
       spawnRate: 0.2
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 300
       spawnRate: 6
       startDelay: 5
-    - e: 2
+    - type: 2
       count: 100
       spawnRate: 2
       startDelay: 5
-    - e: 0
+    - type: 0
       count: 200
       spawnRate: 4
       startDelay: 5
   - chunks:
-    - e: 4
+    - type: 4
       count: 5
       spawnRate: 0.33
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 300
       spawnRate: 5
       startDelay: 0
-    - e: 4
+    - type: 4
       count: 4
       spawnRate: 0.1
       startDelay: 10
-    - e: 4
+    - type: 4
       count: 4
       spawnRate: 0.1
       startDelay: 11
   - chunks:
-    - e: 2
+    - type: 2
       count: 200
       spawnRate: 2
       startDelay: 0
-    - e: 3
+    - type: 3
       count: 4
       spawnRate: 0.05
       startDelay: 10
-    - e: 3
+    - type: 3
       count: 4
       spawnRate: 0.05
       startDelay: 12
-    - e: 4
+    - type: 4
       count: 4
       spawnRate: 0.05
       startDelay: 15
   - chunks:
-    - e: 0
+    - type: 0
       count: 200
       spawnRate: 5
       startDelay: 0
-    - e: 1
+    - type: 1
       count: 200
       spawnRate: 5
       startDelay: 30
-    - e: 2
+    - type: 2
       count: 200
       spawnRate: 5
       startDelay: 60
-    - e: 3
+    - type: 3
       count: 5
       spawnRate: 0.75
       startDelay: 90
-    - e: 4
+    - type: 4
       count: 5
       spawnRate: 0.5
       startDelay: 95
   - chunks:
-    - e: 0
+    - type: 0
       count: 30
       spawnRate: 1.5
       startDelay: 0
-    - e: 0
+    - type: 0
       count: 30
       spawnRate: 1.5
       startDelay: 0.1
-    - e: 0
+    - type: 0
       count: 30
       spawnRate: 1.5
       startDelay: 0.2
-    - e: 1
+    - type: 1
       count: 30
       spawnRate: 2.5
       startDelay: 21
-    - e: 1
+    - type: 1
       count: 30
       spawnRate: 2.5
       startDelay: 21.1
-    - e: 1
+    - type: 1
       count: 30
       spawnRate: 2.5
       startDelay: 21.2
-    - e: 2
+    - type: 2
       count: 20
       spawnRate: 0.5
       startDelay: 33
-    - e: 2
+    - type: 2
       count: 20
       spawnRate: 0.5
       startDelay: 33.5
-    - e: 2
+    - type: 2
       count: 20
       spawnRate: 0.5
       startDelay: 34
-    - e: 3
+    - type: 3
       count: 3
       spawnRate: 0.6
       startDelay: 80
   - chunks:
-    - e: 3
+    - type: 3
       count: 20
       spawnRate: 0.5
       startDelay: 0
-    - e: 4
+    - type: 4
       count: 12
       spawnRate: 0.665
       startDelay: 15
   - chunks:
-    - e: 0
+    - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 0
+    - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
   - chunks:
-    - e: 5
+    - type: 5
       count: 1
       spawnRate: 1
       startDelay: 0

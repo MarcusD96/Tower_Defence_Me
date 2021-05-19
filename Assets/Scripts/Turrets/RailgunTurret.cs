@@ -20,10 +20,6 @@ public class RailgunTurret : ProjectileTurret {
                 ActivateSpecial();
             }
         }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
-        }
     }
 
     public override void ApplyUpgradeB() { //damage++, penetration++;

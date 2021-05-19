@@ -209,9 +209,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 282096771178888004}
   range: 10
-  manualRangeMultiplier: 2.5
-  manualFirerateMultiplier: 1
-  fireRate: 0.7
   maxFireRate: 0
   turretCam: {fileID: 2990236815034801900}
   overlayCam: {fileID: 6947563146166291967}
@@ -221,7 +218,6 @@ MonoBehaviour:
   aimIndicator: {fileID: 3559833139435996107}
   pivot: {fileID: 2981572170934538781}
   recoilAnim_Body: {fileID: 7324848281821480544}
-  recoilAnim_Cam: {fileID: 7674416440654165999}
   muzzleFlash: {fileID: 1646419074991899261}
   ugA:
     upgradeName: Mega Range
@@ -236,13 +232,19 @@ MonoBehaviour:
     upgradeFactorX: 1
     upgradeFactorY: 3
   ugSpec:
-    upgradeName: Attached Charges
-    description: Attach explosive charges which explode on each target it hits
-    upgradeCost: 1300
+    upgradeName: Mega Shot
+    description: Fire a huge rod which does a ton of damage of penetrates very many
+      enemies
+    upgradeCost: 1500
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 2.5
+  manualFirerateMultiplier: 1
+  fireRate: 0.7
   specialBar: {fileID: 4924648402484541792}
   specialRate: 60
+  specialAmount: 0
+  specialTime: 0
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   damage: 2

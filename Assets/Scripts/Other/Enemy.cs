@@ -102,8 +102,10 @@ public class Enemy : MonoBehaviour {
         if(slowResist)
             return;
 
-        if(isBoss)
+        if(isBoss) {
             duration /= 2;
+            slowFactor *= 2;
+        }
 
         if(!isSlow) { //first slow, start to slow and start particles
             StartCoroutine(SlowEnemy(slowFactor, duration));

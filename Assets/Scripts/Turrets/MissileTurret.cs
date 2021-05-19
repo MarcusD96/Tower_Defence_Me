@@ -22,10 +22,6 @@ public class MissileTurret : ProjectileTurret {
                 ActivateSpecial();
             }
         }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
-        }
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, expl.rad. + 5
@@ -85,9 +81,8 @@ public class MissileTurret : ProjectileTurret {
     IEnumerator MissileMaelstrom() {
         StartCoroutine(SpecialTime());
         var g = new GameObject("Missiles");
-        print(g.transform.position);
-        g.transform.parent = transform;
-        g.transform.position = transform.position + Vector3.up;
+        g.transform.SetParent(transform, false);
+        g.transform.position = new Vector3(transform.position.x, fireSpawn.position.y, transform.position.z);
         for(int i = 0; i < specialMissileCount; i++) {
             GameObject tmp = projectilePrefab;
             projectilePrefab = specialPrefab;

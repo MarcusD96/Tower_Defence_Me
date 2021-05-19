@@ -14,7 +14,6 @@ public class TeslaTurret : BeamTurret {
     public float arcLength;
     public float arcVar, inaccuracy;
     public int maxArcs;
-    public float specialTime;
     [SerializeField]
     private IEnumerator fade;
     private bool abilityActivation = false;
@@ -34,10 +33,6 @@ public class TeslaTurret : BeamTurret {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();
             }
-        }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
         }
     }
 

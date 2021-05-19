@@ -25,10 +25,6 @@ public class TankTurret : ProjectileTurret {
     private new void Update() {
         base.Update();
 
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
-        }
-
         if(hasSpecial && manual) {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();

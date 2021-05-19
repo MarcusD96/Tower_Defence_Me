@@ -83,6 +83,9 @@ public class NodeUI : MonoBehaviour {
         else
             controlButton.interactable = true;
 
+        if(target.turret.GetComponent<FarmTower>() != null)
+            controlButton.interactable = false;
+
         //upg A button
         if(cash < t.ugA.GetUpgradeCost() || t.ugA.GetLevel() > 4)
             upgradeButtonA.interactable = false;
@@ -174,11 +177,6 @@ public class NodeUI : MonoBehaviour {
 
     void SetUIInfo() {
         var t = target.turret.GetComponent<Turret>();
-
-        if(target.turret.GetComponent<FarmTower>() != null)
-            controlButton.interactable = false;
-        else
-            controlButton.interactable = true;
 
         targetting.text = target.turret.GetComponent<Turret>().GetTargetting();
 

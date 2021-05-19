@@ -4,7 +4,7 @@ using UnityEngine;
 public class BulletTurret : ProjectileTurret {
 
     public GameObject specialPrefab;
-    public float specialTime, specialFireRate;
+    public float specialFireRate;
 
     void Awake() {
         projectileTurret = this;
@@ -19,10 +19,6 @@ public class BulletTurret : ProjectileTurret {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();
             }
-        }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
         }
     }
 

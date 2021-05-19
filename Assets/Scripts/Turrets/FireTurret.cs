@@ -6,7 +6,7 @@ public class FireTurret : Turret {
     [Header("Fire Turret")]
     public FireShot fireShot;
     public float damage, burnDamage, burnInterval;
-    public int penetration, numBurns, specialTime;
+    public int penetration, numBurns;
 
     void Awake() {
         fireTurret = this;
@@ -19,10 +19,6 @@ public class FireTurret : Turret {
             if(Input.GetMouseButtonDown(1)) {
                 ActivateSpecial();
             }
-        }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
         }
     }
 
@@ -58,7 +54,7 @@ public class FireTurret : Turret {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 
-        range *= 3.0f;
+        range *= 3.0f;  
         thisNode.UpdateRange(this);
 
         var tmpPos = turretCam.transform.localPosition;

@@ -43,10 +43,6 @@ public class LaserTurret : BeamTurret {
             if(tempSW.done)
                 Destroy(tempSW.gameObject);
         }
-
-        if(specialBar.fillBar.fillAmount <= 0) {
-            specialActivated = false;
-        }
     }
 
     float slowDurationEnd = float.MaxValue;

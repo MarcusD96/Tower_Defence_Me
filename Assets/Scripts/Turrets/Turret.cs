@@ -50,13 +50,14 @@ public class Turret : MonoBehaviour {
     public Upgrade ugB, ugSpec;
 
     [Header("Weapon Stats")]
-    public float manualRangeMultiplier, manualFirerateMultiplier;
+    public float manualRangeMultiplier;
+    public float manualFirerateMultiplier;
     public float fireRate; //shots per second, higher is faster
     protected float nextFire = 0.0f;
 
     [Header("Special")]
     public SpecialBar specialBar;
-    public float specialRate;
+    public float specialRate, specialAmount, specialTime;
 
     private string targetting;
     private int targettingMethod;
@@ -86,6 +87,9 @@ public class Turret : MonoBehaviour {
         } else {
             AutomaticControl();
         }
+
+        if(specialAmount <= 0)
+            specialActivated = false;
     }
 
     public void AttachNode(Node n) {
@@ -428,7 +432,9 @@ public class Turret : MonoBehaviour {
     public void ApplySpecial() {
         fireRate = maxFireRate;
         hasSpecial = true;
-        specialBar.gameObject.SetActive(true);
+        if(specialBar) {
+            specialBar.gameObject.SetActive(true); 
+        }
     }
 
     public virtual bool ActivateSpecial() {
@@ -437,11 +443,13 @@ public class Turret : MonoBehaviour {
     }
 
     protected IEnumerator SpecialTime() {
-        float fillTime = specialRate;
-        while(fillTime > 0) {
+        specialAmount = specialRate;
+        while(specialAmount > 0) {
             if(WaveSpawner.enemiesAlive > 0) {
-                fillTime -= Time.deltaTime;
-                specialBar.fillBar.fillAmount = fillTime / specialRate;
+                specialAmount -= Time.deltaTime;
+                if(specialBar) {
+                    specialBar.fillBar.fillAmount = specialAmount / specialRate; 
+                }
             }
             yield return null;
         }

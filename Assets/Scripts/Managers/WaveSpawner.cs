@@ -62,7 +62,7 @@ public class WaveSpawner : MonoBehaviour {
 #endif
 
         //set file
-        File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
+        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         //get file
         string s = File.ReadAllText(System.IO.Path.Combine(dataPath, "waves.json"));
@@ -187,7 +187,7 @@ public class WaveSpawner : MonoBehaviour {
     IEnumerator SpawnChunk(WaveChunk c) {
         yield return new WaitForSeconds(c.startDelay);
         for(int i = 0; i < c.count; i++) {
-            SpawnEnemy(ChooseEnemyPrefab(c.e));
+            SpawnEnemy(ChooseEnemyPrefab(c.type));
             if(c.spawnRate > 0) {
                 yield return new WaitForSeconds(1 / c.spawnRate);
             } else

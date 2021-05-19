@@ -246,7 +246,7 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   fireSpawn: {fileID: 9146972457393439272}
-  range: 0
+  range: 5
   maxFireRate: 0
   turretCam: {fileID: 0}
   overlayCam: {fileID: 0}
@@ -271,16 +271,22 @@ MonoBehaviour:
     upgradeFactorY: 0
   ugSpec:
     upgradeName: Special
-    description: 
-    upgradeCost: 100
+    description: Grants lots of cash and lives are occassionaly dropped.
+    upgradeCost: 3500
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1
   manualFirerateMultiplier: 1
   fireRate: 1
   specialBar: {fileID: 0}
-  specialRate: 0
-  value: 10
+  specialRate: 60
+  specialAmount: 0
+  specialTime: 0
+  specialCashNumSpawns: 10
+  specialCashValue: 200
+  cashValue: 10
   numSpawns: 5
+  lifeValue: 5
+  lifeChance: 10
   valueIndicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,
     type: 3}

@@ -159,6 +159,11 @@ public class Node : MonoBehaviour {
         //tank
         else if(turret.GetComponent<TankTurret>())
             SpecialActivator.MakeRundown(turret.GetComponent<TankTurret>());
+
+        //farm
+        else if(turret.GetComponent<FarmTower>()) {
+            SpecialActivator.MakeDoubleCash(turret.GetComponent<FarmTower>());
+        }
     }
 
     public void SellTurret() {

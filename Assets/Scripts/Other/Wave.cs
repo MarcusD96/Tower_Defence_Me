@@ -34,7 +34,7 @@ public class Wave {
 
 [System.Serializable]
 public class WaveChunk {
-    public EnemyType e;
+    public EnemyType type;
     public int count;
     public float spawnRate;
     public float startDelay;
