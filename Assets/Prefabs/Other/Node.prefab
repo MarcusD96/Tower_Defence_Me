@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2799969149261296954
 Transform:
@@ -110,9 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d777d5b11ae9f874287840228edab7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
-  errorColor: {r: 1, g: 0, b: 0, a: 0}
-  selectColor: {r: 0, g: 0, b: 1, a: 1}
   turret: {fileID: 0}
   currentFactory:
     turretPrefab: {fileID: 0}
@@ -147,6 +144,11 @@ PrefabInstance:
     - target: {fileID: 1073094017506548169, guid: 8d1137ab110a0ca40b40fa5c9fa756a6,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073094017506548169, guid: 8d1137ab110a0ca40b40fa5c9fa756a6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1073094017506548170, guid: 8d1137ab110a0ca40b40fa5c9fa756a6,

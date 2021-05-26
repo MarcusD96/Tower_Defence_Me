@@ -4,7 +4,31 @@ using UnityEngine;
 [System.Serializable]
 public class Wave {
 
+    public string name;
+
     public WaveChunk[] chunks;
+
+    [SerializeField]
+    int waveWorth = 0;
+
+    public void WaveWorth() {
+        foreach(var c in chunks) {
+            switch(c.type) {
+                case EnemyType.Simple_Boss:
+                    waveWorth += c.count * 250;
+                    break;
+                case EnemyType.Quick_Boss:
+                    waveWorth += c.count * 400;
+                    break;
+                case EnemyType.Tank_Boss:
+                    waveWorth += c.count * 1000;
+                    break;
+                default:
+                    waveWorth += c.count * 5;
+                    break;
+            }
+        }
+    }
 
     public int GetTotalEnemies() {
         int total = 0;

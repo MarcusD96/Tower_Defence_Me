@@ -4,21 +4,46 @@
             "chunks": [
                 {
                     "type": 0,
-                    "count": 8,
+                    "count": 6,
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 30
         },
         {
             "chunks": [
                 {
                     "type": 0,
-                    "count": 16,
+                    "count": 12,
                     "spawnRate": 1.149999976158142,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 60
+        },
+        {
+            "chunks": [
+                {
+                    "type": 0,
+                    "count": 6,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "type": 0,
+                    "count": 10,
+                    "spawnRate": 2.0,
+                    "startDelay": 9.0
+                },
+                {
+                    "type": 0,
+                    "count": 6,
+                    "spawnRate": 1.0,
+                    "startDelay": 15.5
+                }
+            ],
+            "waveWorth": 110
         },
         {
             "chunks": [
@@ -30,55 +55,35 @@
                 },
                 {
                     "type": 0,
-                    "count": 8,
+                    "count": 15,
                     "spawnRate": 1.5,
-                    "startDelay": 9.0
+                    "startDelay": 10.0
                 },
                 {
                     "type": 0,
                     "count": 8,
                     "spawnRate": 2.0,
-                    "startDelay": 15.5
+                    "startDelay": 20.0
                 }
-            ]
+            ],
+            "waveWorth": 155
         },
         {
             "chunks": [
                 {
                     "type": 0,
-                    "count": 8,
-                    "spawnRate": 1.0,
-                    "startDelay": 0.0
-                },
-                {
-                    "type": 0,
-                    "count": 8,
-                    "spawnRate": 1.5,
-                    "startDelay": 9.0
-                },
-                {
-                    "type": 0,
-                    "count": 8,
-                    "spawnRate": 2.0,
-                    "startDelay": 15.5
-                }
-            ]
-        },
-        {
-            "chunks": [
-                {
-                    "type": 0,
-                    "count": 30,
+                    "count": 25,
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 },
                 {
                     "type": 1,
                     "count": 5,
-                    "spawnRate": 3.0,
+                    "spawnRate": 2.0,
                     "startDelay": 15.0
                 }
-            ]
+            ],
+            "waveWorth": 150
         },
         {
             "chunks": [
@@ -100,7 +105,8 @@
                     "spawnRate": 4.0,
                     "startDelay": 25.0
                 }
-            ]
+            ],
+            "waveWorth": 225
         },
         {
             "chunks": [
@@ -116,7 +122,8 @@
                     "spawnRate": 2.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 300
         },
         {
             "chunks": [
@@ -144,7 +151,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 425
         },
         {
             "chunks": [
@@ -232,7 +240,8 @@
                     "spawnRate": 0.5,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 450
         },
         {
             "chunks": [
@@ -248,7 +257,8 @@
                     "spawnRate": 0.20000000298023225,
                     "startDelay": 5.0
                 }
-            ]
+            ],
+            "waveWorth": 295
         },
         {
             "chunks": [
@@ -270,7 +280,8 @@
                     "spawnRate": 2.0,
                     "startDelay": 30.0
                 }
-            ]
+            ],
+            "waveWorth": 275
         },
         {
             "chunks": [
@@ -286,7 +297,8 @@
                     "spawnRate": 2.5,
                     "startDelay": 10.0
                 }
-            ]
+            ],
+            "waveWorth": 500
         },
         {
             "chunks": [
@@ -308,7 +320,8 @@
                     "spawnRate": 0.5,
                     "startDelay": 10.0
                 }
-            ]
+            ],
+            "waveWorth": 575
         },
         {
             "chunks": [
@@ -342,29 +355,31 @@
                     "spawnRate": 5.0,
                     "startDelay": 75.0
                 }
-            ]
+            ],
+            "waveWorth": 1500
         },
         {
             "chunks": [
                 {
                     "type": 0,
-                    "count": 200,
+                    "count": 150,
                     "spawnRate": 3.3299999237060549,
                     "startDelay": 0.0
                 },
                 {
                     "type": 1,
-                    "count": 150,
+                    "count": 100,
                     "spawnRate": 2.5,
-                    "startDelay": 0.0
+                    "startDelay": 30.0
                 },
                 {
                     "type": 2,
-                    "count": 100,
-                    "spawnRate": 1.6699999570846558,
+                    "count": 25,
+                    "spawnRate": 0.75,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 1375
         },
         {
             "chunks": [
@@ -386,7 +401,8 @@
                     "spawnRate": 2.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 2875
         },
         {
             "chunks": [
@@ -426,7 +442,8 @@
                     "spawnRate": 7.5,
                     "startDelay": 41.0
                 }
-            ]
+            ],
+            "waveWorth": 3125
         },
         {
             "chunks": [
@@ -436,7 +453,8 @@
                     "spawnRate": 20.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5000
         },
         {
             "chunks": [
@@ -446,7 +464,8 @@
                     "spawnRate": 30.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 3750
         },
         {
             "chunks": [
@@ -456,7 +475,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 250
         },
         {
             "chunks": [
@@ -652,7 +672,8 @@
                     "spawnRate": 2.0,
                     "startDelay": 60.0
                 }
-            ]
+            ],
+            "waveWorth": 715
         },
         {
             "chunks": [
@@ -818,7 +839,8 @@
                     "spawnRate": 8.0,
                     "startDelay": 75.0
                 }
-            ]
+            ],
+            "waveWorth": 2050
         },
         {
             "chunks": [
@@ -858,7 +880,8 @@
                     "spawnRate": 0.25,
                     "startDelay": 22.0
                 }
-            ]
+            ],
+            "waveWorth": 2000
         },
         {
             "chunks": [
@@ -886,7 +909,8 @@
                     "spawnRate": 0.0,
                     "startDelay": 35.0
                 }
-            ]
+            ],
+            "waveWorth": 1900
         },
         {
             "chunks": [
@@ -902,7 +926,8 @@
                     "spawnRate": 0.25,
                     "startDelay": 1.0
                 }
-            ]
+            ],
+            "waveWorth": 3250
         },
         {
             "chunks": [
@@ -924,7 +949,8 @@
                     "spawnRate": 5.0,
                     "startDelay": 60.0
                 }
-            ]
+            ],
+            "waveWorth": 4500
         },
         {
             "chunks": [
@@ -940,7 +966,8 @@
                     "spawnRate": 5.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 3250
         },
         {
             "chunks": [
@@ -962,7 +989,8 @@
                     "spawnRate": 1.5,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5825
         },
         {
             "chunks": [
@@ -990,7 +1018,8 @@
                     "spawnRate": 4.0,
                     "startDelay": 5.0
                 }
-            ]
+            ],
+            "waveWorth": 5500
         },
         {
             "chunks": [
@@ -1000,7 +1029,8 @@
                     "spawnRate": 0.33000001311302187,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 2000
         },
         {
             "chunks": [
@@ -1022,7 +1052,8 @@
                     "spawnRate": 0.10000000149011612,
                     "startDelay": 11.0
                 }
-            ]
+            ],
+            "waveWorth": 4700
         },
         {
             "chunks": [
@@ -1050,7 +1081,8 @@
                     "spawnRate": 0.05000000074505806,
                     "startDelay": 15.0
                 }
-            ]
+            ],
+            "waveWorth": 4600
         },
         {
             "chunks": [
@@ -1084,7 +1116,8 @@
                     "spawnRate": 0.5,
                     "startDelay": 95.0
                 }
-            ]
+            ],
+            "waveWorth": 6250
         },
         {
             "chunks": [
@@ -1148,7 +1181,8 @@
                     "spawnRate": 0.6000000238418579,
                     "startDelay": 80.0
                 }
-            ]
+            ],
+            "waveWorth": 1950
         },
         {
             "chunks": [
@@ -1164,7 +1198,8 @@
                     "spawnRate": 0.6650000214576721,
                     "startDelay": 15.0
                 }
-            ]
+            ],
+            "waveWorth": 9800
         },
         {
             "chunks": [
@@ -1174,7 +1209,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5
         },
         {
             "chunks": [
@@ -1184,7 +1220,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5
         },
         {
             "chunks": [
@@ -1194,7 +1231,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5
         },
         {
             "chunks": [
@@ -1204,7 +1242,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 5
         },
         {
             "chunks": [
@@ -1214,7 +1253,8 @@
                     "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
-            ]
+            ],
+            "waveWorth": 1000
         }
     ]
 }

@@ -24,6 +24,13 @@ public class WaveSpawner : MonoBehaviour {
     public static WaveSpawner instance;
 
     void Awake() {
+        if(instance) {
+            Debug.LogError("more than 1 wavespawner, deleting current");
+            Destroy(this);
+            return;
+        }
+        instance = this;
+
         gameManager = GetComponent<GameManager>();
         foreach(var s in FindObjectsOfType<Button>(true)) {
             if(s.CompareTag("StartButton")) {
@@ -40,12 +47,6 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void Start() {
-        if(instance) {
-            Debug.LogError("more than 1 wavespawner, deleting current");
-            Destroy(this);
-            return;
-        }
-        instance = this;
         spawnPoint = Path.waypoints[0];
         InitializeWaves();
     }
@@ -62,11 +63,17 @@ public class WaveSpawner : MonoBehaviour {
 #endif
 
         //set file
-        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
+        File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         //get file
         string s = File.ReadAllText(System.IO.Path.Combine(dataPath, "waves.json"));
         waves = JsonHelper.FromJson<Wave>(s);
+
+        foreach(var w in waves) {
+            w.WaveWorth();
+        }
+
+        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         enemiesAlive = currentWave = 0;
         maxWaves = PlayerStats.maxRounds;

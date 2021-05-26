@@ -27,31 +27,15 @@ public class Enemy : MonoBehaviour {
     public bool superSlow, isDamaging, isDead, isSlow;
 
     [Header("Resistances")]
-    public bool isBoss;
-    public bool stunResist, slowResist, burnResist;
+    public bool stunResist;
+    public bool slowResist, burnResist, isBoss;
 
     void Awake() {
-        startHp = baseHp * difficultyMultiplier;
-        startSpeed = baseSpeed * difficultyMultiplier;
+        Initialize();
+    }
 
-        currentSpeed = baseSpeed * difficultyMultiplier;
-        currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
-
-        currentMoneyValue = moneyValue;
-        distanceTravelled = 0.0f;
-
-        superSlow = isDamaging = isSlow = false;
-        isDead = true;
-
-        if(slowEffect != null) {
-            slowEffect.gameObject.SetActive(false);
-        }
-        if(stunEffect != null) {
-            stunEffect.gameObject.SetActive(false);
-        }
-        if(burnEffect != null) {
-            burnEffect.gameObject.SetActive(false);
-        }
+    void Initialize() {
+        ResetEnemy();
     }
 
     public void DecreaseMoneyValue() {
@@ -224,9 +208,31 @@ public class Enemy : MonoBehaviour {
     }
 
     public void ResetEnemy() {
+        startHp = baseHp * difficultyMultiplier;
+        startSpeed = baseSpeed * difficultyMultiplier;
+
+        currentSpeed = baseSpeed * difficultyMultiplier;
+        currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
+
+        currentMoneyValue = moneyValue;
+        distanceTravelled = 0.0f;
+
+        superSlow = isDamaging = isSlow = false;
+        isDead = true;
+
         stun = burn = null;
-        Awake();
-        healthBarL.fillAmount = healthBarR.fillAmount = 1;
         StopAllCoroutines();
+
+        if(slowEffect != null) {
+            slowEffect.gameObject.SetActive(false);
+        }
+        if(stunEffect != null) {
+            stunEffect.gameObject.SetActive(false);
+        }
+        if(burnEffect != null) {
+            burnEffect.gameObject.SetActive(false);
+        }
+
+        healthBarL.fillAmount = healthBarR.fillAmount = 1;
     }
 }

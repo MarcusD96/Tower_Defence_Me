@@ -54,17 +54,22 @@ MonoBehaviour:
   - {fileID: 3498438954662709570, guid: 3774a30bca8d6684c89b9bca4e8e4adb, type: 3}
   - {fileID: 3498438954662709570, guid: 25df34836e88df34292bbbfe929a94c2, type: 3}
   waves:
-  - chunks:
+  - name: 
+    chunks:
     - type: 0
       count: 6
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 12
       spawnRate: 1.15
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 6
       spawnRate: 1
@@ -77,7 +82,9 @@ MonoBehaviour:
       count: 6
       spawnRate: 1
       startDelay: 15.5
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 8
       spawnRate: 1
@@ -90,7 +97,9 @@ MonoBehaviour:
       count: 8
       spawnRate: 2
       startDelay: 20
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 25
       spawnRate: 1
@@ -99,7 +108,9 @@ MonoBehaviour:
       count: 5
       spawnRate: 2
       startDelay: 15
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 30
       spawnRate: 1
@@ -112,7 +123,9 @@ MonoBehaviour:
       count: 5
       spawnRate: 4
       startDelay: 25
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 20
       spawnRate: 5
@@ -121,7 +134,9 @@ MonoBehaviour:
       count: 40
       spawnRate: 2
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 15
       spawnRate: 5
@@ -138,7 +153,9 @@ MonoBehaviour:
       count: 40
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 5
       spawnRate: 3
@@ -195,7 +212,9 @@ MonoBehaviour:
       count: 25
       spawnRate: 0.5
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 50
       spawnRate: 1
@@ -204,7 +223,9 @@ MonoBehaviour:
       count: 9
       spawnRate: 0.2
       startDelay: 5
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 1
       count: 20
       spawnRate: 2
@@ -217,7 +238,9 @@ MonoBehaviour:
       count: 20
       spawnRate: 2
       startDelay: 30
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 50
       spawnRate: 1
@@ -226,7 +249,9 @@ MonoBehaviour:
       count: 50
       spawnRate: 2.5
       startDelay: 10
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 50
       spawnRate: 1.5
@@ -239,7 +264,9 @@ MonoBehaviour:
       count: 15
       spawnRate: 0.5
       startDelay: 10
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 200
       spawnRate: 2
@@ -260,20 +287,24 @@ MonoBehaviour:
       count: 40
       spawnRate: 5
       startDelay: 75
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
-      count: 200
+      count: 150
       spawnRate: 3.33
       startDelay: 0
     - type: 1
-      count: 150
-      spawnRate: 2.5
-      startDelay: 0
-    - type: 2
       count: 100
-      spawnRate: 1.67
+      spawnRate: 2.5
+      startDelay: 30
+    - type: 2
+      count: 25
+      spawnRate: 0.75
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 300
       spawnRate: 4
@@ -286,7 +317,9 @@ MonoBehaviour:
       count: 125
       spawnRate: 2
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 2
       count: 100
       spawnRate: 2
@@ -311,22 +344,30 @@ MonoBehaviour:
       count: 75
       spawnRate: 7.5
       startDelay: 41
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 1000
       spawnRate: 20
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 1
       count: 750
       spawnRate: 30
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 1
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 1
       spawnRate: 1
@@ -455,7 +496,9 @@ MonoBehaviour:
       count: 3
       spawnRate: 2
       startDelay: 60
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 3
       spawnRate: 0.067
@@ -564,7 +607,9 @@ MonoBehaviour:
       count: 10
       spawnRate: 8
       startDelay: 75
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 100
       spawnRate: 2
@@ -589,7 +634,9 @@ MonoBehaviour:
       count: 2
       spawnRate: 0.25
       startDelay: 22
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 150
       spawnRate: 40
@@ -606,7 +653,9 @@ MonoBehaviour:
       count: 1
       spawnRate: 0
       startDelay: 35
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 1
       count: 400
       spawnRate: 20
@@ -615,7 +664,9 @@ MonoBehaviour:
       count: 5
       spawnRate: 0.25
       startDelay: 1
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 10
       spawnRate: 0.2
@@ -628,7 +679,9 @@ MonoBehaviour:
       count: 200
       spawnRate: 5
       startDelay: 60
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 10
       spawnRate: 0.3
@@ -637,7 +690,9 @@ MonoBehaviour:
       count: 150
       spawnRate: 5
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 10
       spawnRate: 0.1
@@ -650,7 +705,9 @@ MonoBehaviour:
       count: 165
       spawnRate: 1.5
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 10
       spawnRate: 0.2
@@ -667,12 +724,16 @@ MonoBehaviour:
       count: 200
       spawnRate: 4
       startDelay: 5
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 4
       count: 5
       spawnRate: 0.33
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 300
       spawnRate: 5
@@ -685,7 +746,9 @@ MonoBehaviour:
       count: 4
       spawnRate: 0.1
       startDelay: 11
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 2
       count: 200
       spawnRate: 2
@@ -702,7 +765,9 @@ MonoBehaviour:
       count: 4
       spawnRate: 0.05
       startDelay: 15
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 200
       spawnRate: 5
@@ -723,7 +788,9 @@ MonoBehaviour:
       count: 5
       spawnRate: 0.5
       startDelay: 95
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 30
       spawnRate: 1.5
@@ -764,7 +831,9 @@ MonoBehaviour:
       count: 3
       spawnRate: 0.6
       startDelay: 80
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 3
       count: 20
       spawnRate: 0.5
@@ -773,31 +842,42 @@ MonoBehaviour:
       count: 12
       spawnRate: 0.665
       startDelay: 15
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 0
       count: 1
       spawnRate: 1
       startDelay: 0
-  - chunks:
+    waveWorth: 0
+  - name: 
+    chunks:
     - type: 5
       count: 1
       spawnRate: 1
       startDelay: 0
+    waveWorth: 0
   waveIndex: 0
 --- !u!114 &1908031512084050298
 MonoBehaviour:
