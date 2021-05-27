@@ -1,11 +1,11 @@
 ﻿
 public class Settings {
 
-    public static float Sounds = 5;
+    public static float Sounds = 50;
 
     public static float Music = 5;
 
-    public static float Sensitivity = 150;
+    public static float Sensitivity = 125;
 
     public static bool UseKeys = false;
 

@@ -4,14 +4,14 @@ public class PlayerStats {
 
     public static int startMoney = 650, lives = 100, maxLives = 9999, rounds = 0, maxRounds = 20;
     public static float money;
-    public static string nextLevel;
+    public static string levelToLoad;
     public static Difficulty difficulty;
 
     public static void ResetToDifficulty() {
         switch(difficulty) {
             case Difficulty.Easy:     //easy
                 GameMode.survival = false;
-                Enemy.difficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 0.85f;
+                Enemy.difficultyMultiplier = Upgrade.costDifficultyMultiplier = TurretFactory.costDifficultyMultiplier = 0.9f;
                 lives = 100;
                 maxRounds = 20;
                 break;

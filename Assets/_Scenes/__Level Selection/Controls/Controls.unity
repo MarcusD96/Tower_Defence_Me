@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 36f0fa364bf05f4429b08bdf4964b523,
+  m_LightingDataAsset: {fileID: 112000000, guid: 137b1ac48bf2efc46955c6d0b0a84d17,
     type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 27ac181b9dc249d4eb6f203755930fd4,
+  m_LightingSettings: {fileID: 4890085278179872738, guid: dff4158087007694fb7a77f38455d4a6,
     type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -376,14 +376,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 274700621}
         m_TargetAssemblyTypeName: SceneFader, Assembly-CSharp
-        m_MethodName: FadeToLevel
-        m_Mode: 1
+        m_MethodName: FadeTo
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Loading
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &532942920

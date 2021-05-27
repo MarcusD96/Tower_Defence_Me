@@ -5,7 +5,8 @@ public class PauseMenu : MonoBehaviour {
 
     public static bool paused;
 
-    public GameObject ui, settings;
+    public GameObject ui;
+    private GameObject settings;
     private SceneFader sceneFader;
     private float timeScale_prev;
     private string menuSceneName = "Main Menu";
@@ -13,6 +14,8 @@ public class PauseMenu : MonoBehaviour {
 
     void Awake() {
         sceneFader = FindObjectOfType<SceneFader>();
+        ui = FindObjectOfType<PauseMenu>().transform.GetChild(0).gameObject;
+        settings = FindObjectOfType<SettingsMenu>(true).gameObject;
         paused = false;
     }
 

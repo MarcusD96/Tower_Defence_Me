@@ -1,6 +1,7 @@
 {
     "Items": [
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -9,9 +10,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 30
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -20,9 +22,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 60
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -43,9 +46,10 @@
                     "startDelay": 15.5
                 }
             ],
-            "waveWorth": 110
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -66,9 +70,10 @@
                     "startDelay": 20.0
                 }
             ],
-            "waveWorth": 155
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -83,9 +88,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 150
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -106,9 +112,10 @@
                     "startDelay": 25.0
                 }
             ],
-            "waveWorth": 225
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -123,9 +130,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 300
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -152,9 +160,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 425
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -241,9 +250,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 450
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -258,9 +268,10 @@
                     "startDelay": 5.0
                 }
             ],
-            "waveWorth": 295
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 1,
@@ -281,9 +292,10 @@
                     "startDelay": 30.0
                 }
             ],
-            "waveWorth": 275
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -298,9 +310,10 @@
                     "startDelay": 10.0
                 }
             ],
-            "waveWorth": 500
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -321,9 +334,10 @@
                     "startDelay": 10.0
                 }
             ],
-            "waveWorth": 575
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -356,9 +370,10 @@
                     "startDelay": 75.0
                 }
             ],
-            "waveWorth": 1500
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -379,9 +394,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 1375
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -402,9 +418,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 2875
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 2,
@@ -443,9 +460,10 @@
                     "startDelay": 41.0
                 }
             ],
-            "waveWorth": 3125
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -454,9 +472,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5000
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 1,
@@ -465,9 +484,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 3750
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -476,9 +496,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 250
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -673,9 +694,10 @@
                     "startDelay": 60.0
                 }
             ],
-            "waveWorth": 715
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -840,9 +862,10 @@
                     "startDelay": 75.0
                 }
             ],
-            "waveWorth": 2050
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -881,9 +904,10 @@
                     "startDelay": 22.0
                 }
             ],
-            "waveWorth": 2000
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -910,9 +934,10 @@
                     "startDelay": 35.0
                 }
             ],
-            "waveWorth": 1900
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 1,
@@ -927,9 +952,10 @@
                     "startDelay": 1.0
                 }
             ],
-            "waveWorth": 3250
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -950,9 +976,10 @@
                     "startDelay": 60.0
                 }
             ],
-            "waveWorth": 4500
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -967,9 +994,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 3250
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -990,9 +1018,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5825
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -1019,9 +1048,10 @@
                     "startDelay": 5.0
                 }
             ],
-            "waveWorth": 5500
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 4,
@@ -1030,9 +1060,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 2000
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1053,9 +1084,10 @@
                     "startDelay": 11.0
                 }
             ],
-            "waveWorth": 4700
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 2,
@@ -1082,9 +1114,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 4600
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1117,9 +1150,10 @@
                     "startDelay": 95.0
                 }
             ],
-            "waveWorth": 6250
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1182,9 +1216,10 @@
                     "startDelay": 80.0
                 }
             ],
-            "waveWorth": 1950
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 3,
@@ -1199,9 +1234,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 9800
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1210,9 +1246,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1221,9 +1258,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1232,9 +1270,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 0,
@@ -1243,9 +1282,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 5
+            "waveWorth": 0
         },
         {
+            "name": "",
             "chunks": [
                 {
                     "type": 5,
@@ -1254,7 +1294,7 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 1000
+            "waveWorth": 0
         }
     ]
 }

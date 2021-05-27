@@ -16,7 +16,7 @@ public class LevelSelector : MonoBehaviour {
         int levelReached = PlayerPrefs.GetInt("levelReached", 1);
 
         Debug.LogWarning("IMPORTANT: CHANGE BACK TO 1 AFTER DEVELOPMENT");
-        levelReached = 6;
+        levelReached = int.MaxValue;
         //**********CHANGE WHEN NOT IN DEVELOPMENT BACK TO 1*************//
 
         for(int i = 0; i < levelButtons.Length; i++) {
@@ -32,7 +32,7 @@ public class LevelSelector : MonoBehaviour {
 
     public void SelectLevel(string levelName_) {
         levelName = levelName_;
-        PlayerStats.nextLevel = levelName_;
+        PlayerStats.levelToLoad = levelName_;
         difficulty.SetActive(true);
     }
 
