@@ -342,9 +342,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 2484036753030999528}
   range: 21
-  manualRangeMultiplier: 1.5
-  manualFirerateMultiplier: 1.25
-  fireRate: 0.7
   maxFireRate: 0
   turretCam: {fileID: 7206695569095409826}
   overlayCam: {fileID: 5086105993992064825}
@@ -358,23 +355,28 @@ MonoBehaviour:
   ugA:
     upgradeName: Rocket Fuel Efficency
     description: Dramatically increase the towers range.
-    upgradeCost: 100
+    baseCost: 100
     upgradeFactorX: 3
     upgradeFactorY: 0
   ugB:
     upgradeName: Powerful Warheads
     description: Increase warhead damage and its explosive power.
-    upgradeCost: 350
+    baseCost: 350
     upgradeFactorX: 0.3
     upgradeFactorY: 1
   ugSpec:
-    upgradeName: Missile Barrage
-    description: Swiftly launch a barrage of 20 missiles towards enemies.
-    upgradeCost: 2050
+    upgradeName: Missile Maelstrome
+    description: Missiles....everywhere.
+    baseCost: 2100
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 1.5
+  manualFirerateMultiplier: 1.25
+  fireRate: 0.7
   specialBar: {fileID: 1531281856564686637}
   specialRate: 25
+  specialAmount: 0
+  specialTime: 0
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   damage: 1

@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,20 +16,29 @@ public class EnemyPool : MonoBehaviour {
     }
 
     private void Start() {
-        GameObject tmp;
         pool = new List<GameObject>[enemies.Length];
         spawn = Path.waypoints[0].position;
+        StartCoroutine(SpawnEnemies());
+    }
 
+    [HideInInspector]
+    public bool finishedLoading = false;
+    IEnumerator SpawnEnemies() {
+        GameObject tmp;
         for(int count = 0; count < enemies.Length; count++) {
             var p = new GameObject(enemies[count].enemy.name);
             p.transform.SetParent(gameObject.transform);
             pool[count] = new List<GameObject>();
-            for(int num = 0; num < enemies[count].amount; num++) {
-                tmp = Instantiate(enemies[count].enemy, p.transform);
-                tmp.SetActive(false);
-                pool[count].Add(tmp);
+            for(int num = 0; num < enemies[count].amount; num += 10) {
+                for(int i = 0; i < 10; i++) {
+                    tmp = Instantiate(enemies[count].enemy, p.transform);
+                    tmp.SetActive(false);
+                    pool[count].Add(tmp);
+                }
+                yield return null;
             }
         }
+        finishedLoading = true;
     }
 
     public GameObject Activate(EnemyType e, Vector3 pos, Quaternion rot) {
@@ -41,6 +51,7 @@ public class EnemyPool : MonoBehaviour {
                 currTrans.position = pos;
                 currTrans.rotation = rot;
                 currEnemy.GetComponent<Enemy>().isDead = false;
+                currEnemy.GetComponent<Enemy>().ResetEnemy();
                 return currEnemy;
             }
         }
@@ -52,6 +63,7 @@ public class EnemyPool : MonoBehaviour {
         newTrans.parent = transform;
         pool[(int) e].Add(newEnemy);
         newEnemy.GetComponent<Enemy>().isDead = false;
+        newEnemy.GetComponent<Enemy>().ResetEnemy();
         return newEnemy;
     }
 

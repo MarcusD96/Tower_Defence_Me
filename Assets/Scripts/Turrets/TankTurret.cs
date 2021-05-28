@@ -39,6 +39,9 @@ public class TankTurret : ProjectileTurret {
             GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
             Projectile proj = prpojectileGO.GetComponent<Projectile>();
 
+            var g = Instantiate(muzzleFlash, fireSpawn);
+            Destroy(g, 0.2f);
+
             Ray ray = new Ray(pivot.position, shotDirection);
             proj.SetLifePositions(pivot.position, ray.GetPoint(range));
             proj.SetDamage(damage, bossDamage);
@@ -57,6 +60,9 @@ public class TankTurret : ProjectileTurret {
             //spawn proj, get the proj info
             GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
             Projectile proj = projGO.GetComponent<Projectile>();
+
+            var g = Instantiate(muzzleFlash, fireSpawn);
+            Destroy(g, 0.2f);
 
             //set proj info
             proj.SetDamage(damage, bossDamage);

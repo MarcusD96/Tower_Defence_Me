@@ -20013,19 +20013,19 @@ MonoBehaviour:
   ugA:
     upgradeName: Enhanced Range
     description: Grants a little extra reach to hit extra track.
-    upgradeCost: 35
+    baseCost: 35
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Mo' Powwa Babee
     description: Slower effect that lasts longer with a bigger beam.
-    upgradeCost: 145
+    baseCost: 145
     upgradeFactorX: 5
     upgradeFactorY: 0.1
   ugSpec:
     upgradeName: EMP
     description: Strike a very large area with a crippling slow effect
-    upgradeCost: 1950
+    baseCost: 1950
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1.5

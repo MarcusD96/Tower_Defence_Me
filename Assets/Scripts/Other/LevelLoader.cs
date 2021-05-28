@@ -3,18 +3,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
-    SceneFader fader;
+    public bool stay;
 
     private void Awake() {
-        fader = FindObjectOfType<SceneFader>();
         StartCoroutine(LoadNextLevel(PlayerStats.levelToLoad));
     }
 
     IEnumerator LoadNextLevel(string scene) {
-        yield return new WaitForSeconds(3.0f);
-        AsyncOperation op = SceneManager.LoadSceneAsync(scene);
-        while(!op.isDone) {
+        if(stay)
+            yield break;
+
+        AsyncOperation op = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        while(op.isDone) {
             yield return null;
         }
+        Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
+        yield return new WaitForSeconds(0.01f);
+        var pool = FindObjectOfType<EnemyPool>(true);
+        while(!pool.finishedLoading)
+            yield return null;
+        SceneManager.UnloadSceneAsync("Loading");
     }
 }

@@ -4376,7 +4376,7 @@ MonoBehaviour:
       type: 3}
     costText: {fileID: 4276828082735481605}
     border: {fileID: 5129755389157747895}
-    cost: 650
+    cost: 350
   standardTurretBtn: {fileID: 3902827407003839167}
   missileLauncherBtn: {fileID: 8481562842950609568}
   laserBeamerBtn: {fileID: 8409722659613457354}

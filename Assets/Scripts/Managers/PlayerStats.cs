@@ -2,10 +2,10 @@
 
 public class PlayerStats {
 
-    public static int startMoney = 650, lives = 100, maxLives = 9999, rounds = 0, maxRounds = 20;
+    public static int startMoney = 750, lives = 100, maxLives = 9999, rounds = 0, maxRounds = 40;
     public static float money;
     public static string levelToLoad;
-    public static Difficulty difficulty;
+    public static Difficulty difficulty = Difficulty.Medium;
 
     public static void ResetToDifficulty() {
         switch(difficulty) {

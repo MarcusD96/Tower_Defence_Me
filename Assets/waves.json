@@ -1,31 +1,31 @@
 {
     "Items": [
         {
-            "name": "",
+            "name": "1",
             "chunks": [
                 {
                     "type": 0,
                     "count": 6,
-                    "spawnRate": 1.0,
+                    "spawnRate": 0.75,
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 60
         },
         {
-            "name": "",
+            "name": "2",
             "chunks": [
                 {
                     "type": 0,
                     "count": 12,
-                    "spawnRate": 1.149999976158142,
+                    "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 120
         },
         {
-            "name": "",
+            "name": "3",
             "chunks": [
                 {
                     "type": 0,
@@ -46,10 +46,10 @@
                     "startDelay": 15.5
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 220
         },
         {
-            "name": "",
+            "name": "4",
             "chunks": [
                 {
                     "type": 0,
@@ -70,10 +70,10 @@
                     "startDelay": 20.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 310
         },
         {
-            "name": "",
+            "name": "5",
             "chunks": [
                 {
                     "type": 0,
@@ -88,10 +88,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 300
         },
         {
-            "name": "",
+            "name": "6",
             "chunks": [
                 {
                     "type": 0,
@@ -112,10 +112,10 @@
                     "startDelay": 25.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 450
         },
         {
-            "name": "",
+            "name": "7",
             "chunks": [
                 {
                     "type": 0,
@@ -130,10 +130,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 600
         },
         {
-            "name": "",
+            "name": "8",
             "chunks": [
                 {
                     "type": 0,
@@ -160,10 +160,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 850
         },
         {
-            "name": "",
+            "name": "9",
             "chunks": [
                 {
                     "type": 0,
@@ -250,10 +250,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 900
         },
         {
-            "name": "",
+            "name": "10",
             "chunks": [
                 {
                     "type": 0,
@@ -268,10 +268,10 @@
                     "startDelay": 5.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 590
         },
         {
-            "name": "",
+            "name": "11",
             "chunks": [
                 {
                     "type": 1,
@@ -292,10 +292,10 @@
                     "startDelay": 30.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 550
         },
         {
-            "name": "",
+            "name": "12",
             "chunks": [
                 {
                     "type": 0,
@@ -310,10 +310,10 @@
                     "startDelay": 10.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 1000
         },
         {
-            "name": "",
+            "name": "13",
             "chunks": [
                 {
                     "type": 0,
@@ -334,10 +334,10 @@
                     "startDelay": 10.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 1150
         },
         {
-            "name": "",
+            "name": "14",
             "chunks": [
                 {
                     "type": 0,
@@ -370,10 +370,10 @@
                     "startDelay": 75.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 3000
         },
         {
-            "name": "",
+            "name": "15",
             "chunks": [
                 {
                     "type": 0,
@@ -394,10 +394,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 2750
         },
         {
-            "name": "",
+            "name": "16",
             "chunks": [
                 {
                     "type": 0,
@@ -413,15 +413,15 @@
                 },
                 {
                     "type": 2,
-                    "count": 125,
-                    "spawnRate": 2.0,
+                    "count": 80,
+                    "spawnRate": 1.0,
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 5300
         },
         {
-            "name": "",
+            "name": "17",
             "chunks": [
                 {
                     "type": 2,
@@ -460,10 +460,10 @@
                     "startDelay": 41.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 6250
         },
         {
-            "name": "",
+            "name": "18",
             "chunks": [
                 {
                     "type": 0,
@@ -472,10 +472,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 10000
         },
         {
-            "name": "",
+            "name": "19",
             "chunks": [
                 {
                     "type": 1,
@@ -484,10 +484,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 7500
         },
         {
-            "name": "",
+            "name": "20",
             "chunks": [
                 {
                     "type": 3,
@@ -496,10 +496,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 500
         },
         {
-            "name": "",
+            "name": "21",
             "chunks": [
                 {
                     "type": 3,
@@ -694,10 +694,10 @@
                     "startDelay": 60.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 1430
         },
         {
-            "name": "",
+            "name": "22",
             "chunks": [
                 {
                     "type": 3,
@@ -862,10 +862,10 @@
                     "startDelay": 75.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 4100
         },
         {
-            "name": "",
+            "name": "23",
             "chunks": [
                 {
                     "type": 0,
@@ -904,10 +904,10 @@
                     "startDelay": 22.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 4000
         },
         {
-            "name": "",
+            "name": "24",
             "chunks": [
                 {
                     "type": 0,
@@ -934,10 +934,10 @@
                     "startDelay": 35.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 3800
         },
         {
-            "name": "",
+            "name": "25",
             "chunks": [
                 {
                     "type": 1,
@@ -952,10 +952,10 @@
                     "startDelay": 1.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 6500
         },
         {
-            "name": "",
+            "name": "26",
             "chunks": [
                 {
                     "type": 3,
@@ -976,10 +976,10 @@
                     "startDelay": 60.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 9000
         },
         {
-            "name": "",
+            "name": "27",
             "chunks": [
                 {
                     "type": 3,
@@ -994,10 +994,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 6500
         },
         {
-            "name": "",
+            "name": "28",
             "chunks": [
                 {
                     "type": 3,
@@ -1018,10 +1018,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 11650
         },
         {
-            "name": "",
+            "name": "29",
             "chunks": [
                 {
                     "type": 3,
@@ -1048,10 +1048,10 @@
                     "startDelay": 5.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 11000
         },
         {
-            "name": "",
+            "name": "30",
             "chunks": [
                 {
                     "type": 4,
@@ -1060,10 +1060,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 4000
         },
         {
-            "name": "",
+            "name": "31",
             "chunks": [
                 {
                     "type": 0,
@@ -1084,10 +1084,10 @@
                     "startDelay": 11.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 9400
         },
         {
-            "name": "",
+            "name": "32",
             "chunks": [
                 {
                     "type": 2,
@@ -1114,10 +1114,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 9200
         },
         {
-            "name": "",
+            "name": "33",
             "chunks": [
                 {
                     "type": 0,
@@ -1150,10 +1150,10 @@
                     "startDelay": 95.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 12500
         },
         {
-            "name": "",
+            "name": "34",
             "chunks": [
                 {
                     "type": 0,
@@ -1216,10 +1216,10 @@
                     "startDelay": 80.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 3900
         },
         {
-            "name": "",
+            "name": "35",
             "chunks": [
                 {
                     "type": 3,
@@ -1234,10 +1234,10 @@
                     "startDelay": 15.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 19600
         },
         {
-            "name": "",
+            "name": "36",
             "chunks": [
                 {
                     "type": 0,
@@ -1246,10 +1246,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 10
         },
         {
-            "name": "",
+            "name": "37",
             "chunks": [
                 {
                     "type": 0,
@@ -1258,10 +1258,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 10
         },
         {
-            "name": "",
+            "name": "38",
             "chunks": [
                 {
                     "type": 0,
@@ -1270,10 +1270,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 10
         },
         {
-            "name": "",
+            "name": "39",
             "chunks": [
                 {
                     "type": 0,
@@ -1282,10 +1282,10 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 10
         },
         {
-            "name": "",
+            "name": "40",
             "chunks": [
                 {
                     "type": 5,
@@ -1294,7 +1294,67 @@
                     "startDelay": 0.0
                 }
             ],
-            "waveWorth": 0
+            "waveWorth": 2000
+        },
+        {
+            "name": "41",
+            "chunks": [
+                {
+                    "type": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ],
+            "waveWorth": 2000
+        },
+        {
+            "name": "42",
+            "chunks": [
+                {
+                    "type": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ],
+            "waveWorth": 2000
+        },
+        {
+            "name": "43",
+            "chunks": [
+                {
+                    "type": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ],
+            "waveWorth": 2000
+        },
+        {
+            "name": "44",
+            "chunks": [
+                {
+                    "type": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ],
+            "waveWorth": 2000
+        },
+        {
+            "name": "45",
+            "chunks": [
+                {
+                    "type": 5,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                }
+            ],
+            "waveWorth": 2000
         }
     ]
 }

@@ -71,6 +71,14 @@ public class WaveSpawner : MonoBehaviour {
 
         foreach(var w in waves) {
             w.WaveWorth();
+            int i = System.Array.IndexOf(waves, w);
+            if(i >= 10)
+                w.waveWorth /= 2;
+            if(i >= 20)
+                w.waveWorth /= 2;
+            if(i >= 30)
+                w.waveWorth /= 2;
+            waves[i].name = (i + 1).ToString();
         }
 
         //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
@@ -129,7 +137,6 @@ public class WaveSpawner : MonoBehaviour {
 
     void SpawnEnemy(GameObject enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
-        e.ResetEnemy();
         spawnedEnemies.Add(EnemyPool.instance.Activate(e.enemyType, spawnPoint.position, spawnPoint.rotation));
     }
 

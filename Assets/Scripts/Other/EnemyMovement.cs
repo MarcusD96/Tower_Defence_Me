@@ -38,7 +38,6 @@ public class EnemyMovement : MonoBehaviour {
     public void ResetPath() {
         wayPointIndex = 0;
         target = Path.waypoints[0];
-        enemy.ResetEnemy();
     }
 
     void EndPath() {

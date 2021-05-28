@@ -174,19 +174,19 @@ MonoBehaviour:
   ugA:
     upgradeName: Longer Barrels
     description: Hit targets at a greater range
-    upgradeCost: 40
+    baseCost: 40
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: FMJ Rounds & Tighter Recoil Springs
     description: Faster reload speed and more damage to bosses
-    upgradeCost: 140
+    baseCost: 175
     upgradeFactorX: 0.75
-    upgradeFactorY: 1
+    upgradeFactorY: 2
   ugSpec:
     upgradeName: Burst
     description: Extreme speed for a short time
-    upgradeCost: 2500
+    baseCost: 2500
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1.75
@@ -198,8 +198,8 @@ MonoBehaviour:
   specialTime: 3
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
-  damage: 1
-  bossDamage: 1
+  damage: 1.5
+  bossDamage: 2
   penetration: 0
   specialPrefab: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713,
     type: 3}

@@ -8,8 +8,22 @@ public class SceneFader : MonoBehaviour {
     public Image image;
     public AnimationCurve fadeCurve;
 
-    void Start() {
-        StartCoroutine(FadeIn());
+    bool fadeIn = false;
+
+    void Update() {
+        if(!fadeIn) {
+            var p = FindObjectOfType<EnemyPool>();
+            if(p != null)
+                if(p.finishedLoading) {
+                    StartCoroutine(FadeIn());
+                    fadeIn = true;
+                } else
+                    return;
+            else {
+                StartCoroutine(FadeIn());
+                fadeIn = true;
+            }
+        }
     }
 
     public void FadeTo(string scene) {

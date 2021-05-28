@@ -222,20 +222,20 @@ MonoBehaviour:
   ugA:
     upgradeName: Mega Range
     description: See further
-    upgradeCost: 100
+    baseCost: 100
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Light n' Dense Rods
     description: Lighter and more dense rods are fired harder and hit more enemies.
-    upgradeCost: 330
+    baseCost: 330
     upgradeFactorX: 1
     upgradeFactorY: 3
   ugSpec:
     upgradeName: Mega Shot
     description: Fire a huge rod which does a ton of damage of penetrates very many
       enemies
-    upgradeCost: 1500
+    baseCost: 1500
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 2.5

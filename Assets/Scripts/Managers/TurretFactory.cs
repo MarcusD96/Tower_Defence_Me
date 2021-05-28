@@ -9,7 +9,7 @@ public class TurretFactory {
     public Image border;
     [SerializeField]
     private int cost;
-    public static float costDifficultyMultiplier = 0.8f;
+    public static float costDifficultyMultiplier = 1.0f;
 
     public int GetCost() {
         return Mathf.RoundToInt(cost * costDifficultyMultiplier / 5) * 5;

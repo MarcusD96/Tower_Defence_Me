@@ -12,11 +12,15 @@ public class Enemy : MonoBehaviour {
 
     public float baseSpeed, baseHp;
     public float startSpeed, startHp;
+    public float distanceTravelled, moneyValue;
+    [HideInInspector]
+    public float currentSpeed;
 
-    public float currentHp, currentSpeed, distanceTravelled, moneyValue, currentMoneyValue;
     public int lifeValue;
 
     public EnemyType enemyType;
+
+    private float currentHp, currentMoneyValue;
 
     private IEnumerator stun = null;
     private IEnumerator burn = null;
@@ -30,13 +34,13 @@ public class Enemy : MonoBehaviour {
     public bool stunResist;
     public bool slowResist, burnResist, isBoss;
 
-    void Awake() {
-        Initialize();
-    }
+    //void Awake() {
+    //    Initialize();
+    //}
 
-    void Initialize() {
-        ResetEnemy();
-    }
+    //void Initialize() {
+    //    ResetEnemy();
+    //}
 
     public void DecreaseMoneyValue() {
         currentMoneyValue /= 2.0f;
@@ -70,8 +74,8 @@ public class Enemy : MonoBehaviour {
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);
         GetComponent<EnemyMovement>().ResetPath();
-        ResetEnemy();
         EnemyPool.instance.Deactivate(gameObject);
+        ResetEnemy();
     }
 
     public void Slow(float slowFactor, float duration) {
@@ -218,7 +222,6 @@ public class Enemy : MonoBehaviour {
         distanceTravelled = 0.0f;
 
         superSlow = isDamaging = isSlow = false;
-        isDead = true;
 
         stun = burn = null;
         StopAllCoroutines();

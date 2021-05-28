@@ -36,6 +36,7 @@ public class TankSpecial : MonoBehaviour {
             transform.LookAt(target, Vector3.up);
         }
     }
+
     void GetNextWayPoint() {
         if(wayPointIndex >= path.Capacity - 1) {
             owner.SetActive(true);
@@ -55,7 +56,7 @@ public class TankSpecial : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Enemy")) {
             Enemy e = other.gameObject.GetComponent<Enemy>();
-            e.TakeDamage((e.startHp / 2.0f) + 1, Color.white, true);
+            e.TakeDamage(1000.0f, Color.white, true);
         }
     }
 }

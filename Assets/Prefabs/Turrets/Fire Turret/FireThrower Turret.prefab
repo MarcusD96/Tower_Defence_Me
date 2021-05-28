@@ -627,9 +627,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 356987433022173089}
   range: 8
-  manualRangeMultiplier: 1
-  manualFirerateMultiplier: 1.25
-  fireRate: 0.6
   maxFireRate: 0
   turretCam: {fileID: 6138538804516712490}
   overlayCam: {fileID: 1303779167196544323}
@@ -644,24 +641,29 @@ MonoBehaviour:
   ugA:
     upgradeName: Range
     description: Longer barrels can spew flames further
-    upgradeCost: 50
+    baseCost: 50
     upgradeFactorX: 1
     upgradeFactorY: 0
   ugB:
     upgradeName: Hotter Flames
     description: Upgrade fuel system to shoot faster with thicker flames that can
       hit more targets
-    upgradeCost: 300
+    baseCost: 300
     upgradeFactorX: 0.15
     upgradeFactorY: 4
   ugSpec:
     upgradeName: Inferno
     description: Melt targets down with a infernal mixture of premiem fuel
-    upgradeCost: 4000
+    baseCost: 4000
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 1
+  manualFirerateMultiplier: 1.25
+  fireRate: 0.6
   specialBar: {fileID: 8560105079731431943}
   specialRate: 45
+  specialAmount: 0
+  specialTime: 5
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
   damage: 1
@@ -669,7 +671,6 @@ MonoBehaviour:
   burnInterval: 1
   penetration: 8
   numBurns: 5
-  specialTime: 5
 --- !u!114 &9053171323780503090
 MonoBehaviour:
   m_ObjectHideFlags: 0

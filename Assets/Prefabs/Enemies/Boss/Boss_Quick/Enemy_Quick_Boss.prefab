@@ -73,11 +73,9 @@ MonoBehaviour:
   baseHp: 750
   startSpeed: 16.199995
   startHp: 1214.9996
-  currentHp: 1215
-  currentSpeed: 16.199995
   distanceTravelled: 0
-  moneyValue: 400
-  currentMoneyValue: 400
+  moneyValue: 1600
+  currentSpeed: 16.199995
   lifeValue: 75
   enemyType: 4
   healthBarL: {fileID: 3374941956701577398}
@@ -86,10 +84,10 @@ MonoBehaviour:
   isDamaging: 0
   isDead: 1
   isSlow: 0
-  isBoss: 1
   stunResist: 0
   slowResist: 1
   burnResist: 0
+  isBoss: 1
 --- !u!114 &4424576822074309443
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -133,9 +133,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 7674988320642978767}
   range: 10
-  manualRangeMultiplier: 1.25
-  manualFirerateMultiplier: 1.2
-  fireRate: 0.5
   maxFireRate: 0
   turretCam: {fileID: 7065236680796754841}
   overlayCam: {fileID: 2999918547689222399}
@@ -150,24 +147,29 @@ MonoBehaviour:
   ugA:
     upgradeName: Moar Powder
     description: Adding more gunpower to the shells allows shots to travel further
-    upgradeCost: 40
+    baseCost: 40
     upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
     upgradeName: Fatter Casings
     description: More projectiles can fit inside a single shell
-    upgradeCost: 200
+    baseCost: 200
     upgradeFactorX: 0.25
     upgradeFactorY: 3
   ugSpec:
     upgradeName: Rundown
     description: The tank runs along the track backwards running over anything in
       its path
-    upgradeCost: 15000
+    baseCost: 15000
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 1.25
+  manualFirerateMultiplier: 1.2
+  fireRate: 0.5
   specialBar: {fileID: 1500517532482397155}
   specialRate: 60
+  specialAmount: 0
+  specialTime: 0
   projectilePrefab: {fileID: 5063451577565241328, guid: e9268fe564466754785d6998881cc12e,
     type: 3}
   damage: 1

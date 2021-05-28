@@ -1040,9 +1040,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 8411359434006745553}
   range: 12
-  manualRangeMultiplier: 2
-  manualFirerateMultiplier: 1.25
-  fireRate: 0.5
   maxFireRate: 0
   turretCam: {fileID: 8411359435330850310}
   overlayCam: {fileID: 459767343499274853}
@@ -1056,24 +1053,29 @@ MonoBehaviour:
   ugA:
     upgradeName: Voltage Upgrade
     description: Higher voltage allows this tower to hit enemies at a greater range.
-    upgradeCost: 75
+    baseCost: 60
     upgradeFactorX: 2
     upgradeFactorY: 0
   ugB:
     upgradeName: Upgraded Circuitry
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
-    upgradeCost: 215
+    baseCost: 210
     upgradeFactorX: 0.2
     upgradeFactorY: 1
   ugSpec:
     upgradeName: Overloaded Capacitors
     description: The lightning jumps to multiple targets per charge.
-    upgradeCost: 950
+    baseCost: 1000
     upgradeFactorX: 0
     upgradeFactorY: 0
+  manualRangeMultiplier: 2
+  manualFirerateMultiplier: 1.25
+  fireRate: 0.5
   specialBar: {fileID: 3408852544952290420}
   specialRate: 15
+  specialAmount: 0
+  specialTime: 2
   lineRenderer: {fileID: 7853080107776535575}
   shootEffect: {fileID: 3371452123005213704}
   shootLight: {fileID: 987465314321057502}
@@ -1144,7 +1146,6 @@ MonoBehaviour:
   arcVar: 2
   inaccuracy: 2
   maxArcs: 10
-  specialTime: 2
 --- !u!114 &1523419610083998893
 MonoBehaviour:
   m_ObjectHideFlags: 0

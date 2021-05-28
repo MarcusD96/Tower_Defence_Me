@@ -256,23 +256,24 @@ MonoBehaviour:
   aimIndicator: {fileID: 0}
   pivot: {fileID: 0}
   recoilAnim_Body: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
+    type: 3}
   ugA:
     upgradeName: Increase numSpawns
-    description: 
-    upgradeCost: 250
-    upgradeFactorX: 1.25
+    description: More money drops per round
+    baseCost: 135
+    upgradeFactorX: 1.5
     upgradeFactorY: 0
   ugB:
     upgradeName: Increase value
-    description: 
-    upgradeCost: 650
+    description: Money crops are worth more per drop
+    baseCost: 1000
     upgradeFactorX: 0.55
     upgradeFactorY: 0
   ugSpec:
     upgradeName: Special
     description: Grants lots of cash and lives are occassionaly dropped.
-    upgradeCost: 3500
+    baseCost: 3500
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1
@@ -284,8 +285,8 @@ MonoBehaviour:
   specialTime: 0
   specialCashNumSpawns: 10
   specialCashValue: 200
-  cashValue: 10
-  numSpawns: 5
+  cashValue: 30
+  numSpawns: 3
   lifeValue: 5
   lifeChance: 10
   valueIndicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,

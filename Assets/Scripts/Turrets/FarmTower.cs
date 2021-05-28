@@ -11,7 +11,7 @@ public class FarmTower : Turret {
     public int cashValue;
     public int numSpawns, lifeValue, lifeChance;
     public GameObject valueIndicator;
-    
+
     float interval, startDelay;
     IEnumerator cashDrop;
 
@@ -25,7 +25,7 @@ public class FarmTower : Turret {
     private new void Update() {
         if(WaveSpawner.enemiesAlive <= 0) {
             ResetForWave();
-        } else if(reset){
+        } else if(reset) {
             reset = false;
             if(cashDrop == null) {
                 cashDrop = CashDrop();
@@ -42,7 +42,7 @@ public class FarmTower : Turret {
 
         if(cashDrop != null) {
             StopCoroutine(cashDrop);
-            cashDrop = null; 
+            cashDrop = null;
         }
         reset = true;
         float waveTime = WaveSpawner.instance.GetCurrentWave().GetWaveTime();
@@ -52,12 +52,11 @@ public class FarmTower : Turret {
 
     public new void ApplyUpgradeA() { //more spawns
         numSpawns += Mathf.RoundToInt(ugA.GetLevel() * ugA.upgradeFactorX);
-        int cost = ugA.GetUpgradeCost();
-        ugA.SetUpgradeCost(Mathf.RoundToInt(cost * 1.35f / 5) * 5);
+        ugA.SetUpgradeCost(ugA.GetUpgradeCost() * 2);
     }
 
     public override void ApplyUpgradeB() { //increase value
-        cashValue = Mathf.RoundToInt(cashValue * (1 + ugB.upgradeFactorX) / 5) * 5; //stay rounded to 5
+        cashValue = Mathf.CeilToInt(cashValue * (1 + ugB.upgradeFactorX) / 5) * 5; //stay rounded to 5
     }
 
     public new void ApplySpecial() {
@@ -88,17 +87,17 @@ public class FarmTower : Turret {
 
     IEnumerator CashDrop() {
         yield return new WaitForSeconds(startDelay);
-        for(int i = 0; i < numSpawns; i++) {            
+        for(int i = 0; i < numSpawns; i++) {
             PlayerStats.money += cashValue;
             ShowDrop(Color.green, cashValue, 0);
-            
+
             if(hasSpecial) {
                 int r = Random.Range(0, 100 / lifeChance);
                 if(r == 0) {
                     yield return new WaitForEndOfFrame();
                     PlayerStats.lives += lifeValue;
                     ShowDrop(Color.red, lifeValue, 3);
-                } 
+                }
             }
 
             yield return new WaitForSeconds(interval);
@@ -108,7 +107,7 @@ public class FarmTower : Turret {
 
     IEnumerator CashInjection() {
         StartCoroutine(SpecialTime());
-            
+
         float startTime = Time.time;
         for(int i = 0; i < specialCashNumSpawns; i++) {
             PlayerStats.money += specialCashValue;

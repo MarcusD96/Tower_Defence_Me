@@ -32,7 +32,7 @@ public class TurretMovement : MonoBehaviour {
         }
         
         else {
-            float mouseInput = Input.GetAxis("Mouse X");
+            float mouseInput = Input.GetAxisRaw("Mouse X");
             lookHere = Vector3.up * mouseInput * Time.unscaledDeltaTime * Settings.Sensitivity;
             turret.pivot.Rotate(lookHere); 
         }

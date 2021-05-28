@@ -89,10 +89,7 @@ public class Node : MonoBehaviour {
         t.sellPrice += t.ugA.GetUpgradeCost();
 
         BuildEffect(buildManager.upgradeEffect);
-        if(t.GetComponent<FarmTower>()) {
-            t.ugA.IncreaseUpgrade(true);
-        } else
-            t.ugA.IncreaseUpgrade(false);
+        t.ugA.IncreaseUpgrade(false);
         t.ApplyUpgradeA();
         UpdateRange(t);
     }

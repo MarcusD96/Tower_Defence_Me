@@ -1,5 +1,6 @@
 ﻿
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
@@ -8,10 +9,27 @@ public class AudioManager : MonoBehaviour {
     public Sound[] music;
     public Sound[] ui;
     public Sound currentSong;
-
     public static AudioManager instance;
 
-    // Start is called before the first frame update
+    [System.Serializable]
+    public class AudioTypes {
+        public string name;
+        public List<AudioSource> oneshots = new List<AudioSource>();
+
+        public AudioTypes(string name_) {
+            name = name_;
+        }
+
+        public void CheckExpired() {
+            for(int i = oneshots.Count - 1; i >= 0; i--) {
+                if(!oneshots[i])
+                    oneshots.RemoveAt(i);
+            }
+        }
+    }
+    AudioTypes[] audioTypes;
+
+    GameObject audioParent;
     void Awake() {
         if(instance == null)
             instance = this;
@@ -26,6 +44,12 @@ public class AudioManager : MonoBehaviour {
         InitializeSounds(music, Settings.Music / 1000, 0.0f);
         musicNum = Random.Range(0, music.Length - 1); //random starting position in list of songs
         currentSong = music[musicNum];
+        audioTypes = new AudioTypes[sounds.Length];
+        for(int i = 0; i < audioTypes.Length; i++) {
+            audioTypes[i] = new AudioTypes(sounds[i].name);
+        }
+        InvokeRepeating("CleanOneShots", 0, 0.05f);
+        audioParent = new GameObject("Audio Sources");
     }
 
     public static bool Main = false;
@@ -78,13 +102,40 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
+    AudioSource PlayClipAt(AudioClip clip_, Vector3 pos_, [UnityEngine.Internal.DefaultValue("1.0F")] float volume_) {
+        var tmp = new GameObject("Oneshot Audio");
+        tmp.transform.SetParent(audioParent.transform, true);
+        tmp.transform.position = pos_;
+        var source = tmp.AddComponent<AudioSource>();
+        source.clip = clip_;
+        source.volume = volume_ / 10;
+        source.Play();
+        Destroy(tmp, clip_.length);
+        return source;
+    }
+
+    void CleanOneShots() {
+        foreach(var t in audioTypes) {
+            if(t != null) {
+                t.CheckExpired(); 
+            }
+        }
+    }
+
     public void PlayEffect(Sound[] soundsList, string name, Vector3 position) {
         Sound s = System.Array.Find(soundsList, sounds => sounds.name == name);
         if(s == null) {
             Debug.LogWarning("Sound: \"" + name + "\" not found");
             return;
         }
-        AudioSource.PlayClipAtPoint(s.clip, position, s.volume);
+        for(int i = 0; i < audioTypes.Length - 1; i++) {
+            var ii = audioTypes[i];
+            if(ii.name == name) {
+                if(ii.oneshots.Count <= 10) {
+                    ii.oneshots.Add(PlayClipAt(s.clip, position, s.volume));
+                }
+            }
+        }
     }
 
     public static void StaticPlayEffect(Sound[] soundsList, string name, Vector3 position) {

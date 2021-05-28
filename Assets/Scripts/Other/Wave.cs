@@ -8,23 +8,19 @@ public class Wave {
 
     public WaveChunk[] chunks;
 
-    [SerializeField]
-    int waveWorth = 0;
+    public int waveWorth;
 
     public void WaveWorth() {
         foreach(var c in chunks) {
             switch(c.type) {
                 case EnemyType.Simple_Boss:
-                    waveWorth += c.count * 250;
+                    waveWorth += c.count * 500;
                     break;
                 case EnemyType.Quick_Boss:
-                    waveWorth += c.count * 400;
+                    waveWorth += c.count * 1600;
                     break;
                 case EnemyType.Tank_Boss:
-                    waveWorth += c.count * 1000;
-                    break;
-                default:
-                    waveWorth += c.count * 5;
+                    waveWorth += c.count * 8000;
                     break;
             }
         }

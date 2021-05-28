@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void LateUpdate() {
         if(gameEnd)
             return;
