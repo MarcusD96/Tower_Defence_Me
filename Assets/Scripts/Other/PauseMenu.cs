@@ -45,7 +45,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void Restart() {
         Toggle();
-        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+        sceneFader.FadeTo("Loading");
     }
 
     public void MainMenu() {

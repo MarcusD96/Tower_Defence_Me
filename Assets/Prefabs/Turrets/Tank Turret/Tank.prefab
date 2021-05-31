@@ -160,7 +160,7 @@ MonoBehaviour:
     upgradeName: Rundown
     description: The tank runs along the track backwards running over anything in
       its path
-    baseCost: 15000
+    baseCost: 9000
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1.25

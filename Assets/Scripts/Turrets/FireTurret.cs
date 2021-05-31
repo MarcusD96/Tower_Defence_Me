@@ -54,7 +54,7 @@ public class FireTurret : Turret {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 
-        range *= 3.0f;  
+        range *= 3.0f;
         thisNode.UpdateRange(this);
 
         var tmpPos = turretCam.transform.localPosition;

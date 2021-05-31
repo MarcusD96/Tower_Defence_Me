@@ -33,6 +33,7 @@ public class Turret : MonoBehaviour {
 
     [Header("Setup")]
     public Transform pivot;
+    [HideInInspector]
     public Animator recoilAnim_Body;
     public ParticleSystem muzzleFlash;
 
@@ -433,7 +434,7 @@ public class Turret : MonoBehaviour {
         fireRate = maxFireRate;
         hasSpecial = true;
         if(specialBar) {
-            specialBar.gameObject.SetActive(true); 
+            specialBar.gameObject.SetActive(true);
         }
     }
 
@@ -448,7 +449,7 @@ public class Turret : MonoBehaviour {
             if(WaveSpawner.enemiesAlive > 0) {
                 specialAmount -= Time.deltaTime;
                 if(specialBar) {
-                    specialBar.fillBar.fillAmount = specialAmount / specialRate; 
+                    specialBar.fillBar.fillAmount = specialAmount / specialRate;
                 }
             }
             yield return null;

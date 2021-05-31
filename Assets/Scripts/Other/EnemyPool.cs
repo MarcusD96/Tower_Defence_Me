@@ -29,8 +29,8 @@ public class EnemyPool : MonoBehaviour {
             var p = new GameObject(enemies[count].enemy.name);
             p.transform.SetParent(gameObject.transform);
             pool[count] = new List<GameObject>();
-            for(int num = 0; num < enemies[count].amount; num += 10) {
-                for(int i = 0; i < 10; i++) {
+            for(int num = 0; num < enemies[count].amount; num += 5) {
+                for(int i = 0; i < 5; i++) {
                     tmp = Instantiate(enemies[count].enemy, p.transform);
                     tmp.SetActive(false);
                     pool[count].Add(tmp);
@@ -39,6 +39,10 @@ public class EnemyPool : MonoBehaviour {
             }
         }
         finishedLoading = true;
+    }
+
+    public List<GameObject>[] GetPooledEnemies() {
+        return pool;
     }
 
     public GameObject Activate(EnemyType e, Vector3 pos, Quaternion rot) {

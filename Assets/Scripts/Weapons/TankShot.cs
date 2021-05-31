@@ -13,7 +13,7 @@ public class TankShot : Projectile {
         base.FixedUpdate();
 
         if(direction != Vector3.zero) {
-            transform.Translate(direction.normalized * distanceThisFrame, Space.World); 
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
         }
     }
 

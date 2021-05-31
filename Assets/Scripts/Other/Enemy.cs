@@ -28,19 +28,17 @@ public class Enemy : MonoBehaviour {
     [Header("Unity Stuff")]
     public Image healthBarL;
     public Image healthBarR;
-    public bool superSlow, isDamaging, isDead, isSlow;
+    public bool superSlow, isDamaging, isSlow;
+    [HideInInspector]
+    public bool isDead;
 
     [Header("Resistances")]
     public bool stunResist;
     public bool slowResist, burnResist, isBoss;
 
-    //void Awake() {
-    //    Initialize();
-    //}
-
-    //void Initialize() {
-    //    ResetEnemy();
-    //}
+    private void Awake() {
+        currentMoneyValue = moneyValue;
+    }
 
     public void DecreaseMoneyValue() {
         currentMoneyValue /= 2.0f;
@@ -49,13 +47,6 @@ public class Enemy : MonoBehaviour {
     public void TakeDamage(float amount, Color color, bool indicateDmg) {
         if(healthBarL && healthBarR) {
             currentHp -= amount;
-
-            //if(indicateDmg) {
-            //    GameObject indicatorInstance = Instantiate(indicator, transform.position, Quaternion.identity);
-            //    var i = indicatorInstance.GetComponent<DamageIndicator>();
-            //    i.damage = amount;
-            //    i.color = color;
-            //}
 
             healthBarL.fillAmount = currentHp / baseHp;
             healthBarR.fillAmount = currentHp / baseHp;
@@ -218,7 +209,6 @@ public class Enemy : MonoBehaviour {
         currentSpeed = baseSpeed * difficultyMultiplier;
         currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
 
-        currentMoneyValue = moneyValue;
         distanceTravelled = 0.0f;
 
         superSlow = isDamaging = isSlow = false;

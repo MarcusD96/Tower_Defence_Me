@@ -5,7 +5,7 @@ using UnityEngine;
 public class Upgrade {
 
     public static float costDifficultyMultiplier = 1.0f;
-    public string upgradeName, description;    
+    public string upgradeName, description;
     public int baseCost;
     public float upgradeFactorX, upgradeFactorY;
 
@@ -14,7 +14,7 @@ public class Upgrade {
 
     public int GetUpgradeCost() {
         if(upgradeLevel == 0)
-            currentCost = Mathf.RoundToInt(baseCost * costDifficultyMultiplier / 5) * 5;        
+            currentCost = Mathf.RoundToInt(baseCost * costDifficultyMultiplier / 5) * 5;
         return currentCost;
     }
 

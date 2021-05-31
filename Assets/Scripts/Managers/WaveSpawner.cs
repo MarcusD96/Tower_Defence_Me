@@ -1,6 +1,6 @@
-﻿using System.IO;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -167,14 +167,16 @@ public class WaveSpawner : MonoBehaviour {
         FFButton.GetComponent<Button>().interactable = true;
         gameManager.LastControlled();
 
-        int r = PlayerStats.rounds;
-        if(r + 1 >= 10) {
+        int r = PlayerStats.rounds + 1;
+        if(r >= 10) {
             Enemy.difficultyMultiplier += 0.02f;
 
         }
-        if(((r + 1) >= 10) && ((r - 4) % 10 == 0)) { //over round 10 in intervals of 10
-            foreach(Enemy e in FindObjectsOfType<Enemy>(true)) {
-                e.DecreaseMoneyValue();
+        if(((r) >= 10) && ((r) % 10 == 0)) { //over round 10 in intervals of 10
+            foreach(var e in EnemyPool.instance.GetPooledEnemies()) {
+                foreach(var ee in e) {
+                    ee.GetComponent<Enemy>().DecreaseMoneyValue();
+                }
             }
         }
 

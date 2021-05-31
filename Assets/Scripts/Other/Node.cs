@@ -1,7 +1,6 @@
 ﻿
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Node : MonoBehaviour {
 
@@ -30,6 +29,9 @@ public class Node : MonoBehaviour {
     }
 
     void Update() {
+        if(mainCam == null)
+            mainCam = Camera.main;
+
         //wave ends, check if turrret was controlled
         if(WaveSpawner.enemiesAlive <= 0) {
             if(turret) {
@@ -189,7 +191,7 @@ public class Node : MonoBehaviour {
         }
         //railgun
         else if(turret.GetComponent<RailgunTurret>()) {
-            Charges.RemoveTurret(turret.GetComponent<RailgunTurret>());
+            MegaShot.RemoveTurret(turret.GetComponent<RailgunTurret>());
         }
         //laser
         else if(turret.GetComponent<LaserTurret>()) {

@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour {
         }
         InvokeRepeating("CleanOneShots", 0, 0.05f);
         audioParent = new GameObject("Audio Sources");
+        DontDestroyOnLoad(audioParent);
     }
 
     public static bool Main = false;
@@ -117,7 +118,7 @@ public class AudioManager : MonoBehaviour {
     void CleanOneShots() {
         foreach(var t in audioTypes) {
             if(t != null) {
-                t.CheckExpired(); 
+                t.CheckExpired();
             }
         }
     }

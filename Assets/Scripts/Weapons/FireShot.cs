@@ -66,16 +66,16 @@ public class FireShot : MonoBehaviour {
                     }
 
                     e.Burn(burnDamage, burnTime * 2, burnInterval);
-                
+
                 } else {
 
                     grad.color = mainGradient;
 
                     if(e.isBoss) {
-                        e.TakeDamage(damage * 3, Color.red, true); 
+                        e.TakeDamage(damage * 3, Color.red, true);
                     } else
                         e.TakeDamage(damage, Color.red, true);
-                    e.Burn(burnDamage, burnTime, burnInterval); 
+                    e.Burn(burnDamage, burnTime, burnInterval);
                 }
 
                 penetration--;

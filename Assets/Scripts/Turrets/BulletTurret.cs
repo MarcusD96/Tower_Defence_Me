@@ -55,7 +55,7 @@ public class BulletTurret : ProjectileTurret {
 
         nextFire = 0;
         projectilePrefab = specialPrefab;
-        fireRate = specialFireRate;        
+        fireRate = specialFireRate;
         turretCam.transform.localPosition = tmpCamPos;
         yield return new WaitForSeconds(specialTime);
 

@@ -29,7 +29,7 @@ public class SpecialActivator : MonoBehaviour {
             specBtn.gameObject.SetActive(false);
         }
     }
-    
+
     public void CloseSpecials() {
         //bool is true so shop is open
         if(anim.GetBool("Open") == true) {
@@ -50,7 +50,7 @@ public class SpecialActivator : MonoBehaviour {
 
     public static void MakeCharges(RailgunTurret rt) {
         instance.chargesButton.SetActive(true);
-        Charges.AddNewRailgunTurret(rt);
+        MegaShot.AddNewRailgunTurret(rt);
     }
 
     public static void MakeEMP(LaserTurret lt) {
@@ -71,7 +71,7 @@ public class SpecialActivator : MonoBehaviour {
     public static void MakeRundown(TankTurret tank) {
         instance.rundownBtn.SetActive(true);
         Rundown.AddNewTankTurret(tank);
-    }    
+    }
 
     public static void MakeDoubleCash(FarmTower farm) {
         instance.doubleCashBtn.SetActive(true);

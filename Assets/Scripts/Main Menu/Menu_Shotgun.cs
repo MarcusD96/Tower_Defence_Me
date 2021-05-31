@@ -17,7 +17,7 @@ public class Menu_Shotgun : MonoBehaviour {
 
     private void Update() {
         for(int i = 0; i < pellets.Length; i++) {
-            pellets[i].transform.Translate(directions[i] * speed  * Time.deltaTime, Space.World);
+            pellets[i].transform.Translate(directions[i] * speed * Time.deltaTime, Space.World);
         }
     }
 

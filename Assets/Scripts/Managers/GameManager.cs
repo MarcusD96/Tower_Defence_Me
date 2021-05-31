@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
         }
         CheatVideo();
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            FastForward(); 
+            FastForward();
         }
     }
 

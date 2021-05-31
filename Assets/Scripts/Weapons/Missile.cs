@@ -25,7 +25,7 @@ public class Missile : Projectile {
                 target = null;
                 TryFindNewTargetInfront();
                 return;
-            }                
+            }
 
             Vector3 direction = target.position - transform.position;
             transform.Translate(direction.normalized * distanceThisFrame, Space.World);

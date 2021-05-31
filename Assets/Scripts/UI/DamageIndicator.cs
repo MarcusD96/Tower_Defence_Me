@@ -31,7 +31,7 @@ public class DamageIndicator : MonoBehaviour {
         Color color = new Color(damageText.color.r, damageText.color.g, damageText.color.b, a);
         damageText.color = color;
     }
-    
+
     public void IndicateDamage(float damage_, Color color) {
         damageText.text = Mathf.CeilToInt(damage_).ToString();
         damageText.color = color;

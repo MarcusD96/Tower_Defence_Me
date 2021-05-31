@@ -1,6 +1,4 @@
-﻿
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaserTurret : BeamTurret {
 
@@ -47,64 +45,73 @@ public class LaserTurret : BeamTurret {
 
     float slowDurationEnd = float.MaxValue;
     public override void AutoShoot() {
+        #region check if can shoot
         if(nextFire <= 0.0f && WaveSpawner.enemiesAlive > 0) {
             FindEnemy(false);
             if(target == null)
                 return;
             nextFire = 1 / fireRate;
         }
+        #endregion
 
-        //changed target, enable damage again
+        #region if changed target, enable damage again
         if(lastTarget != target || Time.time >= slowDurationEnd) {
             lastTarget = target;
             BeamOff();
             slowDurationEnd = Time.time + slowDuration;
         }
+        #endregion
 
-        //target falls out of range
+        #region target falls out of range, stop firing
         if(target == null || Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(target.position.x, target.position.z)) > range) {
             target = null;
             BeamOff();
             return;
         }
+        #endregion
 
         RotateOnShoot();
 
-        //apply new slow if not slowed
+        #region apply new slow if not slowed
         if(targetEnemy.currentSpeed > slowFactor) {
             if(!hasSpecial)
                 targetEnemy.Slow(slowFactor, slowDuration);
             else
                 targetEnemy.Slow(maxSlowFactor, slowDuration);
         }
+        #endregion
 
-        //only apply DoT to new enemies
-        if(!targetEnemy.isDamaging) {
+        #region apply DoT to new enemies if its not already being damaged by the laser
+        if(!targetEnemy.isDamaging)
             targetEnemy.DamageOverTime(damageOverTime, slowDuration);
-        }
+        #endregion
 
-        //play sound if new target is hit
+        #region play sound if new target is hit
         if(target != targetPrev) {
             AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
             targetPrev = target;
         }
+        #endregion
 
-        //graphics
+        #region graphics
         if(!lineRenderer.enabled) {
             lineRenderer.enabled = true;
             impactEffect.Play();
             shootEffect.Play();
             impactLight.enabled = shootLight.enabled = true;
         }
+        #endregion
 
-        //set line positions
+        #region set line positions
         lineRenderer.SetPosition(0, Vector3.zero);
         lineRenderer.SetPosition(1, Vector3.forward * Vector3.Distance(transform.InverseTransformVector(fireSpawn.position), transform.InverseTransformVector(target.position)));
+        #endregion
 
-        //rotation
+        #region laser impact effect rotation
         Vector3 direction = fireSpawn.position - target.position;
         impactEffect.transform.position = target.position + direction.normalized;
         impactEffect.transform.rotation = Quaternion.LookRotation(direction);
+        #endregion
     }
 
     public override void ManualShoot() {
@@ -165,7 +172,8 @@ public class LaserTurret : BeamTurret {
                 impactEffect.transform.position = target.position + direction.normalized;
                 impactEffect.transform.rotation = Quaternion.LookRotation(direction);
             }
-        } else {
+        } 
+        else {
             target = null;
             targetEnemy = null;
             //lineRenderer.SetPosition(1, Vector3.forward * manualRange);

@@ -1,6 +1,6 @@
 ﻿
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TurretViewUpgrades : MonoBehaviour {
@@ -8,6 +8,7 @@ public class TurretViewUpgrades : MonoBehaviour {
     public Button buttonA, buttonB, buttonSpec;
     public TextMeshProUGUI nameA, nameB, nameSpec;
     public TextMeshProUGUI costA, costB, costSpec;
+    public TextMeshProUGUI levelA, levelB;
 
     private Turret turret;
 
@@ -22,6 +23,8 @@ public class TurretViewUpgrades : MonoBehaviour {
         costB.text = turret.ugB.GetUpgradeCost().ToString();
         nameSpec.text = turret.ugSpec.upgradeName;
         costSpec.text = turret.ugSpec.GetUpgradeCost().ToString();
+        levelA.text = turret.ugA.GetLevel().ToString() + "/5";
+        levelB.text = turret.ugB.GetLevel().ToString() + "/3";
     }
 
     public void LateUpdate() {

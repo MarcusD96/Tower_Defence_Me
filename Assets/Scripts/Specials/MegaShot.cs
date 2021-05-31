@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Charges : MonoBehaviour {
+public class MegaShot : MonoBehaviour {
 
-    private static Charges instance = null;
+    private static MegaShot instance = null;
 
     public List<RailgunTurret> turrets;
     public Image recharge;

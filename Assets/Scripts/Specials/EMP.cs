@@ -66,6 +66,9 @@ public class EMP : MonoBehaviour {
     }
 
     public static void RemoveTurret(LaserTurret lt) {
+        if(!instance)
+            return;
+
         if(instance.turrets.Count > 0)
             instance.turrets.Remove(lt);
 
