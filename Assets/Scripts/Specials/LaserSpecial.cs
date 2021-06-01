@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MegaShot : MonoBehaviour {
+public class LaserSpecial : MonoBehaviour {
 
-    private static MegaShot instance = null;
+    private static LaserSpecial instance = null;
 
-    public List<RailgunTurret> turrets;
+    public List<LaserTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<RailgunTurret>();
+        turrets = new List<LaserTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -58,16 +58,19 @@ public class MegaShot : MonoBehaviour {
         }
     }
 
-    public static void AddNewRailgunTurret(RailgunTurret rgt) {
-        instance.turrets.Add(rgt);
+    public static void AddNewLaserTurret(LaserTurret lt) {
+        if(!instance)
+            return;
+
+        instance.turrets.Add(lt);
     }
 
-    public static void RemoveTurret(RailgunTurret rgt) {
+    public static void RemoveTurret(LaserTurret lt) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(rgt);
+            instance.turrets.Remove(lt);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);

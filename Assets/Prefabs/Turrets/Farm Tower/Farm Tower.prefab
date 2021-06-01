@@ -271,8 +271,9 @@ MonoBehaviour:
     upgradeFactorX: 0.55
     upgradeFactorY: 0
   ugSpec:
-    upgradeName: Special
-    description: Grants lots of cash and lives are occassionaly dropped.
+    upgradeName: Double Whammy
+    description: Grants double cash for a short time. Also farm generate occasional
+      extra lives
     baseCost: 3500
     upgradeFactorX: 0
     upgradeFactorY: 0
@@ -283,8 +284,6 @@ MonoBehaviour:
   specialRate: 60
   specialAmount: 0
   specialTime: 0
-  specialCashNumSpawns: 10
-  specialCashValue: 200
   cashValue: 30
   numSpawns: 3
   lifeValue: 5

@@ -9,8 +9,8 @@ public class TankTurret : ProjectileTurret {
     public float spreadVariance;
 
     [Header("Special")]
-    public TankSpecial specialPrefab;
-    private TankSpecial tankSpecial = null;
+    public TankRunner specialPrefab;
+    private TankRunner tankSpecial = null;
 
     private Vector3 shotDirection = Vector3.zero;
 
@@ -34,15 +34,13 @@ public class TankTurret : ProjectileTurret {
         for(int i = 0; i < projectileNum; i++) {
             shotDirection = RandomDirection();
 
-            GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-            Projectile proj = prpojectileGO.GetComponent<Projectile>();
+            GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.TankShot, fireSpawn.position, fireSpawn.rotation);
+            Projectile proj = projGO.GetComponent<Projectile>();
 
-            var g = Instantiate(muzzleFlash, fireSpawn);
-            Destroy(g, 0.2f);
+            muzzleFlash.Play();
 
             Ray ray = new Ray(pivot.position, shotDirection);
-            proj.SetLifePositions(pivot.position, ray.GetPoint(range));
-            proj.SetDamage(damage, bossDamage);
+            proj.SetStats(damage, bossDamage, pivot.position, ray.GetPoint(range));
             proj.GetTankShot().SetDirection(shotDirection);
 
             recoilAnim_Barrel.SetTrigger("Shoot");
@@ -56,18 +54,15 @@ public class TankTurret : ProjectileTurret {
             shotDirection = RandomDirection();
 
             //spawn proj, get the proj info
-            GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
+            GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.TankShot, fireSpawn.position, fireSpawn.rotation);
             Projectile proj = projGO.GetComponent<Projectile>();
 
-            var g = Instantiate(muzzleFlash, fireSpawn);
-            Destroy(g, 0.2f);
+            muzzleFlash.Play();
 
             //set proj info
-            proj.SetDamage(damage, bossDamage);
-            proj.GetTankShot().SetDirection(shotDirection);
-
             Ray ray = TryRayCastAndRay(manualRange);
-            proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
+            proj.SetStats(damage, bossDamage, pivot.position, ray.GetPoint(range));
+            proj.GetTankShot().SetDirection(shotDirection);
 
             recoilAnim_Barrel.SetTrigger("Shoot");
         }

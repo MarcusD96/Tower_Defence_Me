@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-class Inferno : MonoBehaviour {
+public class TeslaSpecial : MonoBehaviour {
 
-    private static Inferno instance = null;
+    private static TeslaSpecial instance = null;
 
-    public List<FireTurret> turrets;
+    public List<TeslaTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<FireTurret>();
+        turrets = new List<TeslaTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -58,16 +58,16 @@ class Inferno : MonoBehaviour {
         }
     }
 
-    public static void AddNewFireTurret(FireTurret ft) {
-        instance.turrets.Add(ft);
+    public static void AddNewTeslaTurret(TeslaTurret tt) {
+        instance.turrets.Add(tt);
     }
 
-    public static void RemoveTurret(FireTurret ft) {
+    public static void RemoveTurret(TeslaTurret tt) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(ft);
+            instance.turrets.Remove(tt);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);

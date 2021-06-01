@@ -5,7 +5,8 @@ public class Projectile : MonoBehaviour {
 
     [Header("Projectile Properties")]
     public GameObject impactEffect;
-    public float speed = 100.0f;
+    public float speed;
+    protected float startSpeed;
     public bool special;
 
     protected Missile missile;
@@ -22,15 +23,12 @@ public class Projectile : MonoBehaviour {
 
     void Start() {
         startPos = transform.position;
-        Destroy(gameObject, 3.0f); //fallback
     }
 
     protected void FixedUpdate() {
-        if(!special) { //special projectiles may not need this feauture
-            if(Vector3.Distance(transform.position, startPos) >= Vector3.Distance(endPos, startPos)) { //if the projectile has gone to its max range, die
-                HitTarget(true);
-                return;
-            }
+        if(Vector3.Distance(transform.position, startPos) >= Vector3.Distance(endPos, startPos)) { //if the projectile has gone to its max range, die
+            HitTarget(true);
+            return;
         }
 
         distanceThisFrame = speed * Time.deltaTime;
@@ -62,6 +60,13 @@ public class Projectile : MonoBehaviour {
         endPos = endPos_;
     }
 
+    public void SetStats(float damage_, float bossDamage_, Vector3 startPos_, Vector3 endPos_) {
+        SetDamage(damage_, bossDamage_);
+        SetLifePositions(startPos_, endPos_);
+        speed = startSpeed;
+        isCollided = false;
+    }
+
     public void MakeTarget(Transform _target) {
         target = _target;
     }
@@ -74,9 +79,9 @@ public class Projectile : MonoBehaviour {
         Enemy e = enemy.GetComponent<Enemy>();
         if(e) {
             if(e.isBoss && bossDamage > 0)
-                e.TakeDamage(bossDamage, Color.grey, true);
+                e.TakeDamage(bossDamage, Color.grey);
             else {
-                e.TakeDamage(damage, Color.grey, true);
+                e.TakeDamage(damage, Color.grey);
             }
         }
     }

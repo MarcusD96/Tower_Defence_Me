@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FarmTower : Turret {
 
-    public int specialCashNumSpawns;
-    public float specialCashValue;
-
     [Header("Farm Stats")]
     public int cashValue;
     public int numSpawns, lifeValue, lifeChance;
@@ -67,7 +64,7 @@ public class FarmTower : Turret {
         //killing enemies are worth double
         if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
-            StartCoroutine(CashInjection());
+            StartCoroutine(FarmSpecial());
             return true;
         }
         return false;
@@ -105,14 +102,24 @@ public class FarmTower : Turret {
         cashDrop = null;
     }
 
-    IEnumerator CashInjection() {
+    IEnumerator FarmSpecial() {
         StartCoroutine(SpecialTime());
 
-        float startTime = Time.time;
-        for(int i = 0; i < specialCashNumSpawns; i++) {
-            PlayerStats.money += specialCashValue;
-            ShowDrop(Color.cyan, specialCashValue, 10);
-            yield return new WaitForSeconds(0.2f);
+        //double cash
+        cashValue *= 2;
+        foreach(var e in ObjectPool.instance.GetPooledEnemies()) {
+            foreach(var ee in e) {
+                ee.GetComponent<Enemy>().currentMoneyValue *= 2;
+            }
+        }
+        yield return new WaitForSeconds(15.0f);
+
+        //revert dbl cash
+        cashValue /= 2;
+        foreach(var e in ObjectPool.instance.GetPooledEnemies()) {
+            foreach(var ee in e) {
+                ee.GetComponent<Enemy>().currentMoneyValue /= 2;
+            }
         }
     }
 }

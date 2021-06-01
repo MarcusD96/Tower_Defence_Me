@@ -109,7 +109,8 @@ public class AudioManager : MonoBehaviour {
         tmp.transform.position = pos_;
         var source = tmp.AddComponent<AudioSource>();
         source.clip = clip_;
-        source.volume = volume_ / 10;
+        source.volume = volume_;
+        source.spatialBlend = 1;
         source.Play();
         Destroy(tmp, clip_.length);
         return source;

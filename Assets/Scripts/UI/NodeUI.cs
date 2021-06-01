@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class NodeUI : MonoBehaviour {
     [Header("UI Elements")]
     public GameObject ui;
-    public GameObject upgradeUI, tooltips, info;
+    public GameObject tooltips;
     public Button controlButton;
     public TextMeshProUGUI sellPrice;
 
@@ -19,6 +19,7 @@ public class NodeUI : MonoBehaviour {
 
     [Header("Targetting")]
     public TextMeshProUGUI targetting;
+    public GameObject targettingGroup;
 
     private Node target;
 
@@ -36,10 +37,6 @@ public class NodeUI : MonoBehaviour {
     }
 
     void NodeUIKeyboardShortcuts() {
-        if(Input.GetKeyDown(KeyCode.X)) { //open upgrade menu
-            Upgrade();
-        }
-
         if(upgradeButtonA.interactable) {
             if(Input.GetKeyDown(KeyCode.Comma)) { //upgrade left
                 UpgradeA();
@@ -109,8 +106,6 @@ public class NodeUI : MonoBehaviour {
 
     public void SetTarget(Node target_) {
         ui.SetActive(true);
-        upgradeUI.SetActive(false);
-        info.SetActive(false);
         tooltips.SetActive(false);
 
         target = target_;
@@ -125,15 +120,8 @@ public class NodeUI : MonoBehaviour {
     }
 
     public void Hide() {
-        upgradeUI.SetActive(false);
         ui.SetActive(false);
-        info.SetActive(false);
         tooltips.SetActive(false);
-    }
-
-    public void Upgrade() {
-        upgradeUI.SetActive(!upgradeUI.activeSelf);
-        info.SetActive(!info.activeSelf);
     }
 
     public void UpgradeA() {
@@ -157,13 +145,11 @@ public class NodeUI : MonoBehaviour {
     public void Sell() {
         target.RevertTurret(false);
         target.SellTurret();
-        upgradeUI.SetActive(false);
         BuildManager.instance.DeselectNode();
     }
 
     public void Control() {
         target.ControlTurret();
-        upgradeUI.SetActive(false);
         BuildManager.instance.DeselectNode();
     }
 
@@ -178,7 +164,12 @@ public class NodeUI : MonoBehaviour {
     void SetUIInfo() {
         var t = target.turret.GetComponent<Turret>();
 
-        targetting.text = target.turret.GetComponent<Turret>().GetTargetting();
+        if(t.GetTargetting() == null)
+            targettingGroup.gameObject.SetActive(false);
+        else {
+            targettingGroup.gameObject.SetActive(true);
+            targetting.text = target.turret.GetComponent<Turret>().GetTargetting();
+        }
 
         sellPrice.text = "$" + t.GetSellPrice();
 

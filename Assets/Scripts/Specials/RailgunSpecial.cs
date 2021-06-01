@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EMP : MonoBehaviour {
+public class RailgunSpecial : MonoBehaviour {
 
-    private static EMP instance = null;
+    private static RailgunSpecial instance = null;
 
-    public List<LaserTurret> turrets;
+    public List<RailgunTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<LaserTurret>();
+        turrets = new List<RailgunTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -58,19 +58,16 @@ public class EMP : MonoBehaviour {
         }
     }
 
-    public static void AddNewLaserTurret(LaserTurret lt) {
-        if(!instance)
-            return;
-
-        instance.turrets.Add(lt);
+    public static void AddNewRailgunTurret(RailgunTurret rgt) {
+        instance.turrets.Add(rgt);
     }
 
-    public static void RemoveTurret(LaserTurret lt) {
+    public static void RemoveTurret(RailgunTurret rgt) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(lt);
+            instance.turrets.Remove(rgt);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);

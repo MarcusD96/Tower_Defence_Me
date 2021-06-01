@@ -7,6 +7,7 @@ public class TankShot : Projectile {
 
     private void Awake() {
         tankShot = this;
+        startSpeed = speed;
     }
 
     private new void FixedUpdate() {
@@ -26,10 +27,10 @@ public class TankShot : Projectile {
             Damage(target);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 1.0f);
-            Destroy(gameObject);
+            ObjectPool.instance.Deactivate(gameObject);
             return;
         }
-        Destroy(gameObject);
+        ObjectPool.instance.Deactivate(gameObject);
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 1.0f);
     }

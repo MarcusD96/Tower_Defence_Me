@@ -47,6 +47,6 @@ public class EnemyMovement : MonoBehaviour {
         WaveSpawner.enemiesAlive--;
         Destroy(Instantiate(enemy.deathEffect, transform.position, transform.rotation), 5.0f);
         ResetPath();
-        EnemyPool.instance.Deactivate(gameObject);
+        ObjectPool.instance.Deactivate(gameObject);
     }
 }

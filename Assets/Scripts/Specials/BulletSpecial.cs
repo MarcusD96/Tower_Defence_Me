@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barrage : MonoBehaviour {
+public class BulletSpecial : MonoBehaviour {
 
-    private static Barrage instance = null;
+    private static BulletSpecial instance = null;
 
-    public List<MissileTurret> turrets;
+    public List<BulletTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<MissileTurret>();
+        turrets = new List<BulletTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -40,7 +40,7 @@ public class Barrage : MonoBehaviour {
             }
 
             //always show the LEAST fill of all abilities
-            if(t.specialBar.fillBar.fillAmount > turrets[i - 1].specialBar.fillBar.fillAmount) { //previous is less full
+            if(t.specialBar.fillBar.fillAmount > turrets[i - 1].specialBar.fillBar.fillAmount) { //previous is more full
                 recharge.fillAmount = turrets[i - 1].specialBar.fillBar.fillAmount;
             } else {
                 recharge.fillAmount = t.specialBar.fillBar.fillAmount;
@@ -58,16 +58,16 @@ public class Barrage : MonoBehaviour {
         }
     }
 
-    public static void AddNewMissileTurret(MissileTurret mt) {
-        instance.turrets.Add(mt);
+    public static void AddNewBulletTurret(BulletTurret bt) {
+        instance.turrets.Add(bt);
     }
 
-    public static void RemoveTurret(MissileTurret mt) {
+    public static void RemoveTurret(BulletTurret bt) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(mt);
+            instance.turrets.Remove(bt);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);

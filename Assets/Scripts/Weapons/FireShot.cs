@@ -12,7 +12,15 @@ public class FireShot : MonoBehaviour {
 
     bool special;
 
-    private void Start() {
+    public void Initialize(float damage_, float radius_, float burnDamage_, float burnInterval_, int burnTime_, int penetration_, bool special_) {
+        damage = damage_;
+        radius = radius_;
+        burnDamage = burnDamage_;
+        burnInterval = burnInterval_;
+        burnTime = burnTime_;
+        penetration = penetration_;
+        special = special_;
+
         fire = GetComponent<ParticleSystem>();
         fire.Play();
 
@@ -24,7 +32,7 @@ public class FireShot : MonoBehaviour {
 
     void LateUpdate() {
         if(fire.isStopped) {
-            Destroy(gameObject);
+            ObjectPool.instance.Deactivate(gameObject);
         }
     }
 
@@ -60,9 +68,9 @@ public class FireShot : MonoBehaviour {
                     grad.color = specGradient;
 
                     if(e.isBoss) {
-                        e.TakeDamage(damage * 100, Color.red, true);
+                        e.TakeDamage(damage * 100, Color.red);
                     } else {
-                        e.TakeDamage(damage * 5, Color.red, true);
+                        e.TakeDamage(damage * 5, Color.red);
                     }
 
                     e.Burn(burnDamage, burnTime * 2, burnInterval);
@@ -72,24 +80,14 @@ public class FireShot : MonoBehaviour {
                     grad.color = mainGradient;
 
                     if(e.isBoss) {
-                        e.TakeDamage(damage * 3, Color.red, true);
+                        e.TakeDamage(damage * 3, Color.red);
                     } else
-                        e.TakeDamage(damage, Color.red, true);
+                        e.TakeDamage(damage, Color.red);
                     e.Burn(burnDamage, burnTime, burnInterval);
                 }
 
                 penetration--;
             }
         }
-    }
-
-    public void SetStats(float damage_, float radius_, float burnDamage_, float burnInterval_, int burnTime_, int penetration_, bool special_) {
-        damage = damage_;
-        radius = radius_;
-        burnDamage = burnDamage_;
-        burnInterval = burnInterval_;
-        burnTime = burnTime_;
-        penetration = penetration_;
-        special = special_;
     }
 }

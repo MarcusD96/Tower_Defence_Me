@@ -9,9 +9,12 @@ public class Rod : Projectile {
 
     void Awake() {
         rod = this;
-        direction = transform.forward;
+        startSpeed = speed;
     }
 
+    public void InitializeDirection() {
+        direction = transform.rotation * Vector3.forward;
+    }
     new void FixedUpdate() {
         base.FixedUpdate();
 
@@ -24,14 +27,14 @@ public class Rod : Projectile {
 
     public override void HitTarget(bool endOfLife) {
         if(endOfLife) {
-            Destroy(gameObject);
+            ObjectPool.instance.Deactivate(gameObject);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2.0f);
             return;
         }
 
-        if(penetration <= 0) {
-            Destroy(gameObject);
+        if(penetration < 0) {
+            ObjectPool.instance.Deactivate(gameObject);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2.0f);
             return;

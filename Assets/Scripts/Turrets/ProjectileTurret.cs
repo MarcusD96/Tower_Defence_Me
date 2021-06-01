@@ -13,23 +13,50 @@ public class ProjectileTurret : Turret {
     public float damage, bossDamage;
     public int penetration;
 
+    ProjectileType CheckType() {
+        //bullet
+        if(bulletTurret)
+            return ProjectileType.Bullet;
+        else if(bulletTurret && specialActivated)
+            return ProjectileType.Bullet_Special;
+
+        //missile
+        else if(missileTurret)
+            return ProjectileType.Missile;
+        else if(missileTurret && specialActivated)
+            return ProjectileType.Missile_Special;
+
+        //rod
+        else if(railgunTurret)
+            return ProjectileType.Rod;
+        else if(railgunTurret && specialActivated)
+            return ProjectileType.Rod_Special;
+
+        //error
+        else
+            return ProjectileType.Bullet;
+    }
+
     public void AutoShoot() {
         if(tankTurret) {
             tankTurret.AutoShotgun();
             return;
         }
 
-        GameObject prpojectileGO = Instantiate(projectilePrefab, fireSpawn.position, fireSpawn.rotation);
-        Projectile proj = prpojectileGO.GetComponent<Projectile>();
+        GameObject projGO = ObjectPool.instance.ActivateProjectile(CheckType(), fireSpawn.position, fireSpawn.rotation);
+        Projectile proj = projGO.GetComponent<Projectile>();
 
         Ray ray = new Ray(pivot.position, target.position - pivot.position);
-        proj.SetLifePositions(pivot.position, ray.GetPoint(range));
-        proj.SetDamage(damage, bossDamage);
+        proj.SetStats(damage, bossDamage, pivot.position, ray.GetPoint(range));
 
-        if(missileTurret) {
+        if(bulletTurret) {
+            proj.GetBullet().InitializeDirection();
+        }
+        else if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
+            proj.GetRod().InitializeDirection();
             proj.SetLifePositions(pivot.position, ray.GetPoint(range * 2));
         }
 
@@ -45,14 +72,14 @@ public class ProjectileTurret : Turret {
         float manualRange = range * manualRangeMultiplier;
 
         //spawn proj, get the proj info
-        GameObject projGO = Instantiate(projectileTurret.projectilePrefab, fireSpawn.position, fireSpawn.rotation);
+        GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.Bullet, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = projGO.GetComponent<Projectile>();
 
-        //set proj info
-        proj.SetDamage(damage, bossDamage);
-
         //set more specific info based on the type of proj
-        if(missileTurret) {
+        if(bulletTurret) {
+            proj.GetBullet().InitializeDirection();
+        }
+        else if(missileTurret) {
             proj.GetMissile().SetExplosion(penetration);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
@@ -60,7 +87,8 @@ public class ProjectileTurret : Turret {
 
         Ray ray = TryRayCastAndRay(manualRange);
 
-        proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange));
+        //set proj info
+        proj.SetStats(damage, bossDamage, pivot.position, ray.GetPoint(range));
 
         if(railgunTurret) {
             proj.SetLifePositions(pivot.position, ray.GetPoint(manualRange * 2));

@@ -31,13 +31,13 @@ public class RailgunTurret : ProjectileTurret {
     public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0) {
             specialActivated = true;
-            StartCoroutine(MegaShot());
+            StartCoroutine(SpecialAbilty());
             return true;
         }
         return false;
     }
 
-    IEnumerator MegaShot() {
+    IEnumerator SpecialAbilty() {
         StartCoroutine(SpecialTime());
 
         //save info

@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Supercharge : MonoBehaviour {
+public class FarmSpecial : MonoBehaviour {
 
-    private static Supercharge instance = null;
+    private static FarmSpecial instance = null;
 
-    public List<TeslaTurret> turrets;
+    public List<FarmTower> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<TeslaTurret>();
+        turrets = new List<FarmTower>();
         num.gameObject.SetActive(false);
     }
 
@@ -31,7 +31,7 @@ public class Supercharge : MonoBehaviour {
             i++;
 
             if(turrets.Count == 1) {
-                recharge.fillAmount = turrets[0].specialBar.fillBar.fillAmount;
+                recharge.fillAmount = turrets[0].specialAmount / turrets[0].specialRate;
                 break;
             }
 
@@ -40,10 +40,10 @@ public class Supercharge : MonoBehaviour {
             }
 
             //always show the LEAST fill of all abilities
-            if(t.specialBar.fillBar.fillAmount > turrets[i - 1].specialBar.fillBar.fillAmount) { //previous is more full
-                recharge.fillAmount = turrets[i - 1].specialBar.fillBar.fillAmount;
+            if(t.specialAmount > turrets[i - 1].specialAmount) { //previous is more full
+                recharge.fillAmount = turrets[i - 1].specialAmount / turrets[i - 1].specialRate;
             } else {
-                recharge.fillAmount = t.specialBar.fillBar.fillAmount;
+                recharge.fillAmount = t.specialAmount / t.specialRate;
             }
         }
 
@@ -58,16 +58,16 @@ public class Supercharge : MonoBehaviour {
         }
     }
 
-    public static void AddNewTeslaTurret(TeslaTurret tt) {
-        instance.turrets.Add(tt);
+    public static void AddNewFarmTower(FarmTower farm) {
+        instance.turrets.Add(farm);
     }
 
-    public static void RemoveTurret(TeslaTurret tt) {
+    public static void RemoveTower(FarmTower farm) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(tt);
+            instance.turrets.Remove(farm);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
@@ -76,7 +76,7 @@ public class Supercharge : MonoBehaviour {
 
     public void DoSpecial() {
         foreach(var t in turrets) {
-            if(t.specialBar.fillBar.fillAmount <= 0) {
+            if(t.specialAmount <= 0) {
                 if(t.ActivateSpecial())
                     break;
             }

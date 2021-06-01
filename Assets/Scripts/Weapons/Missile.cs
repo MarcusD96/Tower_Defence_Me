@@ -9,6 +9,7 @@ public class Missile : Projectile {
 
     void Awake() {
         missile = this;
+        startSpeed = speed;
     }
 
     public void SetExplosion(int penetration_) {
@@ -29,20 +30,20 @@ public class Missile : Projectile {
 
             Vector3 direction = target.position - transform.position;
             transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-            transform.LookAt(target);
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
         } else {
             TryFindNewTargetInfront();
         }
     }
 
     public override void HitTarget(bool endOfLife) {
-        Explode();
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 3.0f);
+        Explode();
     }
 
     void Explode() {
-        //save the enemy list
+        //save the enemy list copy
         List<GameObject> e = new List<GameObject>(WaveSpawner.GetEnemyList_Static());
 
         //remove enemies not in explosion range
@@ -68,6 +69,7 @@ public class Missile : Projectile {
                 Damage(e[i].transform);
             }
         }
-        Destroy(gameObject);
+        target = null;
+        ObjectPool.instance.Deactivate(gameObject);
     }
 }

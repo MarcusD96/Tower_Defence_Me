@@ -30,13 +30,13 @@ public class BulletTurret : ProjectileTurret {
     public override bool ActivateSpecial() {
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             specialActivated = true;
-            StartCoroutine(BulletBurst());
+            StartCoroutine(BulletSpecial());
             return true;
         }
         return false;
     }
 
-    IEnumerator BulletBurst() {
+    IEnumerator BulletSpecial() {
         StartCoroutine(SpecialTime());
         GameObject tmp = projectilePrefab;
 

@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Rundown : MonoBehaviour {
+public class FireSpecial : MonoBehaviour {
 
-    private static Rundown instance = null;
+    private static FireSpecial instance = null;
 
-    public List<TankTurret> turrets;
+    public List<FireTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<TankTurret>();
+        turrets = new List<FireTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -58,16 +58,16 @@ public class Rundown : MonoBehaviour {
         }
     }
 
-    public static void AddNewTankTurret(TankTurret tank) {
-        instance.turrets.Add(tank);
+    public static void AddNewFireTurret(FireTurret ft) {
+        instance.turrets.Add(ft);
     }
 
-    public static void RemoveTurret(TankTurret tank) {
+    public static void RemoveTurret(FireTurret ft) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(tank);
+            instance.turrets.Remove(ft);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);

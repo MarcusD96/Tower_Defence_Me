@@ -183,24 +183,40 @@ public class Node : MonoBehaviour {
     void CheckTurretTypeToSell() {
         //bullet
         if(turret.GetComponent<BulletTurret>()) {
-            Burst.RemoveTurret(turret.GetComponent<BulletTurret>());
+            BulletSpecial.RemoveTurret(turret.GetComponent<BulletTurret>());
         }
+
         //missile
         else if(turret.GetComponent<MissileTurret>()) {
-            Barrage.RemoveTurret(turret.GetComponent<MissileTurret>());
+            MissileSpecial.RemoveTurret(turret.GetComponent<MissileTurret>());
         }
+
         //railgun
         else if(turret.GetComponent<RailgunTurret>()) {
-            MegaShot.RemoveTurret(turret.GetComponent<RailgunTurret>());
+            RailgunSpecial.RemoveTurret(turret.GetComponent<RailgunTurret>());
         }
+
         //laser
         else if(turret.GetComponent<LaserTurret>()) {
-            AudioManager.StaticStop(turret.GetComponent<LaserTurret>().shootSound);
-            EMP.RemoveTurret(turret.GetComponent<LaserTurret>());
+            LaserSpecial.RemoveTurret(turret.GetComponent<LaserTurret>());
         }
+
         //tesla
         else if(turret.GetComponent<TeslaTurret>()) {
-            Supercharge.RemoveTurret(turret.GetComponent<TeslaTurret>());
+            TeslaSpecial.RemoveTurret(turret.GetComponent<TeslaTurret>());
+        }
+
+        //fire
+        else if(turret.GetComponent<FireTurret>())
+            FireSpecial.RemoveTurret(turret.GetComponent<FireTurret>());
+
+        //tank
+        else if(turret.GetComponent<TankTurret>())
+            TankSpecial.RemoveTurret(turret.GetComponent<TankTurret>());
+
+        //farm
+        else if(turret.GetComponent<FarmTower>()) {
+            FarmSpecial.RemoveTower(turret.GetComponent<FarmTower>());
         }
     }
 

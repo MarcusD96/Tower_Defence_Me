@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankSpecial : MonoBehaviour {
+public class TankRunner : MonoBehaviour {
 
     public float speed;
 
@@ -56,7 +56,7 @@ public class TankSpecial : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Enemy")) {
             Enemy e = other.gameObject.GetComponent<Enemy>();
-            e.TakeDamage(1000.0f, Color.white, true);
+            e.TakeDamage(1000.0f, Color.white);
         }
     }
 }

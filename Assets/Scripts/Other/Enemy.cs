@@ -14,13 +14,13 @@ public class Enemy : MonoBehaviour {
     public float startSpeed, startHp;
     public float distanceTravelled, moneyValue;
     [HideInInspector]
-    public float currentSpeed;
+    public float currentSpeed, currentMoneyValue;
 
     public int lifeValue;
 
     public EnemyType enemyType;
 
-    private float currentHp, currentMoneyValue;
+    private float currentHp;
 
     private IEnumerator stun = null;
     private IEnumerator burn = null;
@@ -40,11 +40,7 @@ public class Enemy : MonoBehaviour {
         currentMoneyValue = moneyValue;
     }
 
-    public void DecreaseMoneyValue() {
-        currentMoneyValue /= 2.0f;
-    }
-
-    public void TakeDamage(float amount, Color color, bool indicateDmg) {
+    public void TakeDamage(float amount, Color color) {
         if(healthBarL && healthBarR) {
             currentHp -= amount;
 
@@ -65,7 +61,7 @@ public class Enemy : MonoBehaviour {
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);
         GetComponent<EnemyMovement>().ResetPath();
-        EnemyPool.instance.Deactivate(gameObject);
+        ObjectPool.instance.Deactivate(gameObject);
         ResetEnemy();
     }
 
@@ -82,8 +78,8 @@ public class Enemy : MonoBehaviour {
             return;
 
         if(isBoss) {
-            duration /= 2;
-            slowFactor *= 2;
+            slowFactor *= 3.0f;
+            slowFactor = Mathf.Clamp01(slowFactor);
         }
 
         if(!isSlow) { //first slow, start to slow and start particles
@@ -95,9 +91,6 @@ public class Enemy : MonoBehaviour {
     }
 
     public void DamageOverTime(float dot, float duration) {
-        if(isBoss)
-            duration /= 2;
-
         if(gameObject.activeSelf)
             StartCoroutine(DoT(dot, duration));
     }
@@ -120,7 +113,7 @@ public class Enemy : MonoBehaviour {
         isDamaging = true;
         float endTime = Time.time + duration;
         while(Time.time < endTime) {
-            TakeDamage(dot * Time.deltaTime, Color.white, false);
+            TakeDamage(dot * Time.deltaTime, Color.white);
             yield return new WaitForEndOfFrame();
         }
         isDamaging = false;
@@ -196,7 +189,7 @@ public class Enemy : MonoBehaviour {
         burnEffect.gameObject.SetActive(true);
         for(int i = 0; i <= numBurns; i++) {
             yield return new WaitForSeconds(burnInterval);
-            TakeDamage(damage, Color.white, false);
+            TakeDamage(damage, Color.white);
         }
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);

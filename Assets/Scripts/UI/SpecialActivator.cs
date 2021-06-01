@@ -40,41 +40,41 @@ public class SpecialActivator : MonoBehaviour {
 
     public static void MakeBurst(BulletTurret bt) {
         instance.burstButton.SetActive(true);
-        Burst.AddNewBulletTurret(bt);
+        BulletSpecial.AddNewBulletTurret(bt);
     }
 
     public static void MakeBarrage(MissileTurret mt) {
         instance.barrageButton.SetActive(true);
-        Barrage.AddNewMissileTurret(mt);
+        MissileSpecial.AddNewMissileTurret(mt);
     }
 
     public static void MakeCharges(RailgunTurret rt) {
         instance.chargesButton.SetActive(true);
-        MegaShot.AddNewRailgunTurret(rt);
+        RailgunSpecial.AddNewRailgunTurret(rt);
     }
 
     public static void MakeEMP(LaserTurret lt) {
         instance.empButton.SetActive(true);
-        EMP.AddNewLaserTurret(lt);
+        LaserSpecial.AddNewLaserTurret(lt);
     }
 
     public static void MakeSuperCharge(TeslaTurret tt) {
         instance.superchargeButton.SetActive(true);
-        Supercharge.AddNewTeslaTurret(tt);
+        TeslaSpecial.AddNewTeslaTurret(tt);
     }
 
     public static void MakeInferno(FireTurret ft) {
         instance.infernoBtn.SetActive(true);
-        Inferno.AddNewFireTurret(ft);
+        FireSpecial.AddNewFireTurret(ft);
     }
 
     public static void MakeRundown(TankTurret tank) {
         instance.rundownBtn.SetActive(true);
-        Rundown.AddNewTankTurret(tank);
+        TankSpecial.AddNewTankTurret(tank);
     }
 
     public static void MakeDoubleCash(FarmTower farm) {
         instance.doubleCashBtn.SetActive(true);
-        DoubleCash.AddNewFarmTower(farm);
+        FarmSpecial.AddNewFarmTower(farm);
     }
 }

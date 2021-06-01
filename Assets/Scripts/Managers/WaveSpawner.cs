@@ -137,7 +137,7 @@ public class WaveSpawner : MonoBehaviour {
 
     void SpawnEnemy(GameObject enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
-        spawnedEnemies.Add(EnemyPool.instance.Activate(e.enemyType, spawnPoint.position, spawnPoint.rotation));
+        spawnedEnemies.Add(ObjectPool.instance.ActivateEnemy(e.enemyType, spawnPoint.position, spawnPoint.rotation));
     }
 
     void RemoveEnemyFromList(Enemy e) {
@@ -172,10 +172,11 @@ public class WaveSpawner : MonoBehaviour {
             Enemy.difficultyMultiplier += 0.02f;
 
         }
-        if(((r) >= 10) && ((r) % 10 == 0)) { //over round 10 in intervals of 10
-            foreach(var e in EnemyPool.instance.GetPooledEnemies()) {
+        if(((r) >= 15) && ((r - 5) % 10 == 0)) { //over round 15 in intervals of 10
+            print("decrease value");
+            foreach(var e in ObjectPool.instance.GetPooledEnemies()) {
                 foreach(var ee in e) {
-                    ee.GetComponent<Enemy>().DecreaseMoneyValue();
+                    ee.GetComponent<Enemy>().currentMoneyValue /= 2.0f;
                 }
             }
         }

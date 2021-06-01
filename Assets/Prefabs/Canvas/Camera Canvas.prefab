@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 8126348661079075280}
   - component: {fileID: 2440189789645554979}
   m_Layer: 5
-  m_Name: Charges Special Btn
+  m_Name: Railgun Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230621316232602812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74691cde302d92459b4f3debc8bccb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 542bee366e8cf42469eebd8de5637a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turrets: []
@@ -2289,7 +2289,7 @@ GameObject:
   - component: {fileID: 738452705249715538}
   - component: {fileID: 4115318995357553922}
   m_Layer: 5
-  m_Name: Rundown Special Btn
+  m_Name: Tank Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2457,7 +2457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2661043890541231447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0192d6f6b35861342a9330d6011202de, type: 3}
+  m_Script: {fileID: 11500000, guid: 2236e8a030c0df54c84a1099e525a5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turrets: []
@@ -3376,7 +3376,7 @@ GameObject:
   - component: {fileID: 5724216650083252467}
   - component: {fileID: 2614971520157256117}
   m_Layer: 5
-  m_Name: Barrage Special Btn
+  m_Name: Missile Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4689,7 +4689,7 @@ GameObject:
   - component: {fileID: 6886409222406084799}
   - component: {fileID: 5310830575207051301}
   m_Layer: 5
-  m_Name: Burst Special Btn
+  m_Name: Bullet Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9038,7 +9038,7 @@ GameObject:
   - component: {fileID: 8975212756287261162}
   - component: {fileID: 3825247910362034772}
   m_Layer: 5
-  m_Name: Double Cash Special Btn
+  m_Name: Farm Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9646,7 +9646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604d4119b6c34eb4d800f89a2718a4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuSceneName: Main Menu
 --- !u!95 &7250722259496544348
 Animator:
   serializedVersion: 3
@@ -10476,7 +10475,7 @@ GameObject:
   - component: {fileID: 2512045209673975192}
   - component: {fileID: 5282785016585088578}
   m_Layer: 5
-  m_Name: Inferno Special Btn
+  m_Name: Fire Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10644,7 +10643,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7321605543171107854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a4c147f63b08d42b3d27d010ed59a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 751b784176e153146b0096f83e0306ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turrets: []
@@ -10666,7 +10665,7 @@ GameObject:
   - component: {fileID: 518722963507539840}
   - component: {fileID: 2288369728897463870}
   m_Layer: 5
-  m_Name: Supercharge Special Btn
+  m_Name: Tesla Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10931,7 +10930,7 @@ GameObject:
   - component: {fileID: 600046699679679240}
   - component: {fileID: 7306712749162138584}
   m_Layer: 5
-  m_Name: EMP Special Btn
+  m_Name: Laser Special Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

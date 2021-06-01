@@ -19,8 +19,8 @@ public class LevelLoader : MonoBehaviour {
         }
         Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
         yield return new WaitForSeconds(0.01f);
-        var pool = FindObjectOfType<EnemyPool>(true);
-        while(!pool.finishedLoading)
+        var pool = FindObjectOfType<ObjectPool>(true);
+        while(!pool.CheckLoading())
             yield return null;
         SceneManager.UnloadSceneAsync("Loading");
     }

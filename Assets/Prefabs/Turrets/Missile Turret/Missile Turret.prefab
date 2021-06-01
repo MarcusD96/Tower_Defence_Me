@@ -384,7 +384,7 @@ MonoBehaviour:
   penetration: 5
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
     type: 3}
-  specialMissileCount: 100
+  specialMissileCount: 72
 --- !u!114 &6568727638329882637
 MonoBehaviour:
   m_ObjectHideFlags: 0

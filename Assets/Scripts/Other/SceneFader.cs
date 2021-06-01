@@ -12,9 +12,9 @@ public class SceneFader : MonoBehaviour {
 
     void Update() {
         if(!fadeIn) {
-            var p = FindObjectOfType<EnemyPool>();
+            var p = FindObjectOfType<ObjectPool>();
             if(p != null)
-                if(p.finishedLoading) {
+                if(p.CheckLoading()) {
                     StartCoroutine(FadeIn());
                     fadeIn = true;
                 } else

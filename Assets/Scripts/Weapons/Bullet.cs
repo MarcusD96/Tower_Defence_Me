@@ -7,7 +7,11 @@ public class Bullet : Projectile {
 
     void Awake() {
         bullet = this;
-        direction = transform.forward;
+        startSpeed = speed;
+    }
+
+    public void InitializeDirection() {
+        direction = VaryDirection();
     }
 
     new void FixedUpdate() {
@@ -20,11 +24,18 @@ public class Bullet : Projectile {
             Damage(target);
             GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 1.0f);
-            Destroy(gameObject);
+            ObjectPool.instance.Deactivate(gameObject);
             return;
         }
-        Destroy(gameObject);
+        ObjectPool.instance.Deactivate(gameObject);
         GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInstance, 1.0f);
+    }
+
+    Vector3 VaryDirection() {
+        float r = Random.Range(-0.03f, 0.03f);
+        Vector3 direction = transform.rotation * new Vector3(Vector3.forward.x + r, Vector3.forward.y, Vector3.forward.z);
+        direction.Normalize();
+        return direction;
     }
 }

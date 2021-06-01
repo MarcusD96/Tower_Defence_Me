@@ -23,13 +23,15 @@ public class FireTurret : Turret {
     }
 
     public void AutoShoot() {
-        var f = Instantiate(fireShot.gameObject, fireSpawn.position, fireShot.transform.rotation);
-        f.GetComponent<FireShot>().SetStats(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
+        var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
+        var fComp = f.GetComponent<FireShot>();
+        fComp.Initialize(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
     }
 
     public void ManualShoot() {
-        var f = Instantiate(fireShot.gameObject, fireSpawn.position, fireShot.transform.rotation);
-        f.GetComponent<FireShot>().SetStats(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
+        var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
+        var fComp = f.GetComponent<FireShot>();
+        fComp.Initialize(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
     }
     public override void ApplyUpgradeB() {  //fireRate++, penetration++, burn++,
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
@@ -41,7 +43,7 @@ public class FireTurret : Turret {
         range *= 3;
         if(!specialActivated && WaveSpawner.enemiesAlive > 0 && CheckEnemiesInRange()) {
             range /= 3;
-            StartCoroutine(Inferno());
+            StartCoroutine(SpecialAbility());
             specialActivated = true;
             return true;
         }
@@ -50,7 +52,7 @@ public class FireTurret : Turret {
     }
 
     bool isUsingSpecial = false;
-    IEnumerator Inferno() {
+    IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 

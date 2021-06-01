@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoubleCash : MonoBehaviour {
+public class MissileSpecial : MonoBehaviour {
 
-    private static DoubleCash instance = null;
+    private static MissileSpecial instance = null;
 
-    public List<FarmTower> turrets;
+    public List<MissileTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<FarmTower>();
+        turrets = new List<MissileTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -31,7 +31,7 @@ public class DoubleCash : MonoBehaviour {
             i++;
 
             if(turrets.Count == 1) {
-                recharge.fillAmount = turrets[0].specialAmount / turrets[0].specialRate;
+                recharge.fillAmount = turrets[0].specialBar.fillBar.fillAmount;
                 break;
             }
 
@@ -40,10 +40,10 @@ public class DoubleCash : MonoBehaviour {
             }
 
             //always show the LEAST fill of all abilities
-            if(t.specialAmount > turrets[i - 1].specialAmount) { //previous is more full
-                recharge.fillAmount = turrets[i - 1].specialAmount / turrets[i - 1].specialRate;
+            if(t.specialBar.fillBar.fillAmount > turrets[i - 1].specialBar.fillBar.fillAmount) { //previous is less full
+                recharge.fillAmount = turrets[i - 1].specialBar.fillBar.fillAmount;
             } else {
-                recharge.fillAmount = t.specialAmount / t.specialRate;
+                recharge.fillAmount = t.specialBar.fillBar.fillAmount;
             }
         }
 
@@ -58,16 +58,16 @@ public class DoubleCash : MonoBehaviour {
         }
     }
 
-    public static void AddNewFarmTower(FarmTower farm) {
-        instance.turrets.Add(farm);
+    public static void AddNewMissileTurret(MissileTurret mt) {
+        instance.turrets.Add(mt);
     }
 
-    public static void RemoveTower(FarmTower farm) {
+    public static void RemoveTurret(MissileTurret mt) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(farm);
+            instance.turrets.Remove(mt);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
@@ -76,7 +76,7 @@ public class DoubleCash : MonoBehaviour {
 
     public void DoSpecial() {
         foreach(var t in turrets) {
-            if(t.specialAmount <= 0) {
+            if(t.specialBar.fillBar.fillAmount <= 0) {
                 if(t.ActivateSpecial())
                     break;
             }

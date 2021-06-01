@@ -6,7 +6,6 @@ public class LaserTurret : BeamTurret {
     public float slowFactor;
     public float slowDuration;
     public float damageOverTime;
-    public float slowMultiplier;
     public ParticleSystem impactEffect;
     public Light impactLight;
 
@@ -24,7 +23,7 @@ public class LaserTurret : BeamTurret {
         impactEffect.Stop();
         shootEffect.Stop();
         impactLight.enabled = shootLight.enabled = false;
-        maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 6)) / slowMultiplier;
+        maxSlowFactor = (slowFactor - (ugB.upgradeFactorY * 6));
         startFR = fireRate;
     }
 
@@ -54,7 +53,7 @@ public class LaserTurret : BeamTurret {
         }
         #endregion
 
-        #region if changed target, enable damage again
+        #region if changed target
         if(lastTarget != target || Time.time >= slowDurationEnd) {
             lastTarget = target;
             BeamOff();
@@ -136,6 +135,7 @@ public class LaserTurret : BeamTurret {
 
         RaycastHit hit;
         if(Physics.Raycast(pivot.position, pivot.forward, out hit, manualRange)) {
+            Debug.DrawRay(pivot.position, (pivot.rotation * Vector3.forward).normalized, Color.red, 5);
             if(hit.collider) {
                 //set the target and get its information
                 target = hit.transform;
@@ -149,13 +149,12 @@ public class LaserTurret : BeamTurret {
                         targetEnemy.DamageOverTime(damageOverTime, slowDuration);
                     }
 
-                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, Color.white, false);
+                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, Color.white);
 
                     if(target != targetPrev) {
                         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                         targetPrev = target;
                     }
-
                     //graphics
                     if(!lineRenderer.enabled) {
                         lineRenderer.enabled = true;
@@ -176,7 +175,6 @@ public class LaserTurret : BeamTurret {
         else {
             target = null;
             targetEnemy = null;
-            //lineRenderer.SetPosition(1, Vector3.forward * manualRange);
             lineRenderer.SetPosition(1, (Vector3.forward * manualRange) + new Vector3(0, 0, fireSpawn.localPosition.z * transform.localScale.z));
             lineRenderer.enabled = true;
             impactEffect.Stop();

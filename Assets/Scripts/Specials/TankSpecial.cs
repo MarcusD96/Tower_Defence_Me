@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Burst : MonoBehaviour {
+public class TankSpecial : MonoBehaviour {
 
-    private static Burst instance = null;
+    private static TankSpecial instance = null;
 
-    public List<BulletTurret> turrets;
+    public List<TankTurret> turrets;
     public Image recharge;
     public TextMeshProUGUI num;
 
     void Awake() {
         instance = this;
-        turrets = new List<BulletTurret>();
+        turrets = new List<TankTurret>();
         num.gameObject.SetActive(false);
     }
 
@@ -58,16 +58,16 @@ public class Burst : MonoBehaviour {
         }
     }
 
-    public static void AddNewBulletTurret(BulletTurret bt) {
-        instance.turrets.Add(bt);
+    public static void AddNewTankTurret(TankTurret tank) {
+        instance.turrets.Add(tank);
     }
 
-    public static void RemoveTurret(BulletTurret bt) {
+    public static void RemoveTurret(TankTurret tank) {
         if(!instance)
             return;
 
         if(instance.turrets.Count > 0)
-            instance.turrets.Remove(bt);
+            instance.turrets.Remove(tank);
 
         if(instance.turrets.Count < 1) {
             instance.gameObject.SetActive(false);
