@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour {
     }
 
     public void Retry() {
+        PlayerStats.levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         sceneFader.FadeTo("Loading");
     }
 

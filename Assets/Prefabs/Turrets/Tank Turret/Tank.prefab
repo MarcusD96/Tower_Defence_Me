@@ -169,7 +169,7 @@ MonoBehaviour:
   specialBar: {fileID: 1500517532482397155}
   specialRate: 60
   specialAmount: 0
-  specialTime: 0
+  specialTime: 15
   projectilePrefab: {fileID: 5063451577565241328, guid: e9268fe564466754785d6998881cc12e,
     type: 3}
   projectileType: 4
@@ -177,6 +177,8 @@ MonoBehaviour:
   bossDamage: 1
   penetration: 0
   recoilAnim_Barrel: {fileID: 8131370617837466776}
+  bottomGFX: {fileID: 2328162876465888255}
+  turnSpeed: 50
   projectileNum: 4
   spreadVariance: 0.15
   specialPrefab: {fileID: 2149586598618074682, guid: 6e7382d77a98fda4182af9e511e0405b,

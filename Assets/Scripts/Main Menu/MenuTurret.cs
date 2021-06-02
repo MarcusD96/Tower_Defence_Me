@@ -3,12 +3,18 @@ using System.Collections;
 using UnityEngine;
 
 public class MenuTurret : MonoBehaviour {
+    public bool hasNoAction;
 
+    [Header("Menu Turret")]
     public GameObject weapon, shootEffect;
     public string weaponSound;
     public Transform fireSpawn;
     public int maxShootNum;
     public Animator shootAnim, secondaryShootAnim;
+
+    [Header("Descriptors")]
+    public string turretName;
+    public string description, upgradeAName, upgradeA, upgradeBName, upgradeB, specName, upgradeSpec;
 
     int shootNum;
     float nextFire;
@@ -18,6 +24,8 @@ public class MenuTurret : MonoBehaviour {
     }
 
     private void Update() {
+        if(hasNoAction)
+            return;
         if(Time.time >= nextFire) {
             StartCoroutine(Shoot());
             nextFire = Time.time + Random.Range(4, 8);

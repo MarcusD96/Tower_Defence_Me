@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TankTurret : ProjectileTurret {
 
     [Header("Tank")]
     public Animator recoilAnim_Barrel;
+    public GameObject bottomGFX;
+    [Min(1)]public float turnSpeed;
     public int projectileNum;
     [Range(0, 0.5f)]
     public float spreadVariance;
@@ -18,6 +21,7 @@ public class TankTurret : ProjectileTurret {
         projectileTurret = this;
         tankTurret = this;
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
+        InvokeRepeating("AlignBottom", 0, 5);
     }
 
     private new void Update() {
@@ -74,6 +78,17 @@ public class TankTurret : ProjectileTurret {
         direction.Normalize();
         var localForward = pivot.rotation * direction;
         return localForward;
+    }
+
+    void AlignBottom() {
+        StartCoroutine(AlignBottomGFX());
+    }
+    IEnumerator AlignBottomGFX() {
+        var target = pivot.rotation;
+        while(bottomGFX.transform.rotation != target) {
+            bottomGFX.transform.rotation = Quaternion.RotateTowards(bottomGFX.transform.rotation, target, Time.deltaTime * turnSpeed);
+            yield return null;
+        }
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, bossDamage++

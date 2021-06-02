@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 7074306895517076699, guid: ff56b9ef46e578945b1c3a52f6b35752, type: 3}
   shootEffect: {fileID: 5027389386620763361, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
@@ -186,6 +187,15 @@ MonoBehaviour:
   maxShootNum: 5
   shootAnim: {fileID: 2809485018979016245}
   secondaryShootAnim: {fileID: 0}
+  turretName: Bullet Turret
+  description: A fast firing turret that shoots bullets which hit a single enemy.
+    This tower excels at single enemy fire, especially bosses.
+  upgradeAName: Longer Barrels
+  upgradeA: Hit targets at a greater range
+  upgradeBName: FMJ Rounds & Tighter Recoil Springs
+  upgradeB: Faster reload speed and more damage to bosses
+  specName: Burst
+  upgradeSpec: Extreme speed for a short time
 --- !u!1 &7545466074132994414
 GameObject:
   m_ObjectHideFlags: 0

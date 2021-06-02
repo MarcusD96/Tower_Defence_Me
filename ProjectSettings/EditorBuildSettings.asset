@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/__Main Menu/Main Menu/Main Menu.unity
     guid: 2e5d8b753db23294080a9ec857527e65
   - enabled: 1
+    path: Assets/_Scenes/__Main Menu/Turrets/Explore Turrets.unity
+    guid: 96577bc2098fda44b8a9a7c3ed4c2c2d
+  - enabled: 1
     path: Assets/_Scenes/__Level Selection/LS/Level Selection.unity
     guid: 9bee6672ff97f5246bb2f6546572ebbb
   - enabled: 1

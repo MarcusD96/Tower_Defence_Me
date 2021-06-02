@@ -22,12 +22,12 @@ public class Bullet : Projectile {
     public override void HitTarget(bool endOfLife) {
         if(!endOfLife) {
             Damage(target);
-            ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation);
+            ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation, 1.0f);
             ObjectPool.instance.Deactivate(gameObject);
             return;
         }
         ObjectPool.instance.Deactivate(gameObject);
-        ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation);
+        ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation, 1.0f);
     }
 
     Vector3 VaryDirection() {

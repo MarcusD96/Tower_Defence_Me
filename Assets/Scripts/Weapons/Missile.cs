@@ -37,7 +37,7 @@ public class Missile : Projectile {
     }
 
     public override void HitTarget(bool endOfLife) {
-        ObjectPool.instance.ActivateEffect(EffectType.MissileExplosion, transform.position, transform.rotation);
+        ObjectPool.instance.ActivateEffect(EffectType.MissileExplosion, transform.position, transform.rotation, 1.0f);
         Explode();
     }
 

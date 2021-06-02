@@ -639,8 +639,8 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:
-    upgradeName: Range
-    description: Longer barrels can spew flames further
+    upgradeName: Tighter Nozzles
+    description: Smaller nozzles can spew flames further
     baseCost: 50
     upgradeFactorX: 1
     upgradeFactorY: 0

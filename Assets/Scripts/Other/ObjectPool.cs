@@ -143,7 +143,7 @@ public class ObjectPool : MonoBehaviour {
         return null;
     }
 
-    public GameObject ActivateEffect(EffectType e, Vector3 pos, Quaternion rot) {
+    public GameObject ActivateEffect(EffectType e, Vector3 pos, Quaternion rot, float expireTime) {
         int t = (int) e;
         for(int i = 0; i < effectsPool[t].Count; i++) {
             if(!effectsPool[t][i].activeSelf) {
@@ -153,6 +153,10 @@ public class ObjectPool : MonoBehaviour {
                 currEff.SetActive(true);
                 currTrans.position = pos;
                 currTrans.rotation = rot;
+                if(!currEff.GetComponent<Effect>())
+                    print(e);
+                else
+                    currEff.GetComponent<Effect>().expireTime = expireTime;
                 return currEff;
             }
         }
@@ -203,5 +207,6 @@ public enum EffectType {
     TankDeath,
     BossSimpleDeath,
     BossQuickDeath,
-    BossTankDeath
+    BossTankDeath,
+    SpecialActivated
 }

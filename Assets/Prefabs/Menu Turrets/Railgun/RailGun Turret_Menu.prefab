@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 1643263655097349012, guid: a68135d176c704d4d9266d951ad0c71c, type: 3}
   shootEffect: {fileID: 5027389386620763361, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
@@ -53,6 +54,16 @@ MonoBehaviour:
   maxShootNum: 1
   shootAnim: {fileID: 3399410310731949144}
   secondaryShootAnim: {fileID: 0}
+  turretName: Railgun Turret
+  description: A slow shooting gun fires a dense rod which penetrates through multiple
+    enemies
+  upgradeAName: Mega Range
+  upgradeA: More power is used which launches rods further
+  upgradeBName: Light n' Dense Rods
+  upgradeB: Lighter and more dense rods are fired harder and hit more enemies.
+  specName: Mega Shot
+  upgradeSpec: Fire a huge rod which does a ton of damage of penetrates very many
+    enemies
 --- !u!1 &1896263995996562350
 GameObject:
   m_ObjectHideFlags: 0

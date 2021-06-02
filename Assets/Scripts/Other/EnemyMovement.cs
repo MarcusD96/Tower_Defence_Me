@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour {
         PlayerStats.lives = Mathf.Clamp(PlayerStats.lives, 0, PlayerStats.maxLives);
         WaveSpawner.RemoveEnemyFromList_Static(enemy);
         WaveSpawner.enemiesAlive--;
-        ObjectPool.instance.ActivateEffect(enemy.deathEffect, transform.position, Quaternion.identity);
+        ObjectPool.instance.ActivateEffect(enemy.deathEffect, transform.position, Quaternion.identity, 1.0f);
         ResetPath();
         ObjectPool.instance.Deactivate(gameObject);
     }

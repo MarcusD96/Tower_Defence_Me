@@ -444,6 +444,7 @@ public class Turret : MonoBehaviour {
     }
 
     protected IEnumerator SpecialTime() {
+        ObjectPool.instance.ActivateEffect(EffectType.SpecialActivated, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)), specialTime);
         specialAmount = specialRate;
         while(specialAmount > 0) {
             if(WaveSpawner.enemiesAlive > 0) {

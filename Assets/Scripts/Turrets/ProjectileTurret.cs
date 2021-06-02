@@ -60,6 +60,7 @@ public class ProjectileTurret : Turret {
             proj.GetMissile().SetExplosion(penetration);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
+            proj.GetRod().InitializeDirection();
         }
 
         Ray ray = TryRayCastAndRay(manualRange);

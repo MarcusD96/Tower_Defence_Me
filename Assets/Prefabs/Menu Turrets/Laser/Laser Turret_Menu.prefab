@@ -225,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2076481029323885468}
+  - component: {fileID: -1490243285205373621}
   m_Layer: 0
   m_Name: Laser Turret_Menu
   m_TagString: Untagged
@@ -248,3 +249,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1490243285205373621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171662427261242612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasNoAction: 1
+  weapon: {fileID: 0}
+  shootEffect: {fileID: 0}
+  weaponSound: 
+  fireSpawn: {fileID: 0}
+  maxShootNum: 0
+  shootAnim: {fileID: 0}
+  secondaryShootAnim: {fileID: 0}
+  turretName: Laser Turret
+  description: Fire a debilitating beam slowing them down
+  upgradeAName: Enhanced Range
+  upgradeA: Grants a little extra reach to hit extra track.
+  upgradeBName: Mo' Powwa Babee
+  upgradeB: Slower effect that lasts longer with a bigger beam.
+  specName: EMP
+  upgradeSpec: Strike a very large area with a crippling slow effect

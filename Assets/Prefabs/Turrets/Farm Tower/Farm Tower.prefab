@@ -259,7 +259,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
   ugA:
-    upgradeName: Increase numSpawns
+    upgradeName: More Drops
     description: More money drops per round
     baseCost: 135
     upgradeFactorX: 1.5

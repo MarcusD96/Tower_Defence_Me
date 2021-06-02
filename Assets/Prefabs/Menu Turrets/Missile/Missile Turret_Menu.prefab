@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 3318440105034951815, guid: 88bd5eb575d819c49b56696b5c04843c, type: 3}
   shootEffect: {fileID: 5027389386620763361, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
@@ -186,6 +187,15 @@ MonoBehaviour:
   maxShootNum: 2
   shootAnim: {fileID: 3074452543275302440}
   secondaryShootAnim: {fileID: 0}
+  turretName: Missile Turret
+  description: Fire rockets loaded with explosives which can hit multiple enemies
+    in range.
+  upgradeAName: Rocket Fuel Efficency
+  upgradeA: Dramatically increase the towers range.
+  upgradeBName: Powerful Warheads
+  upgradeB: Increase warhead damage and its explosive power.
+  specName: Missile Maelstrom
+  upgradeSpec: Missiles....everywhere.
 --- !u!1 &3969553127253764314
 GameObject:
   m_ObjectHideFlags: 0

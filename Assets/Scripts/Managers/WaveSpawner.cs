@@ -173,7 +173,6 @@ public class WaveSpawner : MonoBehaviour {
 
         }
         if(((r) >= 15) && ((r - 5) % 10 == 0)) { //over round 15 in intervals of 10
-            print("decrease value");
             foreach(var e in ObjectPool.instance.GetPooledEnemies()) {
                 foreach(var ee in e) {
                     ee.GetComponent<Enemy>().currentMoneyValue /= 2.0f;

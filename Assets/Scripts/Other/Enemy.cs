@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour {
     public void Die() {
         isDead = true;
         PlayerStats.money += currentMoneyValue;
-        ObjectPool.instance.ActivateEffect(deathEffect, transform.position, Quaternion.identity);
+        ObjectPool.instance.ActivateEffect(deathEffect, transform.position, Quaternion.identity, 1.0f);
 
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);

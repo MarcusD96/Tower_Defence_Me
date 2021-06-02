@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 5063451577565241328, guid: f85d21d7127105946a2d6bf8867882f5, type: 3}
   shootEffect: {fileID: 5027389386620763361, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
     type: 3}
@@ -134,6 +135,15 @@ MonoBehaviour:
   maxShootNum: 3
   shootAnim: {fileID: 5740110956861103022}
   secondaryShootAnim: {fileID: 4019282156992132687}
+  turretName: Tank
+  description: A tank which fires shotgun shells a short range
+  upgradeAName: Moar Powder
+  upgradeA: Adding more gunpower to the shells allows shots to travel further
+  upgradeBName: Fatter Casings
+  upgradeB: More projectiles can fit inside a single shell
+  specName: Rundown
+  upgradeSpec: The tank runs along the track backwards running over anything in its
+    path
 --- !u!1 &1867733170922565368
 GameObject:
   m_ObjectHideFlags: 0

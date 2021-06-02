@@ -1065,6 +1065,9 @@ MonoBehaviour:
   - name: Boss Tank Death
     go: {fileID: 1904466305371408418, guid: e2ed8752a78b67040b81fe39d0d9aefa, type: 3}
     amount: 50
+  - name: Special Activated
+    go: {fileID: 876339668855285334, guid: f813191efe1210c489ccfff4d3df835f, type: 3}
+    amount: 25
   enemiesParent: {fileID: 4925554752574656111}
   projectilesParent: {fileID: 5829293954203509812}
   effectsParent: {fileID: 7665367856959569981}

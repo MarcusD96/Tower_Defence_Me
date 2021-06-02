@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -45,6 +44,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void Restart() {
         Toggle();
+        PlayerStats.levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         sceneFader.FadeTo("Loading");
     }
 

@@ -25,11 +25,11 @@ public class TankShot : Projectile {
     public override void HitTarget(bool endOfLife) {
         if(!endOfLife) {
             Damage(target);
-            ObjectPool.instance.ActivateEffect(EffectType.TankShotImpact, transform.position, transform.rotation);
+            ObjectPool.instance.ActivateEffect(EffectType.TankShotImpact, transform.position, transform.rotation, 1.0f);
             ObjectPool.instance.Deactivate(gameObject);
             return;
         }
-        ObjectPool.instance.ActivateEffect(EffectType.TankShotImpact, transform.position, transform.rotation);
+        ObjectPool.instance.ActivateEffect(EffectType.TankShotImpact, transform.position, transform.rotation, 1.0f);
         ObjectPool.instance.Deactivate(gameObject);
     }
 

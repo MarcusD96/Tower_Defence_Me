@@ -21,6 +21,10 @@ public class MainMenu : MonoBehaviour {
         sceneFader.FadeTo(levelToLoad);
     }
 
+    public void Turrets() {
+        sceneFader.FadeTo("Explore Turrets");
+    }
+
     public void Quit() {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

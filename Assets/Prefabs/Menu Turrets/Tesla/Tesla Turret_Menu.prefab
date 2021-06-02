@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 4973540765431139444, guid: eba929d9e4ab2124cb1e0f2e398411c8, type: 3}
   shootEffect: {fileID: 7459085219271738169, guid: c899ed9350b1a934991cc1b0a68e7431,
     type: 3}
@@ -83,6 +84,16 @@ MonoBehaviour:
   maxShootNum: 5
   shootAnim: {fileID: 793868970608269419}
   secondaryShootAnim: {fileID: 0}
+  turretName: Tesla Turret
+  description: A surge of power jumps to enemies a stuns them for a short period
+    of time
+  upgradeAName: Voltage Upgrade
+  upgradeA: Higher voltage allows this tower to hit enemies at a greater range.
+  upgradeBName: Upgraded Circuitry
+  upgradeB: Upgraded circuits can handle more power. More damage and faster recharge
+    time.
+  specName: Overloaded Capacitors
+  upgradeSpec: The lightning jumps to multiple targets per charge.
 --- !u!1 &4360696567973785856
 GameObject:
   m_ObjectHideFlags: 0

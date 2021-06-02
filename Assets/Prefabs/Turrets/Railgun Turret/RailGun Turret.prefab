@@ -221,7 +221,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1646419074991899261}
   ugA:
     upgradeName: Mega Range
-    description: See further
+    description: More power is used which launches rods further
     baseCost: 100
     upgradeFactorX: 2
     upgradeFactorY: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   specialBar: {fileID: 4924648402484541792}
   specialRate: 60
   specialAmount: 0
-  specialTime: 0
+  specialTime: 1
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   projectileType: 3

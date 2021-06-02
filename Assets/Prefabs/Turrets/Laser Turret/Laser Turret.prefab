@@ -20034,7 +20034,7 @@ MonoBehaviour:
   specialBar: {fileID: 8472525781130761690}
   specialRate: 40
   specialAmount: 0
-  specialTime: 0
+  specialTime: 0.75
   lineRenderer: {fileID: 2404739084347467044}
   shootEffect: {fileID: 4970644483271666926}
   shootLight: {fileID: 4441568151547372766}

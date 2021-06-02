@@ -405,8 +405,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a0519afc42d8143a7cb6a094fd42dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasNoAction: 0
   weapon: {fileID: 1543377569414801785, guid: d9aedcacc350bfb4f873e170ddaebede, type: 3}
+  shootEffect: {fileID: 0}
   weaponSound: Flame
   fireSpawn: {fileID: 6214893075837438371}
   maxShootNum: 3
   shootAnim: {fileID: 5255733046630201943}
+  secondaryShootAnim: {fileID: 0}
+  turretName: Fire Thrower
+  description: Shoot a burst of fire out in every direction, leaving a burn effect
+    on enemies
+  upgradeAName: Tighter Nozzles
+  upgradeA: Smaller nozzles can spew flames further
+  upgradeBName: Hotter Flames
+  upgradeB: Upgrade fuel system to shoot faster with thicker flames that can hit
+    more targets
+  specName: Inferno
+  upgradeSpec: Melt targets down with a infernal mixture of premiem fuel

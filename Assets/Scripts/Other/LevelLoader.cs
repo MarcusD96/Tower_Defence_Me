@@ -12,7 +12,6 @@ public class LevelLoader : MonoBehaviour {
     IEnumerator LoadNextLevel(string scene) {
         if(stay)
             yield break;
-
         AsyncOperation op = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
         while(op.isDone) {
             yield return null;
