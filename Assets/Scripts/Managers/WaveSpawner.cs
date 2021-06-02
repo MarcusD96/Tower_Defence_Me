@@ -63,25 +63,11 @@ public class WaveSpawner : MonoBehaviour {
 #endif
 
         //set file
-        File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
+        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         //get file
         string s = File.ReadAllText(System.IO.Path.Combine(dataPath, "waves.json"));
         waves = JsonHelper.FromJson<Wave>(s);
-
-        foreach(var w in waves) {
-            w.WaveWorth();
-            int i = System.Array.IndexOf(waves, w);
-            if(i >= 10)
-                w.waveWorth /= 2;
-            if(i >= 20)
-                w.waveWorth /= 2;
-            if(i >= 30)
-                w.waveWorth /= 2;
-            waves[i].name = (i + 1).ToString();
-        }
-
-        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         enemiesAlive = currentWave = 0;
         maxWaves = PlayerStats.maxRounds;
