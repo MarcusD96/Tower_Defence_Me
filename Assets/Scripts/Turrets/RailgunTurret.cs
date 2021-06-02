@@ -59,8 +59,7 @@ public class RailgunTurret : ProjectileTurret {
         }
 
         //do special
-        GameObject tmp = projectilePrefab;
-        projectilePrefab = specialPrefab;
+        projectileType = ProjectileType.Rod_Special;
         damage = 100;
         penetration = 100;
 
@@ -76,7 +75,7 @@ public class RailgunTurret : ProjectileTurret {
         }
 
         //return to normal
-        projectilePrefab = tmp;
+        projectileType = ProjectileType.Rod;
         turretCam.transform.localPosition = tmpCamPos;
         damage = tmpDamage;
         penetration = tmpPenetration;

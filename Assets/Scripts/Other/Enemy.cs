@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour {
 
     public static float difficultyMultiplier = 1.0f;
 
-    public GameObject deathEffect, indicator;
+    public GameObject indicator;
+    public EffectType deathEffect;
     public ParticleSystem slowEffect, stunEffect, burnEffect;
 
     public float baseSpeed, baseHp;
@@ -55,8 +56,7 @@ public class Enemy : MonoBehaviour {
     public void Die() {
         isDead = true;
         PlayerStats.money += currentMoneyValue;
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 2.0f);
+        ObjectPool.instance.ActivateEffect(deathEffect, transform.position, Quaternion.identity);
 
         WaveSpawner.enemiesAlive--;
         WaveSpawner.RemoveEnemyFromList_Static(this);

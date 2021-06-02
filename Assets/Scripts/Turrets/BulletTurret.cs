@@ -38,7 +38,7 @@ public class BulletTurret : ProjectileTurret {
 
     IEnumerator BulletSpecial() {
         StartCoroutine(SpecialTime());
-        GameObject tmp = projectilePrefab;
+        projectileType = ProjectileType.Bullet_Special;
 
         var saveFireRate = fireRate;
         fireRate = 0;
@@ -54,13 +54,12 @@ public class BulletTurret : ProjectileTurret {
         }
 
         nextFire = 0;
-        projectilePrefab = specialPrefab;
         fireRate = specialFireRate;
         turretCam.transform.localPosition = tmpCamPos;
         yield return new WaitForSeconds(specialTime);
 
         //reset back to normal
         fireRate = saveFireRate;
-        projectilePrefab = tmp;
+        projectileType = ProjectileType.Bullet;
     }
 }

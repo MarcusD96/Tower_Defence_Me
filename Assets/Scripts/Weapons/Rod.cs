@@ -27,25 +27,19 @@ public class Rod : Projectile {
 
     public override void HitTarget(bool endOfLife) {
         if(endOfLife) {
+            ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation);
             ObjectPool.instance.Deactivate(gameObject);
-            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 2.0f);
             return;
         }
 
         if(penetration < 0) {
+            ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation);
             ObjectPool.instance.Deactivate(gameObject);
-            GameObject effect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 2.0f);
             return;
         }
 
-        GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectInstance, 3.0f);
-
-
+        ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation);
         Damage(target);
-
         penetration--;
     }
 }

@@ -112,7 +112,7 @@ public class FarmTower : Turret {
                 ee.GetComponent<Enemy>().currentMoneyValue *= 2;
             }
         }
-        yield return new WaitForSeconds(15.0f);
+        yield return new WaitForSeconds(specialTime);
 
         //revert dbl cash
         cashValue /= 2;

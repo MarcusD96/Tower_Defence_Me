@@ -663,7 +663,7 @@ MonoBehaviour:
   specialBar: {fileID: 8560105079731431943}
   specialRate: 45
   specialAmount: 0
-  specialTime: 5
+  specialTime: 9
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
   damage: 1

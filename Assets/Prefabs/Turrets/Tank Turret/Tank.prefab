@@ -172,6 +172,7 @@ MonoBehaviour:
   specialTime: 0
   projectilePrefab: {fileID: 5063451577565241328, guid: e9268fe564466754785d6998881cc12e,
     type: 3}
+  projectileType: 4
   damage: 1
   bossDamage: 1
   penetration: 0

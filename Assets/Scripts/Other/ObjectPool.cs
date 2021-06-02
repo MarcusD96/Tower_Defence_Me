@@ -6,10 +6,10 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool instance;
-    public PooledObject[] enemies, projectiles;
-    public Transform enemiesParent, projectilesParent;
+    public PooledObject[] enemies, projectiles, effects;
+    public Transform enemiesParent, projectilesParent, effectsParent;
 
-    private List<GameObject>[] enemyPool, projectilesPool;
+    private List<GameObject>[] enemyPool, projectilesPool, effectsPool;
     private Vector3 spawn;
 
     private void Awake() {
@@ -19,39 +19,82 @@ public class ObjectPool : MonoBehaviour {
     private void Start() {
         enemyPool = new List<GameObject>[enemies.Length];
         projectilesPool = new List<GameObject>[projectiles.Length];
+        effectsPool = new List<GameObject>[effects.Length];
         spawn = Path.waypoints[0].position;
-        StartCoroutine(SpawnObjects(enemies, enemyPool));
-        StartCoroutine(SpawnObjects(projectiles, projectilesPool));
+        StartCoroutine(SpawnObjectsInPool(enemies, enemyPool, enemiesParent));
+        StartCoroutine(SpawnObjectsInPool(projectiles, projectilesPool, projectilesParent));
+        StartCoroutine(SpawnObjectsInPool(effects, effectsPool, effectsParent));
     }
 
     [HideInInspector]
-    bool loadingEnemies = true, loadingProjectiles = true;
-    IEnumerator SpawnObjects(PooledObject[] objects, List<GameObject>[] pool) {
-        GameObject tmp;
+    bool loadingEnemies = true, loadingProjectiles = true, loadingEffects = true;
+    IEnumerator SpawnObjectsInPool(PooledObject[] objects, List<GameObject>[] pool, Transform parent) {        
+        IEnumerator[] coroutines = new IEnumerator[objects.Length];
         for(int count = 0; count < objects.Length; count++) {
-            var p = new GameObject(objects[count].go.name);
-            if(objects == enemies) {
-                p.transform.SetParent(enemiesParent, true);
-            } else
-                p.transform.SetParent(projectilesParent, true);
-            pool[count] = new List<GameObject>();
-            for(int num = 0; num < objects[count].amount; num += 5) {
-                for(int i = 0; i < 5; i++) {
-                    tmp = Instantiate(objects[count].go, p.transform);
-                    tmp.SetActive(false);
-                    pool[count].Add(tmp);
+            GameObject p = null;
+            coroutines[count] = SpawnObject(objects, pool, parent, count, p, coroutines);
+            StartCoroutine(coroutines[count]);
+        }
+        if(objects == enemies) {
+            bool notDone = true;
+            while(notDone) {
+                foreach(var c in coroutines) {
+                    if(c != null) {
+                        notDone = true;
+                        break;
+                    }
+                    notDone = false;
                 }
                 yield return null;
             }
-        }
-        if(objects == enemies)
             loadingEnemies = false;
-        else
+        } else if(objects == projectiles) {
+            bool notDone = true;
+            while(notDone) {
+                foreach(var c in coroutines) {
+                    if(c != null) {
+                        notDone = true;
+                        break;
+                    }
+                    notDone = false;
+                }
+                yield return null;
+            }
             loadingProjectiles = false;
+        } else {
+            bool notDone = true;
+            while(notDone) {
+                foreach(var c in coroutines) {
+                    if(c != null) {
+                        notDone = true;
+                        break;
+                    }
+                    notDone = false;
+                }
+                yield return null;
+            }
+            loadingEffects = false;
+        }
+    }
+
+    IEnumerator SpawnObject(PooledObject[] objects, List<GameObject>[] pool, Transform parent, int count, GameObject parent_, IEnumerator[] corutines) {
+        GameObject tmp;
+        parent_ = new GameObject(objects[count].go.name);
+        parent_.transform.SetParent(parent, true);
+        pool[count] = new List<GameObject>();
+        for(int num = 0; num < objects[count].amount; num += 5) {
+            for(int i = 0; i < 5; i++) {
+                tmp = Instantiate(objects[count].go, parent_.transform);
+                tmp.SetActive(false);
+                pool[count].Add(tmp);
+            }
+            yield return null;
+        }
+        corutines[count] = null;
     }
 
     public bool CheckLoading() {
-        return !loadingEnemies && !loadingProjectiles;
+        return !loadingEnemies && !loadingProjectiles && !loadingEffects;
     }
 
     public List<GameObject>[] GetPooledEnemies() {
@@ -100,6 +143,23 @@ public class ObjectPool : MonoBehaviour {
         return null;
     }
 
+    public GameObject ActivateEffect(EffectType e, Vector3 pos, Quaternion rot) {
+        int t = (int) e;
+        for(int i = 0; i < effectsPool[t].Count; i++) {
+            if(!effectsPool[t][i].activeSelf) {
+                GameObject currEff = effectsPool[t][i];
+                Transform currTrans = currEff.transform;
+
+                currEff.SetActive(true);
+                currTrans.position = pos;
+                currTrans.rotation = rot;
+                return currEff;
+            }
+        }
+        Debug.LogError("Not enough effects of type: " + e);
+        return null;
+    }
+
     public void Deactivate(GameObject e) {
         e.SetActive(false);
         e.transform.position = spawn;
@@ -131,4 +191,17 @@ public enum EnemyType {
     Simple_Boss,
     Quick_Boss,
     Tank_Boss
+}
+
+public enum EffectType {
+    BulletImpact,
+    RodImpact,
+    TankShotImpact,
+    MissileExplosion,
+    SimpleDeath,
+    QuickDeath,
+    TankDeath,
+    BossSimpleDeath,
+    BossQuickDeath,
+    BossTankDeath
 }

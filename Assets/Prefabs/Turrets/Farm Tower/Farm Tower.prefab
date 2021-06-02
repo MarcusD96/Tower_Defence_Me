@@ -283,7 +283,7 @@ MonoBehaviour:
   specialBar: {fileID: 0}
   specialRate: 60
   specialAmount: 0
-  specialTime: 0
+  specialTime: 15
   cashValue: 30
   numSpawns: 3
   lifeValue: 5

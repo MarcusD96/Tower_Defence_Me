@@ -81,20 +81,20 @@ public class MissileTurret : ProjectileTurret {
 
     IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
-        Transform spawn = transform;
-        spawn.position = new Vector3(transform.position.x, fireSpawn.position.y, transform.position.z);
+        Vector3 spawn;
+        spawn = new Vector3(transform.position.x, fireSpawn.position.y, transform.position.z);
         for(int i = 0; i < specialMissileCount; i++) {
-            Missile[] g = new Missile[3];
-            g[0] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn.position, Quaternion.Euler(new Vector3(0, 5 * i, 0))).GetComponent<Missile>();
-            g[1] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn.position, Quaternion.Euler(new Vector3(0, 5 * i + 120, 0))).GetComponent<Missile>();
-            g[2] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn.position, Quaternion.Euler(new Vector3(0, 5 * i + 240, 0))).GetComponent<Missile>();
+            Missile[] m = new Missile[3];
+            m[0] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i, 0))).GetComponent<Missile>();
+            m[1] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i + 120, 0))).GetComponent<Missile>();
+            m[2] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i + 240, 0))).GetComponent<Missile>();
 
-            foreach(var gg in g) {
-                gg.SetStats(damage * 2, bossDamage * 3, spawn.position, transform.forward * 60);
-                gg.SetExplosion(penetration);
+            foreach(var mm in m) {
+                mm.SetStats(damage * 2, bossDamage * 3, spawn, transform.forward * 60);
+                mm.SetExplosion(penetration);
             }
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.005f);
         }
     }
 
@@ -109,9 +109,6 @@ public class MissileTurret : ProjectileTurret {
         targetList.Sort((a, b) => {
             return b.distanceTravelled.CompareTo(a.distanceTravelled);
         });
-
-        //targetList = Shuffle(targetList);
-
         return true;
     }
 

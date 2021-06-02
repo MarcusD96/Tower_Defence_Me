@@ -34,7 +34,7 @@ public class TankTurret : ProjectileTurret {
         for(int i = 0; i < projectileNum; i++) {
             shotDirection = RandomDirection();
 
-            GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.TankShot, fireSpawn.position, fireSpawn.rotation);
+            GameObject projGO = ObjectPool.instance.ActivateProjectile(projectileType, fireSpawn.position, fireSpawn.rotation);
             Projectile proj = projGO.GetComponent<Projectile>();
 
             muzzleFlash.Play();
@@ -54,7 +54,7 @@ public class TankTurret : ProjectileTurret {
             shotDirection = RandomDirection();
 
             //spawn proj, get the proj info
-            GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.TankShot, fireSpawn.position, fireSpawn.rotation);
+            GameObject projGO = ObjectPool.instance.ActivateProjectile(projectileType, fireSpawn.position, fireSpawn.rotation);
             Projectile proj = projGO.GetComponent<Projectile>();
 
             muzzleFlash.Play();

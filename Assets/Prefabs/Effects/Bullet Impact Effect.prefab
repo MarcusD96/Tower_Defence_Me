@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4573118995715554343}
   - component: {fileID: 4573118995715554344}
   - component: {fileID: 4573118995715554345}
+  - component: {fileID: -8645165402564680698}
+  - component: {fileID: -2830176873340512728}
   m_Layer: 0
   m_Name: Bullet Impact Effect
   m_TagString: Untagged
@@ -42,9 +44,9 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
-  ringBufferMode: 0
+  ringBufferMode: 1
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
@@ -4879,3 +4881,29 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-8645165402564680698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573118995715554346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e37b0acd7a63f849a1b0d5ba4ba2a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expireTime: 0
+--- !u!114 &-2830176873340512728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573118995715554346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e37b0acd7a63f849a1b0d5ba4ba2a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expireTime: 1

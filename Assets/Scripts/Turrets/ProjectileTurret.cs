@@ -5,37 +5,14 @@ public class ProjectileTurret : Turret {
 
     [Header("Projectile Stuff")]
     public GameObject projectilePrefab;
+    public ProjectileType projectileType;
+    public float damage, bossDamage;
+    public int penetration;
+
     protected BulletTurret bulletTurret;
     protected MissileTurret missileTurret;
     protected RailgunTurret railgunTurret;
     protected TankTurret tankTurret;
-
-    public float damage, bossDamage;
-    public int penetration;
-
-    ProjectileType CheckType() {
-        //bullet
-        if(bulletTurret)
-            return ProjectileType.Bullet;
-        else if(bulletTurret && specialActivated)
-            return ProjectileType.Bullet_Special;
-
-        //missile
-        else if(missileTurret)
-            return ProjectileType.Missile;
-        else if(missileTurret && specialActivated)
-            return ProjectileType.Missile_Special;
-
-        //rod
-        else if(railgunTurret)
-            return ProjectileType.Rod;
-        else if(railgunTurret && specialActivated)
-            return ProjectileType.Rod_Special;
-
-        //error
-        else
-            return ProjectileType.Bullet;
-    }
 
     public void AutoShoot() {
         if(tankTurret) {
@@ -43,7 +20,7 @@ public class ProjectileTurret : Turret {
             return;
         }
 
-        GameObject projGO = ObjectPool.instance.ActivateProjectile(CheckType(), fireSpawn.position, fireSpawn.rotation);
+        GameObject projGO = ObjectPool.instance.ActivateProjectile(projectileType, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = projGO.GetComponent<Projectile>();
 
         Ray ray = new Ray(pivot.position, target.position - pivot.position);
@@ -72,7 +49,7 @@ public class ProjectileTurret : Turret {
         float manualRange = range * manualRangeMultiplier;
 
         //spawn proj, get the proj info
-        GameObject projGO = ObjectPool.instance.ActivateProjectile(ProjectileType.Bullet, fireSpawn.position, fireSpawn.rotation);
+        GameObject projGO = ObjectPool.instance.ActivateProjectile(projectileType, fireSpawn.position, fireSpawn.rotation);
         Projectile proj = projGO.GetComponent<Projectile>();
 
         //set more specific info based on the type of proj

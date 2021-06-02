@@ -48,10 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e331ef89bfb2164d8d5c13d685d05bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 1904466305371408418, guid: 9df739c1808944d48823db1087b40d78,
-    type: 3}
   indicator: {fileID: 3113941143191370444, guid: b3f624ad269e6914e874506df572880d,
     type: 3}
+  deathEffect: 4
   slowEffect: {fileID: 2221618333997290970}
   stunEffect: {fileID: 5323381394074822112}
   burnEffect: {fileID: 3160898145210977318}
@@ -59,10 +58,9 @@ MonoBehaviour:
   baseHp: 8
   startSpeed: 7
   startHp: 8
-  currentHp: 10.079999
-  currentSpeed: 8.819999
   distanceTravelled: 0
   moneyValue: 5
+  currentSpeed: 8.819999
   currentMoneyValue: 0
   lifeValue: 1
   enemyType: 0
@@ -70,12 +68,12 @@ MonoBehaviour:
   healthBarR: {fileID: 4007096617509766484}
   superSlow: 0
   isDamaging: 0
-  isDead: 1
   isSlow: 0
-  isBoss: 0
+  isDead: 1
   stunResist: 0
   slowResist: 0
   burnResist: 0
+  isBoss: 0
 --- !u!114 &1338442628391097485
 MonoBehaviour:
   m_ObjectHideFlags: 0
