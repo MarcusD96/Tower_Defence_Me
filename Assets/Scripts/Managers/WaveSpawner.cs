@@ -54,16 +54,15 @@ public class WaveSpawner : MonoBehaviour {
     public void InitializeWaves() {
         string dataPath;
 #if UNITY_EDITOR
-        dataPath = Application.dataPath;
+        dataPath = "Assets/StreamingAssets/";
 #else
         dataPath = Application.streamingAssetsPath;
         if(!Directory.Exists(dataPath)) {
             Directory.CreateDirectory(dataPath);
         }
 #endif
-
         //set file
-        //File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
+        File.WriteAllText(System.IO.Path.Combine(dataPath, "waves.json"), JsonHelper.ToJson(waves, true));
 
         //get file
         string s = File.ReadAllText(System.IO.Path.Combine(dataPath, "waves.json"));

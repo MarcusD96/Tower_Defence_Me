@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour {
     void InitializeTips() {
         string dataPath;
 #if UNITY_EDITOR
-        dataPath = Application.dataPath;
+        dataPath = "Assets/StreamingAssets/";
 #else
         dataPath = Application.streamingAssetsPath;
         if(!Directory.Exists(dataPath)) {

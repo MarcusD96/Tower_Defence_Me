@@ -44,12 +44,19 @@ public class PauseMenu : MonoBehaviour {
 
     public void Restart() {
         Toggle();
-        PlayerStats.levelToLoad = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if(!sceneFader)
+            sceneFader = FindObjectOfType<SceneFader>();
         sceneFader.FadeTo("Loading");
     }
 
     public void MainMenu() {
         Toggle();
+        if(!sceneFader)
+            sceneFader = FindObjectOfType<SceneFader>();
         sceneFader.FadeTo(menuSceneName);
+    }
+
+    private void OnGUI() {
+
     }
 }
