@@ -322,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3854745606148596915}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 2.0200002}
+  m_LocalPosition: {x: 0, y: -0, z: 1.524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7460080549722839046}
@@ -650,27 +650,27 @@ MonoBehaviour:
       hit more targets
     baseCost: 300
     upgradeFactorX: 0.15
-    upgradeFactorY: 4
+    upgradeFactorY: 1.5
   ugSpec:
     upgradeName: Inferno
-    description: Melt targets down with a infernal mixture of premiem fuel
+    description: Melt targets down with an infernal mixture of premiem fuel
     baseCost: 4000
     upgradeFactorX: 0
     upgradeFactorY: 0
   manualRangeMultiplier: 1
   manualFirerateMultiplier: 1.25
-  fireRate: 0.6
+  fireRate: 0.5
   specialBar: {fileID: 8560105079731431943}
   specialRate: 45
   specialAmount: 0
   specialTime: 9
+  hasTargetting: 0
   fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
-  damage: 1
-  burnDamage: 0.5
+  burnDamage: 1
   burnInterval: 1
-  penetration: 8
-  numBurns: 5
+  numFire: 6
+  numBurns: 1
 --- !u!114 &9053171323780503090
 MonoBehaviour:
   m_ObjectHideFlags: 0

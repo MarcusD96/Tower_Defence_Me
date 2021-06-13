@@ -247,6 +247,9 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 9146972457393439272}
   range: 5
+  turretLayer:
+    serializedVersion: 2
+    m_Bits: 0
   maxFireRate: 0
   turretCam: {fileID: 0}
   overlayCam: {fileID: 0}
@@ -256,8 +259,7 @@ MonoBehaviour:
   aimIndicator: {fileID: 0}
   pivot: {fileID: 0}
   recoilAnim_Body: {fileID: 0}
-  muzzleFlash: {fileID: 8890068841420512124, guid: 283b9028f4ed9bb4ea95a340a5e8355d,
-    type: 3}
+  muzzleFlash: {fileID: 0}
   ugA:
     upgradeName: More Drops
     description: More money drops per round

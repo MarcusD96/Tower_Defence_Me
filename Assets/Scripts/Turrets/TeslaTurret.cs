@@ -60,12 +60,12 @@ public class TeslaTurret : BeamTurret {
         if(!abilityActivation) {
             BuildLightning();
             targetEnemy.TakeDamage(damage, Color.yellow);
-            targetEnemy.Stun(stunDuration);
+            targetEnemy.Stun(stunDuration, ugB.GetLevel());
         } else {
             Enemy[] enemies = BuildSuperChargedLightning();
             foreach(var e in enemies) {
                 e.TakeDamage(damage, Color.yellow);
-                e.Stun(stunDuration);
+                e.Stun(stunDuration, ugB.GetLevel());
             }
         }
         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
@@ -98,14 +98,14 @@ public class TeslaTurret : BeamTurret {
                     if(targetEnemy) {
                         recoilAnim_Body.SetTrigger(shootAnim);
                         targetEnemy.TakeDamage(damage, Color.yellow);
-                        targetEnemy.Stun(stunDuration);
+                        targetEnemy.Stun(stunDuration, ugB.GetLevel());
                     }
                 } else {
                     Enemy[] enemies = BuildSuperChargedLightning();
                     recoilAnim_Body.SetTrigger(shootAnim);
                     foreach(var e in enemies) {
                         e.TakeDamage(damage, Color.yellow);
-                        e.Stun(stunDuration);
+                        e.Stun(stunDuration, ugB.GetLevel());
                     }
                 }
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);

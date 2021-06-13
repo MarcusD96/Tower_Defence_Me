@@ -23,9 +23,8 @@ public class RailgunTurret : ProjectileTurret {
     }
 
     public override void ApplyUpgradeB() { //damage++, penetration++;
-        damage += ugB.GetLevel() + ugB.upgradeFactorX;
+        damage += ugB.upgradeFactorX;
         penetration += (int) ugB.upgradeFactorY;
-        fireRate -= 0.05f;
     }
 
     public override bool ActivateSpecial() {

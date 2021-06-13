@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Missile : Projectile {
 
-    public float speedExponent, explosionRadius;
+    public float speedExponent;
 
+    private float explosionRadius, posY;
     private int penetration;
 
     void Awake() {
@@ -12,8 +13,10 @@ public class Missile : Projectile {
         startSpeed = speed;
     }
 
-    public void SetExplosion(int penetration_) {
+    public void SetExplosion(int penetration_, float explRadius) {
         penetration = penetration_;
+        explosionRadius = explRadius;
+        posY = transform.position.y;
     }
 
     private new void FixedUpdate() {
@@ -27,17 +30,30 @@ public class Missile : Projectile {
                 TryFindNewTargetInfront();
                 return;
             }
-
-            Vector3 direction = target.position - transform.position;
+            Vector3 direction;
+            if(!special)
+                direction = target.position - transform.position;
+            else
+                direction = transform.rotation * Vector3.forward;   
+            
             transform.Translate(direction.normalized * distanceThisFrame, Space.World);
             transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            StayOnY();
         } else {
             TryFindNewTargetInfront();
         }
     }
 
+    void StayOnY() {
+        Vector3 pos = transform.position;
+        pos.y = posY;
+        transform.position = pos;
+    }
+
     public override void HitTarget(bool endOfLife) {
-        ObjectPool.instance.ActivateEffect(EffectType.MissileExplosion, transform.position, transform.rotation, 1.0f);
+        Quaternion rot = Quaternion.Euler(impactEffect.transform.rotation.eulerAngles.x, Random.Range(0, 360), 0);
+        GameObject e = ObjectPool.instance.ActivateEffect(EffectType.MissileExplosion, transform.position, rot, 1.0f);
+        e.transform.localScale = new Vector3(explosionRadius, explosionRadius, 1);
         Explode();
     }
 

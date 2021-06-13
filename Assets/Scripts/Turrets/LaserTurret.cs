@@ -1,20 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LaserTurret : BeamTurret {
 
     [Header("Laser")]
     public float slowFactor;
-    public float slowDuration;
+    public float slowDuration; 
     public float damageOverTime;
     public ParticleSystem impactEffect;
     public Light impactLight;
+    public Gradient mainGrad, specGrad;
 
     private Transform lastTarget;
     private float maxSlowFactor;
 
     [Header("Laser Special")]
-    public SlowWave slowWave;
-    private SlowWave tempSW;
+    public LaserWave special;
 
     new void Awake() {
         base.Awake();
@@ -35,15 +36,11 @@ public class LaserTurret : BeamTurret {
                 ActivateSpecial();
             }
         }
-
-        if(tempSW) {
-            if(tempSW.done)
-                Destroy(tempSW.gameObject);
-        }
     }
 
     float slowDurationEnd = float.MaxValue;
     public override void AutoShoot() {
+
         #region check if can shoot
         if(nextFire <= 0.0f && WaveSpawner.enemiesAlive > 0) {
             FindEnemy(false);
@@ -74,9 +71,9 @@ public class LaserTurret : BeamTurret {
         #region apply new slow if not slowed
         if(targetEnemy.currentSpeed > slowFactor) {
             if(!hasSpecial)
-                targetEnemy.Slow(slowFactor, slowDuration);
+                targetEnemy.Slow(slowFactor, slowDuration, ugB.GetLevel());
             else
-                targetEnemy.Slow(maxSlowFactor, slowDuration);
+                targetEnemy.Slow(maxSlowFactor, slowDuration, ugB.GetLevel());
         }
         #endregion
 
@@ -143,13 +140,11 @@ public class LaserTurret : BeamTurret {
 
                 if(targetEnemy) {
                     if(!targetEnemy.superSlow)
-                        targetEnemy.Slow(slowFactor, slowDuration);
+                        targetEnemy.Slow(slowFactor, slowDuration, ugB.GetLevel());
 
                     if(!targetEnemy.isDamaging) {
                         targetEnemy.DamageOverTime(damageOverTime, slowDuration);
                     }
-
-                    targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, Color.white);
 
                     if(target != targetPrev) {
                         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
@@ -202,11 +197,19 @@ public class LaserTurret : BeamTurret {
             specialActivated = true;
             specialBar.fillBar.fillAmount = 1; //fully filled, on cooldown
             StartCoroutine(SpecialTime());
-            tempSW = Instantiate(slowWave, new Vector3(0, transform.position.y, 0), transform.rotation);
-            tempSW.slowFactor = maxSlowFactor;
-            tempSW.slowDuration = slowDuration * 5;
+            StartCoroutine(Special());
             return true;
         }
         return false;
+    }
+
+    IEnumerator Special() {
+        LaserWave tempSW = Instantiate(special, transform.position, special.transform.rotation);
+        tempSW.Initialize(slowFactor, range * 2, specialTime, this);
+        lineRenderer.colorGradient = specGrad;
+        damageOverTime *= 3;
+        yield return new WaitForSeconds(specialTime);
+        damageOverTime /= 3;
+        lineRenderer.colorGradient = mainGrad;
     }
 }

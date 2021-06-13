@@ -195,7 +195,7 @@ MonoBehaviour:
   upgradeBName: Powerful Warheads
   upgradeB: Increase warhead damage and its explosive power.
   specName: Missile Maelstrom
-  upgradeSpec: Missiles....everywhere.
+  upgradeSpec: Throughout a whirlwind of micromissiles causing massive destruction
 --- !u!1 &3969553127253764314
 GameObject:
   m_ObjectHideFlags: 0

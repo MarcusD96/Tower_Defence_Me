@@ -248,9 +248,6 @@ public class Node : MonoBehaviour {
                 return;
         }
 
-        if(EventSystem.current.IsPointerOverGameObject())
-            return;
-
         if(turret != null) {
             buildManager.SelectNode(this);
             return;
@@ -263,14 +260,10 @@ public class Node : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-
         if(GameManager.lastControlled != null) {
             if(GameManager.lastControlled.controlled)   //cant select nodes when a turret is being controlled
                 return;
         }
-
-        if(EventSystem.current.IsPointerOverGameObject())
-            return;
 
         if(turret) {
             rend.material.color = selectColor;
@@ -295,18 +288,5 @@ public class Node : MonoBehaviour {
         if(!turret) {
             range.SetActive(false);
         }
-    }
-
-    private void OnDrawGizmos() {
-        //Gizmos.color = Color.red;
-        //if(over) {
-        //    if(buildManager.GetTurretToBuild() != null) {
-        //        Gizmos.DrawWireSphere(transform.position, buildManager.GetTurretToBuild().GetTurret().range);
-        //    }
-        //}
-
-        //if(turret != null) {
-        //    Gizmos.DrawWireSphere(transform.position, turret.GetComponent<Turret>().range);
-        //}
     }
 }

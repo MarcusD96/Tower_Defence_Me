@@ -7,10 +7,13 @@ public class EnemyMovement : MonoBehaviour {
     private int wayPointIndex = 0;
     private Enemy enemy;
 
+    private void Awake() {
+        enemy = GetComponent<Enemy>();        
+    }
+
     // Start is called before the first frame update
-    void Start() {
-        target = Path.waypoints[0];
-        enemy = GetComponent<Enemy>();
+    public void Initialize() {
+        target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class EnemyMovement : MonoBehaviour {
         transform.Translate(direction.normalized * enemy.currentSpeed * Time.deltaTime, Space.World);
 
         enemy.distanceTravelled += Vector3.Distance(curPos, transform.position);
+        enemy.percentTrackCompleted = enemy.distanceTravelled / Paths.GetPathLength(enemy.pathIndex);
 
         if(Vector3.Distance(transform.position, target.position) <= 0.5f) {
             GetNextWayPoint();
@@ -27,20 +31,20 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void GetNextWayPoint() {
-        if(wayPointIndex >= Path.waypoints.Capacity - 1) {
-            EndPath();
+        if(wayPointIndex >= Paths.GetPathWaypoints(enemy.pathIndex).Count - 1) {
+            ReachEndPath();
             return;
         }
         wayPointIndex++;
-        target = Path.waypoints[wayPointIndex];
+        target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
     }
 
     public void ResetPath() {
         wayPointIndex = 0;
-        target = Path.waypoints[0];
+        target = null;
     }
 
-    void EndPath() {
+    void ReachEndPath() {
         PlayerStats.lives -= enemy.lifeValue;
         PlayerStats.lives = Mathf.Clamp(PlayerStats.lives, 0, PlayerStats.maxLives);
         WaveSpawner.RemoveEnemyFromList_Static(enemy);

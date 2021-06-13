@@ -5,8 +5,8 @@ using UnityEngine;
 public class FireTurret : Turret {
     [Header("Fire Turret")]
     public FireShot fireShot;
-    public float damage, burnDamage, burnInterval;
-    public int penetration, numBurns;
+    public float burnDamage, burnInterval;
+    public int numFire, numBurns;
 
     void Awake() {
         fireTurret = this;
@@ -25,18 +25,18 @@ public class FireTurret : Turret {
     public void AutoShoot() {
         var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
         var fComp = f.GetComponent<FireShot>();
-        fComp.Initialize(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
+        fComp.Initialize(ugB.GetLevel(), numFire, range, burnDamage, burnInterval, numBurns, isUsingSpecial);
     }
 
     public void ManualShoot() {
         var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
         var fComp = f.GetComponent<FireShot>();
-        fComp.Initialize(damage, range, burnDamage, burnInterval, numBurns, penetration, isUsingSpecial);
+        fComp.Initialize(ugB.GetLevel(), numFire, range, burnDamage, burnInterval, numBurns, isUsingSpecial);
     }
-    public override void ApplyUpgradeB() {  //fireRate++, penetration++, burn++,
+
+    public override void ApplyUpgradeB() {  //fireRate++, numFire*=
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
-        penetration += (int) ugB.upgradeFactorY;
-        numBurns += 2;
+        numFire = Mathf.FloorToInt(numFire * ugB.upgradeFactorY);
     }
 
     public override bool ActivateSpecial() {
@@ -56,13 +56,11 @@ public class FireTurret : Turret {
         StartCoroutine(SpecialTime());
         isUsingSpecial = true;
 
-        range *= 3.0f;
+        range *= 2.0f;
         thisNode.UpdateRange(this);
 
         var tmpPos = turretCam.transform.localPosition;
         turretCam.transform.localPosition *= 3;
-
-        penetration *= 2;
 
         yield return new WaitForSeconds(specialTime);
 
@@ -70,8 +68,6 @@ public class FireTurret : Turret {
         thisNode.UpdateRange(this);
 
         turretCam.transform.localPosition = tmpPos;
-
-        penetration /= 2;
 
         isUsingSpecial = false;
     }

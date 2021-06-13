@@ -36,6 +36,11 @@ public class BulletTurret : ProjectileTurret {
         return false;
     }
 
+    public override void ApplySpecial() {
+        base.ApplySpecial();
+        penetration++;
+    }
+
     IEnumerator BulletSpecial() {
         StartCoroutine(SpecialTime());
         projectileType = ProjectileType.Bullet_Special;

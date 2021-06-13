@@ -27,10 +27,10 @@ public class ProjectileTurret : Turret {
         proj.SetStats(damage, bossDamage, pivot.position, ray.GetPoint(range));
 
         if(bulletTurret) {
-            proj.GetBullet().InitializeDirection();
+            proj.GetBullet().Initialize(penetration);
         }
         else if(missileTurret) {
-            proj.GetMissile().SetExplosion(penetration);
+            proj.GetMissile().SetExplosion(penetration, missileTurret.explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
             proj.GetRod().InitializeDirection();
@@ -54,10 +54,10 @@ public class ProjectileTurret : Turret {
 
         //set more specific info based on the type of proj
         if(bulletTurret) {
-            proj.GetBullet().InitializeDirection();
+            proj.GetBullet().Initialize(penetration);
         }
         else if(missileTurret) {
-            proj.GetMissile().SetExplosion(penetration);
+            proj.GetMissile().SetExplosion(penetration, missileTurret.explosionRadius);
         } else if(railgunTurret) {
             proj.GetRod().SetPenetration(penetration);
             proj.GetRod().InitializeDirection();

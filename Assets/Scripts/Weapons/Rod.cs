@@ -33,13 +33,14 @@ public class Rod : Projectile {
         }
 
         if(penetration < 0) {
+            Damage(target);
             ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation, 1.0f);
             ObjectPool.instance.Deactivate(gameObject);
             return;
         }
 
-        ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation, 1.0f);
         Damage(target);
+        ObjectPool.instance.ActivateEffect(EffectType.RodImpact, transform.position, transform.rotation, 1.0f);
         penetration--;
     }
 }

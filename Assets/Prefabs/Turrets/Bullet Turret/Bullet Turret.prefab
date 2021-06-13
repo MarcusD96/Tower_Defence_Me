@@ -196,8 +196,10 @@ MonoBehaviour:
   specialRate: 35
   specialAmount: 0
   specialTime: 10
+  hasTargetting: 1
   projectilePrefab: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797,
     type: 3}
+  projectileType: 0
   damage: 1.5
   bossDamage: 2
   penetration: 0

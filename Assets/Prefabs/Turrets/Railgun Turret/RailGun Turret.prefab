@@ -229,8 +229,8 @@ MonoBehaviour:
     upgradeName: Light n' Dense Rods
     description: Lighter and more dense rods are fired harder and hit more enemies.
     baseCost: 330
-    upgradeFactorX: 1
-    upgradeFactorY: 3
+    upgradeFactorX: 5
+    upgradeFactorY: 5
   ugSpec:
     upgradeName: Mega Shot
     description: Fire a huge rod which does a ton of damage of penetrates very many
@@ -238,19 +238,20 @@ MonoBehaviour:
     baseCost: 1500
     upgradeFactorX: 0
     upgradeFactorY: 0
-  manualRangeMultiplier: 2.5
+  manualRangeMultiplier: 2
   manualFirerateMultiplier: 1
-  fireRate: 0.7
+  fireRate: 0.25
   specialBar: {fileID: 4924648402484541792}
   specialRate: 60
   specialAmount: 0
   specialTime: 1
+  hasTargetting: 1
   projectilePrefab: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6,
     type: 3}
   projectileType: 3
-  damage: 2
-  bossDamage: 0
-  penetration: 2
+  damage: 10
+  bossDamage: 25
+  penetration: 5
   specialPrefab: {fileID: 2200754160205231155, guid: 28da8f9cafc95db4a85caa7ca966817b,
     type: 3}
 --- !u!114 &6116370414663378372

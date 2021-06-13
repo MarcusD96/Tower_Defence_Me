@@ -159,7 +159,10 @@ public class Turret : MonoBehaviour {
         }
     }
 
+    public bool hasTargetting;
     public string GetTargetting() {
+        if(!hasTargetting)
+            return null;
         return targetting;
     }
 
@@ -191,7 +194,7 @@ public class Turret : MonoBehaviour {
         }
 
         foreach(var e in eList) {
-            float time = e.GetComponent<Enemy>().distanceTravelled;
+            float time = e.GetComponent<Enemy>().percentTrackCompleted;
             if(time > greatestDistanceTravelled) {
                 greatestDistanceTravelled = time;
                 firstEnemy = e;
@@ -218,7 +221,7 @@ public class Turret : MonoBehaviour {
         }
 
         foreach(var e in eList) {
-            float time = e.GetComponent<Enemy>().distanceTravelled;
+            float time = e.GetComponent<Enemy>().percentTrackCompleted;
             if(time < leastDistanceTravelled) {
                 leastDistanceTravelled = time;
                 firstEnemy = e;
@@ -289,8 +292,8 @@ public class Turret : MonoBehaviour {
         //find the strongest enemy which has travelled the furthest
         foreach(var enemy in eList) {
             Enemy e = enemy.GetComponent<Enemy>();
-            if(e.distanceTravelled > greatestDistanceTravelled) {
-                greatestDistanceTravelled = e.distanceTravelled;
+            if(e.percentTrackCompleted > greatestDistanceTravelled) {
+                greatestDistanceTravelled = e.percentTrackCompleted;
                 strongestEnemy = enemy;
             }
         }
@@ -430,7 +433,7 @@ public class Turret : MonoBehaviour {
         Debug.Log("upgrade 2");
     }
 
-    public void ApplySpecial() {
+    public virtual void ApplySpecial() {
         fireRate = maxFireRate;
         hasSpecial = true;
         if(specialBar) {
@@ -463,6 +466,11 @@ public class Turret : MonoBehaviour {
             return;
 
         ChangeLayer(9);
+        foreach(var f in FindObjectsOfType<Button>()) {
+            if(f.CompareTag("FF")) {
+                f.interactable = false;
+            }
+        }
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();
         }
@@ -478,6 +486,11 @@ public class Turret : MonoBehaviour {
         if(farmTower)
             return;
 
+        foreach(var f in FindObjectsOfType<Button>()) {
+            if(f.CompareTag("FF")) {
+                f.interactable = true;
+            }
+        }
         ChangeLayer(0);
         if(aimIndicator != null) {
             aimIndicator.SetPositionAtRange();

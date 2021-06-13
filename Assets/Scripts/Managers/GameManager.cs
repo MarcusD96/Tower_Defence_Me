@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour {
         lastControlled = null;
         if(Time.timeScale != 1) {
             Time.timeScale = 1;
-            Time.fixedDeltaTime = 0.01f;
         }
     }
 
@@ -49,10 +48,8 @@ public class GameManager : MonoBehaviour {
             if(WaveSpawner.enemiesAlive > 0) {
                 if(Time.timeScale == fastForward) {
                     Time.timeScale = 1;
-                    Time.fixedDeltaTime = 0.01f;
                 } else {
                     Time.timeScale = fastForward;
-                    Time.fixedDeltaTime /= 2;
                 }
             }
         }

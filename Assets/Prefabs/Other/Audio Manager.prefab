@@ -89,7 +89,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: EMP
+  - name: Slow Aura
     clip: {fileID: 8300000, guid: 6b24dd26b00d5e64a90c09a6f060c712, type: 3}
     volume: 1
     pitch: 1.52

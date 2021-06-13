@@ -341,7 +341,7 @@ MonoBehaviour:
   sellPrice: 0
   sellPecent: 75
   fireSpawn: {fileID: 2484036753030999528}
-  range: 21
+  range: 20
   maxFireRate: 0
   turretCam: {fileID: 7206695569095409826}
   overlayCam: {fileID: 5086105993992064825}
@@ -361,28 +361,30 @@ MonoBehaviour:
   ugB:
     upgradeName: Powerful Warheads
     description: Increase warhead damage and its explosive power.
-    baseCost: 350
-    upgradeFactorX: 0.3
-    upgradeFactorY: 1
+    baseCost: 400
+    upgradeFactorX: 0.1
+    upgradeFactorY: 10
   ugSpec:
     upgradeName: Missile Maelstrom
-    description: Missiles....everywhere.
+    description: Throughout a whirlwind of micromissiles causing massive destruction
     baseCost: 2100
     upgradeFactorX: 0
     upgradeFactorY: 0
-  manualRangeMultiplier: 1.5
-  manualFirerateMultiplier: 1.25
-  fireRate: 0.7
+  manualRangeMultiplier: 1.25
+  manualFirerateMultiplier: 1.1
+  fireRate: 0.25
   specialBar: {fileID: 1531281856564686637}
-  specialRate: 25
+  specialRate: 30
   specialAmount: 0
   specialTime: 1.75
+  hasTargetting: 1
   projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
     type: 3}
   projectileType: 2
-  damage: 1
-  bossDamage: 2
-  penetration: 5
+  damage: 4
+  bossDamage: 25
+  penetration: 20
+  explosionRadius: 8
   specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
     type: 3}
   specialMissileCount: 96
@@ -1069,6 +1071,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4396429174751010786, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396429174751010786, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396429174751010786, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396429174751010786, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4527592905159920935, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_Layer
@@ -1100,6 +1122,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530214973093894128, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746543109150617457, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746543109150617457, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746543109150617457, guid: ac544509da2972845a14cd3400e757d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746543109150617457, guid: ac544509da2972845a14cd3400e757d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0

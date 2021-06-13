@@ -20,7 +20,7 @@ public class ObjectPool : MonoBehaviour {
         enemyPool = new List<GameObject>[enemies.Length];
         projectilesPool = new List<GameObject>[projectiles.Length];
         effectsPool = new List<GameObject>[effects.Length];
-        spawn = Path.waypoints[0].position;
+        spawn = Paths.GetFirstPathPosition();
         StartCoroutine(SpawnObjectsInPool(enemies, enemyPool, enemiesParent));
         StartCoroutine(SpawnObjectsInPool(projectiles, projectilesPool, projectilesParent));
         StartCoroutine(SpawnObjectsInPool(effects, effectsPool, effectsParent));
@@ -105,7 +105,7 @@ public class ObjectPool : MonoBehaviour {
         return projectilesPool;
     }
 
-    public GameObject ActivateEnemy(EnemyType e, Vector3 pos, Quaternion rot) {
+    public GameObject ActivateEnemy(EnemyType e, Vector3 pos, Quaternion rot, int pathIndex_) {
         int t = (int) e;
         for(int i = 0; i < enemyPool[t].Count; i++) {
             if(!enemyPool[t][i].activeSelf) {
@@ -116,8 +116,11 @@ public class ObjectPool : MonoBehaviour {
                 currTrans.position = pos;
                 currTrans.rotation = rot;
                 Enemy enemyComp = currEnemy.GetComponent<Enemy>();
+                enemyComp.pathIndex = pathIndex_;
                 enemyComp.isDead = false;
                 enemyComp.ResetEnemy();
+                var eMove = currEnemy.GetComponent<EnemyMovement>();
+                eMove.Initialize();
                 return currEnemy;
             }
         }

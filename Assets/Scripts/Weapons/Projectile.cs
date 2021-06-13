@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour {
             return;
         }
 
-        distanceThisFrame = speed * Time.deltaTime;
+        distanceThisFrame = speed * Time.fixedDeltaTime;
     }
 
     public Missile GetMissile() {
@@ -102,7 +102,7 @@ public class Projectile : MonoBehaviour {
             if(other.gameObject.CompareTag("Enemy")) {
                 target = other.transform;
                 HitTarget(false);
-                if(rod)
+                if(rod || bullet)
                     return;
                 else
                     isCollided = true;

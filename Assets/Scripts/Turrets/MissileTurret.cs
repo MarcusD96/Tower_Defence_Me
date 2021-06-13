@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MissileTurret : ProjectileTurret {
 
+    public float explosionRadius;
     public GameObject specialPrefab;
-
     public int specialMissileCount;
+
     private List<Enemy> targetList = new List<Enemy>();
 
     void Awake() {
@@ -24,9 +25,10 @@ public class MissileTurret : ProjectileTurret {
         }
     }
 
-    public override void ApplyUpgradeB() {  //fireRate++, penetration++, expl.rad. + 5
-        fireRate += ugB.upgradeFactorX * ugB.GetLevel();
-        penetration += (int) ugB.upgradeFactorY;
+    public override void ApplyUpgradeB() {  //fireRate++, penetration++
+        fireRate += ugB.upgradeFactorX;
+        penetration += (int) (ugB.upgradeFactorY * ugB.GetLevel());
+        explosionRadius += 2.5f;
     }
 
     public override bool ActivateSpecial() {
@@ -81,20 +83,25 @@ public class MissileTurret : ProjectileTurret {
 
     IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
+        float dt = Time.deltaTime;
+        float ff = FindObjectOfType<GameManager>().fastForward * dt;
         Vector3 spawn;
         spawn = new Vector3(transform.position.x, fireSpawn.position.y, transform.position.z);
+
         for(int i = 0; i < specialMissileCount; i++) {
             Missile[] m = new Missile[3];
-            m[0] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i, 0))).GetComponent<Missile>();
-            m[1] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i + 120, 0))).GetComponent<Missile>();
-            m[2] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 5 * i + 240, 0))).GetComponent<Missile>();
+            m[0] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 10 * i, 0))).GetComponent<Missile>();
+            m[1] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 120, 0))).GetComponent<Missile>();
+            m[2] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 240, 0))).GetComponent<Missile>();
 
             foreach(var mm in m) {
-                mm.SetStats(damage * 2, bossDamage * 3, spawn, transform.forward * 60);
-                mm.SetExplosion(penetration);
+                mm.SetStats(damage / 2, bossDamage / 2, spawn, transform.forward * 60);
+                mm.SetExplosion(penetration, 5);
             }
-
-            yield return new WaitForSeconds(0.005f);
+            if(Time.timeScale > 1) {
+                yield return new WaitForSeconds(dt);
+            } else
+                yield return new WaitForSeconds(ff);
         }
     }
 

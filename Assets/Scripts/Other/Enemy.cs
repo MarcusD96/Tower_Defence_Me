@@ -13,11 +13,12 @@ public class Enemy : MonoBehaviour {
 
     public float baseSpeed, baseHp;
     public float startSpeed, startHp;
-    public float distanceTravelled, moneyValue;
+    public float moneyValue, percentTrackCompleted;
     [HideInInspector]
-    public float currentSpeed, currentMoneyValue;
+    public float currentSpeed, currentMoneyValue, distanceTravelled;
 
     public int lifeValue;
+    public int pathIndex;
 
     public EnemyType enemyType;
 
@@ -49,11 +50,11 @@ public class Enemy : MonoBehaviour {
             healthBarR.fillAmount = currentHp / baseHp;
 
             if(currentHp <= 0 && !isDead)
-                Die();
+                GetKilled();
         }
     }
 
-    public void Die() {
+    public void GetKilled() {
         isDead = true;
         PlayerStats.money += currentMoneyValue;
         ObjectPool.instance.ActivateEffect(deathEffect, transform.position, Quaternion.identity, 1.0f);
@@ -65,10 +66,36 @@ public class Enemy : MonoBehaviour {
         ResetEnemy();
     }
 
-    public void Slow(float slowFactor, float duration) {
+    public void SlowAura(float slowFactor) {
+        superSlow = true;
+        currentSpeed = baseSpeed * slowFactor;
+
+        if(!slowEffect.isPlaying) {
+            slowEffect.gameObject.SetActive(true);
+            slowEffect.Play(); 
+            isSlow = true;
+        }
+    }
+
+    public void RestoreSlow() {
+        superSlow = false;
+        currentSpeed = baseSpeed;
+
+        slowEffect.gameObject.SetActive(false);
+        isSlow = false;
+    }
+
+    int slowLevel = -1;
+    public void Slow(float slowFactor, float duration, int level_) {
         if(slowEffect == null) {
             print("no slow effect");
             return;
+        }
+
+        if(level_ < slowLevel) {
+            return;
+        } else {
+            slowLevel = level_;
         }
 
         if(!gameObject.activeSelf)
@@ -101,11 +128,12 @@ public class Enemy : MonoBehaviour {
 
         yield return new WaitForSeconds(duration);
 
-        slowEffect.Stop();
+        //slowEffect.Stop();
         slowEffect.gameObject.SetActive(false);
 
         currentSpeed = baseSpeed;
         superSlow = false;
+        slowLevel = -1;
         isSlow = false;
     }
 
@@ -119,11 +147,19 @@ public class Enemy : MonoBehaviour {
         isDamaging = false;
     }
 
-    public void Stun(float duration) {
+    int stunLevel = -1;
+    public void Stun(float duration, int level_) {
         if(stunEffect == null) {
             print("no stun effect");
             return;
         }
+
+        if(level_ < stunLevel) {
+            return;
+        } else {
+            stunLevel = level_;
+        }
+
 
         if(!gameObject.activeSelf)
             return;
@@ -155,12 +191,20 @@ public class Enemy : MonoBehaviour {
         stunEffect.gameObject.SetActive(false);
 
         currentSpeed = baseSpeed;
+        stunLevel = -1;
         stun = null;
     }
 
-    public void Burn(float damage, int numBurns, float burnInterval) {
+    int burnLevel = -1;
+    public void Burn(float damage, int numBurns, float burnInterval, int level_) {
         if(burnEffect == null) {
             print("no burn effect");
+        }
+
+        if(level_ < burnLevel) {
+            return;
+        } else {
+            burnLevel = level_;
         }
 
         if(burnResist)
@@ -191,6 +235,7 @@ public class Enemy : MonoBehaviour {
             yield return new WaitForSeconds(burnInterval);
             TakeDamage(damage, Color.white);
         }
+        burnLevel = 0;
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);
     }
@@ -202,7 +247,7 @@ public class Enemy : MonoBehaviour {
         currentSpeed = baseSpeed * difficultyMultiplier;
         currentHp = Mathf.RoundToInt(baseHp * difficultyMultiplier);
 
-        distanceTravelled = 0.0f;
+        distanceTravelled = percentTrackCompleted = 0.0f;
 
         superSlow = isDamaging = isSlow = false;
 

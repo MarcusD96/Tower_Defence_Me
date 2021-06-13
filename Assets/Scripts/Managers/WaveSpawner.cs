@@ -15,7 +15,7 @@ public class WaveSpawner : MonoBehaviour {
 
     [SerializeField]
     private int waveIndex = 0;
-    private Transform spawnPoint;
+    private Transform[] spawnPoints;
     private GameManager gameManager;
     private Button startButton, FFButton;
     private bool waveStarted, autoStart, firstRoundStarted = false;
@@ -47,7 +47,10 @@ public class WaveSpawner : MonoBehaviour {
     }
 
     void Start() {
-        spawnPoint = Path.waypoints[0];
+        spawnPoints = new Transform[Paths.paths.Count];
+        for(int i = 0; i < spawnPoints.Length; i++) {
+            spawnPoints[i] = Paths.GetPathWaypoints(i)[0];
+        }
         InitializeWaves();
     }
 
@@ -120,9 +123,13 @@ public class WaveSpawner : MonoBehaviour {
         }
     }
 
+    int spawnIndex = 0;
     void SpawnEnemy(GameObject enemy) {
         Enemy e = enemy.GetComponent<Enemy>();
-        spawnedEnemies.Add(ObjectPool.instance.ActivateEnemy(e.enemyType, spawnPoint.position, spawnPoint.rotation));
+        spawnedEnemies.Add(ObjectPool.instance.ActivateEnemy(e.enemyType, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation, spawnIndex));
+        spawnIndex++;
+        if(spawnIndex >= spawnPoints.Length)
+            spawnIndex = 0;
     }
 
     void RemoveEnemyFromList(Enemy e) {

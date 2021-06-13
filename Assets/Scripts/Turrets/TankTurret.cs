@@ -21,7 +21,7 @@ public class TankTurret : ProjectileTurret {
         projectileTurret = this;
         tankTurret = this;
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
-        InvokeRepeating("AlignBottom", 0, 5);
+        InvokeRepeating("AlignBottom", 0, 8);
     }
 
     private new void Update() {
@@ -81,6 +81,7 @@ public class TankTurret : ProjectileTurret {
     }
 
     void AlignBottom() {
+        if(gameObject.activeSelf)
         StartCoroutine(AlignBottomGFX());
     }
     IEnumerator AlignBottomGFX() {

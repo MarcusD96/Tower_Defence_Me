@@ -13,7 +13,7 @@ public class TankRunner : MonoBehaviour {
     private int wayPointIndex = 0;
 
     private void Awake() {
-        path = new List<Transform>(Path.waypoints);
+        path = new List<Transform>(Paths.GetPathWaypoints(0));
         path.Reverse();
         transform.position = path[0].position;
         target = path[0];
