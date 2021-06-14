@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
     public float baseSpeed, baseHp;
     public float startSpeed, startHp;
     public float moneyValue, percentTrackCompleted;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentSpeed, currentMoneyValue, distanceTravelled;
 
     public int lifeValue;
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour {
 
     private IEnumerator stun = null;
     private IEnumerator burn = null;
+    private IEnumerator blowBack = null;
 
     [Header("Unity Stuff")]
     public Image healthBarL;
@@ -160,7 +161,6 @@ public class Enemy : MonoBehaviour {
             stunLevel = level_;
         }
 
-
         if(!gameObject.activeSelf)
             return;
 
@@ -238,6 +238,36 @@ public class Enemy : MonoBehaviour {
         burnLevel = 0;
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);
+    }
+
+    int blowBackLevel = -1;
+    public void BlowBack(float duration, int level_) {
+        if(level_ < blowBackLevel) {
+            return;
+        } else {
+            blowBackLevel = level_;
+        }
+
+        if(!gameObject.activeSelf)
+            return;
+
+        if(blowBack != null) {
+            return;
+        }
+
+        blowBack = BlowBackEnemy(duration);
+        StartCoroutine(blowBack);
+    }
+
+    IEnumerator BlowBackEnemy(float duration) {
+        currentSpeed = -currentSpeed;
+        EnemyMovement m = GetComponent<EnemyMovement>();
+        int prevWP = m.GetIndex() - 1;
+        prevWP = Mathf.Clamp(prevWP - 1, 1, prevWP);
+        m.SetTarget(Paths.GetPathWaypoints(pathIndex)[prevWP]);
+        yield return new WaitForSeconds(duration);
+        currentSpeed = -currentSpeed;
+        m.SetTarget(Paths.GetPathWaypoints(pathIndex)[m.GetIndex() + 1]);
     }
 
     public void ResetEnemy() {

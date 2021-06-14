@@ -37,6 +37,7 @@ public class Bullet : Projectile {
 
         ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation, 1.0f);
         Damage(target);
+        target.GetComponent<Enemy>().BlowBack(1, 1);
         penetration--;
     }
 

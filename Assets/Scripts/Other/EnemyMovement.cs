@@ -7,8 +7,16 @@ public class EnemyMovement : MonoBehaviour {
     private int wayPointIndex = 0;
     private Enemy enemy;
 
+    public void SetTarget(Transform _target) {
+        target = _target;
+    }
+
+    public int GetIndex() {
+        return wayPointIndex;
+    }
+
     private void Awake() {
-        enemy = GetComponent<Enemy>();        
+        enemy = GetComponent<Enemy>();
     }
 
     // Start is called before the first frame update
@@ -22,12 +30,26 @@ public class EnemyMovement : MonoBehaviour {
         Vector3 curPos = transform.position;
         transform.Translate(direction.normalized * enemy.currentSpeed * Time.deltaTime, Space.World);
 
-        enemy.distanceTravelled += Vector3.Distance(curPos, transform.position);
+        if(enemy.currentSpeed >= 0)
+            MoveForward(curPos);
+        else
+            MoveBack(curPos);
+    }
+
+    void MoveForward(Vector3 curPos_) {
+        enemy.distanceTravelled += Vector3.Distance(curPos_, transform.position);
         enemy.percentTrackCompleted = enemy.distanceTravelled / Paths.GetPathLength(enemy.pathIndex);
 
-        if(Vector3.Distance(transform.position, target.position) <= 0.5f) {
+        if(Vector3.Distance(transform.position, target.position) <= 0.5f)
             GetNextWayPoint();
-        }
+    }
+
+    void MoveBack(Vector3 curPos_) {
+        enemy.distanceTravelled -= Vector3.Distance(curPos_, transform.position);
+        enemy.percentTrackCompleted = enemy.distanceTravelled / Paths.GetPathLength(enemy.pathIndex);
+
+        if(Vector3.Distance(transform.position, target.position) <= 0.5f)
+            GetPreviousWayPoint();
     }
 
     void GetNextWayPoint() {
@@ -37,6 +59,13 @@ public class EnemyMovement : MonoBehaviour {
         }
         wayPointIndex++;
         target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
+    }
+
+    void GetPreviousWayPoint() {
+        target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
+        if(wayPointIndex > 1)
+            wayPointIndex--;
+
     }
 
     public void ResetPath() {
