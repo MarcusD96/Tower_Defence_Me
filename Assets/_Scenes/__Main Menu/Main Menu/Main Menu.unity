@@ -1943,6 +1943,7 @@ MonoBehaviour:
   - {fileID: 1513088061951338147, guid: 9ef100b067c6ae14d848508056cebca5, type: 3}
   - {fileID: 4360696567681830834, guid: 914d8367a86afcf499b48d0b5c29a06f, type: 3}
   - {fileID: 975861385546428995, guid: f0a9f647a173bd54685a4728fa4c69c4, type: 3}
+  - {fileID: 2255635868114864200, guid: 519f39dbeccf0ed4f82713c5bfb3d6a1, type: 3}
 --- !u!4 &1543839161
 Transform:
   m_ObjectHideFlags: 0

@@ -78,6 +78,9 @@ public class Node : MonoBehaviour {
         range.SetActive(false);
 
         BuildEffect(buildManager.buildEffect);
+        FindObjectOfType<Shop>().CloseShop();
+        BuildManager.instance.ToggleBuildSelection(false);
+        BuildManager.instance.SelectTurretToBuild(null);
     }
 
     public void UpgradeA() { //range always
@@ -133,35 +136,40 @@ public class Node : MonoBehaviour {
     void CheckTurretTypeAndMakeSpecial() {
         //bullet
         if(turret.GetComponent<BulletTurret>())
-            SpecialActivator.MakeBurst(turret.GetComponent<BulletTurret>());
+            SpecialActivator.MakeBulletSpecial(turret.GetComponent<BulletTurret>());
 
         //missile
         else if(turret.GetComponent<MissileTurret>())
-            SpecialActivator.MakeBarrage(turret.GetComponent<MissileTurret>());
+            SpecialActivator.MakeMissileSpecial(turret.GetComponent<MissileTurret>());
 
         //railgun
         else if(turret.GetComponent<RailgunTurret>())
-            SpecialActivator.MakeCharges(turret.GetComponent<RailgunTurret>());
+            SpecialActivator.MakeRailgunSpecial(turret.GetComponent<RailgunTurret>());
 
         //laser
         else if(turret.GetComponent<LaserTurret>())
-            SpecialActivator.MakeEMP(turret.GetComponent<LaserTurret>());
+            SpecialActivator.MakeLaserSpecial(turret.GetComponent<LaserTurret>());
 
         //tesla
         else if(turret.GetComponent<TeslaTurret>())
-            SpecialActivator.MakeSuperCharge(turret.GetComponent<TeslaTurret>());
+            SpecialActivator.MakeTeslaSpecial(turret.GetComponent<TeslaTurret>());
 
         //fire
         else if(turret.GetComponent<FireTurret>())
-            SpecialActivator.MakeInferno(turret.GetComponent<FireTurret>());
+            SpecialActivator.MakeFireSpecial(turret.GetComponent<FireTurret>());
 
         //tank
         else if(turret.GetComponent<TankTurret>())
-            SpecialActivator.MakeRundown(turret.GetComponent<TankTurret>());
+            SpecialActivator.MakeTankSpecial(turret.GetComponent<TankTurret>());
 
         //farm
         else if(turret.GetComponent<FarmTower>()) {
-            SpecialActivator.MakeDoubleCash(turret.GetComponent<FarmTower>());
+            SpecialActivator.MakeFarmSpecial(turret.GetComponent<FarmTower>());
+        }
+
+        //wind
+        else if(turret.GetComponent<WindTurret>()) {
+            SpecialActivator.MakeWindSpecial(turret.GetComponent<WindTurret>());
         }
     }
 
@@ -218,6 +226,10 @@ public class Node : MonoBehaviour {
         else if(turret.GetComponent<FarmTower>()) {
             FarmSpecial.RemoveTower(turret.GetComponent<FarmTower>());
         }
+
+        else if(turret.GetComponent<WindTurret>()) {
+            WindSpecial.RemoveTurret(turret.GetComponent<WindTurret>());
+        }
     }
 
     public void ControlTurret() {
@@ -259,7 +271,7 @@ public class Node : MonoBehaviour {
         BuildTurret(buildManager.GetTurretToBuild());
     }
 
-    void OnMouseEnter() {
+    void OnMouseOver() {
         if(GameManager.lastControlled != null) {
             if(GameManager.lastControlled.controlled)   //cant select nodes when a turret is being controlled
                 return;
@@ -278,7 +290,8 @@ public class Node : MonoBehaviour {
             var t = buildManager.GetTurretToBuild().GetTurret();
             UpdateRange(t);
             range.SetActive(true);
-        } else {
+        }
+        else {
             rend.material.color = errorColor;
         }
     }

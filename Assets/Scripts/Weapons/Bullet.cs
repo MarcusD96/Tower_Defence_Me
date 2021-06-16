@@ -20,7 +20,7 @@ public class Bullet : Projectile {
         base.FixedUpdate();
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
-    
+
     public override void HitTarget(bool endOfLife) {
         if(endOfLife) {
             ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation, 1.0f);
@@ -37,7 +37,6 @@ public class Bullet : Projectile {
 
         ObjectPool.instance.ActivateEffect(EffectType.BulletImpact, transform.position, transform.rotation, 1.0f);
         Damage(target);
-        target.GetComponent<Enemy>().BlowBack(1, 1);
         penetration--;
     }
 

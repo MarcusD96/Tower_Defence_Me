@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool instance;
-    public PooledObject[] enemies, projectiles, effects;
+    public PooledObject[] enemies, weapons, effects;
     public Transform enemiesParent, projectilesParent, effectsParent;
 
     private List<GameObject>[] enemyPool, projectilesPool, effectsPool;
@@ -18,11 +18,11 @@ public class ObjectPool : MonoBehaviour {
 
     private void Start() {
         enemyPool = new List<GameObject>[enemies.Length];
-        projectilesPool = new List<GameObject>[projectiles.Length];
+        projectilesPool = new List<GameObject>[weapons.Length];
         effectsPool = new List<GameObject>[effects.Length];
         spawn = Paths.GetFirstPathPosition();
         StartCoroutine(SpawnObjectsInPool(enemies, enemyPool, enemiesParent));
-        StartCoroutine(SpawnObjectsInPool(projectiles, projectilesPool, projectilesParent));
+        StartCoroutine(SpawnObjectsInPool(weapons, projectilesPool, projectilesParent));
         StartCoroutine(SpawnObjectsInPool(effects, effectsPool, effectsParent));
     }
 
@@ -48,7 +48,7 @@ public class ObjectPool : MonoBehaviour {
                 yield return null;
             }
             loadingEnemies = false;
-        } else if(objects == projectiles) {
+        } else if(objects == weapons) {
             bool notDone = true;
             while(notDone) {
                 foreach(var c in coroutines) {
@@ -129,7 +129,7 @@ public class ObjectPool : MonoBehaviour {
         return null;
     }
 
-    public GameObject ActivateProjectile(ProjectileType p, Vector3 pos, Quaternion rot) {
+    public GameObject ActivateProjectile(WeaponType p, Vector3 pos, Quaternion rot) {
         int t = (int) p;
         for(int i = 0; i < projectilesPool[t].Count; i++) {
             if(!projectilesPool[t][i].activeSelf) {
@@ -180,9 +180,10 @@ public class PooledObject {
     public int amount;
 }
 
-public enum ProjectileType {
+public enum WeaponType {
     Bullet,
     FireShot,
+    WindShot,
     Missile,
     Rod,
     TankShot,

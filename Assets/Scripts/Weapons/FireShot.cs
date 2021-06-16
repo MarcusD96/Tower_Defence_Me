@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
-public class FireShot : MonoBehaviour {
-
+public class FireShot : ParticleShot {
+    [Header("FireShot")]
     public Gradient mainGradient, specGradient;
-    public LayerMask enemyLayer;
 
-    ParticleSystem fire;
-    float range, burnDamage, burnInterval;
-    int numFire, burnTime, level;
-    bool special;
+    float burnDamage, burnInterval;
+    int numFire, burnTime;
     Gradient currentGrad;
 
     public void Initialize(int level_, int numFire_, float range_, float burnDamage_, float burnInterval_, int burnTime_, bool special_) {
@@ -26,24 +22,18 @@ public class FireShot : MonoBehaviour {
         else
             currentGrad = mainGradient;
 
-        fire = GetComponent<ParticleSystem>();
-        ParticleSystem.ColorOverLifetimeModule grad = fire.colorOverLifetime;
+        ps = GetComponent<ParticleSystem>();
+        ParticleSystem.ColorOverLifetimeModule grad = ps.colorOverLifetime;
         grad.color = currentGrad;
 
-        ParticleSystem.MainModule main = fire.main;
+        ParticleSystem.MainModule main = ps.main;
         main.startSpeed = (range * 3) + 5;
         ParticleSystem.Burst burst = new ParticleSystem.Burst(0, (short) numFire_);
-        fire.emission.SetBurst(0, burst);
+        ps.emission.SetBurst(0, burst);
 
-        fire.Play();
+        ps.Play();
 
         CheckHits();
-    }
-
-    void LateUpdate() {
-        if(fire.isStopped) {
-            ObjectPool.instance.Deactivate(gameObject);
-        }
     }
 
     Ray ray;
@@ -64,7 +54,8 @@ public class FireShot : MonoBehaviour {
                     if(e.isBoss) {
                         e.TakeDamage(burnDamage * 5, Color.white);
                         e.Burn(burnDamage * 2, burnTime, burnInterval, level);
-                    } else {
+                    }
+                    else {
                         e.TakeDamage(burnDamage, Color.white);
                         e.Burn(burnDamage, burnTime, burnInterval, level);
                     }
@@ -77,7 +68,8 @@ public class FireShot : MonoBehaviour {
                     if(e.isBoss) {
                         e.TakeDamage(burnDamage * 75, Color.red);
                         e.Burn(burnDamage * 10, burnTime * 5, burnInterval, level);
-                    } else {
+                    }
+                    else {
                         e.TakeDamage(burnDamage * 3, Color.red);
                         e.Burn(burnDamage, burnTime * 2, burnInterval / 2, level);
                     }

@@ -58,7 +58,7 @@ public class RailgunTurret : ProjectileTurret {
         }
 
         //do special
-        projectileType = ProjectileType.Rod_Special;
+        projectileType = WeaponType.Rod_Special;
         damage = 100;
         penetration = 100;
 
@@ -74,7 +74,7 @@ public class RailgunTurret : ProjectileTurret {
         }
 
         //return to normal
-        projectileType = ProjectileType.Rod;
+        projectileType = WeaponType.Rod;
         turretCam.transform.localPosition = tmpCamPos;
         damage = tmpDamage;
         penetration = tmpPenetration;

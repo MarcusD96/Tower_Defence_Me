@@ -5,7 +5,7 @@ public class ProjectileTurret : Turret {
 
     [Header("Projectile Stuff")]
     public GameObject projectilePrefab;
-    public ProjectileType projectileType;
+    public WeaponType projectileType;
     public float damage, bossDamage;
     public int penetration;
 

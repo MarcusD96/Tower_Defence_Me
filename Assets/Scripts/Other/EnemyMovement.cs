@@ -3,17 +3,9 @@
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour {
 
-    private Transform target;
-    private int wayPointIndex = 0;
+    public Transform target;
+    public int wayPointIndex = 0;
     private Enemy enemy;
-
-    public void SetTarget(Transform _target) {
-        target = _target;
-    }
-
-    public int GetIndex() {
-        return wayPointIndex;
-    }
 
     private void Awake() {
         enemy = GetComponent<Enemy>();
@@ -30,7 +22,7 @@ public class EnemyMovement : MonoBehaviour {
         Vector3 curPos = transform.position;
         transform.Translate(direction.normalized * enemy.currentSpeed * Time.deltaTime, Space.World);
 
-        if(enemy.currentSpeed >= 0)
+        if(enemy.blowBack == null)
             MoveForward(curPos);
         else
             MoveBack(curPos);
@@ -62,10 +54,8 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void GetPreviousWayPoint() {
+        wayPointIndex--;
         target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
-        if(wayPointIndex > 1)
-            wayPointIndex--;
-
     }
 
     public void ResetPath() {

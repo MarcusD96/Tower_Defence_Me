@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class FireTurret : Turret {
+public class FireTurret : ParticleTurret {
     [Header("Fire Turret")]
-    public FireShot fireShot;
-    public float burnDamage, burnInterval;
+    public float burnDamage;
+    public float burnInterval;
     public int numFire, numBurns;
 
-    void Awake() {
+    private void Awake() {
+        particleTurret = this;
         fireTurret = this;
         maxFireRate = (fireRate + (ugB.upgradeFactorX * 6)) * manualFirerateMultiplier;
     }
@@ -22,16 +23,11 @@ public class FireTurret : Turret {
         }
     }
 
-    public void AutoShoot() {
-        var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
-        var fComp = f.GetComponent<FireShot>();
-        fComp.Initialize(ugB.GetLevel(), numFire, range, burnDamage, burnInterval, numBurns, isUsingSpecial);
-    }
-
-    public void ManualShoot() {
-        var f = ObjectPool.instance.ActivateProjectile(ProjectileType.FireShot, fireSpawn.position, fireShot.transform.rotation);
-        var fComp = f.GetComponent<FireShot>();
-        fComp.Initialize(ugB.GetLevel(), numFire, range, burnDamage, burnInterval, numBurns, isUsingSpecial);
+    FireShot fireShotComp;
+    public override void Shoot() {
+        currentShot = ObjectPool.instance.ActivateProjectile(shotPrefab.weapon, fireSpawn.position, shotPrefab.transform.rotation);
+        fireShotComp = currentShot.GetComponent<FireShot>();
+        fireShotComp.Initialize(ugB.GetLevel(), numFire, range, burnDamage, burnInterval, numBurns, isUsingSpecial);
     }
 
     public override void ApplyUpgradeB() {  //fireRate++, numFire*=

@@ -4890,6 +4890,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84194994eb06c9b42ad83f4df3569859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  weapon: 1
   mainGradient:
     serializedVersion: 2
     key0: {r: 0.1745283, g: 0.1745283, b: 1, a: 1}
@@ -4948,6 +4952,3 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 2048

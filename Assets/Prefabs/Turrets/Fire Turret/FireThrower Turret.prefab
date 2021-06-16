@@ -665,7 +665,7 @@ MonoBehaviour:
   specialAmount: 0
   specialTime: 9
   hasTargetting: 0
-  fireShot: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
+  shotPrefab: {fileID: 5759558546947081501, guid: 3f37a4b6ec23b394787cd28a3b448bcf,
     type: 3}
   burnDamage: 1
   burnInterval: 1

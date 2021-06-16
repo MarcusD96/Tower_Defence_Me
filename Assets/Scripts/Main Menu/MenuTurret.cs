@@ -38,7 +38,9 @@ public class MenuTurret : MonoBehaviour {
         shootNum = Random.Range(1, maxShootNum + 1);
 
         for(int i = 0; i < shootNum; i++) {
-            shootAnim.SetTrigger("Shoot");
+            if(shootAnim) {
+                shootAnim.SetTrigger("Shoot"); 
+            }
 
             if(secondaryShootAnim)
                 secondaryShootAnim.SetTrigger("Shoot");

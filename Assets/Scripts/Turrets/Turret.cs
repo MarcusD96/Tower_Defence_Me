@@ -43,8 +43,10 @@ public class Turret : MonoBehaviour {
     protected Node thisNode;
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
+    protected ParticleTurret particleTurret;
     protected FireTurret fireTurret;
     protected FarmTower farmTower;
+    protected WindTurret windTurret;
 
     [Header("Upgrades")]
     public Upgrade ugA;
@@ -85,7 +87,8 @@ public class Turret : MonoBehaviour {
         if(manual) {
             ManualControl();
             CameraManager.UpdateCam(turretCam);
-        } else {
+        }
+        else {
             AutomaticControl();
         }
 
@@ -176,7 +179,8 @@ public class Turret : MonoBehaviour {
                 if(d <= range)
                     enemiesInRange.Add(e);
             }
-        } else { //see all enemies
+        }
+        else { //see all enemies
             enemiesInRange = WaveSpawner.GetEnemyList_Static();
         }
         return enemiesInRange;
@@ -205,7 +209,8 @@ public class Turret : MonoBehaviour {
         if(firstEnemy != null) {
             target = firstEnemy.transform;
             targetEnemy = firstEnemy.GetComponent<Enemy>();
-        } else
+        }
+        else
             target = null;
     }
 
@@ -232,7 +237,8 @@ public class Turret : MonoBehaviour {
         if(firstEnemy) {
             target = firstEnemy.transform;
             targetEnemy = firstEnemy.GetComponent<Enemy>();
-        } else
+        }
+        else
             target = null;
     }
 
@@ -257,7 +263,8 @@ public class Turret : MonoBehaviour {
         if(nearestEnemy && shortestDistance <= range) {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<Enemy>();
-        } else
+        }
+        else
             target = null;
     }
 
@@ -302,7 +309,8 @@ public class Turret : MonoBehaviour {
         if(strongestEnemy) {
             target = strongestEnemy.transform;
             targetEnemy = strongestEnemy.GetComponent<Enemy>();
-        } else
+        }
+        else
             target = null;
     }
 
@@ -337,8 +345,11 @@ public class Turret : MonoBehaviour {
         nextFire -= Time.deltaTime;
         nextFire = Mathf.Clamp(nextFire, 0, float.MaxValue);
 
+        if(WaveSpawner.enemiesAlive <= 0)
+            return;
+
         if(projectileTurret) {
-            if(nextFire <= 0.0f && WaveSpawner.enemiesAlive > 0) {
+            if(nextFire <= 0.0f) {
                 FindEnemy(false);
                 if(target == null)
                     return;
@@ -351,23 +362,24 @@ public class Turret : MonoBehaviour {
                 muzzleFlash.Play();
                 nextFire = 1 / fireRate;
             }
-        } else if(fireTurret) {
-            if(nextFire <= 0.0f && WaveSpawner.enemiesAlive > 0) {
+        }
+        else if(particleTurret) {
+            if(nextFire <= 0.0f) {
                 FindEnemy(false);
                 if(target == null)
                     return;
-                fireTurret.AutoShoot();
+                particleTurret.Shoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                 if(recoilAnim_Body) {
                     recoilAnim_Body.SetTrigger(shootAnim);
                 }
                 nextFire = 1 / fireRate;
             }
-        } else if(beamTurret) {
-            if(WaveSpawner.enemiesAlive > 0) {
-                beamTurret.AutoShoot();
-            }
-        } else
+        }
+        else if(beamTurret) {
+            beamTurret.AutoShoot();
+        }
+        else
             Debug.LogError("non existant tower???");
     }
 
@@ -392,10 +404,11 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
             }
-        } else if(fireTurret) {
+        }
+        else if(particleTurret) {
             if(Input.GetMouseButton(0)) {
                 if(nextFire <= 0.0f) {
-                    fireTurret.ManualShoot();
+                    particleTurret.Shoot();
                     AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
                     if(recoilAnim_Body) {
                         recoilAnim_Body.SetTrigger(shootAnim);
@@ -403,13 +416,16 @@ public class Turret : MonoBehaviour {
                     nextFire = 1 / manualFireRate;
                 }
             }
-        } else if(beamTurret) {
+        }
+        else if(beamTurret) {
             if(Input.GetMouseButton(0)) {
                 beamTurret.ManualShoot();
-            } else {
+            }
+            else {
                 beamTurret.BeamOff();
             }
-        } else
+        }
+        else
             Debug.LogError("non existant tower???");
 
         if(reloadIndicator != null) {

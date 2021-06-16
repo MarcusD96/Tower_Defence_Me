@@ -90,9 +90,9 @@ public class MissileTurret : ProjectileTurret {
 
         for(int i = 0; i < specialMissileCount; i++) {
             Missile[] m = new Missile[3];
-            m[0] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 10 * i, 0))).GetComponent<Missile>();
-            m[1] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 120, 0))).GetComponent<Missile>();
-            m[2] = ObjectPool.instance.ActivateProjectile(ProjectileType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 240, 0))).GetComponent<Missile>();
+            m[0] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 10 * i, 0))).GetComponent<Missile>();
+            m[1] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 120, 0))).GetComponent<Missile>();
+            m[2] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 240, 0))).GetComponent<Missile>();
 
             foreach(var mm in m) {
                 mm.SetStats(damage / 2, bossDamage / 2, spawn, transform.forward * 60);

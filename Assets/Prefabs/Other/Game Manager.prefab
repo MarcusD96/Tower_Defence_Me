@@ -1009,22 +1009,25 @@ MonoBehaviour:
   - name: Tank_Boss
     go: {fileID: 3498438954662709570, guid: 25df34836e88df34292bbbfe929a94c2, type: 3}
     amount: 200
-  projectiles:
+  weapons:
   - name: Bullet
     go: {fileID: 5063451577565241328, guid: 20364c45b24e019449cceb3ce1f8f797, type: 3}
-    amount: 100
+    amount: 200
   - name: FireShot
     go: {fileID: 5759558546947081497, guid: 3f37a4b6ec23b394787cd28a3b448bcf, type: 3}
-    amount: 50
+    amount: 200
+  - name: WindShot
+    go: {fileID: 4570564608228887147, guid: e5d7667fe1dfab14f95ec07d3c0b853f, type: 3}
+    amount: 200
   - name: Missile
     go: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069, type: 3}
-    amount: 100
+    amount: 200
   - name: Rod
     go: {fileID: 2200754160205231155, guid: a12658303e39f1442956de48b081a5d6, type: 3}
-    amount: 50
+    amount: 200
   - name: TankShot
     go: {fileID: 5063451577565241328, guid: e9268fe564466754785d6998881cc12e, type: 3}
-    amount: 100
+    amount: 200
   - name: Bullet_Special
     go: {fileID: 5063451577565241328, guid: dd079100250a6a04a9139980fb334713, type: 3}
     amount: 300
@@ -1033,7 +1036,7 @@ MonoBehaviour:
     amount: 500
   - name: Rod_Special
     go: {fileID: 2200754160205231155, guid: 28da8f9cafc95db4a85caa7ca966817b, type: 3}
-    amount: 25
+    amount: 50
   effects:
   - name: Bullet Impact
     go: {fileID: 4573118995715554346, guid: 8bcadf8c6580b2e43a275bde57e28da5, type: 3}

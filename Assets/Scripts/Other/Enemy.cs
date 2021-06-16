@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour {
 
     private IEnumerator stun = null;
     private IEnumerator burn = null;
-    private IEnumerator blowBack = null;
+    [HideInInspector]
+    public IEnumerator blowBack = null;
 
     [Header("Unity Stuff")]
     public Image healthBarL;
@@ -235,12 +236,13 @@ public class Enemy : MonoBehaviour {
             yield return new WaitForSeconds(burnInterval);
             TakeDamage(damage, Color.white);
         }
-        burnLevel = 0;
+        burnLevel = -1;
         burnEffect.Stop();
         burnEffect.gameObject.SetActive(false);
     }
 
-    int blowBackLevel = -1;
+    [HideInInspector]
+    public int blowBackLevel = -1;
     public void BlowBack(float duration, int level_) {
         if(level_ < blowBackLevel) {
             return;
@@ -255,19 +257,31 @@ public class Enemy : MonoBehaviour {
             return;
         }
 
+        if(isBoss)
+            duration /= 2;
+
         blowBack = BlowBackEnemy(duration);
         StartCoroutine(blowBack);
     }
 
     IEnumerator BlowBackEnemy(float duration) {
-        currentSpeed = -currentSpeed;
-        EnemyMovement m = GetComponent<EnemyMovement>();
-        int prevWP = m.GetIndex() - 1;
-        prevWP = Mathf.Clamp(prevWP - 1, 1, prevWP);
-        m.SetTarget(Paths.GetPathWaypoints(pathIndex)[prevWP]);
-        yield return new WaitForSeconds(duration);
-        currentSpeed = -currentSpeed;
-        m.SetTarget(Paths.GetPathWaypoints(pathIndex)[m.GetIndex() + 1]);
+        var m = GetComponent<EnemyMovement>();
+        m.wayPointIndex -= 1;
+        m.target = Paths.GetPathWaypoints(pathIndex)[m.wayPointIndex];
+        currentSpeed *= 2;
+
+        float endTime = Time.time + duration;
+        while(Time.time < endTime) {
+            if(m.wayPointIndex < 1)
+                break;
+            yield return null;
+        }
+
+        m.wayPointIndex += 1;
+        m.target = Paths.GetPathWaypoints(pathIndex)[m.wayPointIndex];
+        currentSpeed /= 2;
+        blowBackLevel = -1;
+        blowBack = null;
     }
 
     public void ResetEnemy() {
@@ -281,8 +295,9 @@ public class Enemy : MonoBehaviour {
 
         superSlow = isDamaging = isSlow = false;
 
-        stun = burn = null;
+        stun = burn = blowBack = null;
         StopAllCoroutines();
+        stunLevel = burnLevel = slowLevel = blowBackLevel = -1;
 
         if(slowEffect != null) {
             slowEffect.gameObject.SetActive(false);

@@ -5,21 +5,21 @@ public class SpecialActivator : MonoBehaviour {
 
     private static SpecialActivator instance;
 
-    public GameObject barrageButton, burstButton, chargesButton, empButton, superchargeButton, infernoBtn, rundownBtn, doubleCashBtn, specBtn;
-
+    public GameObject bulletBtn, missileBtn, railgunBtn, laserBtn, teslaBtn, fireBtn, tankBtn, farmBtn, windBtn, specBtn;
 
     public Animator anim;
 
     void Awake() {
         instance = this;
-        burstButton.SetActive(false);
-        barrageButton.SetActive(false);
-        chargesButton.SetActive(false);
-        empButton.SetActive(false);
-        superchargeButton.SetActive(false);
-        infernoBtn.SetActive(false);
-        rundownBtn.SetActive(false);
-        doubleCashBtn.SetActive(false);
+        bulletBtn.SetActive(false);
+        missileBtn.SetActive(false);
+        railgunBtn.SetActive(false);
+        laserBtn.SetActive(false);
+        teslaBtn.SetActive(false);
+        fireBtn.SetActive(false);
+        tankBtn.SetActive(false);
+        farmBtn.SetActive(false);
+        windBtn.SetActive(false);
     }
 
     public void OpenSpecials() {
@@ -38,43 +38,48 @@ public class SpecialActivator : MonoBehaviour {
         }
     }
 
-    public static void MakeBurst(BulletTurret bt) {
-        instance.burstButton.SetActive(true);
+    public static void MakeBulletSpecial(BulletTurret bt) {
+        instance.bulletBtn.SetActive(true);
         BulletSpecial.AddNewBulletTurret(bt);
     }
 
-    public static void MakeBarrage(MissileTurret mt) {
-        instance.barrageButton.SetActive(true);
+    public static void MakeMissileSpecial(MissileTurret mt) {
+        instance.missileBtn.SetActive(true);
         MissileSpecial.AddNewMissileTurret(mt);
     }
 
-    public static void MakeCharges(RailgunTurret rt) {
-        instance.chargesButton.SetActive(true);
+    public static void MakeRailgunSpecial(RailgunTurret rt) {
+        instance.railgunBtn.SetActive(true);
         RailgunSpecial.AddNewRailgunTurret(rt);
     }
 
-    public static void MakeEMP(LaserTurret lt) {
-        instance.empButton.SetActive(true);
+    public static void MakeLaserSpecial(LaserTurret lt) {
+        instance.laserBtn.SetActive(true);
         LaserSpecial.AddNewLaserTurret(lt);
     }
 
-    public static void MakeSuperCharge(TeslaTurret tt) {
-        instance.superchargeButton.SetActive(true);
+    public static void MakeTeslaSpecial(TeslaTurret tt) {
+        instance.teslaBtn.SetActive(true);
         TeslaSpecial.AddNewTeslaTurret(tt);
     }
 
-    public static void MakeInferno(FireTurret ft) {
-        instance.infernoBtn.SetActive(true);
+    public static void MakeFireSpecial(FireTurret ft) {
+        instance.fireBtn.SetActive(true);
         FireSpecial.AddNewFireTurret(ft);
     }
 
-    public static void MakeRundown(TankTurret tank) {
-        instance.rundownBtn.SetActive(true);
+    public static void MakeTankSpecial(TankTurret tank) {
+        instance.tankBtn.SetActive(true);
         TankSpecial.AddNewTankTurret(tank);
     }
 
-    public static void MakeDoubleCash(FarmTower farm) {
-        instance.doubleCashBtn.SetActive(true);
+    public static void MakeFarmSpecial(FarmTower farm) {
+        instance.farmBtn.SetActive(true);
         FarmSpecial.AddNewFarmTower(farm);
+    }
+
+    public static void MakeWindSpecial(WindTurret wind) {
+        instance.windBtn.SetActive(true);
+        WindSpecial.AddNewWindTurret(wind);
     }
 }

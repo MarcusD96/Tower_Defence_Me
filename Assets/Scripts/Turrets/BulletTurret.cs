@@ -43,7 +43,7 @@ public class BulletTurret : ProjectileTurret {
 
     IEnumerator BulletSpecial() {
         StartCoroutine(SpecialTime());
-        projectileType = ProjectileType.Bullet_Special;
+        projectileType = WeaponType.Bullet_Special;
 
         var saveFireRate = fireRate;
         fireRate = 0;
@@ -65,6 +65,6 @@ public class BulletTurret : ProjectileTurret {
 
         //reset back to normal
         fireRate = saveFireRate;
-        projectileType = ProjectileType.Bullet;
+        projectileType = WeaponType.Bullet;
     }
 }
