@@ -1071,6 +1071,9 @@ MonoBehaviour:
   - name: Special Activated
     go: {fileID: 876339668855285334, guid: f813191efe1210c489ccfff4d3df835f, type: 3}
     amount: 25
+  - name: Flash
+    go: {fileID: 8277381689871076909, guid: 3d976d1cbd8208c4b962d7537c048e81, type: 3}
+    amount: 100
   enemiesParent: {fileID: 4925554752574656111}
   projectilesParent: {fileID: 5829293954203509812}
   effectsParent: {fileID: 7665367856959569981}

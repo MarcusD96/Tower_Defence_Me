@@ -212,5 +212,6 @@ public enum EffectType {
     BossSimpleDeath,
     BossQuickDeath,
     BossTankDeath,
-    SpecialActivated
+    SpecialActivated,
+    Flash
 }

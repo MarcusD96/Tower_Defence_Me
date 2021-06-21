@@ -139,11 +139,13 @@ MonoBehaviour:
   baseHp: 40
   startSpeed: 4.5
   startHp: 40
-  distanceTravelled: 0
   moneyValue: 5
+  percentTrackCompleted: 0
   currentSpeed: 5.6699996
   currentMoneyValue: 0
+  distanceTravelled: 0
   lifeValue: 1
+  pathIndex: 0
   enemyType: 2
   healthBarL: {fileID: 131314440}
   healthBarR: {fileID: 6910535031835081250}
@@ -151,10 +153,11 @@ MonoBehaviour:
   isDamaging: 0
   isSlow: 0
   isDead: 1
-  stunResist: 0
+  stunResist: 1
   slowResist: 0
   burnResist: 0
   isBoss: 0
+  blowBackLevel: -1
 --- !u!114 &4424576822074309443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3849a18bd6cc364eb6b90529fafb357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  wayPointIndex: 0
 --- !u!136 &699742060042695252
 CapsuleCollider:
   m_ObjectHideFlags: 0

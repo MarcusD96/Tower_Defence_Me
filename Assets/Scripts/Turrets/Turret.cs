@@ -44,9 +44,7 @@ public class Turret : MonoBehaviour {
     protected BeamTurret beamTurret;
     protected ProjectileTurret projectileTurret;
     protected ParticleTurret particleTurret;
-    protected FireTurret fireTurret;
     protected FarmTower farmTower;
-    protected WindTurret windTurret;
 
     [Header("Upgrades")]
     public Upgrade ugA;
@@ -353,6 +351,7 @@ public class Turret : MonoBehaviour {
                 FindEnemy(false);
                 if(target == null)
                     return;
+                nextFire = 1 / fireRate;
                 RotateOnShoot();
                 projectileTurret.AutoShoot();
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
@@ -360,7 +359,6 @@ public class Turret : MonoBehaviour {
                     recoilAnim_Body.SetTrigger(shootAnim);
                 }
                 muzzleFlash.Play();
-                nextFire = 1 / fireRate;
             }
         }
         else if(particleTurret) {

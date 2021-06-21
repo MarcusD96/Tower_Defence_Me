@@ -30,23 +30,22 @@ public class WindShot : ParticleShot {
     RaycastHit[] hits;
     void CheckHits() {
         Ray ray = new Ray(transform.position, transform.forward);
-
         hits = Physics.SphereCastAll(ray, 3, range, enemyLayer);
+
+        float r = Random.Range(0.0f, 1.0f);
 
         foreach(var hit in hits) {
             if(penetration <= 0)
                 break;
             e = hit.collider.GetComponent<Enemy>();
-            e.TakeDamage(damage, Color.black);
-            float r = Random.Range(0.0f, 1.0f);
-            if(e.isBoss) {
-                e.BlowBack(blowBackDuration, level);
-                penetration--;
-                return;
-            }
-            if(r <= chanceToBlowBack)
-                e.BlowBack(blowBackDuration, level);
+            if(r <= chanceToBlowBack) {
+                if(e.isBoss)
+                    e.BlowBack(blowBackDuration / 4, level);
 
+                else
+                    e.BlowBack(blowBackDuration, level);
+            }
+            e.TakeDamage(damage, Color.black);
             penetration--;
         }
     }

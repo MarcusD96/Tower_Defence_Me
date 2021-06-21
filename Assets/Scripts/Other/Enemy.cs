@@ -267,6 +267,8 @@ public class Enemy : MonoBehaviour {
     IEnumerator BlowBackEnemy(float duration) {
         var m = GetComponent<EnemyMovement>();
         m.wayPointIndex -= 1;
+        if(m.wayPointIndex < 0)
+            m.wayPointIndex = 0;
         m.target = Paths.GetPathWaypoints(pathIndex)[m.wayPointIndex];
         currentSpeed *= 2;
 

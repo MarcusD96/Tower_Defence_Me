@@ -3,7 +3,37 @@ guid: d51f7ac7ebf8c394f9ffeaf12a546b10
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: 5df9b5089ac177b4f85b7cc256f96845, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Accent
+    second: {fileID: 2100000, guid: a666cd99e63c5d740a4798819dbe84c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Main
+    second: {fileID: 2100000, guid: 349fff65f1971c24b99ac4f82116f5bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Poles
+    second: {fileID: 2100000, guid: a7de7e9c0f2d87441bd5ae4ad4efc4d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feet
+    second: {fileID: 2100000, guid: 5e712f3d21e42734eb9e486f468feb3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tank
+    second: {fileID: 2100000, guid: cb165d26f2ca20e4f9123b3f1c9fdb29, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

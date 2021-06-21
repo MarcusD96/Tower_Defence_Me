@@ -378,15 +378,11 @@ MonoBehaviour:
   specialAmount: 0
   specialTime: 1.75
   hasTargetting: 1
-  projectilePrefab: {fileID: 7939202417498098082, guid: d022a86705d62334eaa746664d9b6069,
-    type: 3}
-  projectileType: 2
+  projectileType: 3
   damage: 4
   bossDamage: 25
   penetration: 20
   explosionRadius: 8
-  specialPrefab: {fileID: 7939202417498098082, guid: dbce2b8750bf5d94d8040e0652bf0167,
-    type: 3}
   specialMissileCount: 96
 --- !u!114 &6568727638329882637
 MonoBehaviour:

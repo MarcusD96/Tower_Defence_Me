@@ -6,17 +6,15 @@ public class TeslaTurret : BeamTurret {
 
     [Header("Tesla")]
     public float damage;
-    public float stunDuration, superFirerate;
+    public float stunDuration;
 
     [Header("Lightning")]
-    public GameObject flash;
     public Gradient mainGrad, specGrad;
     public float arcLength;
-    public float arcVar, inaccuracy;
-    public int maxArcs;
+    public float arcVar, inaccuracy, detectionRad;
+    public int maxArcs, specialArcs;
     [SerializeField]
     private IEnumerator fade;
-    private bool abilityActivation = false;
 
     new void Awake() {
         base.Awake();
@@ -44,7 +42,8 @@ public class TeslaTurret : BeamTurret {
 
         if(nextFire <= 0.0f) {
             nextFire = 1 / fireRate;
-        } else {
+        }
+        else {
             return;
         }
 
@@ -57,17 +56,12 @@ public class TeslaTurret : BeamTurret {
         shootLight.enabled = true;
 
         //build gfx
-        if(!abilityActivation) {
-            BuildLightning();
-            targetEnemy.TakeDamage(damage, Color.yellow);
-            targetEnemy.Stun(stunDuration, ugB.GetLevel());
-        } else {
-            Enemy[] enemies = BuildSuperChargedLightning();
-            foreach(var e in enemies) {
-                e.TakeDamage(damage, Color.yellow);
-                e.Stun(stunDuration, ugB.GetLevel());
-            }
+        Enemy[] enemies = BuildLightning(targetEnemy);
+        foreach(var e in enemies) {
+            e.TakeDamage(damage, Color.yellow);
+            e.Stun(stunDuration, ugB.GetLevel());
         }
+
         AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
 
         Fade();
@@ -84,31 +78,21 @@ public class TeslaTurret : BeamTurret {
             manualFireRate = fireRate * manualFirerateMultiplier;
         }
 
+        range *= manualRangeMultiplier;
         RaycastHit hit;
-        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, range * manualRangeMultiplier)) {
+        if(Physics.Raycast(fireSpawn.position, pivot.forward, out hit, range)) {
             if(hit.collider) {
+                Enemy[] enemies = BuildLightning(hit.collider.GetComponent<Enemy>());
+
                 nextFire = 1 / manualFireRate;
-                target = hit.transform;
-                targetEnemy = target.GetComponent<Enemy>();
-
                 shake.shakeDuration = 0.1f;
-
-                if(!abilityActivation) {
-                    BuildLightning();
-                    if(targetEnemy) {
-                        recoilAnim_Body.SetTrigger(shootAnim);
-                        targetEnemy.TakeDamage(damage, Color.yellow);
-                        targetEnemy.Stun(stunDuration, ugB.GetLevel());
-                    }
-                } else {
-                    Enemy[] enemies = BuildSuperChargedLightning();
-                    recoilAnim_Body.SetTrigger(shootAnim);
-                    foreach(var e in enemies) {
-                        e.TakeDamage(damage, Color.yellow);
-                        e.Stun(stunDuration, ugB.GetLevel());
-                    }
-                }
+                recoilAnim_Body.SetTrigger(shootAnim);
                 AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
+
+                foreach(var e in enemies) {
+                    e.TakeDamage(damage, Color.yellow);
+                    e.Stun(stunDuration, ugB.GetLevel());
+                }
 
                 if(!lineRenderer.enabled) {
                     lineRenderer.enabled = true;
@@ -121,51 +105,16 @@ public class TeslaTurret : BeamTurret {
                 Fade();
             }
         }
+        range /= manualRangeMultiplier;
     }
 
-    void BuildLightning() {
-        RestoreAlpha();
+    List<Enemy> enemyList = new List<Enemy>();
+    Enemy[] BuildLightning(Enemy first) {
+        enemyList.Clear();
 
-        var lastPoint = fireSpawn.position;
-        var lineVert = 1;
+        enemyList.Add(first);
 
-        lineRenderer.SetPosition(0, lastPoint);    //make the origin of the lineRenderer the same as the transform
-
-        while(Vector3.Distance(target.position, lastPoint) > 4) {    //was the last arc not close to the target
-            lineRenderer.positionCount = lineVert + 1;     //new vertex
-            var fwd = target.position - lastPoint;    //gives the direction to our target from the end of the last arc
-            fwd.Normalize();
-            fwd = RandomizeArc(fwd, inaccuracy);   //we don't want a straight line to the target though
-            fwd *= Random.Range(arcLength * arcVar, arcLength);     //nature is never too uniform
-            fwd += lastPoint;   //point + distance * direction = new point. this is where our new arc ends
-            if(fwd.y < 1.6f) { //point must be above the ground
-                fwd.y = 1.6f;
-            }
-            lineRenderer.SetPosition(lineVert, fwd);
-            lineVert++;
-            lastPoint = fwd;    //so we know where we are starting from for the next arc
-        }
-
-        lineRenderer.SetPosition(lineRenderer.positionCount - 1, target.position); //last point is always the target
-        var tmp = Instantiate(flash, target.position, Quaternion.identity);
-        Destroy(tmp, 1.0f);
-
-        if(!lineRenderer.enabled)
-            lineRenderer.enabled = true;
-    }
-
-    Enemy[] BuildSuperChargedLightning() {
-        List<Enemy> enemyList = new List<Enemy>();
-
-        Vector3 startPos;
-
-        //find first target to hit
-        if(FindEnemy(false)) {
-            startPos = target.position;
-            enemyList.Add(targetEnemy);
-
-        } else
-            return null; //no close enough target, abort special
+        Vector3 startPos = first.transform.position;
 
         //keep trying to find new enemies to hit in range of current enemy until max enemies is hit or no more enemies are found
         for(int i = 0; i < maxArcs; i++) {
@@ -174,7 +123,7 @@ public class TeslaTurret : BeamTurret {
             //find the closest enemy in the radius
             Enemy next = null;
 
-            foreach(var c in Physics.OverlapSphere(startPos, 10)) {
+            foreach(var c in Physics.OverlapSphere(startPos, detectionRad)) {
 
                 if(c.CompareTag(enemyTag)) {
                     if(enemyList.Contains(c.GetComponent<Enemy>())) //dont hit the same enemy more than once
@@ -222,15 +171,13 @@ public class TeslaTurret : BeamTurret {
                     lastPoint = fwd;
                 }
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, target.position); //set the position to the target
-                var tmp = Instantiate(flash, target.position, Quaternion.identity);
-                Destroy(tmp, 1.0f);
+                ObjectPool.instance.ActivateEffect(EffectType.Flash, target.position + Vector3.up, Quaternion.identity, 0.25f);
             }
         }
 
         if(!lineRenderer.enabled)
             lineRenderer.enabled = true;
 
-        enemyList = Shuffle(enemyList);
 
         return enemyList.ToArray();
     }
@@ -241,10 +188,14 @@ public class TeslaTurret : BeamTurret {
         Color end = new Color(lineRenderer.endColor.r, lineRenderer.endColor.g, lineRenderer.endColor.b, 1);
         lineRenderer.startColor = start;
         lineRenderer.endColor = end;
+        shootLight.intensity = 75;
     }
 
     public override bool ActivateSpecial() {
-        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && BuildSuperChargedLightning() != null) {
+        if(!FindEnemy(false))
+            return false;
+
+        if(!specialActivated && WaveSpawner.enemiesAlive > 0 && BuildLightning(targetEnemy) != null) {
             specialActivated = true;
             StartCoroutine(SpecialAbility());
             return true;
@@ -273,8 +224,8 @@ public class TeslaTurret : BeamTurret {
 
     public override void ApplyUpgradeB() { //upgrade firerate and damage
         fireRate += ugB.upgradeFactorX * ugB.GetLevel();
-        damage += ugB.upgradeFactorY;
-        lineRenderer.startWidth = lineRenderer.endWidth += 0.2f;
+        maxArcs += (int) ugB.upgradeFactorY;
+        detectionRad += 2;
     }
 
     void Fade() {
@@ -288,27 +239,50 @@ public class TeslaTurret : BeamTurret {
             Color start = lineRenderer.startColor;
             Color end = lineRenderer.endColor;
 
-            start.a = Mathf.Lerp(start.a, -1, Time.unscaledDeltaTime);
-            end.a = Mathf.Lerp(end.a, -1, Time.unscaledDeltaTime);
+            start.a = Mathf.Lerp(start.a, -1, Time.deltaTime);
+            end.a = Mathf.Lerp(end.a, -1, Time.deltaTime);
+
+            shootLight.intensity -= 12.5f;
 
             lineRenderer.startColor = start;
             lineRenderer.endColor = end;
 
             yield return null;
         }
-        shootLight.enabled = false;
+        shootLight.intensity = 0;
     }
 
     IEnumerator SpecialAbility() {
+        if(!FindEnemy(true))
+            yield break;
+
         StartCoroutine(SpecialTime());
-        abilityActivation = true;
+
+        Fade();
+        nextFire = float.MaxValue;
+        yield return new WaitForSeconds(2.5f);
+
         lineRenderer.colorGradient = specGrad;
-        var tmpFR = fireRate;
-        fireRate *= superFirerate;
-        nextFire = 0;
-        yield return new WaitForSeconds(specialTime);
-        fireRate = tmpFR;
-        abilityActivation = false;
+
+        //boost stats
+        var tmpArcs = maxArcs;
+        maxArcs = specialArcs;
+        detectionRad *= 5.0f;
+        damage *= 5.0f;
+        stunDuration *= 2.0f;
+        lineRenderer.startWidth = lineRenderer.endWidth = 0.75f;
+        nextFire = 0.0f;
+
+        AutoShoot();
+
+        yield return new WaitForSeconds(1.0f);
+
         lineRenderer.colorGradient = mainGrad;
+
+        //revert boosted stats
+        maxArcs = tmpArcs;
+        detectionRad /= 5.0f;
+        damage /= 5.0f;
+        stunDuration /= 2.0f;
     }
 }

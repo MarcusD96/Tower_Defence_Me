@@ -1061,8 +1061,8 @@ MonoBehaviour:
     description: Upgraded circuits can handle more power. More damage and faster
       recharge time.
     baseCost: 210
-    upgradeFactorX: 0.2
-    upgradeFactorY: 1
+    upgradeFactorX: 0.075
+    upgradeFactorY: 5
   ugSpec:
     upgradeName: Overloaded Capacitors
     description: The lightning jumps to multiple targets per charge.
@@ -1071,20 +1071,18 @@ MonoBehaviour:
     upgradeFactorY: 0
   manualRangeMultiplier: 2
   manualFirerateMultiplier: 1.25
-  fireRate: 0.5
+  fireRate: 0.25
   specialBar: {fileID: 3408852544952290420}
-  specialRate: 15
+  specialRate: 20
   specialAmount: 0
-  specialTime: 2
+  specialTime: 5
   hasTargetting: 1
   lineRenderer: {fileID: 7853080107776535575}
   shootEffect: {fileID: 3371452123005213704}
   shootLight: {fileID: 987465314321057502}
   shake: {fileID: 8752263402029214436}
-  damage: 0.5
+  damage: 1
   stunDuration: 1
-  superFirerate: 1.5
-  flash: {fileID: 8277381689871076909, guid: 3d976d1cbd8208c4b962d7537c048e81, type: 3}
   mainGrad:
     serializedVersion: 2
     key0: {r: 0.50980395, g: 0, b: 1, a: 1}
@@ -1146,7 +1144,9 @@ MonoBehaviour:
   arcLength: 2
   arcVar: 2
   inaccuracy: 2
+  detectionRad: 7
   maxArcs: 10
+  specialArcs: 50
 --- !u!114 &1523419610083998893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,16 +1622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8411359434006745553}
     m_Modifications:
-    - target: {fileID: 3696766061095427989, guid: c899ed9350b1a934991cc1b0a68e7431,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3696766061095427989, guid: c899ed9350b1a934991cc1b0a68e7431,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6394152904464481537, guid: c899ed9350b1a934991cc1b0a68e7431,
         type: 3}
       propertyPath: m_RootOrder

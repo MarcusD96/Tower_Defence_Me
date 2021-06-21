@@ -5,7 +5,6 @@ using UnityEngine;
 public class MissileTurret : ProjectileTurret {
 
     public float explosionRadius;
-    public GameObject specialPrefab;
     public int specialMissileCount;
 
     private List<Enemy> targetList = new List<Enemy>();
@@ -41,46 +40,6 @@ public class MissileTurret : ProjectileTurret {
         return false;
     }
 
-    //old special
-    IEnumerator MissileBarrage() {
-        GameObject tmp = projectilePrefab;
-        projectilePrefab = specialPrefab;
-
-        if(FindAndSortEnemies()) {
-
-            StartCoroutine(SpecialTime());
-            nextFire = 0;
-
-            int timesRestarted = 1;
-            for(int i = 0; i < specialMissileCount; i++) {
-
-                int ii = i - (targetList.Count * (timesRestarted - 1));
-
-                if(ii < targetList.Count) {
-                    if(targetList[ii] != null) {
-                        target = targetList[ii].transform;
-                        damage = 2;
-                        AutoShoot();
-                        AudioManager.StaticPlayEffect(AudioManager.instance.sounds, shootSound, transform.position);
-                        damage = 1;
-                        yield return new WaitForSeconds(0.1f);
-                    }
-                }
-
-                if(targetList.Count == 1) {
-                    timesRestarted++;
-                } else if(i % targetList.Count == 0) {
-                    if(i != 0)
-                        timesRestarted++;
-                }
-            }
-        }
-
-        projectilePrefab = tmp;
-        targetList = new List<Enemy>();
-        yield return null;
-    }
-
     IEnumerator SpecialAbility() {
         StartCoroutine(SpecialTime());
         float dt = Time.deltaTime;
@@ -88,11 +47,12 @@ public class MissileTurret : ProjectileTurret {
         Vector3 spawn;
         spawn = new Vector3(transform.position.x, fireSpawn.position.y, transform.position.z);
 
+        projectileType = WeaponType.Missile_Special;
         for(int i = 0; i < specialMissileCount; i++) {
             Missile[] m = new Missile[3];
-            m[0] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, 10 * i, 0))).GetComponent<Missile>();
-            m[1] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 120, 0))).GetComponent<Missile>();
-            m[2] = ObjectPool.instance.ActivateProjectile(WeaponType.Missile_Special, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 240, 0))).GetComponent<Missile>();
+            m[0] = ObjectPool.instance.ActivateProjectile(projectileType, spawn, Quaternion.Euler(new Vector3(0, 10 * i, 0))).GetComponent<Missile>();
+            m[1] = ObjectPool.instance.ActivateProjectile(projectileType, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 120, 0))).GetComponent<Missile>();
+            m[2] = ObjectPool.instance.ActivateProjectile(projectileType, spawn, Quaternion.Euler(new Vector3(0, (10 * i) + 240, 0))).GetComponent<Missile>();
 
             foreach(var mm in m) {
                 mm.SetStats(damage / 2, bossDamage / 2, spawn, transform.forward * 60);
@@ -103,6 +63,7 @@ public class MissileTurret : ProjectileTurret {
             } else
                 yield return new WaitForSeconds(ff);
         }
+        projectileType = WeaponType.Missile;
     }
 
     bool FindAndSortEnemies() {

@@ -89,7 +89,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6795462705980167066, guid: 88e0833b8dfbc40439082935aca34817, type: 3}
+  - {fileID: 2100000, guid: db76f898efdf0a34dac5fcc13369e6b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,10 +170,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -978160288850237216, guid: 88e0833b8dfbc40439082935aca34817, type: 3}
-  - {fileID: -5396234901987582864, guid: 88e0833b8dfbc40439082935aca34817, type: 3}
-  - {fileID: -551910143501918905, guid: 88e0833b8dfbc40439082935aca34817, type: 3}
-  - {fileID: 8992934318045909824, guid: 88e0833b8dfbc40439082935aca34817, type: 3}
+  - {fileID: 2100000, guid: e18aa50f742be73418b2344ef346bde8, type: 2}
+  - {fileID: 2100000, guid: 0347d43e27026584db0f7d1fda13b078, type: 2}
+  - {fileID: 2100000, guid: 8bdd9f95586ecb847b9d8138729af9a2, type: 2}
+  - {fileID: 2100000, guid: 2b30eefa31bc18a4f8bac01c955062ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -247,9 +247,6 @@ MonoBehaviour:
   sellPecent: 75
   fireSpawn: {fileID: 9146972457393439272}
   range: 5
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 0
   maxFireRate: 0
   turretCam: {fileID: 0}
   overlayCam: {fileID: 0}
@@ -286,6 +283,7 @@ MonoBehaviour:
   specialRate: 60
   specialAmount: 0
   specialTime: 15
+  hasTargetting: 0
   cashValue: 30
   numSpawns: 3
   lifeValue: 5
