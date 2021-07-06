@@ -1297,61 +1297,43 @@
             "waveWorth": 2000
         },
         {
-            "name": "41",
+            "name": "TEST",
             "chunks": [
+                {
+                    "type": 0,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 0.0
+                },
+                {
+                    "type": 1,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 3.0
+                },
+                {
+                    "type": 2,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 4.0
+                },
+                {
+                    "type": 3,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 10.0
+                },
+                {
+                    "type": 4,
+                    "count": 1,
+                    "spawnRate": 1.0,
+                    "startDelay": 15.0
+                },
                 {
                     "type": 5,
                     "count": 1,
                     "spawnRate": 1.0,
-                    "startDelay": 0.0
-                }
-            ],
-            "waveWorth": 2000
-        },
-        {
-            "name": "42",
-            "chunks": [
-                {
-                    "type": 5,
-                    "count": 1,
-                    "spawnRate": 1.0,
-                    "startDelay": 0.0
-                }
-            ],
-            "waveWorth": 2000
-        },
-        {
-            "name": "43",
-            "chunks": [
-                {
-                    "type": 5,
-                    "count": 1,
-                    "spawnRate": 1.0,
-                    "startDelay": 0.0
-                }
-            ],
-            "waveWorth": 2000
-        },
-        {
-            "name": "44",
-            "chunks": [
-                {
-                    "type": 5,
-                    "count": 1,
-                    "spawnRate": 1.0,
-                    "startDelay": 0.0
-                }
-            ],
-            "waveWorth": 2000
-        },
-        {
-            "name": "45",
-            "chunks": [
-                {
-                    "type": 5,
-                    "count": 1,
-                    "spawnRate": 1.0,
-                    "startDelay": 0.0
+                    "startDelay": 16.0
                 }
             ],
             "waveWorth": 2000

@@ -21,18 +21,18 @@ public class ObjectPool : MonoBehaviour {
         projectilesPool = new List<GameObject>[weapons.Length];
         effectsPool = new List<GameObject>[effects.Length];
         spawn = Paths.GetFirstPathPosition();
-        StartCoroutine(SpawnObjectsInPool(enemies, enemyPool, enemiesParent));
-        StartCoroutine(SpawnObjectsInPool(weapons, projectilesPool, projectilesParent));
-        StartCoroutine(SpawnObjectsInPool(effects, effectsPool, effectsParent));
+        StartCoroutine(LoadObjectsInPool(enemies, enemyPool, enemiesParent));
+        StartCoroutine(LoadObjectsInPool(weapons, projectilesPool, projectilesParent));
+        StartCoroutine(LoadObjectsInPool(effects, effectsPool, effectsParent));
     }
 
     [HideInInspector]
     bool loadingEnemies = true, loadingProjectiles = true, loadingEffects = true;
-    IEnumerator SpawnObjectsInPool(PooledObject[] objects, List<GameObject>[] pool, Transform parent) {        
+    IEnumerator LoadObjectsInPool(PooledObject[] objects, List<GameObject>[] pool, Transform parent) {
         IEnumerator[] coroutines = new IEnumerator[objects.Length];
         for(int count = 0; count < objects.Length; count++) {
             GameObject p = null;
-            coroutines[count] = SpawnObject(objects, pool, parent, count, p, coroutines);
+            coroutines[count] = LoadObject(objects, pool, parent, count, p, coroutines);
             StartCoroutine(coroutines[count]);
         }
         if(objects == enemies) {
@@ -48,7 +48,8 @@ public class ObjectPool : MonoBehaviour {
                 yield return null;
             }
             loadingEnemies = false;
-        } else if(objects == weapons) {
+        }
+        else if(objects == weapons) {
             bool notDone = true;
             while(notDone) {
                 foreach(var c in coroutines) {
@@ -61,7 +62,8 @@ public class ObjectPool : MonoBehaviour {
                 yield return null;
             }
             loadingProjectiles = false;
-        } else {
+        }
+        else {
             bool notDone = true;
             while(notDone) {
                 foreach(var c in coroutines) {
@@ -77,7 +79,7 @@ public class ObjectPool : MonoBehaviour {
         }
     }
 
-    IEnumerator SpawnObject(PooledObject[] objects, List<GameObject>[] pool, Transform parent, int count, GameObject parent_, IEnumerator[] corutines) {
+    IEnumerator LoadObject(PooledObject[] objects, List<GameObject>[] pool, Transform parent, int count, GameObject parent_, IEnumerator[] corutines) {
         GameObject tmp;
         parent_ = new GameObject(objects[count].go.name);
         parent_.transform.SetParent(parent, true);

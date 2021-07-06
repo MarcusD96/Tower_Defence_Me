@@ -4,19 +4,23 @@
 public class EnemyMovement : MonoBehaviour {
 
     public Transform target;
+    public Transform body;
     public int wayPointIndex = 0;
     private Enemy enemy;
+    private Animator animator;
 
     private void Awake() {
         enemy = GetComponent<Enemy>();
+        animator = body.GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
     public void Initialize() {
         target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
+        if(animator) {
+            animator.speed = enemy.currentSpeed / 7; 
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate() {
         Vector3 direction = target.position - transform.position;
         Vector3 curPos = transform.position;
@@ -51,6 +55,7 @@ public class EnemyMovement : MonoBehaviour {
         }
         wayPointIndex++;
         target = Paths.GetPathWaypoints(enemy.pathIndex)[wayPointIndex];
+        body.LookAt(target, Vector3.up);
     }
 
     void GetPreviousWayPoint() {
