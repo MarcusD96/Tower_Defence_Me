@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
@@ -186,7 +187,6 @@ public class WaveSpawner : MonoBehaviour {
         waveStarted = true;
         enemiesAlive = wave.GetTotalEnemies();
         PlayerStats.rounds++;
-
         foreach(var c in wave.chunks) {
             StartCoroutine(SpawnChunk(c));
         }

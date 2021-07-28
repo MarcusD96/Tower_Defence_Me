@@ -12,6 +12,7 @@ public class LevelLoader : MonoBehaviour {
         StartCoroutine(LoadNextLevel(PlayerStats.levelToLoad));
         InitializeTips();
         ChooseRandomTip();
+        Time.timeScale = 1;
     }
 
     void InitializeTips() {

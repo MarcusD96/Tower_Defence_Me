@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class ObjectPool : MonoBehaviour {
 
@@ -26,7 +27,6 @@ public class ObjectPool : MonoBehaviour {
         StartCoroutine(LoadObjectsInPool(effects, effectsPool, effectsParent));
     }
 
-    [HideInInspector]
     bool loadingEnemies = true, loadingProjectiles = true, loadingEffects = true;
     IEnumerator LoadObjectsInPool(PooledObject[] objects, List<GameObject>[] pool, Transform parent) {
         IEnumerator[] coroutines = new IEnumerator[objects.Length];
@@ -63,7 +63,7 @@ public class ObjectPool : MonoBehaviour {
             }
             loadingProjectiles = false;
         }
-        else {
+        else if(objects == effects) {
             bool notDone = true;
             while(notDone) {
                 foreach(var c in coroutines) {

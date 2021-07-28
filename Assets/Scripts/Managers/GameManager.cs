@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
         winLevelUI.SetActive(false);
         gameOverUI = FindObjectOfType<GameOver>(true).gameObject;
         gameOverUI.SetActive(false);
+        gameEnd = false;
+        lastControlled = null;
         if(FindObjectOfType<FPSCounter>() == null)
             Instantiate(new GameObject("FPS", typeof(FPSCounter)));
         Application.targetFrameRate = 200;
@@ -22,8 +24,6 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
-        gameEnd = false;
-        lastControlled = null;
         if(Time.timeScale != 1) {
             Time.timeScale = 1;
         }
@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour {
             if(WaveSpawner.enemiesAlive > 0) {
                 if(Time.timeScale == fastForward) {
                     Time.timeScale = 1;
-                } else {
+                }
+                else {
                     Time.timeScale = fastForward;
                 }
             }
@@ -74,6 +75,10 @@ public class GameManager : MonoBehaviour {
         gameEnd = true;
         gameOverUI.SetActive(true);
         AudioManager.StaticStopAllSounds();
+        WaveSpawner.instance.StopAllCoroutines();
+        foreach(var e in WaveSpawner.GetEnemyList_Static()) {
+            e.GetComponent<Enemy>().enabled = false;
+        }
     }
 
     public void WinLevel() {

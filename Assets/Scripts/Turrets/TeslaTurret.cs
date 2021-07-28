@@ -270,7 +270,6 @@ public class TeslaTurret : BeamTurret {
         detectionRad *= 5.0f;
         damage *= 5.0f;
         stunDuration *= 2.0f;
-        lineRenderer.startWidth = lineRenderer.endWidth = 0.75f;
         nextFire = 0.0f;
 
         AutoShoot();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class STAYBARSTAY : MonoBehaviour {
     Scrollbar scrollbar;
 
-    private void Awake() {
+    private void LateUpdate() {
         scrollbar = GetComponent<Scrollbar>();
             scrollbar.value = 0;
     }
